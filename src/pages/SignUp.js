@@ -13,7 +13,6 @@ function SignUp() {
 
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(signUpSchema) });
 
-
     const [isVisible, setIsVisible] = React.useState(false)
 
     // handles password visibility  icon
