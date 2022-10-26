@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import MyProfile from './pages/MyProfile';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import AuthenticatedRoute from './components/AuthenticatedRoute';
 
 
 function App() {
@@ -18,7 +19,9 @@ function App() {
             <main className='max-w-5xl mx-auto container my-12'>
                 <Routes>
                     <Route path='/' element={<Home />} />
-                    <Route path='/my-profile' element={<MyProfile />} />
+                    <Route path='/my-profile' element={<AuthenticatedRoute />}>
+                        <Route path='/my-profile' element={<MyProfile />} />
+                    </Route>
                     <Route path='/browse-people' element={<BrowsePeople />} />
                     <Route path='/sign-in' element={<SignIn />} />
                     <Route path='/sign-up' element={<SignUp />} />

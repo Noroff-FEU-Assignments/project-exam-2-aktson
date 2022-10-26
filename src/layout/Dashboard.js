@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { MdHome, MdPeopleAlt, MdAccountCircle } from "react-icons/md";
+import { MdHome, MdGroups, MdAccountCircle } from "react-icons/md";
 import { useLocation } from "react-router-dom"
 
 
@@ -16,12 +16,20 @@ function Dashboard({ translate }) {
                     <Link to="/">Home</Link>
                 </li>
                 <li className={pathname === "/browse-people" ? "nav-link active" : "nav-link"}>
-                    <MdPeopleAlt className='icon' />
+                    <MdGroups className='icon' />
                     <Link to="/browse-people">Browse People</Link>
                 </li>
                 <li className={pathname === "/my-profile" ? "nav-link active" : "nav-link"}>
                     <MdAccountCircle className='icon' />
                     <Link to="/my-profile">My Profile</Link>
+                </li>
+                <li className={pathname === "/sign-up" ? "nav-link active" : "nav-link"}>
+                    <MdAccountCircle className='icon' />
+                    <Link to="/sign-up">Sign Up</Link>
+                </li>
+                <li className={pathname === "/sign-in" ? "nav-link active" : "nav-link"}>
+                    <MdAccountCircle className='icon' />
+                    <Link to="/my-profile">Sign In</Link>
                 </li>
             </ul>
         </nav>
