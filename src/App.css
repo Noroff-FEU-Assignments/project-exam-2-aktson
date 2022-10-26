@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.nav-link {
+		@apply flex items-center gap-6 transition ease-in-out duration-500;
+	}
+	.icon {
+		@apply text-3xl cursor-pointer;
+	}
+	.active {
+		@apply text-primary;
+	}
+	.btn {
+		@apply text-neutral-content rounded-none shadow-2xl;
+	}
+}
