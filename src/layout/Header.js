@@ -5,15 +5,15 @@ import Dashboard from './Dashboard';
 import { IconButton } from "@material-tailwind/react";
 
 function Header() {
-    const [translate, setTranslate] = React.useState("-translate-x-96 sm:translate-x-0")
+    const [translate, setTranslate] = React.useState("-translate-x-96 md:translate-x-0")
 
     const toggleDashboard = () => {
 
-        if (translate === "translate-x-0 sm:translate-x-0") {
-            setTranslate("-translate-x-96 sm:translate-x-0")
+        if (translate === "translate-x-0 md:translate-x-0") {
+            setTranslate("-translate-x-96 md:translate-x-0")
         }
         else {
-            setTranslate("translate-x-0 sm:translate-x-0")
+            setTranslate("translate-x-0 md:translate-x-0")
         }
 
     }
@@ -25,7 +25,7 @@ function Header() {
                     <Link to="/">Logo</Link>
                     <div className='flex items-center gap-4'>
                         <Link>Profile</Link>
-                        <IconButton variant="text" className='bg-primary sm:hidden'>
+                        <IconButton variant="text" className='bg-primary md:hidden'>
                             <MdOutlineDashboard className='icon text-light' onClick={toggleDashboard} />
                         </IconButton>
                     </div>

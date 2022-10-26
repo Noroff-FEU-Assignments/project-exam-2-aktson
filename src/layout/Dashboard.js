@@ -9,7 +9,7 @@ function Dashboard({ translate }) {
     const { pathname } = useLocation();
 
     return (
-        <nav className={`shadow-xl w-80 h-full fixed p-10 transition ease-in-out delay-150 ${translate}`}>
+        <nav className={`shadow-xl  md:w-52 lg:w-80 h-full fixed py-8 px-2 lg:p-10 transition ease-in-out delay-150 ${translate}`}>
             <ul className='flex flex-col mt-12 gap-8 text-grey'>
                 <li className={pathname === "/" ? "nav-link active" : "nav-link"}>
                     <MdHome className='icon' />

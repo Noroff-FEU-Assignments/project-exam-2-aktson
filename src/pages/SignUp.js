@@ -1,4 +1,6 @@
 import React from 'react'
+import axios from 'axios';
+import { REGISTER_URL } from '../constants/api';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -6,14 +8,16 @@ import { signUpSchema } from '../components/yupSchema/schema';
 import { Card, CardHeader, CardBody, CardFooter, Typography, Input, Button } from "@material-tailwind/react";
 import { MdVisibility, MdVisibilityOff, MdMailOutline, MdPersonOutline, MdImage } from "react-icons/md";
 import ErrorSpan from '../components/uiComponents/ErrorSpan';
-
+import { toast } from 'react-toastify';
+import Loader from '../components/uiComponents/Loader';
 
 
 function SignUp() {
 
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(signUpSchema) });
 
-    const [isVisible, setIsVisible] = React.useState(false)
+    const [isVisible, setIsVisible] = React.useState(false);
+    const [isSubmitting, setIsSubmitting] = React.useState(false)
 
     // handles password visibility  icon
     // on password icon click input type changes to text if visibility is on otherwise opposite 
@@ -22,8 +26,24 @@ function SignUp() {
     }
 
     // handles form submission, validates form and sends to api endpoint sign in request
-    const handleFormSubmit = (data) => {
-        console.log(data)
+    const handleFormSubmit = async (data) => {
+        setIsSubmitting(true)
+
+        try {
+            const response = await axios.post(REGISTER_URL, data)
+
+            if (response) {
+                toast.success("Successfully registered!")
+                console.log(response.data)
+            }
+
+        } catch (error) {
+            console.log(error)
+            toast.error("Could not be regitered")
+        }
+        finally {
+            setIsSubmitting(false)
+        }
     }
 
     return (
@@ -36,8 +56,8 @@ function SignUp() {
                 </CardHeader>
                 <CardBody className="flex flex-col gap-6">
                     <div>
-                        <Input {...register("username")} label="Username *" size="lg" variant="standard" color="cyan" icon={<MdPersonOutline size={20} />} />
-                        {errors.username && <ErrorSpan message={errors.username.message} />}
+                        <Input {...register("name")} label="name *" size="lg" variant="standard" color="cyan" icon={<MdPersonOutline size={20} />} />
+                        {errors.name && <ErrorSpan message={errors.name.message} />}
                     </div>
                     <div>
                         <Input {...register("email")} label="Email *" size="lg" variant="standard" color="cyan" icon={<MdMailOutline size={20} />} />
@@ -78,12 +98,12 @@ function SignUp() {
                             icon={<MdImage size={20} />} />
                         {errors.banner && <ErrorSpan message={errors.banner.message} />}
                     </div>
-
                 </CardBody>
                 <CardFooter className="pt-0 mt-4">
                     <Button fullWidth className='bg-primary' onClick={handleSubmit(handleFormSubmit)}>
-                        Sign In
+                        Sign Up
                     </Button>
+                    {isSubmitting && <Loader />}
                     <Typography variant="small" as="div" className="mt-6 flex justify-center">
                         Already have an account?
                         <Typography
