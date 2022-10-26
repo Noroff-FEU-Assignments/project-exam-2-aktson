@@ -8,7 +8,7 @@ import Home from './pages/Home';
 import MyProfile from './pages/MyProfile';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
-import AuthenticatedRoute from './components/AuthenticatedRoute';
+import AuthenticatedRoute from './pages/AuthenticatedRoute';
 
 
 function App() {

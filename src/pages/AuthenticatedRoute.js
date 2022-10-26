@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navigate, Outlet } from "react-router-dom";
-import Loader from './uiComponents/Loader';
+import Loader from '../components/uiComponents/Loader';
 
 
 function AuthenticatedRoute() {
