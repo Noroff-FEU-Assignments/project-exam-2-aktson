@@ -10,6 +10,7 @@ import { MdVisibility, MdVisibilityOff, MdMailOutline, MdPersonOutline, MdImage 
 import ErrorSpan from '../components/uiComponents/ErrorSpan';
 import { toast } from 'react-toastify';
 import Loader from '../components/uiComponents/Loader';
+import { motion } from "framer-motion"
 
 
 function SignUp() {
@@ -47,21 +48,29 @@ function SignUp() {
     }
 
     return (
-        <section className='flex items-center justify-center my-12'>
-            <Card className="w-96">
+        <motion.section
+            className='my-12 '
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+        >
+            <Card className="max-w-lg mx-auto">
                 <CardHeader className="mb-4 grid h-28 place-items-center bg-primary">
                     <Typography variant="h3" color="white">
                         Sign Up
                     </Typography>
                 </CardHeader>
                 <CardBody className="flex flex-col gap-6">
-                    <div>
-                        <Input {...register("name")} label="name *" size="lg" variant="standard" color="cyan" icon={<MdPersonOutline size={20} />} />
-                        {errors.name && <ErrorSpan message={errors.name.message} />}
-                    </div>
-                    <div>
-                        <Input {...register("email")} label="Email *" size="lg" variant="standard" color="cyan" icon={<MdMailOutline size={20} />} />
-                        {errors.email && <ErrorSpan message={errors.email.message} />}
+                    <div className='flex justify-between gap-6 flex-col lg:flex-row'>
+                        <div className='w-full'>
+                            <Input {...register("name")} label="name *" size="lg" variant="standard" color="cyan" icon={<MdPersonOutline size={20} />} />
+                            {errors.name && <ErrorSpan message={errors.name.message} />}
+                        </div>
+                        <div className='w-full'>
+                            <Input {...register("email")} label="Email *" size="lg" variant="standard" color="cyan" icon={<MdMailOutline size={20} />} />
+                            {errors.email && <ErrorSpan message={errors.email.message} />}
+                        </div>
                     </div>
                     <div>
                         <Input
@@ -116,7 +125,7 @@ function SignUp() {
                     </Typography>
                 </CardFooter>
             </Card>
-        </section >
+        </motion.section >
 
     )
 }

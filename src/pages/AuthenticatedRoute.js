@@ -1,19 +1,12 @@
 import React from 'react'
 import { Navigate, Outlet } from "react-router-dom";
-import Loader from '../components/uiComponents/Loader';
+import AuthContext from '../components/context/AuthContext';
 
 
 function AuthenticatedRoute() {
+    const { auth } = React.useContext(AuthContext);
 
-    const signedIn = false;
-
-    const checkingStatus = false;
-    if (checkingStatus) {
-        return <Loader />
-
-    }
-
-    return signedIn ? <Outlet /> : <Navigate to="/sign-in" />
+    return auth ? <Outlet /> : <Navigate to="/sign-in" />
 }
 
 export default AuthenticatedRoute

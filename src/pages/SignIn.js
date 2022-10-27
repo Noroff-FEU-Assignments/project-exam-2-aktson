@@ -11,6 +11,7 @@ import axios from 'axios';
 import { LOGIN_URL } from '../constants/api';
 import AuthContext from '../components/context/AuthContext';
 import { toast } from 'react-toastify';
+import { motion } from "framer-motion";
 
 
 
@@ -56,8 +57,14 @@ function SignIn() {
         }
     }
     return (
-        <section className='flex items-center justify-center my-12'>
-            <Card className="w-96 ">
+        <motion.section
+            className=' my-12'
+            initial={{ opacity: 0, }}
+            animate={{ opacity: 1, }}
+            exit={{ opacity: 0, }}
+            transition={{ duration: 0.4 }}
+        >
+            <Card className="max-w-sm mx-auto">
                 <CardHeader className="mb-4 grid h-28 place-items-center bg-primary">
                     <Typography variant="h3" color="white">
                         Sign In
@@ -108,7 +115,7 @@ function SignIn() {
                     </Typography>
                 </CardFooter>
             </Card>
-        </section >
+        </motion.section >
 
     )
 }
