@@ -16,9 +16,9 @@ function AnimatedRoute() {
 
     const location = useLocation();
 
-    return (
+    return (<>
+        <ToastContainer position="top-center" autoClose={4000} />
         <AnimatePresence location={location} key={location.key}>
-            <ToastContainer position="top-center" autoClose={4000} />
             <Routes>
                 <Route element={<AuthenticatedRoute />}>
                     <Route path='/' element={<Layout><Home /></Layout>} />
@@ -29,6 +29,7 @@ function AnimatedRoute() {
                 <Route path='/sign-up' element={<SignUp />} />
             </Routes>
         </AnimatePresence>
+    </>
     )
 }
 

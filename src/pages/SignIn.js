@@ -58,13 +58,13 @@ function SignIn() {
     }
     return (
         <motion.section
-            className=' my-12'
+            className='my-12 '
             initial={{ opacity: 0, }}
             animate={{ opacity: 1, }}
             exit={{ opacity: 0, }}
             transition={{ duration: 0.4 }}
         >
-            <Card className="max-w-sm mx-auto">
+            <Card className="max-w-md mx-auto">
                 <CardHeader className="mb-4 grid h-28 place-items-center bg-primary">
                     <Typography variant="h3" color="white">
                         Sign In

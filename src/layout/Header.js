@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { MdOutlineDashboard } from "react-icons/md"
+import { MdOutlineDashboard, MdAccountCircle } from "react-icons/md"
 import Dashboard from './Dashboard';
 import { IconButton, Avatar, Typography } from "@material-tailwind/react";
 import AuthContext from '../components/context/AuthContext';
@@ -11,7 +11,6 @@ function Header() {
     const { auth } = React.useContext(AuthContext)
 
     const toggleDashboard = () => {
-
         if (translate === "translate-x-0 md:translate-x-0") {
             setTranslate("-translate-x-96 md:translate-x-0")
         }
@@ -28,7 +27,8 @@ function Header() {
                     <div className='flex items-center gap-4'>
                         <Link to="/my-profile" className='flex items-center gap-2'>
                             {auth && <Typography>{auth?.name}</Typography>}
-                            {auth && <Avatar src={auth?.avatar} alt={auth.name} variant="circular" size="sm" className='shadow-xl ' />}
+                            {auth && <Avatar src={auth?.avatar ? auth.avatar : <MdAccountCircle />} alt={auth.name} variant="circular" size="sm" className='shadow-xl ' />}
+
                         </Link>
                         <IconButton variant="text" className='bg-primary md:hidden'>
                             <MdOutlineDashboard className='icon text-light' onClick={toggleDashboard} />
