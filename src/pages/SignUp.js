@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import { REGISTER_URL } from '../constants/api';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signUpSchema } from '../components/yupSchema/schema';
@@ -15,10 +15,12 @@ import { motion } from "framer-motion"
 
 function SignUp() {
 
+    const navigate = useLocation();
+
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(signUpSchema) });
 
     const [isVisible, setIsVisible] = React.useState(false);
-    const [isSubmitting, setIsSubmitting] = React.useState(false)
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
 
     // handles password visibility  icon
     // on password icon click input type changes to text if visibility is on otherwise opposite 
@@ -35,7 +37,9 @@ function SignUp() {
 
             if (response) {
                 toast.success("Successfully registered!")
-                console.log(response.data)
+                setTimeout(() => {
+                    navigate("/sign-in")
+                }, 1000);
             }
 
         } catch (error) {
