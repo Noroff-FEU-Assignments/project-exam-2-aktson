@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { MdHome, MdGroups, MdAccountCircle, MdLogout } from "react-icons/md";
+import { MdHome, MdGroups, MdAccountCircle, MdLogout, MdCreate } from "react-icons/md";
 import { Button } from '@material-tailwind/react';
 import AuthContext from "../context/AuthContext";
 
@@ -31,9 +31,13 @@ function Dashboard({ translate }) {
                 <li className={pathname === "/my-profile" ? " active" : ""}>
                     <Link to="/my-profile" className='nav-link'><MdAccountCircle className='icon' />My Profile</Link>
                 </li>
+                <li className={pathname === "/create-post" ? " active" : ""}>
+                    <Link to="/create-post" className='nav-link'><MdCreate className='icon' />Create Post</Link>
+                </li>
                 <li className={pathname === "/sign-in" ? " active" : ""}>
                     {auth && <Button size="md" className='flex gap-2 bg-primary' onClick={handleLogout}>  <MdLogout size={18} />Log Out</Button>}
                 </li>
+
             </ul>
         </nav>
 
