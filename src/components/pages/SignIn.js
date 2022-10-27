@@ -38,7 +38,6 @@ function SignIn() {
 
         setIsSubmitting(true)
         try {
-
             const response = await axios.post(LOGIN_URL, data)
 
             if (response) {
