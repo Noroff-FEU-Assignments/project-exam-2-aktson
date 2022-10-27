@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -7,8 +8,6 @@ import { Card, CardHeader, CardBody, CardFooter, Typography, Input, Button } fro
 import { MdVisibility, MdVisibilityOff, MdMailOutline } from "react-icons/md";
 import ErrorSpan from '../uiComponents/ErrorSpan';
 import Loader from '../uiComponents/Loader';
-import Alert from '../uiComponents/Alert';
-import axios from 'axios';
 import { LOGIN_URL } from '../constants/api';
 import AuthContext from '../context/AuthContext';
 import { toast } from 'react-toastify';
@@ -24,7 +23,6 @@ function SignIn() {
     // react state
     const [isVisible, setIsVisible] = React.useState(false);
     const [isSubmitting, setIsSubmitting] = React.useState(false);
-    const [error, setError] = React.useState(null)
 
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(signInSchema) });
 
@@ -45,13 +43,12 @@ function SignIn() {
 
             if (response) {
                 setAuth(response.data)
-                toast.success("Signed in!")
                 navigate("/")
             }
 
         } catch (error) {
             console.log(error)
-            setError(error ? error.response.data.errors[0].message : "Error: Could not log in")
+            toast.error(error ? error.response.data.errors[0].message : "Error: Could not log in")
 
         } finally {
             setIsSubmitting(false)
@@ -72,8 +69,6 @@ function SignIn() {
                     </Typography>
                 </CardHeader>
                 <CardBody className="flex flex-col gap-6"  >
-                    {error && <Alert message={error} />}
-
                     <div>
                         <Input
                             {...register("email")}
