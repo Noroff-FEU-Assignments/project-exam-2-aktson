@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MdHome, MdGroups, MdAccountCircle, MdLogout } from "react-icons/md";
 import { Button } from '@material-tailwind/react';
-import AuthContext from "../components/context/AuthContext";
+import AuthContext from "../context/AuthContext";
 
 
 function Dashboard({ translate }) {

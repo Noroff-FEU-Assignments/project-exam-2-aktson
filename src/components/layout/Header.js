@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { MdOutlineDashboard } from "react-icons/md"
 import Dashboard from './Dashboard';
 import { IconButton, Avatar, Typography } from "@material-tailwind/react";
-import AuthContext from '../components/context/AuthContext';
-import userAvatar from "../assets/user-avatar.svg"
+import AuthContext from '../context/AuthContext';
+import userAvatar from "../../assets/user-avatar.svg";
 
 function Header() {
     const [translate, setTranslate] = React.useState("-translate-x-96 md:translate-x-0")

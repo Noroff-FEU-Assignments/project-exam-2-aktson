@@ -1,23 +1,23 @@
 import React from 'react'
 import axios from 'axios';
 import { REGISTER_URL } from '../constants/api';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { signUpSchema } from '../components/yupSchema/schema';
+import { signUpSchema } from '../yupSchema/schema';
 import { Card, CardHeader, CardBody, CardFooter, Typography, Input, Button } from "@material-tailwind/react";
 import { MdVisibility, MdVisibilityOff, MdMailOutline, MdPersonOutline, MdImage } from "react-icons/md";
-import ErrorSpan from '../components/uiComponents/ErrorSpan';
+import ErrorSpan from '../uiComponents/ErrorSpan';
 import { toast } from 'react-toastify';
-import Loader from '../components/uiComponents/Loader';
+import Loader from '../uiComponents/Loader';
 import { motion } from "framer-motion"
 
 
 function SignUp() {
 
-    const navigate = useLocation();
+    const navigate = useNavigate();
 
-    const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(signUpSchema) });
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(signUpSchema) });
 
     const [isVisible, setIsVisible] = React.useState(false);
     const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -37,14 +37,15 @@ function SignUp() {
 
             if (response) {
                 toast.success("Successfully registered!")
+                reset()
                 setTimeout(() => {
                     navigate("/sign-in")
-                }, 1000);
+                }, 3500);
             }
 
         } catch (error) {
             console.log(error)
-            toast.error("Could not be regitered")
+            toast.error(error ? error.response.data.errors[0].message : "Could not register")
         }
         finally {
             setIsSubmitting(false)
@@ -52,12 +53,12 @@ function SignUp() {
     }
 
     return (
-        <motion.section
-            className='my-12 '
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
+        <motion.form
+            className='my-12'
+            initial={{ scale: 0.9, }}
+            animate={{ scale: 1, }}
+            exit={{ scale: 1, }}
+            transition={{ duration: 0.2 }}
         >
             <Card className="max-w-lg mx-auto">
                 <CardHeader className="mb-4 grid h-28 place-items-center bg-primary">
@@ -129,7 +130,7 @@ function SignUp() {
                     </Typography>
                 </CardFooter>
             </Card>
-        </motion.section >
+        </motion.form >
 
     )
 }

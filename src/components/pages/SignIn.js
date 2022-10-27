@@ -2,14 +2,15 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { signInSchema } from '../components/yupSchema/schema';
+import { signInSchema } from '../yupSchema/schema';
 import { Card, CardHeader, CardBody, CardFooter, Typography, Input, Button } from "@material-tailwind/react";
 import { MdVisibility, MdVisibilityOff, MdMailOutline } from "react-icons/md";
-import ErrorSpan from '../components/uiComponents/ErrorSpan';
-import Loader from '../components/uiComponents/Loader';
+import ErrorSpan from '../uiComponents/ErrorSpan';
+import Loader from '../uiComponents/Loader';
+import Alert from '../uiComponents/Alert';
 import axios from 'axios';
 import { LOGIN_URL } from '../constants/api';
-import AuthContext from '../components/context/AuthContext';
+import AuthContext from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import { motion } from "framer-motion";
 
@@ -25,7 +26,7 @@ function SignIn() {
     const [isSubmitting, setIsSubmitting] = React.useState(false);
     const [error, setError] = React.useState(null)
 
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(signInSchema) });
+    const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(signInSchema) });
 
     // handles password visibility  icon
     // on password icon click input type changes to text if visibility is on otherwise opposite 
@@ -50,7 +51,7 @@ function SignIn() {
 
         } catch (error) {
             console.log(error)
-            setError("Error: Could not log in, ")
+            setError(error ? error.response.data.errors[0].message : "Error: Could not log in")
 
         } finally {
             setIsSubmitting(false)
@@ -59,10 +60,10 @@ function SignIn() {
     return (
         <motion.section
             className='my-12 '
-            initial={{ opacity: 0, }}
-            animate={{ opacity: 1, }}
-            exit={{ opacity: 0, }}
-            transition={{ duration: 0.4 }}
+            initial={{ scale: 0.9, }}
+            animate={{ scale: 1, }}
+            exit={{ scale: 1, }}
+            transition={{ duration: 0.2 }}
         >
             <Card className="max-w-md mx-auto">
                 <CardHeader className="mb-4 grid h-28 place-items-center bg-primary">
@@ -71,7 +72,8 @@ function SignIn() {
                     </Typography>
                 </CardHeader>
                 <CardBody className="flex flex-col gap-6"  >
-                    {error && <ErrorSpan message={error} />}
+                    {error && <Alert message={error} />}
+
                     <div>
                         <Input
                             {...register("email")}
