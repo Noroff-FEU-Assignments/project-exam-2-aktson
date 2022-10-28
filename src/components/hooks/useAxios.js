@@ -9,12 +9,14 @@ function useAxios() {
     const { auth } = React.useContext(AuthContext);
 
     const apiClient = axios.create({ baseURL: url });
+    if (auth) {
+        apiClient.interceptors.request.use(config => {
+            const token = auth?.accessToken;
+            config.headers.Authorization = token ? `Bearer ${token}` : "";
+            return config;
+        })
+    }
 
-    apiClient.interceptors.request.use(config => {
-        const token = auth.accessToken;
-        config.headers.Authorization = token ? `Bearer ${token}` : "";
-        return config;
-    })
     return (
         apiClient
 

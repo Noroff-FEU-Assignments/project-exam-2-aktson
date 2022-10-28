@@ -1,5 +1,5 @@
 import React from 'react'
-import { Avatar, Chip, MenuHandler, MenuItem, Button, Menu, MenuList } from "@material-tailwind/react";
+import { Avatar, Chip, MenuHandler, MenuItem, Button, Menu, MenuList, IconButton } from "@material-tailwind/react";
 import { MdOutlineModeComment, MdOutlineEmojiEmotions, } from "react-icons/md";
 import CommentInput from './CommentInput';
 import EmojiInput from './EmojiInput';
@@ -25,18 +25,26 @@ function PostCard({ posts }) {
             <figure >
                 <img src={image} alt="ankit" className='rounded-xl' />
             </figure>
-            <div className='flex gap-2 '>
-                <p >Tags:</p>
-                <Chip value="tag1" className='bg-accent' />
-                <Chip value="tag2" className='bg-accent' />
-                <Chip value="tag3" className='bg-accent' />
-            </div>
-            <div className='flex gap-4 my-2 cursor-pointer '>
-                <EmojiInput />
-                <div className='flex gap-1 items-center cursor-pointer' onClick={() => setShowInput((prevState) => !prevState)}>
-                    <MdOutlineModeComment size={22} />
-                    <p>comment</p>
+            <div className='flex justify-between bg-blue-gray-50  p-2 rounded-xl items-center'>
+                <div className='flex flex-wrap gap-2 '>
+                    <p >Tags:</p>
+                    <Chip value="tag1" className='bg-grey' />
+                    <Chip value="tag2" className='bg-grey' />
+                    <Chip value="tag2" className='bg-grey' />
+
                 </div>
+                <div className='flex gap-2'>
+                    <Button className=' bg-white text-grey' size="sm">50 Reactions</Button>
+                    <Button className=' bg-white text-grey' size="sm">50 Comments</Button>
+                </div>
+            </div>
+            <div className='flex gap-4 my-2 cursor-pointer mb-4'>
+                <EmojiInput />
+
+                <Button className="bg-primary flex items-center gap-2" size="sm" onClick={() => setShowInput((prevState) => !prevState)}>
+                    <MdOutlineModeComment size={22} />
+                    Comment
+                </Button>
             </div>
             <CommentInput showInput={showInput} />
 

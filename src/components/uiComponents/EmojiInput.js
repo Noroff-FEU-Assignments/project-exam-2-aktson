@@ -1,15 +1,13 @@
 import React from "react";
-import { Menu, MenuHandler, MenuList, MenuItem } from "@material-tailwind/react";
+import { Menu, MenuHandler, MenuList, MenuItem, Button } from "@material-tailwind/react";
 import { MdOutlineEmojiEmotions } from "react-icons/md"
 
 function EmojiInput() {
 
-    const [value, setValue] = React.useState("");
-
 
     const handleEmojiClick = (event) => {
         const id = event.target.dataset.id
-        console.log(id)
+
     }
     return (
         <Menu
@@ -18,15 +16,16 @@ function EmojiInput() {
                 unmount: { y: 25 },
             }}>
             <MenuHandler>
-                <div className='flex gap-1 items-center'>
+                <Button className="bg-primary flex items-center gap-2" size="sm" >
                     <MdOutlineEmojiEmotions size={22} />
-                    <p>Emoji</p>
-                </div>
+                    react
+                </Button>
             </MenuHandler>
-            <MenuList className="flex text-2xl">
-                <MenuItem data-id={1} onClick={handleEmojiClick}>&#128512;</MenuItem>
-                <MenuItem data-id={2} onClick={handleEmojiClick}>&#128525;</MenuItem>
-                <MenuItem data-id={3} onClick={handleEmojiClick}>&#128151;</MenuItem>
+            <MenuList className="flex text-2xl p-0 border-none">
+                <MenuItem data-id={"&#128077;"} onClick={handleEmojiClick}>&#128077;</MenuItem>
+                <MenuItem data-id={"&#128151;"} onClick={handleEmojiClick}>&#128151;</MenuItem>
+                <MenuItem data-id={"&#128514;"} onClick={handleEmojiClick}>&#128514;</MenuItem>
+                <MenuItem data-id={"&#128545;"} onClick={handleEmojiClick}>&#128545;</MenuItem>
             </MenuList>
         </Menu>
     );
