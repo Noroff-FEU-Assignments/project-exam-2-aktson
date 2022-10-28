@@ -13,7 +13,7 @@ function MyProfile() {
 
     return (
         <section className='mt-8 '>
-            <div className='shadow-xl max-w-2xl mx-auto p-8'>
+            <div className='shadow-xl max-w-xl mx-auto p-8'>
                 <Typography variant="h2" className="text-center mb-8">My Profile</Typography>
                 <div className='flex justify-between'>
                     <Typography variant="h3">Personal Details</Typography>

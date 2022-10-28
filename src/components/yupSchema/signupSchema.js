@@ -1,16 +1,5 @@
-import * as yup from "yup"
-
-
-// regular expresion check for schema validation
-const urlRegex = /(http[s]*:\/\/)([a-z\-_0-9\/.]+)\.([a-z.]{2,3})\/([a-z0-9\-_\/._~:?#\[\]@!$&'()*+,;=%]*)([a-z0-9]+\.)(jpg|jpeg|png)/i;
-const nameRegex = /^([a-z0-9]|[_](?![_])){3,14}$/
-const emailRegex = /^[a-zA-Z]+[a-zA-Z0-9_.]+@+(\bnoroff|\bstud.noroff).+n+o$/
-
-export const signInSchema = yup.object().shape({
-    email: yup.string().required("Please enter email").email("Please enter valid email").matches(emailRegex, "Must end with (stud.noroff.no) or (noroff.no)"),
-    password: yup.string().required("Please enter password").min(8, "must be at least 8 characters")
-})
-
+import * as yup from "yup";
+import { nameRegex, emailRegex, urlRegex } from "./regex";
 
 export const signUpSchema = yup.object().shape({
 

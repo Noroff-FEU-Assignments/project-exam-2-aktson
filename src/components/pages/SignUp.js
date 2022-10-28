@@ -4,7 +4,7 @@ import { REGISTER_URL } from '../constants/api';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { signUpSchema } from '../yupSchema/schema';
+import { signUpSchema } from '../yupSchema/signupSchema';
 import { Card, CardHeader, CardBody, CardFooter, Typography, Input, Button } from "@material-tailwind/react";
 import { MdVisibility, MdVisibilityOff, MdMailOutline, MdPersonOutline, MdImage } from "react-icons/md";
 import ErrorSpan from '../uiComponents/ErrorSpan';

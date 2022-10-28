@@ -63,3 +63,7 @@ main {
 	}
 }
 /* *****************************************************loader******************* */
+.rti--container {
+	border: none !important;
+	border-bottom: 1px solid var(--primary) !important ;
+}

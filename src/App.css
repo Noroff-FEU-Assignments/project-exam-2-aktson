@@ -16,3 +16,7 @@
 		@apply text-neutral-content rounded-none shadow-2xl;
 	}
 }
+.rti--container {
+	border: none !important;
+	border-bottom: 1px solid var(--pr);
+}
