@@ -1,7 +1,8 @@
 import React from 'react'
-import { Avatar, Chip } from "@material-tailwind/react";
+import { Avatar, Chip, MenuHandler, MenuItem, Button, Menu, MenuList } from "@material-tailwind/react";
 import { MdOutlineModeComment, MdOutlineEmojiEmotions, } from "react-icons/md";
 import CommentInput from './CommentInput';
+import EmojiInput from './EmojiInput';
 
 
 function PostCard({ posts }) {
@@ -31,10 +32,7 @@ function PostCard({ posts }) {
                 <Chip value="tag3" className='bg-accent' />
             </div>
             <div className='flex gap-4 my-2 cursor-pointer '>
-                <div className='flex gap-1 items-center'>
-                    <MdOutlineEmojiEmotions size={22} />
-                    <p>Emoji</p>
-                </div>
+                <EmojiInput />
                 <div className='flex gap-1 items-center cursor-pointer' onClick={() => setShowInput((prevState) => !prevState)}>
                     <MdOutlineModeComment size={22} />
                     <p>comment</p>
