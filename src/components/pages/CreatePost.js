@@ -43,7 +43,7 @@ function CreatePost() {
 
     return (
         <section className='my-20 '>
-            <div className='shadow-xl max-w-xl mx-auto p-8'>
+            <div className='card'>
                 <form className="flex flex-col gap-6">
                     <div>
                         <Input variant="standard" label="Title" color="cyan" {...register("title")} />

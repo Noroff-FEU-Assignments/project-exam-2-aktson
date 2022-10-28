@@ -20,8 +20,8 @@ function Dashboard({ translate }) {
     }
 
     return (
-        <nav className={`shadow-xl  md:w-52 lg:w-80 h-full fixed py-8 px-2 lg:p-10 transition ease-in-out delay-150 ${translate}`}>
-            <ul className='flex flex-col mt-12 gap-8 text-grey'>
+        <nav className={`shadow-xl bg-secondary md:w-52 xl:w-96 xl:flex lg:justify-center h-full fixed py-8 px-2 lg:p-10 transition ease-in-out delay-150 ${translate}`}>
+            <ul className='flex flex-col mt-12 gap-8 text-light'>
                 <li className={pathname === "/" ? " active" : ""} >
                     <Link to="/" className='nav-link'> <MdHome className='icon' />Home</Link>
                 </li>
