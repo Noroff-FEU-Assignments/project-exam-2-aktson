@@ -54,7 +54,7 @@ function SignUp() {
 
     return (
         <motion.form
-            className='my-12'
+            className='my-20'
             initial={{ scale: 0.9, }}
             animate={{ scale: 1, }}
             exit={{ scale: 1, }}

@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from '@material-tailwind/react';
 import { AuthProvider } from './components/context/AuthContext';
+import { PostsProvider } from './components/context/PostsContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -12,7 +13,9 @@ root.render(
   <React.StrictMode>
     <ThemeProvider>
       <AuthProvider>
-        <App />
+        <PostsProvider>
+          <App />
+        </PostsProvider>
       </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>
