@@ -54,7 +54,7 @@ function SignIn() {
         }
     }
     return (
-        <motion.section
+        <motion.form
             className='my-20 '
             initial={{ scale: 0.9, }}
             animate={{ scale: 1, }}
@@ -111,7 +111,7 @@ function SignIn() {
                     </Typography>
                 </CardFooter>
             </Card>
-        </motion.section >
+        </motion.form >
 
     )
 }

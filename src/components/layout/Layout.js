@@ -9,7 +9,7 @@ function Layout({ children }) {
         <>
             <Header />
             <motion.main
-                className='max-w-5xl mx-auto container my-16'
+                className='my-16 flex justify-center md:justify-end xl:justify-center '
                 initial={{ opacity: 0, translateY: -20, }}
                 animate={{ opacity: 1, translateY: 0 }}
                 exit={{ opacity: 0, translateY: 0, }}

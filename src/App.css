@@ -15,7 +15,10 @@
 	.btn {
 		@apply text-neutral-content rounded-none shadow-2xl;
 	}
+	section {
+		@apply max-w-5xl;
+	}
 	.card {
-		@apply shadow-xl max-w-xl mx-auto p-8 rounded-xl;
+		@apply shadow-xl max-w-md md:max-w-lg lg:max-w-xl p-8 rounded-xl;
 	}
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { AnimatePresence, motion } from 'framer-motion';
-import { Button, Input } from "@material-tailwind/react";
+import { Input, IconButton } from "@material-tailwind/react";
+import { MdAddComment } from "react-icons/md"
 
 function CommentInput({ showInput }) {
 
@@ -22,7 +23,7 @@ function CommentInput({ showInput }) {
                         exit={{ opacity: 0, translateY: -20 }}
                         transition={{ duration: 0.3 }} >
                         <Input variant="standard" label="enter you comment" color='cyan' {...register("comment")} />
-                        <Button onClick={handleSubmit(postComment)} className="bg-primary">Post</Button>
+                        <IconButton onClick={handleSubmit(postComment)} className="text-primary p-2 text-3xl" variant='text'><MdAddComment /></IconButton>
                     </motion.div>
                 </AnimatePresence>
             }

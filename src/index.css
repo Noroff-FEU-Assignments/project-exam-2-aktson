@@ -12,6 +12,10 @@
 	--dark: #3b4861;
 	--light: #ececec;
 	--grey: #6b6b6b;
+	--small: 640px;
+	--md: 768px;
+	--large: 1024px;
+	--xl: 1280px;
 }
 
 #root {
@@ -21,9 +25,19 @@
 	position: relative;
 }
 
+nav,
+header {
+	background-image: linear-gradient(135deg, #feb692 30%, #ea5455 100%);
+	/* background: rgb(255, 255, 255);
+	background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 138, 101, 1) 100%); */
+
+	/* background: rgb(136, 166, 224);
+	background: linear-gradient(166deg, rgba(136, 166, 224, 1) 40%, rgba(126, 211, 224, 1) 100%); */
+}
 main {
 	flex: 1 0 auto;
 }
+
 /* loader */
 .lds-facebook {
 	display: inline-block;
@@ -63,3 +77,23 @@ main {
 	}
 }
 /* *****************************************************loader******************* */
+.card {
+	min-width: 300px;
+}
+@media (min-width: 450px) {
+	.card {
+		width: 400px;
+	}
+}
+
+@media (min-width: 640px) {
+	.card {
+		width: 550px;
+	}
+}
+
+@media (min-width: 1024px) {
+	.card {
+		width: 550px;
+	}
+}

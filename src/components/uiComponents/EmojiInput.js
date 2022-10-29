@@ -16,7 +16,7 @@ function EmojiInput() {
                 unmount: { y: 25 },
             }}>
             <MenuHandler>
-                <Button className="bg-primary flex items-center gap-2" size="sm" >
+                <Button className="bg-primary flex items-center gap-2 " size="sm" >
                     <MdOutlineEmojiEmotions size={22} />
                     react
                 </Button>

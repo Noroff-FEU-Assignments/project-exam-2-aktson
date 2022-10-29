@@ -1,13 +1,13 @@
 import React from 'react'
-import { Avatar, Chip, MenuHandler, MenuItem, Button, Menu, MenuList, IconButton } from "@material-tailwind/react";
-import { MdOutlineModeComment, MdOutlineEmojiEmotions, } from "react-icons/md";
+import { Avatar, Button } from "@material-tailwind/react";
+import { MdOutlineModeComment } from "react-icons/md";
 import CommentInput from './CommentInput';
 import EmojiInput from './EmojiInput';
 
 
 function PostCard({ posts }) {
-    const image = "https://img.freepik.com/free-photo/beautiful-girl-stands-near-walll-with-leaves_8353-5378.jpg?w=1380&t=st=1666948168~exp=1666948768~hmac=e8b892b41fd944e61600bb643fd20d001ef7ea4ad1b812263eefbb339dac79b5"
-    // console.log(posts)
+    const image = "https://img.freepik.com/free-photo/muscular-man-doing-push-ups-using-dumbbells_7502-4776.jpg?w=1380&t=st=1667078311~exp=1667078911~hmac=3d9795070f8674d29ee1448f89a8015cb30cfa7f86276683aab42787392e3edc"
+    console.log(posts)
 
     const [showInput, setShowInput] = React.useState(false);
 
@@ -27,15 +27,12 @@ function PostCard({ posts }) {
             </figure>
             <div className='flex justify-between bg-blue-gray-50  p-2 rounded-xl items-center'>
                 <div className='flex flex-wrap gap-2 '>
-                    <p >Tags:</p>
-                    <Chip value="tag1" className='bg-grey' />
-                    <Chip value="tag2" className='bg-grey' />
-                    <Chip value="tag2" className='bg-grey' />
-
+                    <p className='text-accent font-semibold'>#ankit</p>
+                    <p className='text-accent font-semibold'>#react</p>
                 </div>
-                <div className='flex gap-2'>
-                    <Button className=' bg-white text-grey' size="sm">50 Reactions</Button>
-                    <Button className=' bg-white text-grey' size="sm">50 Comments</Button>
+                <div className='flex '>
+                    <Button className='text-grey' size="sm" variant='text'>50 Reactions</Button>
+                    <Button className="text-grey" size="sm" variant='text'>50 Comments</Button>
                 </div>
             </div>
             <div className='flex gap-4 my-2 cursor-pointer mb-4'>

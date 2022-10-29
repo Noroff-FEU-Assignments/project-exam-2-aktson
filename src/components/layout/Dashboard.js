@@ -20,7 +20,7 @@ function Dashboard({ translate }) {
     }
 
     return (
-        <nav className={`shadow-xl bg-secondary md:w-52 xl:w-96 xl:flex lg:justify-center h-full fixed py-8 px-2 lg:p-10 transition ease-in-out delay-150 ${translate}`}>
+        <nav className={`shadow-xl md:w-66 lg:w-96 2xl:w-96 flex justify-center h-full z-40 fixed p-10 transition ease-in-out delay-150 ${translate}`}>
             <ul className='flex flex-col mt-12 gap-8 text-light'>
                 <li className={pathname === "/" ? " active" : ""} >
                     <Link to="/" className='nav-link'> <MdHome className='icon' />Home</Link>
@@ -35,7 +35,7 @@ function Dashboard({ translate }) {
                     <Link to="/create-post" className='nav-link'><MdCreate className='icon' />Create Post</Link>
                 </li>
                 <li className={pathname === "/sign-in" ? " active" : ""}>
-                    {auth && <Button size="md" className='flex gap-2 bg-primary' onClick={handleLogout}>  <MdLogout size={18} />Log Out</Button>}
+                    {auth && <Button size="md" className='flex gap-2 bg-primary ' onClick={handleLogout}>  <MdLogout size={18} />Log Out</Button>}
                 </li>
 
             </ul>
