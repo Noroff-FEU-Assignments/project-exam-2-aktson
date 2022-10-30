@@ -10,7 +10,7 @@ export function PostsProvider({ children }) {
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = React.useState(null);
 
-    const url = "/api/v1/social/posts";
+    const url = "/api/v1/social/posts?_author=true&_comments=true&_reactions=true";
 
     const http = useAxios();
 
