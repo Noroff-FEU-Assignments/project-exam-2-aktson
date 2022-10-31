@@ -7,10 +7,6 @@ import image from "../../assets/user-avatar.svg";
 
 
 function PostCard({ post }) {
-    const unknownAvatar = "https://img.freepik.com/free-vector/3d-realistic-faceless-human-model_1441-2189.jpg?w=826&t=st=1667088949~exp=1667089549~hmac=8530271d92a22b0adfeae1e497967473fd4a62d747c3869dd9b1120a35350721"
-
-
-    console.log(post)
 
     const [showInput, setShowInput] = React.useState(false);
 
@@ -42,8 +38,8 @@ function PostCard({ post }) {
                     <Button className="text-grey" size="sm" variant='text'>50 Comments</Button>
                 </div>
                 <div className='flex flex-wrap gap-2 '>
-                    {tags && tags.map(tag => {
-                        return <p className='text-accent font-semibold'>#{tag}</p>
+                    {tags && tags.map((tag, index) => {
+                        return <p className='text-accent font-semibold' key={index}>#{tag}</p>
                     })}
                 </div>
             </div>
