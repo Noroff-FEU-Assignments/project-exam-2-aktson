@@ -6,19 +6,10 @@ import { IconButton, Avatar, Typography } from "@material-tailwind/react";
 import AuthContext from '../context/AuthContext';
 import userAvatar from "../../assets/user-avatar.svg";
 
-function Header() {
-    const [translate, setTranslate] = React.useState("-translate-x-96 md:translate-x-0")
+function Header({ toggleDashboard }) {
 
     const { auth } = React.useContext(AuthContext)
 
-    const toggleDashboard = () => {
-        if (translate === "translate-x-0 md:translate-x-0") {
-            setTranslate("-translate-x-96 md:translate-x-0")
-        }
-        else {
-            setTranslate("translate-x-0 md:translate-x-0")
-        }
-    }
 
     return (
         <>
@@ -30,13 +21,13 @@ function Header() {
                             {auth && <Typography>{auth?.name}</Typography>}
                             {auth && <Avatar src={auth?.avatar ? auth.avatar : userAvatar} alt={auth.name} variant="circular" size="sm" className='shadow-xl ' />}
                         </Link>
-                        <IconButton variant="text" className='md:hidden'>
+                        <IconButton variant="text" className=''>
                             <MdOutlineDashboard className='icon text-light' onClick={toggleDashboard} />
                         </IconButton>
                     </div>
                 </div>
             </header>
-            <Dashboard translate={translate} />
+            {/* <Dashboard translate={translate} /> */}
         </>
 
     )

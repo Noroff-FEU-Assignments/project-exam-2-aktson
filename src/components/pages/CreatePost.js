@@ -8,10 +8,12 @@ import TagsInput from '../uiComponents/TagsInput';
 import useAxios from '../hooks/useAxios';
 import { toast } from 'react-toastify';
 import Loader from '../uiComponents/Loader';
+import PostsContext from '../context/PostsContext';
 
 function CreatePost() {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(createPostSchema) });
+    const { setUpdateUi } = React.useContext(PostsContext)
 
     const [tags, setTags] = React.useState([]);
     const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -29,6 +31,7 @@ function CreatePost() {
             if (response) {
                 reset();
                 setTags([]);
+                setUpdateUi(true)
                 toast.success("Post added successfully!")
             }
 

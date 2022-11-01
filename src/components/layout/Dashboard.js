@@ -20,8 +20,9 @@ function Dashboard({ translate }) {
     }
 
     return (
-        <nav className={`shadow-xl md:w-66 lg:w-96 2xl:w-96 flex justify-center h-full z-40 fixed p-10 transition ease-in-out delay-150 ${translate}`}>
-            <ul className='flex flex-col mt-12 gap-8 text-light'>
+
+        <nav className={` md:col-span-1 lg:col-span-2  z-40  md:relative fixed h-full transition ease-in-out `}>
+            <ul className={`flex flex-col mt-12 gap-8 text-light md:fixed ${translate} shadow-xl transition ease-in-out p-16 duration-500 h-full lg:w-80`}>
                 <li className={pathname === "/" ? " active" : ""} >
                     <Link to="/" className='nav-link'> <MdHome className='icon' />Home</Link>
                 </li>
@@ -40,6 +41,7 @@ function Dashboard({ translate }) {
 
             </ul>
         </nav>
+
 
     )
 }

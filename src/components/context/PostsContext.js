@@ -2,11 +2,13 @@ import React from 'react'
 import useAxios from '../hooks/useAxios';
 
 
+
 const PostsContext = React.createContext();
 
 export function PostsProvider({ children }) {
 
     const [posts, setPosts] = React.useState([]);
+    const [updateUi, setUpdateUi] = React.useState(false)
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = React.useState(null);
 
@@ -33,13 +35,14 @@ export function PostsProvider({ children }) {
         }
     }
 
+
     React.useEffect(() => {
 
         fetchPosts();
 
-    }, [])
+    }, [updateUi])
     return (
-        <PostsContext.Provider value={{ posts, setPosts, isLoading, error }}>{children}</PostsContext.Provider>
+        <PostsContext.Provider value={{ posts, setPosts, isLoading, error, setUpdateUi }}>{children}</PostsContext.Provider>
     )
 }
 

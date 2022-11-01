@@ -3,6 +3,7 @@ import PostsContext from "../context/PostsContext";
 import PostCard from "../uiComponents/PostCard";
 import { MdError } from "react-icons/md"
 import LoaderCard from "../uiComponents/LoaderCard";
+import Container from "../uiComponents/Container"
 
 
 function Home() {
@@ -10,7 +11,14 @@ function Home() {
 	const { posts, isLoading, error } = React.useContext(PostsContext);
 
 	if (isLoading) {
-		return <LoaderCard />
+		return (
+			<Container>
+				<LoaderCard />
+				<LoaderCard />
+				<LoaderCard />
+			</Container>
+		)
+
 	}
 	if (error) {
 		return error;
