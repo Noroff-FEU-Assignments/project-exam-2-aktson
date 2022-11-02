@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { MdOutlineDashboard } from "react-icons/md"
-import Dashboard from './Dashboard';
+import { MdDashboard } from "react-icons/md"
 import { IconButton, Avatar, Typography } from "@material-tailwind/react";
 import AuthContext from '../context/AuthContext';
 import userAvatar from "../../assets/user-avatar.svg";
@@ -21,8 +20,8 @@ function Header({ toggleDashboard }) {
                             {auth && <Typography>{auth?.name}</Typography>}
                             {auth && <Avatar src={auth?.avatar ? auth.avatar : userAvatar} alt={auth.name} variant="circular" size="sm" className='shadow-xl ' />}
                         </Link>
-                        <IconButton variant="text" className=''>
-                            <MdOutlineDashboard className='icon text-light' onClick={toggleDashboard} />
+                        <IconButton variant="text" className='lg:hidden'>
+                            <MdDashboard className='icon text-light' onClick={toggleDashboard} />
                         </IconButton>
                     </div>
                 </div>

@@ -7,7 +7,7 @@ import Dashboard from './Dashboard'
 
 
 function Layout({ children }) {
-    const [translate, setTranslate] = React.useState("translatex-x-0");
+    const [translate, setTranslate] = React.useState("-translate-x-96 lg:translate-x-0");
 
 
     const toggleDashboard = () => {
@@ -21,9 +21,9 @@ function Layout({ children }) {
     return (
         <>
             <Header toggleDashboard={toggleDashboard} />
-            <div className='md:grid md:grid-cols-12 relative '>
+            <main className='md:grid md:grid-cols-12 relative '>
                 <Dashboard translate={translate} />
-                <motion.main
+                <motion.div
                     className="my-16 md:col-span-10 xl:col-span-8"
                     initial={{ opacity: 0, translateY: -20, }}
                     animate={{ opacity: 1, translateY: 0 }}
@@ -33,8 +33,8 @@ function Layout({ children }) {
                     <Container>
                         {children}
                     </Container>
-                </motion.main>
-            </div>
+                </motion.div>
+            </main>
             <Footer />
         </>
     )

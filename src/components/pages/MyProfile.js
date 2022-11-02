@@ -3,6 +3,7 @@ import { Typography, Input, Button } from "@material-tailwind/react";
 import { MdBorderColor, MdCheck } from "react-icons/md";
 
 
+
 function MyProfile() {
 
     const [changeDetails, setChangeDetails] = React.useState(false)

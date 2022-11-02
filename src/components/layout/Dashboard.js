@@ -3,11 +3,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MdHome, MdGroups, MdAccountCircle, MdLogout, MdCreate } from "react-icons/md";
 import { Button } from '@material-tailwind/react';
 import AuthContext from "../context/AuthContext";
+import ModalContext from '../context/ModalContext';
 
 
 function Dashboard({ translate }) {
 
     const { auth, setAuth } = React.useContext(AuthContext);
+    const { handleCreatePost } = React.useContext(ModalContext);
 
     const { pathname } = useLocation();
     const navigate = useNavigate();
@@ -32,8 +34,8 @@ function Dashboard({ translate }) {
                 <li className={pathname === "/my-profile" ? " active" : ""}>
                     <Link to="/my-profile" className='nav-link'><MdAccountCircle className='icon' />My Profile</Link>
                 </li>
-                <li className={pathname === "/create-post" ? " active" : ""}>
-                    <Link to="/create-post" className='nav-link'><MdCreate className='icon' />Create Post</Link>
+                <li onClick={() => handleCreatePost("sm")}>
+                    <p className='nav-link p-0 cursor-pointer' variant='text' ><MdCreate className='icon' />Create Post</p>
                 </li>
                 <li className={pathname === "/sign-in" ? " active" : ""}>
                     {auth && <Button size="md" className='flex gap-2 bg-primary ' onClick={handleLogout}>  <MdLogout size={18} />Log Out</Button>}

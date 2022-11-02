@@ -5,7 +5,7 @@ import Layout from './Layout';
 import Home from '../pages/Home';
 import MyProfile from '../pages/MyProfile';
 import BrowsePeople from '../pages/BrowsePeople';
-import CreatePost from "../pages/CreatePost"
+import CreatePost from "../pages/CreatePost";
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import { ToastContainer } from "react-toastify";

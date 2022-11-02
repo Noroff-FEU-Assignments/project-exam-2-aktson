@@ -1,7 +1,7 @@
 import * as yup from "yup";
 import { urlRegex } from "./regex";
 
-export const createPostSchema = yup.object().shape({
+export const createEditSchema = yup.object().shape({
 
     title: yup.string().required("Please enter title").min(4, "Must be minimum 4 characters"),
     tags: yup.string().when((value) => {

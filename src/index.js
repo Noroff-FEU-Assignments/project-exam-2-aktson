@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from '@material-tailwind/react';
 import { AuthProvider } from './components/context/AuthContext';
 import { PostsProvider } from './components/context/PostsContext';
+import { ModalProvider } from './components/context/ModalContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -14,7 +15,9 @@ root.render(
     <ThemeProvider>
       <AuthProvider>
         <PostsProvider>
-          <App />
+          <ModalProvider>
+            <App />
+          </ModalProvider>
         </PostsProvider>
       </AuthProvider>
     </ThemeProvider>
