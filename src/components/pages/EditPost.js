@@ -15,48 +15,39 @@ import Loader from "../uiComponents/Loader";
 
 function EditPost({ adminPost }) {
     const { closeModal, openModal } = React.useContext(ModalContext);
-    const { posts, } = React.useContext(PostsContext)
+
     const [isLoading, setIsLoading] = React.useState(false)
-
-    const http = useAxios();
-
-    const [post, setPost] = React.useState(null);
     const [tags, setTags] = React.useState([]);
     const [isSubmitting, setIsSubmitting] = React.useState(false);
 
+    const http = useAxios();
+
 
     const url = `api/v1/social/posts/${adminPost.id}`;
-
-    React.useEffect(() => {
-        fetchPost();
-    }, [])
 
     const fetchPost = async () => {
         setIsLoading(true)
 
         try {
             const response = await http.get(url)
-            console.log(response)
             if (response.data) {
                 setIsLoading(false)
-                setPost(response.data);
-                // console.log(response.data)
                 openModal();
             }
 
         } catch (error) {
             setIsLoading(false)
-            console.log(IDBDatabase)
+            console.log(error)
         }
     }
 
 
-    const handleEditBtnClick = (event) => {
-        // fetchPost()
+    const handleEditBtnClick = () => {
+        fetchPost()
     }
 
 
-    const { handleSubmit, register, reset, formState: { errors }, watch } = useForm({ defaultValues: { title: post?.title, body: post?.body } });
+    const { handleSubmit, register, reset, formState: { errors }, watch } = useForm({ defaultValues: { title: adminPost?.title, body: adminPost?.body } });
 
     const editedFormData = watch();
     const formDataWithTags = { ...editedFormData, tags }
@@ -65,16 +56,16 @@ function EditPost({ adminPost }) {
 
     const handlePostEdit = async () => {
 
-        // const url = `/api/v1/social/posts/${adminPost.id}`
-        // try {
+        const url = `/api/v1/social/posts/${adminPost.id}`
+        try {
 
-        //     const response = await http.put(url, formDataWithTags);
-        //     console.log(response)
+            const response = await http.put(url, formDataWithTags);
+            console.log(response)
 
 
-        // } catch (error) {
-        //     console.log(error)
-        // }
+        } catch (error) {
+            console.log(error)
+        }
 
     }
 

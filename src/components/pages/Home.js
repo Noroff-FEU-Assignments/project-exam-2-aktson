@@ -31,7 +31,7 @@ function Home() {
 		<>
 			<section className="my-20 flex  flex-col  gap-4">
 				{error && <p className="bg-red-500  p-4 text-light rounded-xl flex items-center gap-2"><MdError size={28} />{error}</p>}
-				{posts.map(post => {
+				{posts && posts?.map(post => {
 					return <PostCard post={post} key={post.id} adminPosts={adminPosts} />
 				})}
 			</section>;
