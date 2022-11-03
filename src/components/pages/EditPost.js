@@ -47,7 +47,14 @@ function EditPost({ adminPost }) {
     }
 
 
-    const { handleSubmit, register, reset, formState: { errors }, watch } = useForm({ defaultValues: { title: adminPost?.title, body: adminPost?.body } });
+    const { handleSubmit, register, reset, formState: { errors }, watch } =
+        useForm({
+            defaultValues: {
+                title: adminPost?.title,
+                body: adminPost?.body,
+                media: adminPost?.media,
+            }
+        });
 
     const editedFormData = watch();
     const formDataWithTags = { ...editedFormData, tags }
