@@ -1,11 +1,11 @@
 import React from 'react';
-import { IconButton, Tooltip } from "@material-tailwind/react";
+import { Button } from "@material-tailwind/react";
 import { MdDelete } from "react-icons/md";
 import useAxios from '../hooks/useAxios';
 import PostsContext from '../context/PostsContext';
 import { toast } from 'react-toastify';
 
-function DeletePost({ adminPost }) {
+function DeletePost({ adminPost, handleMenuClick }) {
 
     const { posts, setPosts } = React.useContext(PostsContext)
 
@@ -33,9 +33,12 @@ function DeletePost({ adminPost }) {
     }
 
     return (
-        <Tooltip content="Delete">
-            <IconButton onClick={handleDelete} variant="text" size="sm" color="red"><MdDelete size={20} /></IconButton>
-        </Tooltip>
+
+        <Button onClick={handleDelete} variant="text" size="sm" color="red" className="flex gap-1 items-center">
+            <MdDelete size={20} />
+            Delete
+        </Button>
+
     )
 }
 

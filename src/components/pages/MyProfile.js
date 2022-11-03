@@ -1,42 +1,25 @@
 import React from 'react'
-import { Typography, Input, Button } from "@material-tailwind/react";
-import { MdBorderColor, MdCheck } from "react-icons/md";
+import AuthContext from '../context/AuthContext';
+import PostsContext from '../context/PostsContext'
+import ProfileEditCard from '../uiComponents/ProfileEditCard'
+import PostCard from "../uiComponents/PostCard";
+
 
 
 
 function MyProfile() {
-
-    const [changeDetails, setChangeDetails] = React.useState(false)
-
-    const handleSubmit = () => {
-        console.log("ankit")
-    }
+    const { posts } = React.useContext(PostsContext);
+    const { auth } = React.useContext(AuthContext);
+    const adminPosts = posts.filter(post => post.author.email === auth.email)
 
     return (
-        <section className='my-20 '>
-            <div className='card'>
-                <Typography variant="h2" className="text-center mb-8">My Profile</Typography>
-                <div className='flex justify-between'>
-                    <Typography variant="h3">Personal Details</Typography>
-                    <Button variant="text" onClick={() => {
-                        changeDetails && handleSubmit()
-                        setChangeDetails((prevState) => !prevState)
-                    }}>
-                        {!changeDetails ?
-                            <MdBorderColor size={24} className="text-primary" />
-                            : <MdCheck size={24} className="text-primary" />}
-                    </Button>
-                </div>
-                <form onSubmit={handleSubmit}>
-                    <div className='my-6'>
-                        <Input variant="standard" label="Name" color="cyan" disabled={!changeDetails} />
-                    </div>
-                    <div className='my-6'>
-                        <Input variant="standard" label="Email" color="cyan" disabled />
-                    </div>
-                </form>
-            </div>
-        </section>
+        <>
+            <h1>My Profile</h1>
+            <ProfileEditCard />
+            {adminPosts && adminPosts.map(post => {
+                return <PostCard post={post} adminPosts={adminPosts} key={post.id} />
+            })}
+        </>
     )
 }
 

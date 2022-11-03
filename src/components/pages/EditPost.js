@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Button, Input, Textarea, IconButton, Tooltip } from "@material-tailwind/react";
+import { Button, Input, Textarea, IconButton } from "@material-tailwind/react";
 import { MdClear, MdModeEditOutline, MdCreate } from "react-icons/md"
 import ModalContext from "../context/ModalContext";
 import ErrorSpan from "../uiComponents/ErrorSpan";
@@ -9,11 +9,14 @@ import useAxios from "../hooks/useAxios";
 import PostsContext from "../context/PostsContext";
 import { toast } from "react-toastify";
 import Modal from "../uiComponents/Modal";
+import Loader from "../uiComponents/Loader";
+
 
 
 function EditPost({ adminPost }) {
-    const { closeModal, openModal } = React.useContext(ModalContext)
-    const { setUpdateUi } = React.useContext(PostsContext);
+    const { closeModal, openModal } = React.useContext(ModalContext);
+    const { posts, } = React.useContext(PostsContext)
+    const [isLoading, setIsLoading] = React.useState(false)
 
     const http = useAxios();
 
@@ -22,36 +25,45 @@ function EditPost({ adminPost }) {
     const [isSubmitting, setIsSubmitting] = React.useState(false);
 
 
+    const url = `api/v1/social/posts/${adminPost.id}`;
 
-    const { handleSubmit, register, reset, formState: { errors }, watch } = useForm({ defaultValues: { title: post?.title, body: post?.body } });
+    React.useEffect(() => {
+        fetchPost();
+    }, [])
 
     const fetchPost = async () => {
-        const url = `api/v1/social/posts/${adminPost.id}`;
+        setIsLoading(true)
 
         try {
             const response = await http.get(url)
-            if (response) {
-                setPost(response.data)
+            console.log(response)
+            if (response.data) {
+                setIsLoading(false)
+                setPost(response.data);
+                // console.log(response.data)
                 openModal();
             }
 
         } catch (error) {
+            setIsLoading(false)
             console.log(IDBDatabase)
         }
     }
 
-    const editedFormData = watch();
 
+    const handleEditBtnClick = (event) => {
+        // fetchPost()
+    }
+
+
+    const { handleSubmit, register, reset, formState: { errors }, watch } = useForm({ defaultValues: { title: post?.title, body: post?.body } });
+
+    const editedFormData = watch();
     const formDataWithTags = { ...editedFormData, tags }
 
 
-    // console.log(formDataWithTags)
 
-    const handleEditBtnClick = () => {
-        fetchPost();
-    }
     const handlePostEdit = async () => {
-
 
         // const url = `/api/v1/social/posts/${adminPost.id}`
         // try {
@@ -69,9 +81,11 @@ function EditPost({ adminPost }) {
 
     return (
         <>
-            <Tooltip content="Edit">
-                <IconButton onClick={handleEditBtnClick} variant="text" size="sm" color="cyan"><MdCreate size={20} /></IconButton>
-            </Tooltip>
+            <Button onClick={handleEditBtnClick} data-id={adminPost.id} variant="text" size="sm" className="flex gap-1 items-center text-primary">
+                <MdCreate size={20} className="cursor-pointer" />
+                Edit
+            </Button>
+            {isLoading && <Loader />}
             <Modal>
                 <form className="w-full p-6 bg-light max-w-xl  bg-base-100 rounded-xl grid  grid-rows-auto  mx-auto relative " style={{ zIndex: "100" }}>
                     <div className="flex text-primary mb-4  justify-between">
@@ -102,6 +116,7 @@ function EditPost({ adminPost }) {
                     </fieldset>
                 </form>
             </Modal>
+
         </>
     );
 }

@@ -14,10 +14,10 @@ function PostCard({ post, adminPosts }) {
     const { body, title, media, tags, updated, author } = post
     const updatedPost = new Date(updated).toLocaleDateString('da-DK', { month: 'long', day: 'numeric', year: 'numeric', hour: '2-digit', hour12: false, minute: '2-digit' })
 
-    const findAdminPosts = adminPosts.filter(adminPost => adminPost.id === post.id)
+    const findAdminPosts = adminPosts?.filter(adminPost => adminPost.id === post.id)
 
     return (
-        <div className='card flex flex-col gap-4 text-grey'>
+        <div className='card grid  grid-rows-auto gap-4 text-grey'>
             <div className='flex items-center justify-between gap-2 '>
                 <div className='flex items-center gap-2'>
                     <Avatar src={author.avatar ? author.avatar : image} alt="" variant="circular" />

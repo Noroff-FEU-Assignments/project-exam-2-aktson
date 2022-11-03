@@ -4,10 +4,10 @@
 
 @layer base {
 	h1 {
-		@apply text-4xl  mb-8 leading-loose lg:text-5xl;
+		@apply text-4xl  mb-8 leading-loose lg:text-5xl text-grey;
 	}
 	h2 {
-		@apply text-3xl relative;
+		@apply text-3xl relative text-primary font-light;
 	}
 	h3 {
 		@apply text-2xl mb-3;
@@ -32,7 +32,7 @@
 	}
 
 	.card {
-		@apply shadow-xl p-8 rounded-xl max-w-md md:max-w-lg lg:max-w-xl;
+		@apply shadow-xl p-8 rounded-xl max-w-md md:max-w-lg lg:max-w-xl w-full;
 	}
 }
 #my-modal {

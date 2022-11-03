@@ -11,30 +11,27 @@ export function ModalProvider({ children }) {
 
     const handleCreatePost = (value) => setSizeCreatePost(value);
 
-    const handleEditPost = (value) => setSizeEditPost(value);
-
     const [openEditModal, setOpenEditModal] = React.useState(false);
 
     let viewportWidth = window.innerWidth;
 
     function openModal() {
         setOpenEditModal(true);
-        // if (viewportWidth >= "769") {
-        //     document.body.style.overflow = "hidden";
-        // }
+        if (viewportWidth >= "769") {
+            document.body.style.overflow = "hidden";
+        }
     }
-
 
     function closeModal() {
         setOpenEditModal(false);
-        // if (viewportWidth >= "769") {
-        //     document.body.style.overflow = "auto";
-        // }
+        if (viewportWidth >= "769") {
+            document.body.style.overflow = "auto";
+        }
     }
 
     return (
         <ModalContext.Provider
-            value={{ handleEditPost, handleCreatePost, sizeCreatePost, sizeEditPost, openEditModal, openModal, closeModal }}>
+            value={{ handleCreatePost, sizeCreatePost, openEditModal, openModal, closeModal }}>
             {children}
         </ModalContext.Provider>
     )

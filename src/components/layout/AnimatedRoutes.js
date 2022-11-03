@@ -11,6 +11,7 @@ import SignUp from '../pages/SignUp';
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { AnimatePresence } from "framer-motion"
+import EditPost from '../pages/EditPost';
 
 
 function AnimatedRoute() {
@@ -23,9 +24,10 @@ function AnimatedRoute() {
             <Routes>
                 <Route element={<AuthenticatedRoute />}>
                     <Route path='/' element={<Layout><Home /></Layout>} />
-                    <Route path='/my-profile' element={<Layout><MyProfile /></Layout>} />
                     <Route path='/browse-people' element={<Layout><BrowsePeople /></Layout>} />
+                    <Route path='/my-profile' element={<Layout><MyProfile /></Layout>} />
                     <Route path='/create-post' element={<Layout><CreatePost /></Layout>} />
+                    <Route path='/' element={<Layout><EditPost /></Layout>} />
                 </Route>
                 <Route path='/sign-in' element={<SignIn />} />
                 <Route path='/sign-up' element={<SignUp />} />

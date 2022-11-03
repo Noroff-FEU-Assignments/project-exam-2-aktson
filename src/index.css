@@ -27,12 +27,8 @@
 
 nav ul,
 header {
-	background-image: linear-gradient(135deg, #feb692 30%, #ea5455 100%);
-	/* background: rgb(255, 255, 255);
-	background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 138, 101, 1) 100%); */
-
-	/* background: rgb(136, 166, 224);
-	background: linear-gradient(166deg, rgba(136, 166, 224, 1) 40%, rgba(126, 211, 224, 1) 100%); */
+	background: rgb(136, 166, 224);
+	background: linear-gradient(166deg, rgba(136, 166, 224, 1) 40%, rgba(126, 211, 224, 1) 100%);
 }
 main {
 	flex: 1 0 auto;

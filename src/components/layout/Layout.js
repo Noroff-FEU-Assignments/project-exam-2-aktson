@@ -21,10 +21,10 @@ function Layout({ children }) {
     return (
         <>
             <Header toggleDashboard={toggleDashboard} />
-            <main className='md:grid md:grid-cols-12 relative '>
+            <main className='md:grid md:grid-cols-12 relative'>
                 <Dashboard translate={translate} />
                 <motion.div
-                    className="my-16 md:col-span-10 xl:col-span-8"
+                    className="my-24 md:col-span-10 xl:col-span-8"
                     initial={{ opacity: 0, translateY: -20, }}
                     animate={{ opacity: 1, translateY: 0 }}
                     exit={{ opacity: 0, translateY: 0, }}
