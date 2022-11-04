@@ -9,7 +9,7 @@ import { Card, CardHeader, CardBody, CardFooter, Typography, Input, Button } fro
 import { MdVisibility, MdVisibilityOff, MdMailOutline, MdPersonOutline, MdImage } from "react-icons/md";
 import ErrorSpan from '../uiComponents/ErrorSpan';
 import { toast } from 'react-toastify';
-import Loader from '../uiComponents/Loader';
+import Loader from '../uiComponents/loader/Loader';
 import { motion } from "framer-motion"
 
 

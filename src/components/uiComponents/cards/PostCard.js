@@ -1,10 +1,10 @@
 import React from 'react'
 import { Avatar, Button } from "@material-tailwind/react";
 import { MdOutlineModeComment } from "react-icons/md";
-import CommentInput from './CommentInput';
-import EmojiInput from './EmojiInput';
-import image from "../../assets/user-avatar.svg";
-import PostMenu from './PostMenu';
+import CommentInput from '../inputs/CommentInput';
+import EmojiInput from '../inputs/EmojiInput';
+import image from "../../../assets/user-avatar.svg";
+import PostMenu from '../postAdminMenu/PostMenu';
 
 
 function PostCard({ post, adminPosts }) {

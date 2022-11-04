@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button } from "@material-tailwind/react";
-import { MdDelete } from "react-icons/md";
-import useAxios from '../hooks/useAxios';
-import PostsContext from '../context/PostsContext';
 import { toast } from 'react-toastify';
+import { MdDelete } from "react-icons/md";
+import useAxios from '../../hooks/useAxios';
+import PostsContext from '../../context/PostsContext';
 
 function DeletePost({ adminPost, handleMenuClick }) {
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import DeletePost from '../pages/DeletePost';
-import EditPost from '../pages/EditPost';
+import DeletePost from './DeletePost';
+import EditPost from '../modals/EditPost';
 import { MdMoreVert } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
 

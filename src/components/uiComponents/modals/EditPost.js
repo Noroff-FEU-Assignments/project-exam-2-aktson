@@ -1,17 +1,17 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { createEditSchema } from "../../yupSchema/createEditSchema"
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Input, Textarea, IconButton } from "@material-tailwind/react";
 import { MdClear, MdModeEditOutline, MdCreate } from "react-icons/md"
-import ModalContext from "../context/ModalContext";
-import ErrorSpan from "../uiComponents/ErrorSpan";
-import TagsInput from "../uiComponents/TagsInput";
-import useAxios from "../hooks/useAxios";
-import PostsContext from "../context/PostsContext";
 import { toast } from "react-toastify";
-import Modal from "../uiComponents/Modal";
-import Loader from "../uiComponents/Loader";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { createEditSchema } from "../yupSchema/createPostSchema";
+import ModalContext from "../../context/ModalContext";
+import ErrorSpan from "../ErrorSpan";
+import TagsInput from "../TagsInput";
+import useAxios from "../../hooks/useAxios";
+import PostsContext from "../../context/PostsContext";
+import Modal from "./Modal";
+import Loader from "../loader/Loader";
 
 
 

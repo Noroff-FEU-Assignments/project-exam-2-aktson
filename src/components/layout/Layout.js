@@ -4,6 +4,7 @@ import Header from './Header'
 import { motion } from "framer-motion"
 import Container from '../uiComponents/Container'
 import Dashboard from './Dashboard'
+import UserBanner from '../uiComponents/UserBanner'
 
 
 function Layout({ children }) {
@@ -21,10 +22,13 @@ function Layout({ children }) {
     return (
         <>
             <Header toggleDashboard={toggleDashboard} />
+
             <main className='md:grid md:grid-cols-12 relative'>
                 <Dashboard translate={translate} />
+
+                <UserBanner />
                 <motion.div
-                    className="my-24 md:col-span-10 xl:col-span-8"
+                    className="my-24 col-span-12 col-start-1 md:col-span-12 lg:col-span-10 xl:col-span-8 lg:col-start-4 xl:col-start-3"
                     initial={{ opacity: 0, translateY: -20, }}
                     animate={{ opacity: 1, translateY: 0 }}
                     exit={{ opacity: 0, translateY: 0, }}

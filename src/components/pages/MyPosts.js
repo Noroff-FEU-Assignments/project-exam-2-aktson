@@ -2,12 +2,12 @@ import React from 'react'
 import AuthContext from '../context/AuthContext';
 import PostsContext from '../context/PostsContext'
 import ProfileEditCard from '../uiComponents/ProfileEditCard'
-import PostCard from "../uiComponents/PostCard";
+import PostCard from "../uiComponents/cards/PostCard";
 
 
 
 
-function MyProfile() {
+function MyPosts() {
     const { posts } = React.useContext(PostsContext);
     const { auth } = React.useContext(AuthContext);
     const adminPosts = posts.filter(post => post.author.email === auth.email)
@@ -23,4 +23,4 @@ function MyProfile() {
     )
 }
 
-export default MyProfile
+export default MyPosts

@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDom from "react-dom";
-import ModalContext from "../context/ModalContext";
+import ModalContext from "../../context/ModalContext";
 
 
 function Modal({ children }) {

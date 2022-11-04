@@ -7,7 +7,7 @@ import { signInSchema } from '../yupSchema/signinSchema';
 import { Card, CardHeader, CardBody, CardFooter, Typography, Input, Button } from "@material-tailwind/react";
 import { MdVisibility, MdVisibilityOff, MdMailOutline } from "react-icons/md";
 import ErrorSpan from '../uiComponents/ErrorSpan';
-import Loader from '../uiComponents/Loader';
+import Loader from '../uiComponents/loader/Loader';
 import { LOGIN_URL } from '../constants/api';
 import AuthContext from '../context/AuthContext';
 import { toast } from 'react-toastify';

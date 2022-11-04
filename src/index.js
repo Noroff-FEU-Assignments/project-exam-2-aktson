@@ -7,6 +7,7 @@ import { ThemeProvider } from '@material-tailwind/react';
 import { AuthProvider } from './components/context/AuthContext';
 import { PostsProvider } from './components/context/PostsContext';
 import { ModalProvider } from './components/context/ModalContext';
+import { UsersProvider } from './components/context/UsersContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -15,9 +16,11 @@ root.render(
     <ThemeProvider>
       <AuthProvider>
         <PostsProvider>
-          <ModalProvider>
-            <App />
-          </ModalProvider>
+          <UsersProvider>
+            <ModalProvider>
+              <App />
+            </ModalProvider>
+          </UsersProvider>
         </PostsProvider>
       </AuthProvider>
     </ThemeProvider>

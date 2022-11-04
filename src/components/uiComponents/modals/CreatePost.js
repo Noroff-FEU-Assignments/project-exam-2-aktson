@@ -1,19 +1,20 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { createEditSchema } from '../yupSchema/createPostSchema';
+import { createEditSchema } from '../../yupSchema/createEditSchema';
 import { Input, Button, Textarea, Dialog, DialogHeader, DialogBody, IconButton } from "@material-tailwind/react";
 import { MdClear, MdBorderColor } from "react-icons/md"
-import ErrorSpan from '../uiComponents/ErrorSpan';
-import TagsInput from '../uiComponents/TagsInput';
-import useAxios from '../hooks/useAxios';
 import { toast } from 'react-toastify';
-import PostsContext from '../context/PostsContext';
-import ModalContext from '../context/ModalContext';
+import ErrorSpan from '../ErrorSpan';
+import TagsInput from '../TagsInput';
+import useAxios from '../../hooks/useAxios';
+import PostsContext from '../../context/PostsContext';
+import ModalContext from '../../context/ModalContext';
+import Modal from './Modal';
 
 function CreatePost() {
     const { handleCreatePost, sizeCreatePost } = React.useContext(ModalContext);
-    const { setPosts } = React.useContext(PostsContext)
+
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(createEditSchema) });
     const { setUpdateUi } = React.useContext(PostsContext)
