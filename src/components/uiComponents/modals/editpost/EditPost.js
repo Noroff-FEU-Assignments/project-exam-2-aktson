@@ -3,15 +3,15 @@ import { useForm } from "react-hook-form";
 import { createEditSchema } from "../../../yupSchema/createEditSchema"
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Input, Textarea, IconButton } from "@material-tailwind/react";
-import { MdClear, MdModeEditOutline, MdCreate } from "react-icons/md"
+import { MdClear, MdModeEditOutline, MdCreate, MdCached } from "react-icons/md"
 import { toast } from "react-toastify";
 import ModalContext from "../../../context/ModalContext";
 import ErrorSpan from "../../ErrorSpan";
 import TagsInput from "../../TagsInput";
 import useAxios from "../../../hooks/useAxios";
 import PostsContext from "../../../context/PostsContext";
-import Loader from "../../loader/Loader";
 import EditPostModal from "./EditPostModal";
+import Form from "../Form";
 
 
 
@@ -69,7 +69,6 @@ function EditPost({ adminPost, handleMenuClick }) {
 
 
     const handlePostEdit = async () => {
-        setIsLoading(true)
         setIsSubmitting(true)
         const url = `/api/v1/social/posts/${adminPost.id}`
         try {
@@ -85,7 +84,6 @@ function EditPost({ adminPost, handleMenuClick }) {
         } catch (error) {
             console.log(error)
         } finally {
-            setIsLoading(false)
             setIsSubmitting(false)
         }
     }
@@ -97,9 +95,8 @@ function EditPost({ adminPost, handleMenuClick }) {
                 <MdCreate size={20} className="cursor-pointer" />
                 Edit
             </Button>
-            {isLoading && <Loader />}
             <EditPostModal>
-                <form className="form" style={{ zIndex: "100" }}>
+                <Form>
                     <div className="flex text-primary mb-4  justify-between">
                         <div className="flex items-center gap-2">
                             <h2 >Edit</h2>
@@ -123,12 +120,13 @@ function EditPost({ adminPost, handleMenuClick }) {
                         </div>
                         <TagsInput tags={adminPost.tags} setTags={setTags} />
                         <div className='flex justify-end'>
-                            <Button className='bg-primary mt-4' type='submit' onClick={handleSubmit(handlePostEdit)}>
-                                {isSubmitting ? "Sharing..." : "Share"}
+                            <Button color="cyan" type='submit' onClick={handleSubmit(handlePostEdit)} className="flex gap-2 items-center mt-4">
+                                {isSubmitting && <MdCached className="animate-spin" size={20} />}
+                                Share
                             </Button>
                         </div>
                     </fieldset>
-                </form>
+                </Form>
             </EditPostModal>
 
         </>

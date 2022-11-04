@@ -2,8 +2,8 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createEditSchema } from '../../../yupSchema/createEditSchema';
-import { Input, Button, Textarea, Dialog, DialogHeader, DialogBody, IconButton } from "@material-tailwind/react";
-import { MdClear, MdBorderColor } from "react-icons/md"
+import { Input, Button, Textarea, IconButton } from "@material-tailwind/react";
+import { MdClear, MdBorderColor, MdCached } from "react-icons/md"
 import { toast } from 'react-toastify';
 import ErrorSpan from '../../ErrorSpan';
 import TagsInput from '../../TagsInput';
@@ -11,9 +11,10 @@ import useAxios from '../../../hooks/useAxios';
 import PostsContext from '../../../context/PostsContext';
 import ModalContext from '../../../context/ModalContext';
 import CreatePostModal from './CreatePostModal';
+import Form from '../Form';
 
 function CreatePost() {
-    const { closeCreatePostModal, openCreatePostModal } = React.useContext(ModalContext);
+    const { closeCreatePostModal } = React.useContext(ModalContext);
 
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(createEditSchema) });
@@ -52,7 +53,7 @@ function CreatePost() {
     return (
 
         <CreatePostModal >
-            <form className="form " style={{ zIndex: "50" }}>
+            <Form>
                 <div className='flex justify-between items-center mb-4'>
                     <div className="flex items-center gap-2">
                         <h2>Create</h2>
@@ -70,18 +71,19 @@ function CreatePost() {
                     <div>
                         <Textarea variant="standard" label="Description" color="cyan" {...register("body")} />
                     </div>
-
                     <div className='w-full'>
                         <Input variant="standard" label="Image URL" color="cyan" {...register("media")} />
                         {errors.media && <ErrorSpan message={errors.media.message} />}
                     </div>
                     <TagsInput tags={tags} setTags={setTags} />
                     <div className='flex justify-end'>
-                        <Button className='bg-primary mt-4' type='submit' onClick={handleSubmit(handlePostSubmit)}>{isSubmitting ? "Sharing..." : "Share"}</Button>
+                        <Button color='cyan' type='submit' onClick={handleSubmit(handlePostSubmit)} className="flex gap-2 items-center mt-4">
+                            {isSubmitting && <MdCached className="animate-spin" size={20} />}
+                            Share
+                        </Button>
                     </div>
                 </fieldset>
-            </form>
-
+            </Form>
         </CreatePostModal >
 
     )
