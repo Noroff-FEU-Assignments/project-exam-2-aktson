@@ -13,6 +13,7 @@ import ModalContext from '../context/ModalContext';
 
 function CreatePost() {
     const { handleCreatePost, sizeCreatePost } = React.useContext(ModalContext);
+    const { setPosts } = React.useContext(PostsContext)
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(createEditSchema) });
     const { setUpdateUi } = React.useContext(PostsContext)

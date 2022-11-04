@@ -12,7 +12,7 @@ function Home() {
 
 	const { posts, isLoading, error } = React.useContext(PostsContext);
 	const { auth } = React.useContext(AuthContext)
-	const adminPosts = posts.filter(post => post.author.email === auth.email)
+	const adminPosts = posts?.filter(post => post.author.email === auth.email)
 
 	if (isLoading) {
 		return (

@@ -15,6 +15,7 @@ function DeletePost({ adminPost, handleMenuClick }) {
 
 
     const handleDelete = async () => {
+        handleMenuClick()
         const confirm = window.confirm("Are you sure you want to delete?");
 
         if (confirm) {

@@ -5,8 +5,7 @@ import { MdMoreVert } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
 
 
-
-function SinglePostMenu({ adminPost }) {
+function PostMenu({ adminPost }) {
     const [isOpen, setIsOpen] = React.useState(false);
 
     const handleMenuClick = () => {
@@ -15,20 +14,19 @@ function SinglePostMenu({ adminPost }) {
     }
 
     return (
-
         <div className='relative'>
             <MdMoreVert size={22} className="cursor-pointer text-grey" onClick={handleMenuClick} />
             {isOpen &&
                 <AnimatePresence>
                     <motion.div
                         className='flex flex-col gap-1 shadow-xl rounded-xl p-2 bg-light absolute right-3'
-                        initial={{ translateY: -10, }}
+                        initial={{ translateY: 20, }}
                         animate={{ translateY: 0, }}
-                        exit={{ translateY: -10 }}
-                        transition={{ duration: 0.3 }}
+                        exit={{ translateY: 20 }}
+                        transition={{ duration: 0.1 }}
                     >
-                        <DeletePost adminPost={adminPost} />
-                        <EditPost adminPost={adminPost} />
+                        <DeletePost adminPost={adminPost} handleMenuClick={handleMenuClick} />
+                        <EditPost adminPost={adminPost} handleMenuClick={handleMenuClick} />
                     </motion.div>
                 </AnimatePresence>
             }
@@ -36,4 +34,4 @@ function SinglePostMenu({ adminPost }) {
     );
 }
 
-export default SinglePostMenu;
+export default PostMenu;

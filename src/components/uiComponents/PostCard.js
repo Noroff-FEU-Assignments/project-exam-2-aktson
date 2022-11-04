@@ -4,7 +4,7 @@ import { MdOutlineModeComment } from "react-icons/md";
 import CommentInput from './CommentInput';
 import EmojiInput from './EmojiInput';
 import image from "../../assets/user-avatar.svg";
-import SinglePostMenu from './SinglePostMenu';
+import PostMenu from './PostMenu';
 
 
 function PostCard({ post, adminPosts }) {
@@ -26,7 +26,7 @@ function PostCard({ post, adminPosts }) {
                         <p className='text-xs'>{updatedPost}</p>
                     </div>
                 </div>
-                {findAdminPosts && findAdminPosts.map(adminPost => { return <SinglePostMenu key={adminPost.id} adminPost={adminPost} /> })}
+                {findAdminPosts && findAdminPosts.map(adminPost => { return <PostMenu key={adminPost.id} adminPost={adminPost} /> })}
             </div>
             <div>
                 <h3 className='font-bold text-xl'>{title}</h3>

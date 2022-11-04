@@ -10,11 +10,14 @@ import PostsContext from "../context/PostsContext";
 import { toast } from "react-toastify";
 import Modal from "../uiComponents/Modal";
 import Loader from "../uiComponents/Loader";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { createEditSchema } from "../yupSchema/createPostSchema";
 
 
 
-function EditPost({ adminPost }) {
+function EditPost({ adminPost, handleMenuClick }) {
     const { closeModal, openModal } = React.useContext(ModalContext);
+    const { setUpdateUi } = React.useContext(PostsContext);
 
     const [isLoading, setIsLoading] = React.useState(false)
     const [tags, setTags] = React.useState([]);
@@ -25,6 +28,8 @@ function EditPost({ adminPost }) {
 
     const url = `api/v1/social/posts/${adminPost.id}`;
 
+
+    // fetch post and populate form 
     const fetchPost = async () => {
         setIsLoading(true)
 
@@ -41,20 +46,23 @@ function EditPost({ adminPost }) {
         }
     }
 
-
+    // fetch admin post 
     const handleEditBtnClick = () => {
         fetchPost()
     }
 
-
-    const { handleSubmit, register, reset, formState: { errors }, watch } =
+    // react hook form and yup schema
+    const { handleSubmit, register, formState: { errors }, watch } =
         useForm({
+            resolver: yupResolver(createEditSchema),
             defaultValues: {
                 title: adminPost?.title,
                 body: adminPost?.body,
                 media: adminPost?.media,
+                tags: tags,
             }
         });
+
 
     const editedFormData = watch();
     const formDataWithTags = { ...editedFormData, tags }
@@ -62,18 +70,25 @@ function EditPost({ adminPost }) {
 
 
     const handlePostEdit = async () => {
-
+        setIsLoading(true)
+        setIsSubmitting(true)
         const url = `/api/v1/social/posts/${adminPost.id}`
         try {
 
             const response = await http.put(url, formDataWithTags);
-            console.log(response)
-
+            if (response) {
+                setUpdateUi(true)
+                toast.success("Post updated!");
+                closeModal();
+                handleMenuClick()
+            }
 
         } catch (error) {
             console.log(error)
+        } finally {
+            setIsLoading(false)
+            setIsSubmitting(false)
         }
-
     }
 
 
@@ -107,7 +122,7 @@ function EditPost({ adminPost }) {
                             <Input variant="standard" label="Image URL" color="cyan" {...register("media")} />
                             {errors.media && <ErrorSpan message={errors.media.message} />}
                         </div>
-                        <TagsInput tags={tags} setTags={setTags} />
+                        <TagsInput tags={adminPost.tags} setTags={setTags} />
                         <div className='flex justify-end'>
                             <Button className='bg-primary mt-4' type='submit' onClick={handleSubmit(handlePostEdit)}>{isSubmitting ? "Sharing..." : "Share"}</Button>
                         </div>
