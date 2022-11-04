@@ -9,13 +9,13 @@ import ModalContext from '../context/ModalContext';
 function Dashboard({ translate }) {
 
     const { auth, setAuth } = React.useContext(AuthContext);
-    const { handleCreatePost } = React.useContext(ModalContext);
+    const { openCreatePostModal } = React.useContext(ModalContext);
 
     const { pathname } = useLocation();
     const navigate = useNavigate();
 
 
-    // function
+    // function logsout user and navigates to sign in page
     const handleLogout = () => {
         setAuth(null);
         navigate("/sign-in")
@@ -31,10 +31,10 @@ function Dashboard({ translate }) {
                 <li className={pathname === "/browse-people" ? " active" : ""}>
                     <Link to="/browse-people" className='nav-link'><MdGroups className='icon' />Browse People</Link>
                 </li>
-                <li className={pathname === "/my-posts" ? " active" : ""}>
-                    <Link to="/my-posts" className='nav-link'><MdAccountCircle className='icon' />My Posts</Link>
+                <li className={pathname === "/my-profile" ? " active" : ""}>
+                    <Link to="/my-profile" className='nav-link'><MdAccountCircle className='icon' />My Profile</Link>
                 </li>
-                <li onClick={() => handleCreatePost("sm")}>
+                <li onClick={openCreatePostModal}>
                     <p className='nav-link p-0 cursor-pointer' variant='text' ><MdCreate className='icon' />Create Post</p>
                 </li>
                 <li className={pathname === "/sign-in" ? " active" : ""}>

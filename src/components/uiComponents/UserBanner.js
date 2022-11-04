@@ -1,6 +1,6 @@
 import { Button } from '@material-tailwind/react';
 import React from 'react';
-import EditProfile from './modals/EditProfile';
+import EditProfile from './modals/editProfile/EditProfile';
 import AuthContext from "../context/AuthContext";
 
 

@@ -1,22 +1,22 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { createEditSchema } from "../../yupSchema/createEditSchema"
+import { createEditSchema } from "../../../yupSchema/createEditSchema"
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Input, Textarea, IconButton } from "@material-tailwind/react";
 import { MdClear, MdModeEditOutline, MdCreate } from "react-icons/md"
 import { toast } from "react-toastify";
-import ModalContext from "../../context/ModalContext";
-import ErrorSpan from "../ErrorSpan";
-import TagsInput from "../TagsInput";
-import useAxios from "../../hooks/useAxios";
-import PostsContext from "../../context/PostsContext";
-import Modal from "./Modal";
-import Loader from "../loader/Loader";
+import ModalContext from "../../../context/ModalContext";
+import ErrorSpan from "../../ErrorSpan";
+import TagsInput from "../../TagsInput";
+import useAxios from "../../../hooks/useAxios";
+import PostsContext from "../../../context/PostsContext";
+import Loader from "../../loader/Loader";
+import EditPostModal from "./EditPostModal";
 
 
 
 function EditPost({ adminPost, handleMenuClick }) {
-    const { closeModal, openModal } = React.useContext(ModalContext);
+    const { openEditPostModal, closeEditPostModal } = React.useContext(ModalContext);
     const { setUpdateUi } = React.useContext(PostsContext);
 
     const [isLoading, setIsLoading] = React.useState(false)
@@ -24,7 +24,6 @@ function EditPost({ adminPost, handleMenuClick }) {
     const [isSubmitting, setIsSubmitting] = React.useState(false);
 
     const http = useAxios();
-
 
     const url = `api/v1/social/posts/${adminPost.id}`;
 
@@ -37,7 +36,7 @@ function EditPost({ adminPost, handleMenuClick }) {
             const response = await http.get(url)
             if (response.data) {
                 setIsLoading(false)
-                openModal();
+                openEditPostModal();
             }
 
         } catch (error) {
@@ -79,7 +78,7 @@ function EditPost({ adminPost, handleMenuClick }) {
             if (response) {
                 setUpdateUi(true)
                 toast.success("Post updated!");
-                closeModal();
+                closeEditPostModal()
                 handleMenuClick()
             }
 
@@ -99,14 +98,14 @@ function EditPost({ adminPost, handleMenuClick }) {
                 Edit
             </Button>
             {isLoading && <Loader />}
-            <Modal>
-                <form className="w-full p-6 bg-light max-w-xl  bg-base-100 rounded-xl grid  grid-rows-auto  mx-auto relative " style={{ zIndex: "100" }}>
+            <EditPostModal>
+                <form className="form" style={{ zIndex: "100" }}>
                     <div className="flex text-primary mb-4  justify-between">
                         <div className="flex items-center gap-2">
                             <h2 >Edit</h2>
-                            <MdModeEditOutline size={20} />
+                            <MdModeEditOutline size={18} />
                         </div>
-                        <IconButton className="text-grey" variant="text" size="sm" onClick={closeModal}>
+                        <IconButton className="text-grey" variant="text" size="sm" onClick={closeEditPostModal}>
                             <MdClear size={24} />
                         </IconButton>
                     </div>
@@ -124,11 +123,13 @@ function EditPost({ adminPost, handleMenuClick }) {
                         </div>
                         <TagsInput tags={adminPost.tags} setTags={setTags} />
                         <div className='flex justify-end'>
-                            <Button className='bg-primary mt-4' type='submit' onClick={handleSubmit(handlePostEdit)}>{isSubmitting ? "Sharing..." : "Share"}</Button>
+                            <Button className='bg-primary mt-4' type='submit' onClick={handleSubmit(handlePostEdit)}>
+                                {isSubmitting ? "Sharing..." : "Share"}
+                            </Button>
                         </div>
                     </fieldset>
                 </form>
-            </Modal>
+            </EditPostModal>
 
         </>
     );

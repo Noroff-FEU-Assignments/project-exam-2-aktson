@@ -1,16 +1,15 @@
 import React from 'react';
 import { Routes, Route, useLocation } from "react-router-dom";
-import AuthenticatedRoute from '../pages/AuthenticatedRoute';
+import AuthenticatedRoute from './AuthenticatedRoute';
+import { ToastContainer } from "react-toastify";
+import { AnimatePresence } from "framer-motion"
+import 'react-toastify/dist/ReactToastify.css';
 import Layout from './Layout';
 import Home from '../pages/Home';
-import MyPosts from '../pages/MyPosts';
 import BrowsePeople from '../pages/BrowsePeople';
-
+import MyProfile from '../pages/MyProfile';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
-import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
-import { AnimatePresence } from "framer-motion"
 import UserSpecific from '../pages/UserSpecific';
 
 
@@ -26,8 +25,7 @@ function AnimatedRoute() {
                 <Route element={<AuthenticatedRoute />}>
                     <Route path='/' element={<Layout><Home /></Layout>} />
                     <Route path='/browse-people' element={<Layout><BrowsePeople /></Layout>} />
-                    <Route path='/my-posts' element={<Layout><MyPosts /></Layout>} />
-                    {/* <Route path='/edit-post' element={<Layout><EditPost /></Layout>} /> */}
+                    <Route path='/my-profile' element={<Layout><MyProfile /></Layout>} />
                     <Route path='/user-specific/:username' element={<Layout><UserSpecific /></Layout>} />
                 </Route>
                 <Route path='/sign-in' element={<SignIn />} />

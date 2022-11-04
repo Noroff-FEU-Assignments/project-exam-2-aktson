@@ -1,37 +1,51 @@
 import React from 'react';
 
-
 const ModalContext = React.createContext();
 
 export function ModalProvider({ children }) {
 
-    const [sizeEditPost, setSizeEditPost] = React.useState(null);
-    const [sizeCreatePost, setSizeCreatePost] = React.useState(null);
+    const [isEditPostModalOpen, setIsEditPostModalOpen] = React.useState(false);
+    const [isEditProfileOpen, setIsEditProfileOpen] = React.useState(false);
+    const [isCreatePostOpen, setIsCreatePostOpen] = React.useState(false);
 
+    const [overflow, setOverFlow] = React.useState("auto")
 
-    const handleCreatePost = (value) => setSizeCreatePost(value);
+    document.body.style.overflow = overflow;
 
-    const [openEditModal, setOpenEditModal] = React.useState(false);
-
-    let viewportWidth = window.innerWidth;
-
-    function openModal() {
-        setOpenEditModal(true);
-        if (viewportWidth >= "769") {
-            document.body.style.overflow = "hidden";
-        }
+    const openEditPostModal = () => {
+        setIsEditPostModalOpen(true);
+        setOverFlow("hidden")
     }
 
-    function closeModal() {
-        setOpenEditModal(false);
-        if (viewportWidth >= "769") {
-            document.body.style.overflow = "auto";
-        }
+    const openEditProfileModal = () => {
+        setIsEditProfileOpen(true);
+        setOverFlow("hidden")
+    }
+    const openCreatePostModal = () => {
+        setIsCreatePostOpen(true);
+        setOverFlow("hidden")
+    }
+
+    const closeCreatePostModal = () => {
+        setIsCreatePostOpen(false);
+        setOverFlow("auto")
+    }
+    const closeEditPostModal = () => {
+        setIsEditPostModalOpen(false);
+        setOverFlow("auto")
+    }
+    const closeEditProfileModal = () => {
+        setIsEditProfileOpen(false);
+        setOverFlow("auto")
     }
 
     return (
         <ModalContext.Provider
-            value={{ handleCreatePost, sizeCreatePost, openEditModal, openModal, closeModal }}>
+            value={{
+                isEditPostModalOpen, openEditPostModal, closeEditPostModal,
+                isEditProfileOpen, openEditProfileModal, closeEditProfileModal,
+                isCreatePostOpen, openCreatePostModal, closeCreatePostModal
+            }}>
             {children}
         </ModalContext.Provider>
     )
