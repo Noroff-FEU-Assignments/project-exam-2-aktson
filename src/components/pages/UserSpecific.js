@@ -1,8 +1,11 @@
 import React from 'react'
+import Container from '../uiComponents/Container'
 
 function UserSpecific() {
     return (
-        <div>UserSpecific</div>
+        <Container>
+            <div>UserSpecific</div>
+        </Container>
     )
 }
 

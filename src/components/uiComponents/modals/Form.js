@@ -5,7 +5,7 @@ function Form({ children }) {
     return (
         <AnimatePresence>
             <motion.form
-                className="form "
+                className="form"
                 style={{ zIndex: "50" }}
                 initial={{ scale: 0.9, }}
                 animate={{ scale: 1, }}

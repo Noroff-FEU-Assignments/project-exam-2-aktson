@@ -12,7 +12,7 @@ function UserBanner({ user }) {
 
 
     return (
-        <section className='w-full  bg-dark col-span-12 lg:col-span-10 my-16 lg:col-start-4 xl:col-start-3 p-4'
+        <section className='w-full  bg-dark  my-16  p-4'
             style={{
                 backgroundImage: `url(${user?.banner ? user.banner : banner}) `,
                 backgroundRepeat: "no-repeat",

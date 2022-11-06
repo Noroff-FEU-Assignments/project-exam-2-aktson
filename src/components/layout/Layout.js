@@ -31,18 +31,15 @@ function Layout({ children }) {
 
             <main className='md:grid md:grid-cols-12 relative'>
                 <Dashboard translate={translate} />
-
-                <UserBanner user={findAdminUser} />
                 <motion.div
-                    className="my-24 col-span-12 col-start-1 md:col-span-12 lg:col-span-10 xl:col-span-8 lg:col-start-4 xl:col-start-3"
+                    className=" col-span-12 col-start-1 md:col-span-12 lg:col-span-10  lg:col-start-4 xl:col-start-3"
                     initial={{ opacity: 0, translateY: -20, }}
                     animate={{ opacity: 1, translateY: 0 }}
                     exit={{ opacity: 0, translateY: 0, }}
                     transition={{ duration: 0.4 }}
                 >
-                    <Container>
-                        {children}
-                    </Container>
+
+                    {children}
                 </motion.div>
             </main>
             <Footer />
