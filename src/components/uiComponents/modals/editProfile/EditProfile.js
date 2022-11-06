@@ -32,8 +32,6 @@ function EditProfile() {
         });
 
 
-
-
     const http = useAxios();
     const url = `/api/v1/social/profiles/${auth.name}/media`;
 
@@ -99,7 +97,7 @@ function EditProfile() {
                         </div>
                         <div className='flex justify-end mt-4'>
                             <Button color='cyan' onClick={handleSubmit(handleEditProfileSubmit)} className="flex gap-2 items-center">
-                                {!isSubmitting && <MdCached className="animate-spin" size={20} />}
+                                {isSubmitting && <MdCached className="animate-spin" size={20} />}
                                 Update
                             </Button>
                         </div>

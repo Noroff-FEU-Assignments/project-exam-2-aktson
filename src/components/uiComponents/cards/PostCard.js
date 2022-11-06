@@ -5,13 +5,21 @@ import CommentInput from '../inputs/CommentInput';
 import EmojiInput from '../inputs/EmojiInput';
 import image from "../../../assets/user-avatar.svg";
 import PostMenu from '../postAdminMenu/PostMenu';
+import PostsContext from '../../context/PostsContext';
+import AuthContext from '../../context/AuthContext';
 
 
-function PostCard({ post, adminPosts }) {
+function PostCard({ post }) {
+    const { auth } = React.useContext(AuthContext);
+    const { posts } = React.useContext(PostsContext)
 
     const [showInput, setShowInput] = React.useState(false);
 
-    const { body, title, media, tags, updated, author } = post
+    const adminPosts = posts?.filter(post => post?.author.email === auth?.email)
+
+
+    const { body, title, media, tags, updated, author } = post;
+
     const updatedPost = new Date(updated).toLocaleDateString('da-DK', { month: 'long', day: 'numeric', year: 'numeric', hour: '2-digit', hour12: false, minute: '2-digit' })
 
     const findAdminPosts = adminPosts?.filter(adminPost => adminPost.id === post.id)
@@ -26,7 +34,8 @@ function PostCard({ post, adminPosts }) {
                         <p className='text-xs'>{updatedPost}</p>
                     </div>
                 </div>
-                {findAdminPosts && findAdminPosts.map(adminPost => { return <PostMenu key={adminPost.id} adminPost={adminPost} /> })}
+                {findAdminPosts &&
+                    findAdminPosts.map(adminPost => { return <PostMenu key={adminPost.id} adminPost={adminPost} /> })}
             </div>
             <div>
                 <h3 className='font-bold text-xl'>{title}</h3>

@@ -15,7 +15,7 @@ function CreatePostModal({ children }) {
             aria-hidden="true"
             id="my-modal"
         >
-            <div className="w-full h-full hidden sm:block backdrop-opacity-40 bg-dark/70"
+            <div className="w-full h-full hidden sm:block backdrop-opacity-40 bg-dark/70 transition-all duration-100"
                 id="overlay"
                 style={{ zIndex: "50" }}
                 onClick={closeCreatePostModal}>

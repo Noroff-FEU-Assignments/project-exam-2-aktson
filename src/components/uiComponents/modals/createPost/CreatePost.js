@@ -12,13 +12,17 @@ import PostsContext from '../../../context/PostsContext';
 import ModalContext from '../../../context/ModalContext';
 import CreatePostModal from './CreatePostModal';
 import Form from '../Form';
+import AuthContext from '../../../context/AuthContext';
+
 
 function CreatePost() {
     const { closeCreatePostModal } = React.useContext(ModalContext);
+    const { posts, setPosts } = React.useContext(PostsContext)
+    const { auth } = React.useContext(AuthContext)
 
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(createEditSchema) });
-    const { setUpdateUi } = React.useContext(PostsContext)
+    const { setUpdateUi, updateUi } = React.useContext(PostsContext)
 
     const [tags, setTags] = React.useState([]);
     const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -28,8 +32,9 @@ function CreatePost() {
 
     const handlePostSubmit = async (data) => {
         setIsSubmitting(true)
+        setUpdateUi(true)
 
-        const dataCopy = { ...data, tags: tags }
+        const dataCopy = { ...data, tags: tags, author: auth }
 
         try {
             const response = await http.post(url, dataCopy);
@@ -37,7 +42,7 @@ function CreatePost() {
                 reset();
                 setTags([]);
                 closeCreatePostModal();
-                setUpdateUi(true)
+                setUpdateUi(url)
                 toast.success("Post added successfully!")
             }
 

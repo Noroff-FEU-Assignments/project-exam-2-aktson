@@ -12,6 +12,7 @@ import useAxios from "../../../hooks/useAxios";
 import PostsContext from "../../../context/PostsContext";
 import EditPostModal from "./EditPostModal";
 import Form from "../Form";
+import Loader from "../../loader/Loader";
 
 
 
@@ -69,13 +70,14 @@ function EditPost({ adminPost, handleMenuClick }) {
 
 
     const handlePostEdit = async () => {
+
         setIsSubmitting(true)
         const url = `/api/v1/social/posts/${adminPost.id}`
         try {
 
             const response = await http.put(url, formDataWithTags);
             if (response) {
-                setUpdateUi(true)
+                setUpdateUi(url)
                 toast.success("Post updated!");
                 closeEditPostModal()
                 handleMenuClick()
@@ -95,6 +97,7 @@ function EditPost({ adminPost, handleMenuClick }) {
                 <MdCreate size={20} className="cursor-pointer" />
                 Edit
             </Button>
+            {isLoading && <Loader />}
             <EditPostModal>
                 <Form>
                     <div className="flex text-primary mb-4  justify-between">
