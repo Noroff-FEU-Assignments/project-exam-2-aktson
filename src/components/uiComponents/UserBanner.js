@@ -1,4 +1,5 @@
 import { Avatar, Button } from '@material-tailwind/react';
+import Container from './Container';
 import React from 'react';
 import EditProfile from './modals/editProfile/EditProfile';
 
@@ -12,31 +13,24 @@ function UserBanner({ user }) {
 
 
     return (
-        <section className='w-full  bg-dark  my-16  p-4'
+        <section className='w-full bg-dark my-16 p-4 relative '
             style={{
                 backgroundImage: `url(${user?.banner ? user.banner : banner}) `,
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
-                height: "30vh",
+                height: "40vh",
                 backgroundSize: "cover",
             }}
         >
-            <div className='grid grid-cols-auto md:grid-cols-2 items-end max-w-7xl justify-items-center gap-4 '>
-                <div className='md:translate-y-24 drop-shadow-2xl relative'
-                    style={{
-                        backgroundImage: `url(${user?.avatar ? user.avatar : image}) `,
-                        backgroundRepeat: "no-repeat",
-                        backgroundPosition: "center",
-                        height: "300px",
-                        width: "300px",
-                        backgroundSize: "contain",
-                        borderRadius: "2em",
-                        zIndex: "2"
-                    }}
-                >
-                </div>
-                <div className='flex gap-2 flex-col text-primary'>
-                    <p className='text-3xl'>{user?.name}</p>
+
+            <div className='grid grid-cols-auto md:grid-cols-2 max-w-screen-2xl mx-auto items-end justify-items-center p-4 absolute top-0 right-0 left-0 -bottom-8 '>
+                <figure className='drop-shadow-2xl'>
+                    <img src={user?.avatar ? user.avatar : image}
+                        alt={user?.name}
+                        className="w-52 h-52 lg:w-60 lg:h-60 object-cover rounded-full shadow-xl  justify-items-center md:translate-y-24 " />
+                </figure>
+                <div className='flex gap-2 flex-col text-primary '>
+                    <p className='text-3xl text-light'>{user?.name}</p>
                     {!isAdmin && <Button color='cyan' className="w-auto">Follow</Button>}
                     {isAdmin && <EditProfile />}
                 </div>

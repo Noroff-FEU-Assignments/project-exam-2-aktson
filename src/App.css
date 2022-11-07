@@ -32,7 +32,7 @@
 	}
 
 	.card {
-		@apply shadow-xl p-8 rounded-xl max-w-md md:max-w-lg lg:max-w-xl w-full;
+		@apply shadow-xl p-8 rounded-xl max-w-md md:max-w-lg lg:max-w-2xl w-full;
 	}
 	.form {
 		@apply w-full p-6 bg-light max-w-xl rounded-xl grid auto-rows-auto  mx-auto relative;
