@@ -32,7 +32,7 @@ function Layout({ children }) {
                 <main className='md:grid grid-cols-12'>
                     <Dashboard translate={translate} />
                     <motion.div
-                        className=" col-span-10 grid auto-rows-auto "
+                        className=" col-span-9 grid auto-rows-auto "
                         initial={{ opacity: 0, translateY: -20, }}
                         animate={{ opacity: 1, translateY: 0 }}
                         exit={{ opacity: 0, translateY: 0, }}

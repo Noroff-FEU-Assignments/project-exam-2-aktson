@@ -23,8 +23,8 @@ function Dashboard({ translate }) {
 
     return (
 
-        <nav className={` col-span-2 z-40  md:relative fixed h-full transition ease-in-out `}>
-            <ul className={`flex flex-col mt-12 gap-8 bg-light text-grey md:fixed ${translate} shadow-xl transition ease-in-out p-16 duration-500 h-full lg:w-66 xl:w-80`}>
+        <nav className={` col-span-3 z-40  md:relative fixed h-full transition ease-in-out bg-light shadow-xl `}>
+            <ul className={`flex flex-col mt-12 gap-8  text-grey md:fixed ${translate} transition ease-in-out p-16 duration-500 `}>
                 <li className={pathname === "/" ? " active" : ""} >
                     <Link to="/" className='nav-link'> <MdHome className='icon' />Home</Link>
                 </li>
@@ -40,7 +40,6 @@ function Dashboard({ translate }) {
                 <li className={pathname === "/sign-in" ? " active" : ""}>
                     {auth && <Button size="md" className='flex gap-2 bg-primary ' onClick={handleLogout}>  <MdLogout size={18} />Log Out</Button>}
                 </li>
-
             </ul>
         </nav>
 
