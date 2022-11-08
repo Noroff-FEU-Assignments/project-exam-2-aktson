@@ -18,7 +18,8 @@ function MyProfile() {
         <>
             <UserBanner user={adminUser} />
             <Container>
-                <h1>My Posts</h1>
+                <h1 className='card mt-16 p-4 text-center'>My Posts</h1>
+                {adminPosts.length === 0 && <p className='card text-center p-2 bg-accent text-light text-lg'>Nothing here yet!</p>}
                 {adminPosts && adminPosts.map(post => {
                     return <PostCard post={post} key={post.id} />
                 })}

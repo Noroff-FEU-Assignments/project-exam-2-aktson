@@ -4,10 +4,10 @@
 
 @layer base {
 	h1 {
-		@apply text-4xl  mb-8 leading-loose lg:text-5xl text-grey;
+		@apply text-3xl  mb-8 leading-loose  text-primary;
 	}
 	h2 {
-		@apply text-3xl relative text-primary font-light;
+		@apply text-2xl relative text-primary font-light;
 	}
 	h3 {
 		@apply text-2xl mb-3;
@@ -32,7 +32,7 @@
 	}
 
 	.card {
-		@apply shadow-xl p-8 rounded-xl max-w-md md:max-w-lg lg:max-w-2xl w-full;
+		@apply shadow-xl p-8 rounded-xl max-w-md md:max-w-lg lg:max-w-xl w-full bg-white;
 	}
 	.form {
 		@apply w-full p-6 bg-light max-w-xl rounded-xl grid auto-rows-auto  mx-auto relative;

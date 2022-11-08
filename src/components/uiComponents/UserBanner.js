@@ -23,11 +23,11 @@ function UserBanner({ user }) {
             }}
         >
 
-            <div className='grid grid-cols-auto md:grid-cols-2 max-w-screen-2xl mx-auto items-end justify-items-center p-4 absolute top-0 right-0 left-0 -bottom-8 '>
-                <figure className='drop-shadow-2xl'>
+            <div className='grid grid-cols-auto md:grid-cols-2 max-w-screen-2xl mx-auto items-end justify-items-center p-4 absolute top-0 right-0 left-0 -bottom-2 '>
+                <figure className='drop-shadow-xl'>
                     <img src={user?.avatar ? user.avatar : image}
                         alt={user?.name}
-                        className="w-52 h-52 lg:w-60 lg:h-60 object-cover rounded-full shadow-xl  justify-items-center md:translate-y-24 " />
+                        className="w-40 h-40 lg:w-52 lg:h-52 object-cover rounded-full shadow-xl  justify-items-center md:translate-y-24 " />
                 </figure>
                 <div className='flex gap-2 flex-col text-primary '>
                     <p className='text-3xl text-light'>{user?.name}</p>
