@@ -7,7 +7,6 @@ import EditProfile from './modals/editProfile/EditProfile';
 
 function UserBanner({ user }) {
     const image = "https://img.freepik.com/free-photo/emotional-happy-young-caucasian-female-with-fair-hair-dressed-blue-clothes-giving-her-thumbs-up-showing-how-good-product-is-pretty-girl-smiling-brodly-with-teeth-gestures-body-language_176420-13493.jpg?w=1380&t=st=1667557356~exp=1667557956~hmac=cf5e2aa6232576b7534354e8fd74f8325693bfc180f2b4a0b3d59575aa92d706"
-    const banner = "https://img.freepik.com/free-vector/abstract-business-professional-background-banner-design-multipurpose_1340-16858.jpg?w=1800&t=st=1667603478~exp=1667604078~hmac=edff4505156347adbac16eb5d55115445001c6025751b76d8966443136686222"
 
 
     const [isAdmin, setIsAdmin] = React.useState(false)
