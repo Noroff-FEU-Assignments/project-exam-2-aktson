@@ -25,7 +25,7 @@ function PostCard({ post }) {
     const findAdminPosts = adminPosts?.filter(adminPost => adminPost.id === post.id)
 
     return (
-        <div className='card grid  grid-rows-auto gap-4 text-grey mb-4'>
+        <div className='card grid  grid-rows-auto gap-3 text-grey mb-4'>
             <div className='flex items-center justify-between gap-2 '>
                 <div>
                     <Link to={`/user-specific/${post.author.name}`} className='flex items-center gap-2'>
@@ -43,7 +43,7 @@ function PostCard({ post }) {
                 <h3 className='font-bold text-xl'>{title}</h3>
                 {body && <p>{body}</p>}
             </div>
-            <div className='flex flex-wrap gap-2 justify-end'>
+            <div className='flex flex-wrap gap-2 '>
                 {tags && tags?.map((tag, index) => {
                     return <p className='text-accent font-semibold' key={index}>#{tag}</p>
                 })}

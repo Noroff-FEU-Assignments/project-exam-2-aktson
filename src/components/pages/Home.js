@@ -3,7 +3,6 @@ import PostsContext from "../context/PostsContext";
 import PostCard from "../uiComponents/cards/PostCard";
 import { MdError } from "react-icons/md"
 import LoaderCard from "../uiComponents/loader/LoaderCard";
-import Container from "../uiComponents/Container"
 
 
 function Home() {

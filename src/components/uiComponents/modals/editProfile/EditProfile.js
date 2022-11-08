@@ -11,40 +11,54 @@ import Form from '../Form';
 import ErrorSpan from '../../ErrorSpan';
 import useAxios from '../../../hooks/useAxios';
 import { toast } from 'react-toastify';
+import UsersContext from '../../../context/UsersContext';
+import { useParams, useNavigate } from 'react-router-dom';
+import Loader from '../../loader/Loader';
 
 
 
 function EditProfile() {
 
     const { openEditProfileModal, closeEditProfileModal } = React.useContext(ModalContext);
-    const { auth } = React.useContext(AuthContext);
+    const { auth, setAuth } = React.useContext(AuthContext);
+    const { setUpdateUi, users } = React.useContext(UsersContext)
 
     const [isSubmitting, setIsSubmitting] = React.useState(false);
+
+    const admin = users.find(user => user.name === auth.name);
+
 
     // react hook form and yup schema
     const { handleSubmit, register, formState: { errors }, watch } =
         useForm({
             resolver: yupResolver(editProfileSchema),
             defaultValues: {
-                banner: auth.banner,
-                avatar: auth.avatar,
+                banner: admin?.banner,
+                avatar: admin?.avatar,
             }
+
         });
 
 
     const http = useAxios();
-    const url = `/api/v1/social/profiles/${auth.name}/media`;
+    const url = `/api/v1/social/profiles/${admin?.name}/media`;
+
+    const editedFormData = watch();
+    const authCopy = { ...auth, avatar: editedFormData.avatar, banner: editedFormData.banner }
+    console.log(authCopy)
 
     const handleEditProfileSubmit = async () => {
         setIsSubmitting(true)
-        const editedFormData = watch();
+
 
         try {
             const response = await http.put(url, editedFormData);
 
             if (response) {
-                toast.success("Profile updated!")
                 closeEditProfileModal();
+                setUpdateUi(url)
+                toast.success("Profile updated!")
+                setAuth(authCopy)
             }
 
         } catch (error) {
@@ -55,7 +69,6 @@ function EditProfile() {
         }
 
     }
-
 
     return (
         <>

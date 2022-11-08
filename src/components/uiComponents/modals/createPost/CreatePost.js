@@ -33,7 +33,7 @@ function CreatePost() {
         setIsSubmitting(true)
         setUpdateUi(true)
 
-        const dataCopy = { ...data, tags: tags, author: auth }
+        const dataCopy = { ...data, tags: tags }
 
         try {
             const response = await http.post(url, dataCopy);

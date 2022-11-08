@@ -7,16 +7,17 @@ const UsersContext = React.createContext();
 
 export function UsersProvider({ children }) {
 
+    const url = "/api/v1/social/profiles?_following=true&_followers=true";
+
     const [users, setUsers] = React.useState([]);
-    const [updateUi, setUpdateUi] = React.useState(false)
+    const [updateUi, setUpdateUi] = React.useState(url)
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = React.useState(null);
 
-    const url = "/api/v1/social/profiles?_following=true&_followers=true";
 
     const http = useAxios();
 
-    const fetchPosts = async () => {
+    const fetchUsers = async () => {
         setIsLoading(true)
 
         try {
@@ -37,8 +38,13 @@ export function UsersProvider({ children }) {
 
 
     React.useEffect(() => {
+        let ignore = false;
 
-        fetchPosts();
+        fetchUsers();
+
+        return () => {
+            ignore = true;
+        };
 
     }, [updateUi])
     return (

@@ -20,8 +20,8 @@ function EditPost({ adminPost, handleMenuClick }) {
     const { openEditPostModal, closeEditPostModal } = React.useContext(ModalContext);
     const { setUpdateUi } = React.useContext(PostsContext);
 
-    const [isLoading, setIsLoading] = React.useState(false)
     const [tags, setTags] = React.useState([]);
+    const [isLoading, setIsLoading] = React.useState(false);
     const [isSubmitting, setIsSubmitting] = React.useState(false);
 
     const http = useAxios();
@@ -38,6 +38,7 @@ function EditPost({ adminPost, handleMenuClick }) {
             if (response.data) {
                 setIsLoading(false)
                 openEditPostModal();
+                setTags(response.data.tags)
             }
 
         } catch (error) {
@@ -64,15 +65,14 @@ function EditPost({ adminPost, handleMenuClick }) {
         });
 
 
-    const editedFormData = watch();
-    const formDataWithTags = { ...editedFormData, tags }
-
-
-
     const handlePostEdit = async () => {
 
         setIsSubmitting(true)
+
+        const editedFormData = watch();
+        const formDataWithTags = { ...editedFormData, tags: tags }
         const url = `/api/v1/social/posts/${adminPost.id}`
+
         try {
 
             const response = await http.put(url, formDataWithTags);
@@ -121,7 +121,7 @@ function EditPost({ adminPost, handleMenuClick }) {
                             <Input variant="standard" label="Image URL" color="cyan" {...register("media")} />
                             {errors.media && <ErrorSpan message={errors.media.message} />}
                         </div>
-                        <TagsInput tags={adminPost.tags} setTags={setTags} />
+                        <TagsInput tags={tags} setTags={setTags} />
                         <div className='flex justify-end'>
                             <Button type='submit' color="cyan" onClick={handleSubmit(handlePostEdit)} className="flex gap-2 items-center mt-4 btn">
                                 {isSubmitting && <MdCached className="animate-spin" size={20} />}
