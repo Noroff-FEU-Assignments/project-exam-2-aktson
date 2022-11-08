@@ -1,51 +1,32 @@
-import { Button } from '@material-tailwind/react';
+import { Avatar, Button } from '@material-tailwind/react';
 import React from 'react';
 import { Link } from "react-router-dom";
-import userAvatar from "../../../assets/user-avatar.svg"
+import userAvatar from "../../../assets/user.png"
+import { MdAccountCircle } from "react-icons/md"
 
 function UserCard({ user }) {
 
 
     return (
-        <div className=' w-96 h-96 shadow-xl  flex justify-between flex-col my-8 rounded-xl bg-light'>
-            <div className='flex justify-center flex-col items-center p-4'>
+
+        <div className="text-grey  shadow-xl bg-light flex flex-col w-80 h-auto gap-4"  >
+            <Link to={`/user-specific/${user.name}`} className='flex  justify-center items-center mt-6 hover:scale-75 transition duration-300'>
+                <Avatar src={user.avatar ? user.avatar : userAvatar} alt="avatar" size="xxl" variant="circular" className='drop-shadow-2xl ' />
+            </Link>
+            <div className='flex flex-col justify-center items-center'>
                 <Link to={`/user-specific/${user.name}`}>
-                    <div className=' drop-shadow-2xl '
-                        style={{
-                            background: `url(${user.avatar ? user.avatar : userAvatar}) no-repeat center `,
-                            height: "150px",
-                            width: "150px",
-                            backgroundSize: "cover",
-                            borderRadius: "50%"
-                        }}
-                    >
-                    </div>
+                    <h3 className='text-center'>{user.name}</h3>
                 </Link>
-                <div className='p-5 flex flex-col  row-span-2 gap-1 mt-2 items-center text-center'>
-                    <Link to={`/user-specific/${user.name}`}>
-                        <h3 className='text-grey' >{user.name}</h3>
-                    </Link>
-                    <Button color='cyan'>Follow</Button>
-                </div>
+                <Button color='cyan' className='w-auto '>Follow</Button>
             </div>
-            <div className='bg-dark flex text-light  '>
-                <div className='w-full text-center bg-primary p-2'>
-                    <p >Posts </p>
-                    <p>{user._count.posts}</p>
-                </div>
-                <div className='w-full text-center p-2 bg-secondary'>
-                    <p >Following</p>
-                    <p>{user._count.followers}</p>
-                </div>
-                <div className='w-full text-center p-2 bg-accent'>
-                    <p >Followers </p>
-                    <p>{user._count.following}</p>
-                </div>
+            <div className='p-5 flex gap-4 mt-3 justify-center bg-gray-100'>
+                <p className='flex flex-col items-center w-full'><span>{user._count.posts}</span>Posts </p>
+                <p className='flex flex-col items-center w-full'><span>{user._count.following}</span>Following</p>
+                <p className='flex flex-col items-center w-full'><span>{user._count.followers}</span>Followers</p>
             </div>
-
-
-        </div >
+        </div>
     )
 }
 
 export default UserCard
+

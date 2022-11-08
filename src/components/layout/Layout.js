@@ -15,21 +15,40 @@ function Layout({ children }) {
     const { users } = React.useContext(UsersContext);
 
     const findAdminUser = users?.find(user => user.email === auth.email);
+    const [isNavOpen, setIsNavOpen] = React.useState(true)
 
-    const [translate, setTranslate] = React.useState("-translate-x-96 lg:translate-x-0");
+    // const [translate, setTranslate] = React.useState("-translate-x-96 lg:translate-x-0");
+    // const toggleDashboard = () => {
+    //     if (translate === "translate-x-0") {
+    //         setTranslate("-translate-x-96 ")
+    //     }
+    //     else {
+    //         setTranslate("translate-x-0")
+    //     }
+    // }
+    React.useEffect(() => {
+        window.addEventListener(
+            "resize",
+            () => {
+
+                if (window.innerWidth >= 960) {
+                    setIsNavOpen(true)
+                } else {
+                    setIsNavOpen(false)
+                }
+            }
+        );
+
+    }, []);
+
     const toggleDashboard = () => {
-        if (translate === "translate-x-0") {
-            setTranslate("-translate-x-96 ")
-        }
-        else {
-            setTranslate("translate-x-0")
-        }
+        setIsNavOpen(prevState => !prevState)
     }
     return (
         <>
             <Header toggleDashboard={toggleDashboard} />
-            <main className='lg:grid grid-cols-12 lg:container lg:mx-auto '>
-                <Dashboard translate={translate} />
+            <main className='lg:grid grid-cols-12 2xl:container 2xl:mx-auto '>
+                <Dashboard isNavOpen={isNavOpen} />
                 <motion.div
                     className=" col-span-9 grid auto-rows-auto "
                     initial={{ opacity: 0, translateY: -20, }}

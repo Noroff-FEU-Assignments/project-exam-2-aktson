@@ -96,7 +96,7 @@ function EditProfile() {
                             {errors.banner && <ErrorSpan message={errors.banner.message} />}
                         </div>
                         <div className='flex justify-end mt-4'>
-                            <Button color='cyan' onClick={handleSubmit(handleEditProfileSubmit)} className="flex gap-2 items-center">
+                            <Button onClick={handleSubmit(handleEditProfileSubmit)} color="cyan" className="flex gap-2 items-center btn">
                                 {isSubmitting && <MdCached className="animate-spin" size={20} />}
                                 Update
                             </Button>

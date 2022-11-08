@@ -123,7 +123,7 @@ function EditPost({ adminPost, handleMenuClick }) {
                         </div>
                         <TagsInput tags={adminPost.tags} setTags={setTags} />
                         <div className='flex justify-end'>
-                            <Button color="cyan" type='submit' onClick={handleSubmit(handlePostEdit)} className="flex gap-2 items-center mt-4">
+                            <Button type='submit' color="cyan" onClick={handleSubmit(handlePostEdit)} className="flex gap-2 items-center mt-4 btn">
                                 {isSubmitting && <MdCached className="animate-spin" size={20} />}
                                 Share
                             </Button>

@@ -17,12 +17,11 @@ import AuthContext from '../../../context/AuthContext';
 
 function CreatePost() {
     const { closeCreatePostModal } = React.useContext(ModalContext);
-    const { posts, setPosts } = React.useContext(PostsContext)
     const { auth } = React.useContext(AuthContext)
 
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(createEditSchema) });
-    const { setUpdateUi, updateUi } = React.useContext(PostsContext)
+    const { setUpdateUi } = React.useContext(PostsContext)
 
     const [tags, setTags] = React.useState([]);
     const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -82,7 +81,7 @@ function CreatePost() {
                     </div>
                     <TagsInput tags={tags} setTags={setTags} />
                     <div className='flex justify-end'>
-                        <Button color='cyan' type='submit' onClick={handleSubmit(handlePostSubmit)} className="flex gap-2 items-center mt-4">
+                        <Button type='submit' color='cyan' onClick={handleSubmit(handlePostSubmit)} className="flex gap-2 items-center mt-4 ">
                             {isSubmitting && <MdCached className="animate-spin" size={20} />}
                             Share
                         </Button>

@@ -31,7 +31,7 @@
 		@apply text-primary;
 	}
 	.btn {
-		@apply text-grey rounded-none shadow-2xl;
+		@apply bg-primary;
 	}
 
 	.card {
