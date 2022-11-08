@@ -23,8 +23,8 @@ function Dashboard({ translate }) {
 
     return (
 
-        <nav className={` lg:col-span-3  z-40  md:relative fixed h-full transition ease-in-out lg:bg-light  lg:shadow-xl lg:h-full `}>
-            <ul className={`flex flex-col mt-12 gap-8  text-grey md:fixed ${translate} transition ease-in-out p-16 duration-500  bg-light  shadow-xl h-full lg:bg-none lg:shadow-none`}>
+        <nav className={` lg:col-span-3  z-40  md:relative fixed  transition ease-in-out lg:bg-light  lg:shadow-xl  lg:h-full `}>
+            <ul className={`flex flex-col mt-12 gap-8  text-grey md:fixed ${translate} transition ease-in-out p-16 duration-500  bg-light  shadow-xl  lg:bg-none lg:shadow-none`}>
                 <li className={pathname === "/" ? " active" : ""} >
                     <Link to="/" className='nav-link'> <MdHome className='icon' />Home</Link>
                 </li>

@@ -7,7 +7,7 @@ function UserCard({ user }) {
 
 
     return (
-        <div className=' w-96 h-96 shadow-xl  flex justify-between flex-col my-8 rounded-xl'>
+        <div className=' w-96 h-96 shadow-xl  flex justify-between flex-col my-8 rounded-xl bg-light'>
             <div className='flex justify-center flex-col items-center p-4'>
                 <Link to={`/user-specific/${user.name}`}>
                     <div className=' drop-shadow-2xl '

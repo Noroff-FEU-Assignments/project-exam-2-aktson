@@ -28,21 +28,19 @@ function Layout({ children }) {
     return (
         <>
             <Header toggleDashboard={toggleDashboard} />
-            <Container>
-                <main className='lg:grid grid-cols-12 '>
-                    <Dashboard translate={translate} />
-                    <motion.div
-                        className=" col-span-9 grid auto-rows-auto "
-                        initial={{ opacity: 0, translateY: -20, }}
-                        animate={{ opacity: 1, translateY: 0 }}
-                        exit={{ opacity: 0, translateY: 0, }}
-                        transition={{ duration: 0.4 }}
-                    >
-                        {children}
-                    </motion.div>
-                </main>
-                <Footer />
-            </Container>
+            <main className='lg:grid grid-cols-12 lg:container lg:mx-auto '>
+                <Dashboard translate={translate} />
+                <motion.div
+                    className=" col-span-9 grid auto-rows-auto "
+                    initial={{ opacity: 0, translateY: -20, }}
+                    animate={{ opacity: 1, translateY: 0 }}
+                    exit={{ opacity: 0, translateY: 0, }}
+                    transition={{ duration: 0.4 }}
+                >
+                    {children}
+                </motion.div>
+            </main>
+            <Footer />
         </>
     )
 }
