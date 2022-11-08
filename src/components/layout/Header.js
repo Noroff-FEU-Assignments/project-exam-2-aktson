@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { MdDashboard } from "react-icons/md"
 import { IconButton, Avatar, Typography } from "@material-tailwind/react";
 import AuthContext from '../context/AuthContext';
-import userAvatar from "../../assets/user-avatar.svg";
+import userAvatar from "../../assets/user.png";
 import Container from '../uiComponents/Container';
 
 function Header({ toggleDashboard }) {

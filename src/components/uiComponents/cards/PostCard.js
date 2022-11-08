@@ -4,7 +4,7 @@ import { Avatar, Button } from "@material-tailwind/react";
 import { MdOutlineModeComment } from "react-icons/md";
 import CommentInput from '../inputs/CommentInput';
 import EmojiInput from '../inputs/EmojiInput';
-import image from "../../../assets/user-avatar.svg";
+import image from "../../../assets/user.png";
 import PostMenu from '../postAdminMenu/PostMenu';
 import PostsContext from '../../context/PostsContext';
 import AuthContext from '../../context/AuthContext';

@@ -2,7 +2,6 @@ import { Avatar, Button } from '@material-tailwind/react';
 import React from 'react';
 import { Link } from "react-router-dom";
 import userAvatar from "../../../assets/user.png"
-import { MdAccountCircle } from "react-icons/md"
 
 function UserCard({ user }) {
 
@@ -14,7 +13,7 @@ function UserCard({ user }) {
                 <Avatar src={user.avatar ? user.avatar : userAvatar} alt="avatar" size="xxl" variant="circular" className='drop-shadow-2xl ' />
             </Link>
             <div className='flex flex-col justify-center items-center'>
-                <Link to={`/user-specific/${user.name}`}>
+                <Link to={`/user-specific/${user.name}`} className="hover:scale-75 transition duration-300">
                     <h3 className='text-center'>{user.name}</h3>
                 </Link>
                 <Button color='cyan' className='w-auto '>Follow</Button>
