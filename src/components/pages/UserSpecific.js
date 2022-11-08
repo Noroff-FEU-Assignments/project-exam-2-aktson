@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 import PostsContext from '../context/PostsContext'
 import LoaderCard from '../uiComponents/loader/LoaderCard'
 import Loader from '../uiComponents/loader/Loader'
+import { findAllByAltText } from '@testing-library/react'
 
 function UserSpecific() {
 
@@ -15,15 +16,17 @@ function UserSpecific() {
     const params = useParams();
     const navigate = useNavigate();
 
+
     if (!params) navigate("/")
 
     const [isLoading, setIsLoading] = React.useState(false);
     const [user, setUser] = React.useState({});
 
+
     const http = useAxios();
     const url = `/api/v1/social/profiles/${params.username}`;
 
-    const userPosts = posts?.filter(post => post.author.email = user.email);
+    const userPosts = posts?.filter(post => post.author.name === user.name);
 
     const fetchUser = async () => {
         setIsLoading(true)
@@ -31,6 +34,7 @@ function UserSpecific() {
         try {
             const response = await http.get(url)
             setUser(response.data)
+
         } catch (error) {
             console.log(error)
             toast.error("Unknown error occured")
@@ -42,6 +46,7 @@ function UserSpecific() {
     React.useEffect(() => {
         fetchUser()
     }, [])
+
     if (isLoading) {
         return <Loader />
     }
@@ -51,25 +56,19 @@ function UserSpecific() {
 
         <>
             <UserBanner user={user} />
-            <Container>
-                <section className=" flex  flex-col  gap-4 my-24">
-                    {userPosts.length === 0 && <p className='card text-center p-2 bg-accent text-light text-lg'>Nothing here yet!</p>}
-
-                    {isLoading &&
-                        <Container>
-                            <>
-                                <LoaderCard />
-                                <LoaderCard />
-                                <LoaderCard />
-                            </>
-                        </Container>
-                    }
-
-                    {userPosts && userPosts?.map(post => {
-                        return <PostCard post={post} key={post.id} />
-                    })}
-                </section>
-            </Container>
+            <section className="section">
+                {userPosts.length === 0 && <p className='card text-center p-2 bg-accent text-light text-lg'>Nothing here yet!</p>}
+                {isLoading &&
+                    <>
+                        <LoaderCard />
+                        <LoaderCard />
+                        <LoaderCard />
+                    </>
+                }
+                {userPosts && userPosts?.map(post => {
+                    return <PostCard post={post} key={post.id} />
+                })}
+            </section>
         </>
     )
 }

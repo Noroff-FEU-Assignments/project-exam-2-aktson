@@ -21,6 +21,9 @@
 	.nav-link {
 		@apply flex items-center gap-6 transition ease-in-out duration-500 hover:text-primary;
 	}
+	.section {
+		@apply flex flex-col gap-4 my-24 items-center;
+	}
 	.icon {
 		@apply text-3xl cursor-pointer;
 	}

@@ -4,7 +4,6 @@ import PostCard from "../uiComponents/cards/PostCard";
 import { MdError } from "react-icons/md"
 import LoaderCard from "../uiComponents/loader/LoaderCard";
 import Container from "../uiComponents/Container"
-import AuthContext from "../context/AuthContext";
 
 
 function Home() {
@@ -14,13 +13,13 @@ function Home() {
 
 	if (isLoading) {
 		return (
-			<Container>
-				<div className="w-full my-24">
-					<LoaderCard />
-					<LoaderCard />
-					<LoaderCard />
-				</div>
-			</Container>
+
+			<div className="w-full my-24">
+				<LoaderCard />
+				<LoaderCard />
+				<LoaderCard />
+			</div>
+
 		)
 	}
 	if (error) {
@@ -28,19 +27,19 @@ function Home() {
 	}
 
 	return (
-		<Container>
-			<section className=" flex  flex-col  gap-4 my-24">
-				{error &&
-					<p className="bg-red-500  p-4 text-light rounded-xl flex items-center gap-2">
-						<MdError size={28} />
-						{error}
-					</p>
-				}
-				{posts && posts?.map(post => {
-					return <PostCard post={post} key={post.id} />
-				})}
-			</section>;
-		</Container>
+
+		<section className="section">
+			{error &&
+				<p className="bg-red-500 p-4 text-light rounded-xl flex items-center gap-2">
+					<MdError size={28} />
+					{error}
+				</p>
+			}
+			{posts && posts?.map(post => {
+				return <PostCard post={post} key={post.id} />
+			})}
+		</section>
+
 	)
 }
 

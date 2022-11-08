@@ -2,7 +2,7 @@ import React from 'react'
 
 function Container({ children }) {
     return (
-        <div className='container mx-auto grid justify-items-center'>{children}</div>
+        <div className='lg:container lg:mx-auto'>{children}</div>
     )
 }
 
