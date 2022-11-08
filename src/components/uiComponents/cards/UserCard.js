@@ -5,7 +5,7 @@ import userAvatar from "../../../assets/user-avatar.svg"
 
 function UserCard({ user }) {
 
-    console.log(user)
+
     return (
         <div className=' w-96 h-96 shadow-xl  flex justify-between flex-col my-8 rounded-xl'>
             <div className='flex justify-center flex-col items-center p-4'>

@@ -6,6 +6,8 @@ import PostCard from '../uiComponents/cards/PostCard'
 import useAxios from '../hooks/useAxios'
 import { toast } from 'react-toastify'
 import PostsContext from '../context/PostsContext'
+import LoaderCard from '../uiComponents/loader/LoaderCard'
+import Loader from '../uiComponents/loader/Loader'
 
 function UserSpecific() {
 
@@ -22,10 +24,8 @@ function UserSpecific() {
     const url = `/api/v1/social/profiles/${params.username}`;
 
     const userPosts = posts?.filter(post => post.author.email = user.email);
-    console.log(userPosts)
 
     const fetchUser = async () => {
-
         setIsLoading(true)
 
         try {
@@ -35,24 +35,40 @@ function UserSpecific() {
             console.log(error)
             toast.error("Unknown error occured")
         } finally {
-            setIsLoading(true)
+            setIsLoading(false)
         }
     }
 
     React.useEffect(() => {
         fetchUser()
     }, [])
+    if (isLoading) {
+        return <Loader />
+    }
+
 
     return (
 
         <>
             <UserBanner user={user} />
             <Container>
-                <h1 className='card mt-16 p-2 text-center'>Posts</h1>
-                {userPosts.length === 0 && <p className='card text-center p-2 bg-accent text-light text-lg'>Nothing here yet!</p>}
-                {userPosts && userPosts?.map(post => {
-                    return <PostCard post={post} key={post.id} />
-                })}
+                <section className=" flex  flex-col  gap-4 my-24">
+                    {userPosts.length === 0 && <p className='card text-center p-2 bg-accent text-light text-lg'>Nothing here yet!</p>}
+
+                    {isLoading &&
+                        <Container>
+                            <>
+                                <LoaderCard />
+                                <LoaderCard />
+                                <LoaderCard />
+                            </>
+                        </Container>
+                    }
+
+                    {userPosts && userPosts?.map(post => {
+                        return <PostCard post={post} key={post.id} />
+                    })}
+                </section>
             </Container>
         </>
     )
