@@ -29,7 +29,7 @@ function Layout({ children }) {
         <>
             <Header toggleDashboard={toggleDashboard} />
             <Container>
-                <main className='md:grid grid-cols-12'>
+                <main className='lg:grid grid-cols-12 '>
                     <Dashboard translate={translate} />
                     <motion.div
                         className=" col-span-9 grid auto-rows-auto "
