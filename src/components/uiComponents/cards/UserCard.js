@@ -8,7 +8,7 @@ function UserCard({ user }) {
 
     return (
 
-        <div className="text-grey  shadow-xl bg-light flex flex-col w-80 h-auto gap-4"  >
+        <div className="text-grey  shadow-xl bg-lightGray flex flex-col w-80 h-auto gap-4 rounded-xl"  >
             <Link to={`/user-specific/${user.name}`} className='flex  justify-center items-center mt-6 hover:scale-75 transition duration-300'>
                 <Avatar src={user.avatar ? user.avatar : userAvatar} alt="avatar" size="xxl" variant="circular" className='drop-shadow-2xl ' />
             </Link>

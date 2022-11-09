@@ -35,7 +35,7 @@
 	}
 
 	.card {
-		@apply shadow-xl p-8 rounded-xl max-w-md md:max-w-lg lg:max-w-xl w-full bg-lightGray;
+		@apply shadow-xl p-8 rounded-xl max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl w-full bg-lightGray;
 	}
 	.form {
 		@apply w-full p-6 bg-lightGray max-w-xl rounded-xl grid auto-rows-auto  mx-auto relative;

@@ -7,9 +7,10 @@ import { useOutsideClick } from '../../hooks/useOutsideClick';
 
 
 
-function Comments({ id }) {
+function Comments({ id, commentsCount }) {
     const { posts } = React.useContext(PostsContext)
     const [comments, setComments] = React.useState([]);
+    const [count, setCount] = React.useState(0)
 
     const [showComments, setShowComments] = React.useState(false);
     const [avatar, setAvatar] = React.useState(userAltAvatar)
@@ -26,12 +27,22 @@ function Comments({ id }) {
             setShowComments((prevState) => !prevState)
             setComments(findPost.comments)
             setAvatar(findPost.author.avatar)
+            setCount(findPost._count)
         }
     }
 
     return (
         <div className='relative' ref={ref}>
-            <Button className="text-grey relative" size="sm" variant='text' onClick={handleShowComments} > Comments</Button>
+            <Button className="text-grey relative"
+                size="sm"
+                variant='text'
+                onClick={handleShowComments} >
+                {commentsCount ?
+                    `${commentsCount > 1 ? `${commentsCount} comments` : `${commentsCount} comment`}`
+                    :
+                    "No comments"
+                }
+            </Button>
             {showComments &&
                 <Animate>
                     <div className='shadow-xl bg-lightGray p-4 absolute top-full flex flex-wrap gap-2 flex-col truncate w-96 z-30 '>

@@ -19,7 +19,7 @@ function UserBanner({ user }) {
         if (auth?.email === user?.email) {
             setIsAdmin(true)
         }
-    }, [])
+    })
 
 
 

@@ -74,7 +74,7 @@ function PostCard({ post }) {
             <div className='flex justify-between bg-blue-gray-50  p-2 rounded-xl items-center'>
                 <div className='flex '>
                     <Button className='text-grey' size="sm" variant='text'>50 Reactions</Button>
-                    <Comments id={post?.id} />
+                    <Comments id={post?.id} commentsCount={post._count.comments} />
 
                 </div>
 
