@@ -10,7 +10,6 @@ import { useOutsideClick } from '../../hooks/useOutsideClick';
 function Comments({ id, commentsCount }) {
     const { posts } = React.useContext(PostsContext)
     const [comments, setComments] = React.useState([]);
-    const [count, setCount] = React.useState(0)
 
     const [showComments, setShowComments] = React.useState(false);
     const [avatar, setAvatar] = React.useState(userAltAvatar)
@@ -27,7 +26,6 @@ function Comments({ id, commentsCount }) {
             setShowComments((prevState) => !prevState)
             setComments(findPost.comments)
             setAvatar(findPost.author.avatar)
-            setCount(findPost._count)
         }
     }
 

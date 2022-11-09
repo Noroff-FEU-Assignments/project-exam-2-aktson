@@ -1,4 +1,5 @@
 import React from 'react';
+import { POSTS_URL } from '../../constants/api';
 import { Button } from "@material-tailwind/react";
 import { toast } from 'react-toastify';
 import { MdDelete } from "react-icons/md";
@@ -11,7 +12,7 @@ function DeletePost({ adminPost }) {
 
     const http = useAxios();
     const id = adminPost.id;
-    const url = `api/v1/social/posts/${id}`;
+    const url = `${POSTS_URL}/${id}`;
 
 
     const handleDelete = async () => {

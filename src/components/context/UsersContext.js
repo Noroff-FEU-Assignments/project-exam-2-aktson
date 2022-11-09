@@ -1,16 +1,14 @@
 import React from 'react'
+import { GET_PROFILES_URL } from '../constants/api';
 import useAxios from '../hooks/useAxios';
-
 
 
 const UsersContext = React.createContext();
 
 export function UsersProvider({ children }) {
 
-    const url = "/api/v1/social/profiles?_following=true&_followers=true";
-
     const [users, setUsers] = React.useState([]);
-    const [updateUi, setUpdateUi] = React.useState(url)
+    const [updateUi, setUpdateUi] = React.useState(GET_PROFILES_URL)
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = React.useState(null);
 
@@ -21,7 +19,7 @@ export function UsersProvider({ children }) {
         setIsLoading(true)
 
         try {
-            const response = await http.get(url)
+            const response = await http.get(GET_PROFILES_URL)
 
             if (response) {
                 setUsers(response.data)

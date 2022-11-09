@@ -1,16 +1,14 @@
 import React from 'react'
 import useAxios from '../hooks/useAxios';
-import AuthContext from './AuthContext';
-
+import { GET_POSTS_URL } from '../constants/api';
 
 
 const PostsContext = React.createContext();
 
 export function PostsProvider({ children }) {
 
-    const url = "/api/v1/social/posts?_author=true&_comments=true&_reactions=true";
     const [posts, setPosts] = React.useState([]);
-    const [updateUi, setUpdateUi] = React.useState(url)
+    const [updateUi, setUpdateUi] = React.useState(GET_POSTS_URL)
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = React.useState(null);
 
@@ -21,7 +19,7 @@ export function PostsProvider({ children }) {
         setIsLoading(true)
 
         try {
-            const response = await http.get(url)
+            const response = await http.get(GET_POSTS_URL)
 
             if (response) {
                 setPosts(response.data)

@@ -1,4 +1,5 @@
 import React from 'react';
+import { POSTS_URL } from '../../../constants/api';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createEditSchema } from '../../../yupSchema/createEditSchema';
@@ -24,8 +25,6 @@ function CreatePost() {
     const [isSubmitting, setIsSubmitting] = React.useState(false);
     const http = useAxios();
 
-    const url = "/api/v1/social/posts";
-
     const handlePostSubmit = async (data) => {
         setIsSubmitting(true)
         setUpdateUi(true)
@@ -33,12 +32,12 @@ function CreatePost() {
         const dataCopy = { ...data, tags: tags }
 
         try {
-            const response = await http.post(url, dataCopy);
+            const response = await http.post(POSTS_URL, dataCopy);
             if (response) {
                 reset();
                 setTags([]);
                 closeCreatePostModal();
-                setUpdateUi(url)
+                setUpdateUi(POSTS_URL)
                 toast.success("Post added successfully!")
             }
 

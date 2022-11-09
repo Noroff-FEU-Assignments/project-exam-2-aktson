@@ -1,4 +1,5 @@
 import React from 'react';
+import { PROFILES_URL } from '../../../constants/api';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { editProfileSchema } from "../../../yupSchema/editProfile";
@@ -38,7 +39,7 @@ function EditProfile() {
 
 
     const http = useAxios();
-    const url = `/api/v1/social/profiles/${admin?.name}/media`;
+    const url = `${PROFILES_URL}/${admin?.name}/media`;
 
     const editedFormData = watch();
     const authCopy = { ...auth, avatar: editedFormData.avatar, banner: editedFormData.banner }

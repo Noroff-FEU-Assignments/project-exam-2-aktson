@@ -13,6 +13,7 @@ import PostsContext from "../../../context/PostsContext";
 import EditPostModal from "./EditPostModal";
 import Form from "../Form";
 import Loader from "../../loader/Loader";
+import { POSTS_URL } from "../../../constants/api";
 
 
 
@@ -71,7 +72,7 @@ function EditPost({ adminPost, setIsOpen }) {
 
         const editedFormData = watch();
         const formDataWithTags = { ...editedFormData, tags: tags }
-        const url = `/api/v1/social/posts/${adminPost.id}`
+        const url = `${POSTS_URL}/${adminPost.id}`
 
         try {
 

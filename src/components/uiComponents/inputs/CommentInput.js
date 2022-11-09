@@ -9,6 +9,7 @@ import useAxios from '../../hooks/useAxios';
 import { toast } from 'react-toastify';
 import PostsContext from '../../context/PostsContext';
 import ErrorSpan from '../ErrorSpan';
+import { POSTS_URL } from '../../constants/api';
 
 function CommentInput({ showCommentInput, id, setShowCommentInput }) {
     const { setUpdateUi } = React.useContext(PostsContext)
@@ -16,7 +17,7 @@ function CommentInput({ showCommentInput, id, setShowCommentInput }) {
     const [isSubmitting, setIsSubmitting] = React.useState(false);
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm({ resolver: yupResolver(commentsSchema) });
-    const url = `/api/v1/social/posts/${id}/comment`
+    const url = `${POSTS_URL}/${id}/comment`
 
     const http = useAxios();
 
