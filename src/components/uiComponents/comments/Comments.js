@@ -6,6 +6,7 @@ import userAltAvatar from "../../../assets/user.png";
 import { useOutsideClick } from '../../hooks/useOutsideClick';
 
 
+
 function Comments({ id }) {
     const { posts } = React.useContext(PostsContext)
     const [comments, setComments] = React.useState([]);
@@ -33,7 +34,6 @@ function Comments({ id }) {
             <Button className="text-grey relative" size="sm" variant='text' onClick={handleShowComments} > Comments</Button>
             {showComments &&
                 <Animate>
-
                     <div className='shadow-xl bg-lightGray p-4 absolute top-full flex flex-wrap gap-2 flex-col truncate w-96 z-30 '>
                         {comments?.length === 0
                             ?
@@ -41,13 +41,17 @@ function Comments({ id }) {
                             :
                             comments?.map(comment => {
                                 return (
-                                    <div key={comment.id} className="flex gap-2 items-center ">
+                                    <div
+                                        key={comment.id}
+                                        className="flex gap-2 items-center "
+                                    >
                                         <Avatar src={avatar ? avatar : userAltAvatar} alt="avatar" size="xs" variant="circular" />
                                         <div className='flex-col flex w-full rounded-xl bg-gray-100 px-2'>
                                             <p className='text-md font-semibold'>{comment.owner}</p>
                                             <p className=' w-full text-sm'>{comment.body}</p>
                                         </div>
                                     </div>
+
                                 )
                             })
                         }
