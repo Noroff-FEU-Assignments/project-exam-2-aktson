@@ -25,7 +25,7 @@ function UserBanner({ user }) {
 
     return (
         <section>
-            <div className='w-full bg-dark  p-4 relative  mt-18 sm:mt-16 '
+            <div className='w-full bg-dark  relative  mt-18 sm:mt-16 '
                 style={{
                     backgroundImage: `url(${user?.banner})`,
                     backgroundRepeat: "no-repeat",
@@ -35,12 +35,12 @@ function UserBanner({ user }) {
                 }}
             >
             </div>
-            <div className='grid grid-cols-auto md:grid-cols-3 gap-3 max-w-screen-2xl mx-auto items-center justify-items-center p-4  shadow-2xl -translate-y-14 md:-translate-y-12 lg:-translate-y-16 '>
-                <div className='flex flex-col sm:flex-row gap-2 sm:gap-6 md:col-span-2 items-center '>
+            <div className='grid grid-cols-auto md:grid-cols-3 gap-3 max-w-screen-2xl mx-auto items-center justify-items-center p-4  shadow-2xl -translate-y-14 md:-translate-y-12 lg:-translate-y-16  rounded-b-xl'>
+                <div className='flex flex-col sm:flex-row gap-2 sm:gap-6 md:col-span-2 items-center p-2'>
                     <figure className='drop-shadow-xl'>
                         <img src={user?.avatar ? user.avatar : userAltAvatar}
                             alt={user?.name}
-                            className="w-40 h-40 lg:w-52 lg:h-52 object-cover rounded-full shadow-xl  justify-items-center  " />
+                            className="w-40 h-40 lg:w-48 lg:h-48 object-cover rounded-full shadow-xl  justify-items-center  " />
                     </figure>
                     <div className='flex flex-col  items-center sm:items-start'>
                         <p className='text-3xl p-1'>{user?.name}</p>
