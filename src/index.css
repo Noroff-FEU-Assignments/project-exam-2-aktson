@@ -7,9 +7,9 @@
 /* variables */
 :root {
 	--primary: #00bcd4;
-	--secondary: #88a6e0;
-	--accent: #ffa17a;
-	--dark: #3b4861;
+	--secondary: #0c96eb;
+	--accent: #d4bd15;
+	--dark: #2c436e;
 	--light: #ececec;
 	--grey: #6b6b6b;
 	--small: 640px;
@@ -28,12 +28,9 @@ body {
 	background-color: var(--light);
 }
 
-header {
-	/* background: rgb(136, 166, 224);
-	background: linear-gradient(166deg, rgba(136, 166, 224, 1) 40%, rgba(126, 211, 224, 1) 100%); */
-}
 main {
 	flex: 1 0 auto;
+	background-color: var(--light);
 }
 
 /* loader */

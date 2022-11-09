@@ -8,6 +8,7 @@ function TagsInput({ tags, setTags }) {
 
     const { register, handleSubmit, reset } = useForm();
 
+
     const handleTagInput = (data) => {
         const { tag } = data
         if (!tag) return;
@@ -16,8 +17,8 @@ function TagsInput({ tags, setTags }) {
     }
 
     const deleteTag = (index) => {
-        setTags(tags.filter((tag, i) => i !== index))
-
+        const deletedTag = tags.filter((tag, i) => i !== index)
+        setTags(deletedTag)
     }
 
     return (

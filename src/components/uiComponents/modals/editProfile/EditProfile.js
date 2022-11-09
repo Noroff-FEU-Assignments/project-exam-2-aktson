@@ -45,7 +45,6 @@ function EditProfile() {
 
     const editedFormData = watch();
     const authCopy = { ...auth, avatar: editedFormData.avatar, banner: editedFormData.banner }
-    console.log(authCopy)
 
     const handleEditProfileSubmit = async () => {
         setIsSubmitting(true)
