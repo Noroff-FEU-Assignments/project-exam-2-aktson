@@ -16,7 +16,7 @@ import Loader from "../../loader/Loader";
 
 
 
-function EditPost({ adminPost }) {
+function EditPost({ adminPost, setIsOpen }) {
     const { openEditPostModal, closeEditPostModal } = React.useContext(ModalContext);
     const { setUpdateUi } = React.useContext(PostsContext);
 
@@ -78,6 +78,7 @@ function EditPost({ adminPost }) {
             const response = await http.put(url, formDataWithTags);
             if (response) {
                 setUpdateUi(url)
+                setIsOpen(false)
                 toast.success("Post updated!");
                 closeEditPostModal()
             }
@@ -105,7 +106,7 @@ function EditPost({ adminPost }) {
                             <MdModeEditOutline size={18} />
                         </div>
                         <IconButton className="text-grey" variant="text" size="sm" onClick={closeEditPostModal}>
-                            <MdClear size={24} />
+                            <MdClear size={24} onClick={() => setIsOpen(false)} />
                         </IconButton>
                     </div>
                     <fieldset className="flex flex-col gap-6" disabled={isSubmitting}>
