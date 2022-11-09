@@ -8,7 +8,7 @@ import { toast } from 'react-toastify'
 import PostsContext from '../context/PostsContext'
 import LoaderCard from '../uiComponents/loader/LoaderCard'
 import Loader from '../uiComponents/loader/Loader'
-import { findAllByAltText } from '@testing-library/react'
+
 
 function UserSpecific() {
 
@@ -16,15 +16,15 @@ function UserSpecific() {
     const params = useParams();
     const navigate = useNavigate();
 
+    const { username } = params;
 
     if (!params) navigate("/")
 
     const [isLoading, setIsLoading] = React.useState(false);
     const [user, setUser] = React.useState({});
 
-
     const http = useAxios();
-    const url = `/api/v1/social/profiles/${params.username}`;
+    const url = `/api/v1/social/profiles/${username}`;
 
     const userPosts = posts?.filter(post => post.author.name === user.name);
 

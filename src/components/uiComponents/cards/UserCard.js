@@ -19,9 +19,9 @@ function UserCard({ user }) {
                 <Button color='cyan' className='w-auto '>Follow</Button>
             </div>
             <div className='p-5 flex gap-4 mt-3 justify-center bg-gray-100'>
-                <p className='flex flex-col items-center w-full'><span>{user._count.posts}</span>Posts </p>
-                <p className='flex flex-col items-center w-full'><span>{user._count.following}</span>Following</p>
-                <p className='flex flex-col items-center w-full'><span>{user._count.followers}</span>Followers</p>
+                <p className='flex flex-col items-center w-full'><span>{user?._count.posts}</span>Posts </p>
+                <p className='flex flex-col items-center w-full'><span>{user?._count.following}</span>Following</p>
+                <p className='flex flex-col items-center w-full'><span>{user?._count.followers}</span>Followers</p>
             </div>
         </div>
     )
