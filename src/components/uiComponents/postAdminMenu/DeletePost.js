@@ -5,7 +5,7 @@ import { MdDelete } from "react-icons/md";
 import useAxios from '../../hooks/useAxios';
 import PostsContext from '../../context/PostsContext';
 
-function DeletePost({ adminPost, handleMenuClick }) {
+function DeletePost({ adminPost }) {
 
     const { posts, setPosts } = React.useContext(PostsContext)
 
@@ -15,7 +15,7 @@ function DeletePost({ adminPost, handleMenuClick }) {
 
 
     const handleDelete = async () => {
-        handleMenuClick()
+
         const confirm = window.confirm("Are you sure you want to delete?");
 
         if (confirm) {

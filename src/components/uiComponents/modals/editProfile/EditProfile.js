@@ -12,9 +12,6 @@ import ErrorSpan from '../../ErrorSpan';
 import useAxios from '../../../hooks/useAxios';
 import { toast } from 'react-toastify';
 import UsersContext from '../../../context/UsersContext';
-import { useParams, useNavigate } from 'react-router-dom';
-import Loader from '../../loader/Loader';
-
 
 
 function EditProfile() {

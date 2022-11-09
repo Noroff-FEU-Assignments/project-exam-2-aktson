@@ -3,10 +3,16 @@ import DeletePost from './DeletePost';
 import EditPost from '../modals/editpost/EditPost';
 import { MdMoreVert } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
+import { useOutsideClick } from '../../hooks/useOutsideClick';
 
 
 function PostMenu({ adminPost }) {
     const [isOpen, setIsOpen] = React.useState(false);
+
+    const handleClickOutside = () => {
+        setIsOpen(false)
+    };
+    const ref = useOutsideClick(handleClickOutside);
 
     const handleMenuClick = () => {
         setIsOpen((prevState) => !prevState)
@@ -14,7 +20,7 @@ function PostMenu({ adminPost }) {
     }
 
     return (
-        <div className='relative'>
+        <div className='relative' ref={ref}>
             <MdMoreVert size={22} className="cursor-pointer text-grey" onClick={handleMenuClick} />
             {isOpen &&
                 <AnimatePresence>
@@ -25,8 +31,8 @@ function PostMenu({ adminPost }) {
                         exit={{ translateY: 20 }}
                         transition={{ duration: 0.1 }}
                     >
-                        <DeletePost adminPost={adminPost} handleMenuClick={handleMenuClick} />
-                        <EditPost adminPost={adminPost} handleMenuClick={handleMenuClick} />
+                        <DeletePost adminPost={adminPost} />
+                        <EditPost adminPost={adminPost} />
                     </motion.div>
                 </AnimatePresence>
             }

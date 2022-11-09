@@ -6,7 +6,6 @@ function EmojiInput() {
 
 
     const handleEmojiClick = (event) => {
-        const id = event.target.dataset.id
 
     }
     return (

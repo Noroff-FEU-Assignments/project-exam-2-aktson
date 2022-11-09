@@ -31,12 +31,14 @@ function Home() {
 			{error &&
 				<p className="bg-red-500 p-4 text-light rounded-xl flex items-center gap-2">
 					<MdError size={28} />
-					{error}
+					Unknown error occured
 				</p>
 			}
+
 			{posts && posts?.map(post => {
 				return <PostCard post={post} key={post.id} />
 			})}
+
 		</section>
 
 	)

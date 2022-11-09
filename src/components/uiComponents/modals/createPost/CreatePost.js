@@ -6,19 +6,16 @@ import { Input, Button, Textarea, IconButton } from "@material-tailwind/react";
 import { MdClear, MdBorderColor, MdCached } from "react-icons/md"
 import { toast } from 'react-toastify';
 import ErrorSpan from '../../ErrorSpan';
-import TagsInput from '../../TagsInput';
 import useAxios from '../../../hooks/useAxios';
 import PostsContext from '../../../context/PostsContext';
 import ModalContext from '../../../context/ModalContext';
 import CreatePostModal from './CreatePostModal';
 import Form from '../Form';
-import AuthContext from '../../../context/AuthContext';
+import TagsInput from '../../inputs/TagsInput';
 
 
 function CreatePost() {
     const { closeCreatePostModal } = React.useContext(ModalContext);
-    const { auth } = React.useContext(AuthContext)
-
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(createEditSchema) });
     const { setUpdateUi } = React.useContext(PostsContext)

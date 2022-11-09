@@ -7,7 +7,7 @@ import { MdClear, MdModeEditOutline, MdCreate, MdCached } from "react-icons/md"
 import { toast } from "react-toastify";
 import ModalContext from "../../../context/ModalContext";
 import ErrorSpan from "../../ErrorSpan";
-import TagsInput from "../../TagsInput";
+import TagsInput from "../../inputs/TagsInput";
 import useAxios from "../../../hooks/useAxios";
 import PostsContext from "../../../context/PostsContext";
 import EditPostModal from "./EditPostModal";
@@ -16,7 +16,7 @@ import Loader from "../../loader/Loader";
 
 
 
-function EditPost({ adminPost, handleMenuClick }) {
+function EditPost({ adminPost }) {
     const { openEditPostModal, closeEditPostModal } = React.useContext(ModalContext);
     const { setUpdateUi } = React.useContext(PostsContext);
 
@@ -80,7 +80,6 @@ function EditPost({ adminPost, handleMenuClick }) {
                 setUpdateUi(url)
                 toast.success("Post updated!");
                 closeEditPostModal()
-                handleMenuClick()
             }
 
         } catch (error) {

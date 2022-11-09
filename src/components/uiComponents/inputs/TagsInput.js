@@ -36,7 +36,7 @@ function TagsInput({ tags, setTags }) {
                 <AnimatePresence>
                     {tags.map((tag, index) => {
                         return (
-                            <motion.p className='bg-accent p-1 rounded-lg flex gap-2 items-center cursor-pointer text-light'
+                            <motion.p className='bg-secondary p-1 rounded-lg flex gap-2 items-center cursor-pointer text-light'
                                 key={index + 1}
                                 initial={{ opacity: 0, translateY: -20 }}
                                 animate={{ opacity: 1, translateY: 0 }}

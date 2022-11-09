@@ -1,4 +1,5 @@
 import React from 'react'
+import { useOutsideClick } from '../../hooks/useOutsideClick';
 import { Link } from 'react-router-dom';
 import { Avatar, Button } from "@material-tailwind/react";
 import { MdOutlineModeComment } from "react-icons/md";
@@ -8,13 +9,20 @@ import image from "../../../assets/user.png";
 import PostMenu from '../postAdminMenu/PostMenu';
 import PostsContext from '../../context/PostsContext';
 import AuthContext from '../../context/AuthContext';
+import Comments from '../comments/Comments';
 
 
 function PostCard({ post }) {
     const { auth } = React.useContext(AuthContext);
     const { posts } = React.useContext(PostsContext)
 
-    const [showInput, setShowInput] = React.useState(false);
+    const [showCommentInput, setShowCommentInput] = React.useState(false);
+
+    const handleClickOutside = () => {
+        setShowCommentInput(false)
+    };
+    const ref = useOutsideClick(handleClickOutside);
+
 
     const adminPosts = posts?.filter(post => post?.author.email === auth?.email)
 
@@ -37,7 +45,9 @@ function PostCard({ post }) {
                     </Link>
                 </div>
                 {findAdminPosts &&
-                    findAdminPosts.map(adminPost => { return <PostMenu key={adminPost.id} adminPost={adminPost} /> })}
+                    findAdminPosts.map(adminPost => {
+                        return <PostMenu key={adminPost.id} adminPost={adminPost} />
+                    })}
             </div>
             <div>
                 <h3 className='font-bold text-xl'>{title}</h3>
@@ -64,18 +74,23 @@ function PostCard({ post }) {
             <div className='flex justify-between bg-blue-gray-50  p-2 rounded-xl items-center'>
                 <div className='flex '>
                     <Button className='text-grey' size="sm" variant='text'>50 Reactions</Button>
-                    <Button className="text-grey" size="sm" variant='text'>50 Comments</Button>
+                    <Comments id={post?.id} />
+
                 </div>
 
             </div >
-            <div className='flex justify-end gap-4 my-2 cursor-pointer mb-4'>
+            <div className='flex justify-end gap-4 my-2 cursor-pointer mb-4 relative' ref={ref}>
                 <EmojiInput />
-                <Button className="bg-primary flex items-center gap-2 w-full justify-center" size="sm" onClick={() => setShowInput((prevState) => !prevState)}>
+                <Button className="bg-primary flex items-center gap-2 w-full justify-center"
+                    size="sm"
+                    onClick={() => setShowCommentInput((prevState) => !prevState)}
+                >
                     <MdOutlineModeComment size={22} />
                     Comment
                 </Button>
+                <CommentInput showCommentInput={showCommentInput} id={post.id} setShowCommentInput={setShowCommentInput} />
             </div>
-            <CommentInput showInput={showInput} />
+
         </div >
     )
 }
