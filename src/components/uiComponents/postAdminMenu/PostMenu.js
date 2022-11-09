@@ -18,7 +18,7 @@ function PostMenu({ adminPost }) {
             {isOpen &&
                 <AnimatePresence>
                     <motion.div
-                        className='flex flex-col gap-1 shadow-xl rounded-xl p-2 bg-light absolute right-3'
+                        className='flex flex-col gap-1 shadow-xl rounded-xl p-2 bg-lightGray absolute right-3'
                         initial={{ translateY: 20, }}
                         animate={{ translateY: 0, }}
                         exit={{ translateY: 20 }}
