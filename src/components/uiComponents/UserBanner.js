@@ -21,8 +21,6 @@ function UserBanner({ user }) {
         }
     })
 
-
-
     return (
         <>
             {user &&

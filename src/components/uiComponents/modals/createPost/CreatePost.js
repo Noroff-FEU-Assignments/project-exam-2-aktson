@@ -19,7 +19,7 @@ function CreatePost() {
     const { closeCreatePostModal } = React.useContext(ModalContext);
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(createEditSchema) });
-    const { setUpdateUi } = React.useContext(PostsContext)
+    const { setUpdateUi, setPosts, posts } = React.useContext(PostsContext)
 
     const [tags, setTags] = React.useState([]);
     const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -36,6 +36,7 @@ function CreatePost() {
             if (response) {
                 reset();
                 setTags([]);
+                // setPosts([...posts, response.data])
                 closeCreatePostModal();
                 setUpdateUi(POSTS_URL)
                 toast.success("Post added successfully!")

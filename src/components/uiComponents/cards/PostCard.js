@@ -7,14 +7,14 @@ import CommentInput from '../inputs/CommentInput';
 import EmojiInput from '../inputs/EmojiInput';
 import image from "../../../assets/user.png";
 import PostMenu from '../postAdminMenu/PostMenu';
-import PostsContext from '../../context/PostsContext';
 import AuthContext from '../../context/AuthContext';
 import Comments from '../comments/Comments';
 
 
 function PostCard({ post }) {
     const { auth } = React.useContext(AuthContext);
-    const { posts } = React.useContext(PostsContext)
+
+    const [adminPost, setAdminPost] = React.useState(false)
 
     const [showCommentInput, setShowCommentInput] = React.useState(false);
 
@@ -24,19 +24,26 @@ function PostCard({ post }) {
     const ref = useOutsideClick(handleClickOutside);
 
 
-    const adminPosts = posts?.filter(post => post?.author.email === auth?.email)
+    React.useEffect(() => {
+
+        if (auth.email === post.author.email) {
+            setAdminPost(true)
+        }
+
+    }, [post])
+
+
 
     const { body, title, media, tags, updated, author } = post;
 
     const updatedPost = new Date(updated).toLocaleDateString('da-DK', { month: 'long', day: 'numeric', year: 'numeric', hour: '2-digit', hour12: false, minute: '2-digit' })
 
-    const findAdminPosts = adminPosts?.filter(adminPost => adminPost.id === post.id)
 
     return (
         <div className='card grid  grid-rows-auto gap-3 text-grey mb-4'>
             <div className='flex items-center justify-between gap-2 '>
                 <div>
-                    <Link to={`/user-specific/${post.author.name}`} className='flex items-center gap-2'>
+                    <Link to={`/user-specific/${author.name}`} className='flex items-center gap-2'>
                         <Avatar src={author.avatar ? author.avatar : image} alt="" variant="circular" />
                         <div className='flex flex-col '>
                             <p className='text-start'>{author.name}</p>
@@ -44,10 +51,7 @@ function PostCard({ post }) {
                         </div>
                     </Link>
                 </div>
-                {findAdminPosts &&
-                    findAdminPosts.map(adminPost => {
-                        return <PostMenu key={adminPost.id} adminPost={adminPost} />
-                    })}
+                {adminPost && <PostMenu key={post.id} adminPost={post} />}
             </div>
             <div>
                 <h3 className='font-bold text-xl'>{title}</h3>

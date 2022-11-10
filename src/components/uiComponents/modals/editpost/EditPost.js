@@ -19,7 +19,7 @@ import { POSTS_URL } from "../../../constants/api";
 
 function EditPost({ adminPost, setIsOpen }) {
     const { openEditPostModal, closeEditPostModal } = React.useContext(ModalContext);
-    const { setUpdateUi } = React.useContext(PostsContext);
+    const { setUpdateUi, setPosts, posts } = React.useContext(PostsContext);
 
     const [tags, setTags] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(false);
@@ -79,6 +79,7 @@ function EditPost({ adminPost, setIsOpen }) {
             const response = await http.put(url, formDataWithTags);
             if (response) {
                 setUpdateUi(url)
+                // setPosts([...posts, response.data])
                 setIsOpen(false)
                 toast.success("Post updated!");
                 closeEditPostModal()
