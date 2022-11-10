@@ -36,13 +36,12 @@ export function PostsProvider({ children }) {
 
 
     React.useEffect(() => {
-        let ignore = false;
+        let controller = new AbortController();
 
         fetchPosts();
 
-        return () => {
-            ignore = true;
-        };
+        return () => controller?.abort();
+
 
     }, [updateUi])
 
