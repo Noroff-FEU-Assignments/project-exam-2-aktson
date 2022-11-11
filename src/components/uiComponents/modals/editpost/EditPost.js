@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { POSTS_URL } from "../../../constants/api";
+import useAxios from "../../../hooks/useAxios";
 import { useForm } from "react-hook-form";
 import { createEditSchema } from "../../../yupSchema/createEditSchema"
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,15 +9,14 @@ import { Button, Input, Textarea, IconButton } from "@material-tailwind/react";
 import { MdClear, MdModeEditOutline, MdCreate, MdCached } from "react-icons/md"
 import { toast } from "react-toastify";
 import ModalContext from "../../../context/ModalContext";
+import AdminContext from "../../../context/AdminContext";
+import PostsContext from "../../../context/PostsContext";
 import ErrorSpan from "../../ErrorSpan";
 import TagsInput from "../../inputs/TagsInput";
-import useAxios from "../../../hooks/useAxios";
-import PostsContext from "../../../context/PostsContext";
 import EditPostModal from "./EditPostModal";
 import Form from "../Form";
 import Loader from "../../loader/Loader";
-import { POSTS_URL } from "../../../constants/api";
-import AdminContext from "../../../context/AdminContext";
+import Alert from "../../Alert";
 
 
 
@@ -26,6 +27,7 @@ function EditPost({ adminPost, setIsOpen }) {
 
     const [tags, setTags] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(false);
+    const [error, setError] = React.useState(null)
     const [isSubmitting, setIsSubmitting] = React.useState(false);
 
     const http = useAxios();
@@ -48,6 +50,7 @@ function EditPost({ adminPost, setIsOpen }) {
         } catch (error) {
             setIsLoading(false)
             console.log(error)
+            setError("An error has occured fetching post")
         }
     }
 
@@ -103,6 +106,7 @@ function EditPost({ adminPost, setIsOpen }) {
                 Edit
             </Button>
             {isLoading && <Loader />}
+            {error && <Alert message={error} />}
             <EditPostModal>
                 <Form>
                     <div className="flex text-primary mb-4  justify-between">
