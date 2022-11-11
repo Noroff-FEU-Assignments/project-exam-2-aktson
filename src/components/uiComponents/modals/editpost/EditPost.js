@@ -23,7 +23,7 @@ import Alert from "../../Alert";
 function EditPost({ adminPost, setIsOpen }) {
     const { openEditPostModal, closeEditPostModal } = React.useContext(ModalContext);
     const { setUpdateUi } = React.useContext(PostsContext);
-    const { setUpdateAdminUi } = React.useContext(AdminContext);
+    const { setUpdateAdminPosts } = React.useContext(AdminContext);
 
     const [tags, setTags] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(false);
@@ -85,7 +85,7 @@ function EditPost({ adminPost, setIsOpen }) {
             const response = await http.put(url, formDataWithTags);
             if (response) {
                 setUpdateUi(response.data)
-                setUpdateAdminUi(response.data)
+                setUpdateAdminPosts(response.data)
                 setIsOpen(false)
                 toast.success("Post updated!");
                 closeEditPostModal()

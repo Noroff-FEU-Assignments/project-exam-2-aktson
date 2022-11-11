@@ -18,8 +18,8 @@ import AdminContext from '../../../context/AdminContext';
 
 function CreatePost() {
     const { closeCreatePostModal } = React.useContext(ModalContext);
-    const { adminPosts, setAdminPosts, setUpdateAdminUi, setAdmin, admin } = React.useContext(AdminContext)
-    const { setPosts, posts, setUpdateUi } = React.useContext(PostsContext)
+    const { setUpdateAdminUi, setUpdateAdminPosts } = React.useContext(AdminContext)
+    const { setUpdateUi } = React.useContext(PostsContext)
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(createEditSchema) });
 
@@ -32,16 +32,15 @@ function CreatePost() {
 
         const dataCopy = { ...data, tags: tags }
 
-
         try {
             const response = await http.post(POSTS_URL, dataCopy);
             if (response) {
                 reset();
                 setTags([]);
-                setPosts([...posts, response.data])
                 closeCreatePostModal();
                 setUpdateUi(response.data.id)
                 setUpdateAdminUi(response.data.id)
+                setUpdateAdminPosts(response.data.id)
                 toast.success("Post added successfully!")
             }
 

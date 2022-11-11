@@ -16,7 +16,7 @@ import { POSTS_URL } from '../../constants/api';
 function CommentInput({ showCommentInput, id, setShowCommentInput }) {
 
     const { setUpdateUi } = React.useContext(PostsContext)
-    const { setUpdateAdminUi } = React.useContext(AdminContext)
+    const { setUpdateAdminPosts } = React.useContext(AdminContext)
 
     const [isSubmitting, setIsSubmitting] = React.useState(false);
 
@@ -34,7 +34,7 @@ function CommentInput({ showCommentInput, id, setShowCommentInput }) {
             if (response) {
                 reset({ comments: "" })
                 setUpdateUi(response.data.id)
-                setUpdateAdminUi(response.data.id)
+                setUpdateAdminPosts(response.data.id)
                 toast.success("Comment posted")
                 setShowCommentInput(false)
             }

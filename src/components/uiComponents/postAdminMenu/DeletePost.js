@@ -11,7 +11,7 @@ import AdminContext from '../../context/AdminContext';
 function DeletePost({ id }) {
 
     const { posts, setPosts } = React.useContext(PostsContext)
-    const { setUpdateAdminUi } = React.useContext(AdminContext)
+    const { setUpdateAdminUi, setUpdateAdminPosts } = React.useContext(AdminContext)
 
     const http = useAxios();
     const url = `${POSTS_URL}/${id}`;
@@ -28,6 +28,7 @@ function DeletePost({ id }) {
                     const updatedPosts = posts.filter(post => +post.id !== +id)
                     setPosts(updatedPosts)
                     setUpdateAdminUi(url)
+                    setUpdateAdminPosts(url)
                     toast.success("Successfully deleted!")
                 }
 

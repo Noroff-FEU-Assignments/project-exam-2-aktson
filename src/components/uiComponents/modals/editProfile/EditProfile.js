@@ -20,7 +20,7 @@ function EditProfile({ adminUser }) {
 
     const { openEditProfileModal, closeEditProfileModal } = React.useContext(ModalContext);
     const { auth, setAuth } = React.useContext(AuthContext);
-    const { admin, setAdmin } = React.useContext(AdminContext)
+    const { setUpdateAdminUi } = React.useContext(AdminContext)
 
     const [isSubmitting, setIsSubmitting] = React.useState(false);
 
@@ -49,7 +49,7 @@ function EditProfile({ adminUser }) {
 
             if (response) {
                 closeEditProfileModal();
-                setAdmin({ ...admin, avatar: response.data.avatar, banner: response.data.banner })
+                setUpdateAdminUi(response.data)
                 setAuth(authCopy)
                 toast.success("Profile updated!")
             }
