@@ -9,12 +9,14 @@ import Animate from '../Animate';
 import useAxios from '../../hooks/useAxios';
 import { toast } from 'react-toastify';
 import PostsContext from '../../context/PostsContext';
+import AdminContext from "../../context/AdminContext"
 import ErrorSpan from '../ErrorSpan';
 import { POSTS_URL } from '../../constants/api';
 
 function CommentInput({ showCommentInput, id, setShowCommentInput }) {
 
     const { setUpdateUi } = React.useContext(PostsContext)
+    const { setUpdateAdminUi } = React.useContext(AdminContext)
 
     const [isSubmitting, setIsSubmitting] = React.useState(false);
 
@@ -31,7 +33,8 @@ function CommentInput({ showCommentInput, id, setShowCommentInput }) {
             const response = await http.post(url, formadata);
             if (response) {
                 reset({ comments: "" })
-                setUpdateUi(url)
+                setUpdateUi(response.data.id)
+                setUpdateAdminUi(response.data.id)
                 toast.success("Comment posted")
                 setShowCommentInput(false)
             }

@@ -14,7 +14,6 @@ import Comments from '../comments/Comments';
 import AdminContext from '../../context/AdminContext';
 
 
-
 function PostCard({ post }) {
 
 
@@ -29,8 +28,6 @@ function PostCard({ post }) {
         setShowCommentInput(false)
     };
     const ref = useOutsideClick(handleClickOutside);
-
-
 
 
     const { body, title, media, tags, updated, author } = post;

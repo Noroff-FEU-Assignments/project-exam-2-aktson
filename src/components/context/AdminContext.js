@@ -71,7 +71,9 @@ export function AdminProvider({ children }) {
 
 
     return (
-        <AdminContext.Provider value={{ adminPosts, setAdminPosts, admin, setAdmin, isLoading, error, setUpdateAdminUi }}>{children}</AdminContext.Provider>
+        <AdminContext.Provider value={{ adminPosts, setAdminPosts, admin, setAdmin, isLoading, error, setUpdateAdminUi }}>
+            {children}
+        </AdminContext.Provider>
     )
 }
 
