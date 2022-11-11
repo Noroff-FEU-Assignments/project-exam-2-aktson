@@ -1,7 +1,6 @@
 import React from "react";
 import PostsContext from "../context/PostsContext";
 import PostCard from "../uiComponents/cards/PostCard";
-import { MdError } from "react-icons/md"
 import LoaderCard from "../uiComponents/loader/LoaderCard";
 import Alert from "../uiComponents/Alert";
 
@@ -40,3 +39,4 @@ function Home() {
 }
 
 export default Home;
+
