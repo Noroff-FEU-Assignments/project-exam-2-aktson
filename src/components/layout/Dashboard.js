@@ -37,8 +37,8 @@ function Dashboard({ isNavOpen }) {
                         animate={{ translateX: 0, opacity: 1 }}
                         exit={{ translateX: -100, opacity: 0 }}
                         transition={{ type: "tween", }} >
-                        <li className={pathname === "/" ? " active" : ""} >
-                            <Link to="/" className='nav-link'> <MdHome className='icon' />Home</Link>
+                        <li className={pathname === "/home" ? " active" : ""} >
+                            <Link to="/home" className='nav-link'> <MdHome className='icon' />Home</Link>
                         </li>
                         <li className={pathname === "/browse-people" ? " active" : ""}>
                             <Link to="/browse-people" className='nav-link'><MdGroups className='icon' />Browse People</Link>
@@ -49,7 +49,7 @@ function Dashboard({ isNavOpen }) {
                         <li onClick={openCreatePostModal}>
                             <p className='nav-link p-0 cursor-pointer' variant='text' ><MdCreate className='icon' />Create Post</p>
                         </li>
-                        <li className={pathname === "/sign-in" ? " active" : ""}>
+                        <li>
                             {auth && <Button size="md" className='flex gap-2 bg-primary ' onClick={handleLogout}>  <MdLogout size={18} />Log Out</Button>}
                         </li>
                     </motion.ul>

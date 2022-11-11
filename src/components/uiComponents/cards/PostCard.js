@@ -12,14 +12,13 @@ import PostMenu from '../postAdminMenu/PostMenu';
 import AuthContext from '../../context/AuthContext';
 import Comments from '../comments/Comments';
 import AdminContext from '../../context/AdminContext';
+import { set } from 'react-hook-form';
 
 
 function PostCard({ post }) {
 
 
     const { auth } = React.useContext(AuthContext);
-
-    const { adminPosts } = React.useContext(AdminContext)
     const [adminMenu, setAdminMenu] = React.useState(false)
 
     const [showCommentInput, setShowCommentInput] = React.useState(false);
@@ -28,6 +27,13 @@ function PostCard({ post }) {
         setShowCommentInput(false)
     };
     const ref = useOutsideClick(handleClickOutside);
+
+    React.useEffect(() => {
+        if (auth.email === post.author.email) {
+            setAdminMenu(true)
+        }
+    }, [])
+
 
 
     const { body, title, media, tags, updated, author } = post;
@@ -46,7 +52,7 @@ function PostCard({ post }) {
                         </div>
                     </Link>
                 </div>
-                {adminPosts && <PostMenu key={post.id} adminPost={post} />}
+                {adminMenu && <PostMenu adminPost={post} />}
             </div>
             <div>
                 <h3 className='font-bold text-xl'>{title}</h3>

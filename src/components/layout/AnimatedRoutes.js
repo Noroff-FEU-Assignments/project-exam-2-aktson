@@ -23,13 +23,13 @@ function AnimatedRoute() {
         <AnimatePresence location={location} key={location.key}>
             <Routes>
                 <Route element={<AuthenticatedRoute />}>
-                    <Route path='/' element={<Layout><Home /></Layout>} />
+                    <Route path='/home' element={<Layout><Home /></Layout>} />
                     <Route path='/browse-people' element={<Layout><BrowsePeople /></Layout>} />
                     <Route path='/my-profile' element={<Layout><MyProfile /></Layout>} />
                     <Route path='/user-specific/:username' element={<Layout><UserSpecific /></Layout>} />
                 </Route>
                 <Route path='/sign-in' element={<SignIn />} />
-                <Route path='/sign-up' element={<SignUp />} />
+                <Route path='/' element={<SignUp />} />
             </Routes>
         </AnimatePresence>
     </>
