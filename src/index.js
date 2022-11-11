@@ -8,6 +8,11 @@ import { AuthProvider } from './components/context/AuthContext';
 import { PostsProvider } from './components/context/PostsContext';
 import { ModalProvider } from './components/context/ModalContext';
 import { UsersProvider } from './components/context/UsersContext';
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en.json'
+import { AdminProvider } from './components/context/AdminContext';
+
+TimeAgo.addDefaultLocale(en)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -17,9 +22,11 @@ root.render(
       <AuthProvider>
         <PostsProvider>
           <UsersProvider>
-            <ModalProvider>
-              <App />
-            </ModalProvider>
+            <AdminProvider>
+              <ModalProvider>
+                <App />
+              </ModalProvider>
+            </AdminProvider>
           </UsersProvider>
         </PostsProvider>
       </AuthProvider>

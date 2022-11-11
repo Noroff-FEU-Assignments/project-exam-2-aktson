@@ -1,17 +1,19 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { POSTS_URL } from '../../constants/api';
 import { Button } from "@material-tailwind/react";
 import { toast } from 'react-toastify';
 import { MdDelete } from "react-icons/md";
 import useAxios from '../../hooks/useAxios';
 import PostsContext from '../../context/PostsContext';
+import AdminContext from '../../context/AdminContext';
 
-function DeletePost({ adminPost }) {
+function DeletePost({ id }) {
 
     const { posts, setPosts } = React.useContext(PostsContext)
+    const { setUpdateAdminUi } = React.useContext(AdminContext)
 
     const http = useAxios();
-    const id = adminPost.id;
     const url = `${POSTS_URL}/${id}`;
 
 
@@ -25,6 +27,7 @@ function DeletePost({ adminPost }) {
                 if (response) {
                     const updatedPosts = posts.filter(post => +post.id !== +id)
                     setPosts(updatedPosts)
+                    setUpdateAdminUi(url)
                     toast.success("Successfully deleted!")
                 }
 
@@ -45,3 +48,8 @@ function DeletePost({ adminPost }) {
 }
 
 export default DeletePost
+
+
+DeletePost.propTypes = {
+    id: PropTypes.number.isRequired
+}

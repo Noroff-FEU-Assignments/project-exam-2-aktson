@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from "prop-types";
 import { MdOutlineError } from "react-icons/md"
 
 function ErrorSpan({ message }) {
@@ -11,3 +12,8 @@ function ErrorSpan({ message }) {
 }
 
 export default ErrorSpan
+
+
+ErrorSpan.propTypes = {
+    message: PropTypes.string
+}

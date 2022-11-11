@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from "prop-types";
 import useAxios from '../hooks/useAxios';
 import { GET_POSTS_URL } from '../constants/api';
 
@@ -12,36 +13,30 @@ export function PostsProvider({ children }) {
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = React.useState(null);
 
-
     const http = useAxios();
 
-    const fetchPosts = async () => {
-        setIsLoading(true)
-
-        try {
-            const response = await http.get(GET_POSTS_URL)
-
-            if (response) {
-                setPosts(response.data)
-            }
-
-        } catch (error) {
-            console.log(error)
-            setError(error)
-
-        } finally {
-            setIsLoading(false)
-        }
-    }
-
-
     React.useEffect(() => {
-        let controller = new AbortController();
+
+        const fetchPosts = async () => {
+            setIsLoading(true)
+
+            try {
+                const response = await http.get(GET_POSTS_URL)
+
+                if (response) {
+                    setPosts(response.data)
+                }
+
+            } catch (error) {
+                console.log(error)
+                setError(error)
+
+            } finally {
+                setIsLoading(false)
+            }
+        }
 
         fetchPosts();
-
-        return () => controller?.abort();
-
 
     }, [updateUi])
 
@@ -51,3 +46,7 @@ export function PostsProvider({ children }) {
 }
 
 export default PostsContext
+
+PostsContext.propTypes = {
+    children: PropTypes.node.isRequired
+}

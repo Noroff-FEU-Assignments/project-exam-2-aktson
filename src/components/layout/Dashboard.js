@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MdHome, MdGroups, MdAccountCircle, MdLogout, MdCreate } from "react-icons/md";
 import { Button } from '@material-tailwind/react';
@@ -61,3 +62,7 @@ function Dashboard({ isNavOpen }) {
 }
 
 export default Dashboard
+
+Dashboard.propTypes = {
+    isNavOpen: PropTypes.bool.isRequired
+}

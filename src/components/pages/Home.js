@@ -22,7 +22,7 @@ function Home() {
 		)
 	}
 	if (error) {
-		return error;
+		return error.toString();
 	}
 
 	return (

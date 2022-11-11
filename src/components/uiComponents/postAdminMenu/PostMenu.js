@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import DeletePost from './DeletePost';
 import EditPost from '../modals/editpost/EditPost';
 import { MdMoreVert } from "react-icons/md";
@@ -24,7 +25,7 @@ function PostMenu({ adminPost }) {
                         exit={{ translateY: 20 }}
                         transition={{ duration: 0.1 }}
                     >
-                        <DeletePost adminPost={adminPost} />
+                        <DeletePost id={adminPost.id} />
                         <EditPost adminPost={adminPost} setIsOpen={setIsOpen} />
                     </motion.div>
                 </AnimatePresence>
@@ -34,3 +35,8 @@ function PostMenu({ adminPost }) {
 }
 
 export default PostMenu;
+
+
+PostMenu.propTypes = {
+    adminPost: PropTypes.object.isRequired
+}

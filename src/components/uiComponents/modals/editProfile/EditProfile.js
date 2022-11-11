@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { PROFILES_URL } from '../../../constants/api';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { editProfileSchema } from "../../../yupSchema/editProfile";
+import { editProfileSchema } from "../../../yupSchema/editProfileSchema";
 import { Button, IconButton, Input } from "@material-tailwind/react";
 import { MdBorderColor, MdClear, MdImage, MdCached } from "react-icons/md"
 import ModalContext from '../../../context/ModalContext';
@@ -12,34 +13,30 @@ import Form from '../Form';
 import ErrorSpan from '../../ErrorSpan';
 import useAxios from '../../../hooks/useAxios';
 import { toast } from 'react-toastify';
-import UsersContext from '../../../context/UsersContext';
+import AdminContext from '../../../context/AdminContext';
 
 
-function EditProfile() {
+function EditProfile({ adminUser }) {
 
     const { openEditProfileModal, closeEditProfileModal } = React.useContext(ModalContext);
     const { auth, setAuth } = React.useContext(AuthContext);
-    const { setUpdateUi, users } = React.useContext(UsersContext)
+    const { admin, setAdmin } = React.useContext(AdminContext)
 
     const [isSubmitting, setIsSubmitting] = React.useState(false);
-
-    const admin = users.find(user => user.name === auth.name);
-
 
     // react hook form and yup schema
     const { handleSubmit, register, formState: { errors }, watch } =
         useForm({
             resolver: yupResolver(editProfileSchema),
             defaultValues: {
-                banner: admin?.banner,
-                avatar: admin?.avatar,
+                banner: adminUser?.banner,
+                avatar: adminUser?.avatar,
             }
-
         });
 
 
     const http = useAxios();
-    const url = `${PROFILES_URL}/${admin?.name}/media`;
+    const url = `${PROFILES_URL}/${adminUser?.name}/media`;
 
     const editedFormData = watch();
     const authCopy = { ...auth, avatar: editedFormData.avatar, banner: editedFormData.banner }
@@ -47,24 +44,23 @@ function EditProfile() {
     const handleEditProfileSubmit = async () => {
         setIsSubmitting(true)
 
-
         try {
             const response = await http.put(url, editedFormData);
 
             if (response) {
                 closeEditProfileModal();
-                setUpdateUi(url)
-                toast.success("Profile updated!")
+                setAdmin({ ...admin, avatar: response.data.avatar, banner: response.data.banner })
                 setAuth(authCopy)
+                toast.success("Profile updated!")
             }
 
         } catch (error) {
             console.log(error)
             toast.error("Could not update profile")
+
         } finally {
             setIsSubmitting(false)
         }
-
     }
 
     return (
@@ -119,3 +115,7 @@ function EditProfile() {
 }
 
 export default EditProfile
+
+EditProfile.propTypes = {
+    adminUser: PropTypes.object.isRequired
+}

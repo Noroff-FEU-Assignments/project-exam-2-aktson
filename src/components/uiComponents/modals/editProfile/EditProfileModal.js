@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from "prop-types"
 import ReactDom from "react-dom";
 import ModalContext from "../../../context/ModalContext";
 
@@ -23,3 +24,7 @@ function EditProfileModal({ children }) {
 }
 
 export default EditProfileModal;
+
+EditProfileModal.propTypes = {
+    children: PropTypes.node.isRequired
+}

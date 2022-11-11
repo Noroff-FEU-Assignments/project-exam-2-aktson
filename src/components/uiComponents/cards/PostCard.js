@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from "prop-types"
+import ReactTimeAgo from 'react-time-ago'
 import { useOutsideClick } from '../../hooks/useOutsideClick';
 import { Link } from 'react-router-dom';
 import { Avatar, Button } from "@material-tailwind/react";
@@ -9,12 +11,17 @@ import image from "../../../assets/user.png";
 import PostMenu from '../postAdminMenu/PostMenu';
 import AuthContext from '../../context/AuthContext';
 import Comments from '../comments/Comments';
+import AdminContext from '../../context/AdminContext';
+
 
 
 function PostCard({ post }) {
+
+
     const { auth } = React.useContext(AuthContext);
 
-    const [adminPost, setAdminPost] = React.useState(false)
+    const { adminPosts } = React.useContext(AdminContext)
+    const [adminMenu, setAdminMenu] = React.useState(false)
 
     const [showCommentInput, setShowCommentInput] = React.useState(false);
 
@@ -24,34 +31,25 @@ function PostCard({ post }) {
     const ref = useOutsideClick(handleClickOutside);
 
 
-    React.useEffect(() => {
-
-        if (auth.email === post.author.email) {
-            setAdminPost(true)
-        }
-
-    }, [post])
-
 
 
     const { body, title, media, tags, updated, author } = post;
 
-    const updatedPost = new Date(updated).toLocaleDateString('da-DK', { month: 'long', day: 'numeric', year: 'numeric', hour: '2-digit', hour12: false, minute: '2-digit' })
-
+    const date = new Date(updated)
 
     return (
         <div className='card grid  grid-rows-auto gap-3 text-grey mb-4'>
             <div className='flex items-center justify-between gap-2 '>
                 <div>
-                    <Link to={`/user-specific/${author.name}`} className='flex items-center gap-2'>
-                        <Avatar src={author.avatar ? author.avatar : image} alt="" variant="circular" />
+                    <Link to={`/user-specific/${author?.name}`} className='flex items-center gap-2'>
+                        <Avatar src={author?.avatar ? author.avatar : image} alt="" variant="circular" />
                         <div className='flex flex-col '>
-                            <p className='text-start'>{author.name}</p>
-                            <p className='text-xs'>{updatedPost}</p>
+                            <p className='text-start'>{author?.name}</p>
+                            <ReactTimeAgo date={date} locale="en-US" className='text-xs' />
                         </div>
                     </Link>
                 </div>
-                {adminPost && <PostMenu key={post.id} adminPost={post} />}
+                {adminPosts && <PostMenu key={post.id} adminPost={post} />}
             </div>
             <div>
                 <h3 className='font-bold text-xl'>{title}</h3>
@@ -99,4 +97,8 @@ function PostCard({ post }) {
     )
 }
 
-export default PostCard
+export default PostCard;
+
+PostCard.propTypes = {
+    post: PropTypes.object.isRequired
+}

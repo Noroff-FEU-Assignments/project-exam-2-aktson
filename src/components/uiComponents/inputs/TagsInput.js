@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { Input } from "@material-tailwind/react";
 import { MdAddBox, MdCancel } from "react-icons/md"
 import { useForm } from "react-hook-form";
@@ -54,3 +55,9 @@ function TagsInput({ tags, setTags }) {
 }
 
 export default TagsInput
+
+
+TagsInput.propTypes = {
+    tags: PropTypes.array,
+    setTags: PropTypes.func
+}

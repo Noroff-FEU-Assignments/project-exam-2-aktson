@@ -11,8 +11,8 @@ function App() {
 
     return (
         <>
-            <CreatePost />
             <Router>
+                <CreatePost />
                 <AnimatedRoute />
             </Router>
         </>

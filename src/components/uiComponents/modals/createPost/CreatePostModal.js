@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from "prop-types";
 import ReactDom from "react-dom";
 import ModalContext from "../../../context/ModalContext";
 
@@ -26,3 +27,7 @@ function CreatePostModal({ children }) {
 }
 
 export default CreatePostModal;
+
+CreatePostModal.propTypes = {
+    children: PropTypes.node.isRequired
+}

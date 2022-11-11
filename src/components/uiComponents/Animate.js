@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from "prop-types"
 import { AnimatePresence, motion } from 'framer-motion'
 
 function Animate({ children }) {
@@ -17,3 +18,7 @@ function Animate({ children }) {
 }
 
 export default Animate
+
+Animate.propTypes = {
+    children: PropTypes.node.isRequired
+}

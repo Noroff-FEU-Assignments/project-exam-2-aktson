@@ -1,5 +1,4 @@
 import React from 'react'
-import Container from '../uiComponents/Container'
 import UsersContext from '../context/UsersContext'
 import UserCard from '../uiComponents/cards/UserCard'
 

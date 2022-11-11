@@ -1,5 +1,6 @@
-import { Avatar, Button } from '@material-tailwind/react';
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Avatar, Button } from '@material-tailwind/react';
 import { Link } from "react-router-dom";
 import userAvatar from "../../../assets/user.png"
 
@@ -29,3 +30,6 @@ function UserCard({ user }) {
 
 export default UserCard
 
+UserCard.propTypes = {
+    user: PropTypes.object.isRequired
+}

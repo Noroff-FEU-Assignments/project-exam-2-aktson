@@ -1,31 +1,16 @@
 import React from 'react'
+import PropTypes from "prop-types";
 import Footer from './Footer'
 import Header from './Header'
 import { motion } from "framer-motion"
-import Container from '../uiComponents/Container'
 import Dashboard from './Dashboard'
-import UserBanner from '../uiComponents/UserBanner'
-import AuthContext from '../context/AuthContext'
-import UsersContext from '../context/UsersContext'
 
 
 function Layout({ children }) {
 
-    const { auth } = React.useContext(AuthContext);
-    const { users } = React.useContext(UsersContext);
-
-    const findAdminUser = users?.find(user => user.email === auth.email);
     const [isNavOpen, setIsNavOpen] = React.useState(true)
 
-    // const [translate, setTranslate] = React.useState("-translate-x-96 lg:translate-x-0");
-    // const toggleDashboard = () => {
-    //     if (translate === "translate-x-0") {
-    //         setTranslate("-translate-x-96 ")
-    //     }
-    //     else {
-    //         setTranslate("translate-x-0")
-    //     }
-    // }
+
     React.useEffect(() => {
         window.addEventListener(
             "resize",
@@ -65,3 +50,7 @@ function Layout({ children }) {
 }
 
 export default Layout
+
+Layout.propTypes = {
+    children: PropTypes.node.isRequired
+}

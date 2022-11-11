@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types"
 import Animate from '../Animate';
 import { Avatar, Button } from "@material-tailwind/react";
 import PostsContext from '../../context/PostsContext';
@@ -72,3 +73,9 @@ function Comments({ id, commentsCount }) {
 }
 
 export default Comments
+
+
+Comments.propTypes = {
+    id: PropTypes.number.isRequired,
+    commentsCount: PropTypes.number
+}

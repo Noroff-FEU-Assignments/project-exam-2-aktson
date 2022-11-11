@@ -1,5 +1,6 @@
-import { AnimatePresence, motion } from 'framer-motion'
 import React from 'react'
+import PropTypes from "prop-types"
+import { AnimatePresence, motion } from 'framer-motion'
 
 function Form({ children }) {
     return (
@@ -19,3 +20,8 @@ function Form({ children }) {
 }
 
 export default Form
+
+
+Form.propTypes = {
+    children: PropTypes.node.isRequired
+}

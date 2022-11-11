@@ -27,22 +27,16 @@ export function UsersProvider({ children }) {
 
         } catch (error) {
             console.log(error)
-            setError(error)
+            setError("Unknown error occured")
 
         } finally {
             setIsLoading(false)
         }
     }
 
-
     React.useEffect(() => {
-        let ignore = false;
 
         fetchUsers();
-
-        return () => {
-            ignore = true;
-        };
 
     }, [updateUi])
     return (

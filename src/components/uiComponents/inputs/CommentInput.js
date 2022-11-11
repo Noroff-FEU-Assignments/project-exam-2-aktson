@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import { commentsSchema } from '../../yupSchema/commentsSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -12,6 +13,7 @@ import ErrorSpan from '../ErrorSpan';
 import { POSTS_URL } from '../../constants/api';
 
 function CommentInput({ showCommentInput, id, setShowCommentInput }) {
+
     const { setUpdateUi } = React.useContext(PostsContext)
 
     const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -20,7 +22,6 @@ function CommentInput({ showCommentInput, id, setShowCommentInput }) {
     const url = `${POSTS_URL}/${id}/comment`
 
     const http = useAxios();
-
 
     const postComment = async (data) => {
         setIsSubmitting(true)
@@ -69,3 +70,10 @@ function CommentInput({ showCommentInput, id, setShowCommentInput }) {
 }
 
 export default CommentInput
+
+
+CommentInput.propTypes = {
+    id: PropTypes.number.isRequired,
+    showCommentInput: PropTypes.bool,
+    setShowCommentInput: PropTypes.func
+}

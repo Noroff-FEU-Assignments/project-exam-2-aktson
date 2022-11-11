@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { MdDashboard } from "react-icons/md"
 import { IconButton, Avatar, Typography } from "@material-tailwind/react";
@@ -35,3 +36,7 @@ function Header({ toggleDashboard }) {
 }
 
 export default Header
+
+Header.propTypes = {
+    toggleDashboard: PropTypes.func.isRequired
+}

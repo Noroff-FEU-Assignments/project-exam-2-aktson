@@ -1,5 +1,6 @@
-import { Button } from '@material-tailwind/react';
 import React from 'react';
+import PropTypes from "prop-types";
+import { Button } from '@material-tailwind/react';
 import AuthContext from '../context/AuthContext';
 import EditProfile from './modals/editProfile/EditProfile';
 import userAltAvatar from "../../assets/user.png"
@@ -7,8 +8,6 @@ import userAltAvatar from "../../assets/user.png"
 
 
 function UserBanner({ user }) {
-    const image = "https://img.freepik.com/free-photo/halloween-bats-with-orange-background_23-2148276197.jpg?w=1380&t=st=1667943122~exp=1667943722~hmac=95636e45291d18c6a85578fa3a380514c5c12125e13da21d187b0c5ba4da58ad"
-
 
     const [isAdmin, setIsAdmin] = React.useState(false)
 
@@ -52,7 +51,7 @@ function UserBanner({ user }) {
                         </div>
                         <div className='flex w-full justify-center sm:justify-end '>
                             {!isAdmin && <Button color='cyan' className="w-auto">Follow</Button>}
-                            {isAdmin && <EditProfile />}
+                            {isAdmin && <EditProfile adminUser={user} />}
                         </div>
                     </div>
                 </section>
@@ -62,3 +61,8 @@ function UserBanner({ user }) {
 }
 
 export default UserBanner
+
+
+UserBanner.propTypes = {
+    user: PropTypes.object.isRequired
+}

@@ -13,13 +13,15 @@ import ModalContext from '../../../context/ModalContext';
 import CreatePostModal from './CreatePostModal';
 import Form from '../Form';
 import TagsInput from '../../inputs/TagsInput';
+import AdminContext from '../../../context/AdminContext';
 
 
 function CreatePost() {
     const { closeCreatePostModal } = React.useContext(ModalContext);
+    const { adminPosts, setAdminPosts, setUpdateAdminUi, setAdmin, admin } = React.useContext(AdminContext)
+    const { setPosts, posts, setUpdateUi } = React.useContext(PostsContext)
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(createEditSchema) });
-    const { setUpdateUi, setPosts, posts } = React.useContext(PostsContext)
 
     const [tags, setTags] = React.useState([]);
     const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -27,18 +29,19 @@ function CreatePost() {
 
     const handlePostSubmit = async (data) => {
         setIsSubmitting(true)
-        setUpdateUi(true)
 
         const dataCopy = { ...data, tags: tags }
+
 
         try {
             const response = await http.post(POSTS_URL, dataCopy);
             if (response) {
                 reset();
                 setTags([]);
-                // setPosts([...posts, response.data])
+                setPosts([...posts, response.data])
                 closeCreatePostModal();
-                setUpdateUi(POSTS_URL)
+                setUpdateUi(response.data.id)
+                setUpdateAdminUi(response.data.id)
                 toast.success("Post added successfully!")
             }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import { createEditSchema } from "../../../yupSchema/createEditSchema"
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -14,12 +15,14 @@ import EditPostModal from "./EditPostModal";
 import Form from "../Form";
 import Loader from "../../loader/Loader";
 import { POSTS_URL } from "../../../constants/api";
+import AdminContext from "../../../context/AdminContext";
 
 
 
 function EditPost({ adminPost, setIsOpen }) {
     const { openEditPostModal, closeEditPostModal } = React.useContext(ModalContext);
-    const { setUpdateUi, setPosts, posts } = React.useContext(PostsContext);
+    const { setUpdateUi } = React.useContext(PostsContext);
+    const { setUpdateAdminUi } = React.useContext(AdminContext);
 
     const [tags, setTags] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(false);
@@ -78,8 +81,8 @@ function EditPost({ adminPost, setIsOpen }) {
 
             const response = await http.put(url, formDataWithTags);
             if (response) {
-                setUpdateUi(url)
-                // setPosts([...posts, response.data])
+                setUpdateUi(response.data)
+                setUpdateAdminUi(response.data)
                 setIsOpen(false)
                 toast.success("Post updated!");
                 closeEditPostModal()
@@ -140,3 +143,8 @@ function EditPost({ adminPost, setIsOpen }) {
 
 export default EditPost;
 
+
+EditPost.propTypes = {
+    adminPost: PropTypes.object.isRequired,
+    setIsOpen: PropTypes.func
+}
