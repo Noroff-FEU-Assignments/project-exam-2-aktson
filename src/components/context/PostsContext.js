@@ -29,7 +29,7 @@ export function PostsProvider({ children }) {
 
             } catch (error) {
                 console.log(error)
-                setError(error)
+                setError("Failed to fetch")
 
             } finally {
                 setIsLoading(false)

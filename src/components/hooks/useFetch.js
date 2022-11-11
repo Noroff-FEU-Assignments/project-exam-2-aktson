@@ -19,7 +19,7 @@ function useFetch(url) {
 
             } catch (error) {
                 console.log(error)
-                setError("Something went wrong")
+                setError("Failed to fetch")
 
             } finally {
                 setIsLoading(false)

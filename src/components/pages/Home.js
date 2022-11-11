@@ -3,6 +3,7 @@ import PostsContext from "../context/PostsContext";
 import PostCard from "../uiComponents/cards/PostCard";
 import { MdError } from "react-icons/md"
 import LoaderCard from "../uiComponents/loader/LoaderCard";
+import Alert from "../uiComponents/Alert";
 
 
 function Home() {
@@ -22,19 +23,13 @@ function Home() {
 		)
 	}
 	if (error) {
-		return error.toString();
+		return error;
 	}
 
 	return (
 
 		<section className="section">
-			{error &&
-				<p className="bg-red-500 p-4 text-light rounded-xl flex items-center gap-2">
-					<MdError size={28} />
-					Unknown error occured
-				</p>
-			}
-
+			{error && <Alert message={error} />}
 			{posts && posts?.map(post => {
 				return <PostCard post={post} key={post.id} />
 			})}

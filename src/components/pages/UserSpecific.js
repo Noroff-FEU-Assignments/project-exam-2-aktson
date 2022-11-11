@@ -1,16 +1,15 @@
 import React from 'react'
 import useFetch from '../hooks/useFetch'
+import { PROFILES_URL } from '../constants/api'
 import { useParams, useNavigate } from 'react-router-dom'
 import UserBanner from '../uiComponents/UserBanner'
 import PostCard from '../uiComponents/cards/PostCard'
 import LoaderCard from '../uiComponents/loader/LoaderCard'
-import Loader from '../uiComponents/loader/Loader'
-import { PROFILES_URL } from '../constants/api'
+import Alert from '../uiComponents/Alert'
 
 
 function UserSpecific() {
 
-    const [userPosts, setUserPosts] = React.useState([])
     const params = useParams();
     const navigate = useNavigate();
 
@@ -42,9 +41,12 @@ function UserSpecific() {
     return (
 
         <>
-            {postsResponse.isLoading ? <LoaderCard /> : <UserBanner user={profileResponse.data} />}
+            {postsResponse.isLoading ? <LoaderCard />
+                :
+                <UserBanner user={profileResponse.data} />
+            }
             <section className="section">
-                {error && <p className='bg-red-500'>{error}</p>}
+                {error && <Alert message={error} />}
                 {postsResponse.isLoading && <>
                     <LoaderCard />
                     <LoaderCard />
