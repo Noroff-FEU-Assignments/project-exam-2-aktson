@@ -46,7 +46,7 @@ export function AdminProvider({ children }) {
         }
 
         fetchPosts();
-    }, [updateAdminPosts])
+    }, [updateAdminPosts, auth])
 
     React.useEffect(() => {
 
@@ -72,12 +72,11 @@ export function AdminProvider({ children }) {
                 finally {
                     setIsLoading(false)
                 }
-
             }
         }
         fetchAdmin();
 
-    }, [updateAdminUi])
+    }, [updateAdminUi, auth])
 
     return (
         <AdminContext.Provider

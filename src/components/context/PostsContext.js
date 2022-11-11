@@ -2,11 +2,13 @@ import React from 'react'
 import PropTypes from "prop-types";
 import useAxios from '../hooks/useAxios';
 import { GET_POSTS_URL } from '../constants/api';
+import AuthContext from './AuthContext';
 
 
 const PostsContext = React.createContext();
 
 export function PostsProvider({ children }) {
+    const { auth } = React.useContext(AuthContext)
 
     const [posts, setPosts] = React.useState([]);
     const [updateUi, setUpdateUi] = React.useState(GET_POSTS_URL)
@@ -15,9 +17,8 @@ export function PostsProvider({ children }) {
 
     const http = useAxios();
 
-    React.useEffect(() => {
-
-        const fetchPosts = async () => {
+    const fetchPosts = async () => {
+        if (auth) {
             setIsLoading(true)
 
             try {
@@ -34,14 +35,22 @@ export function PostsProvider({ children }) {
             } finally {
                 setIsLoading(false)
             }
+
         }
+
+    }
+
+
+    React.useEffect(() => {
 
         fetchPosts();
 
-    }, [updateUi])
+    }, [updateUi, auth])
 
     return (
-        <PostsContext.Provider value={{ posts, setPosts, isLoading, error, setUpdateUi }}>{children}</PostsContext.Provider>
+        <PostsContext.Provider value={{ posts, setPosts, isLoading, error, setUpdateUi }}>
+            {children}
+        </PostsContext.Provider>
     )
 }
 
