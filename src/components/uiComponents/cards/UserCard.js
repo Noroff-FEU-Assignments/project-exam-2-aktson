@@ -3,8 +3,49 @@ import PropTypes from 'prop-types';
 import { Avatar, Button } from '@material-tailwind/react';
 import { Link } from "react-router-dom";
 import userAvatar from "../../../assets/user.png"
+import useAxios from '../../hooks/useAxios';
+import FollowUnFollowBtns from '../followUnFollowBtns/FollowUnFollowBtns';
+
 
 function UserCard({ user }) {
+
+    const http = useAxios();
+
+    const [isfollowing, setIsFollowing] = React.useState(false)
+
+    const handleFollow = async () => {
+        const url = `/api/v1/social/profiles/${user.name}/follow`;
+
+        try {
+
+            const response = await http.put(url)
+            console.log(response)
+            if (response) {
+                setIsFollowing(true)
+            }
+
+        } catch (error) {
+            console.log(error)
+
+        }
+    }
+    const handleUnFollow = async () => {
+        const url = `/api/v1/social/profiles/${user.name}/follow`;
+
+        try {
+
+            const response = await http.put(url)
+            console.log(response)
+            if (response) {
+                setIsFollowing(true)
+            }
+
+        } catch (error) {
+            console.log(error)
+
+        }
+    }
+
 
 
     return (
@@ -17,7 +58,7 @@ function UserCard({ user }) {
                 <Link to={`/user-specific/${user.name}`} className="hover:scale-75 transition duration-300">
                     <h3 className='text-center'>{user.name}</h3>
                 </Link>
-                <Button color='cyan' className='w-auto '>Follow</Button>
+                <FollowUnFollowBtns user={user} />
             </div>
             <div className='p-5 flex gap-4 mt-3 justify-center bg-gray-100'>
                 <p className='flex flex-col items-center w-full'><span>{user?._count.posts}</span>Posts </p>

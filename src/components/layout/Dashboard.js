@@ -26,7 +26,7 @@ function Dashboard({ isNavOpen }) {
     return (
         <AnimatePresence>
             {isNavOpen &&
-                <motion.nav className={` lg:col-span-3  z-40 relative  bg-lightGray  shadow-xl  h-full  lg:w-72 xl:w-full`}
+                <motion.nav className={` lg:col-span-2  z-40 relative  bg-lightGray  shadow-xl  h-full  lg:w-72 xl:w-full`}
                     initial={{ translateX: 0, opacity: 1 }}
                     animate={{ translateX: 0, opacity: 1 }}
                     exit={{ translateX: -100, opacity: 0 }}

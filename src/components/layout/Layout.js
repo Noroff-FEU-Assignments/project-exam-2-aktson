@@ -32,10 +32,10 @@ function Layout({ children }) {
     return (
         <>
             <Header toggleDashboard={toggleDashboard} />
-            <main className='lg:grid grid-cols-12 2xl:container 2xl:mx-auto '>
+            <main className='lg:grid grid-cols-12  '>
                 <Dashboard isNavOpen={isNavOpen} />
                 <motion.div
-                    className=" col-span-9 grid auto-rows-auto "
+                    className=" col-span-10 grid auto-rows-auto "
                     initial={{ opacity: 0, translateY: -20, }}
                     animate={{ opacity: 1, translateY: 0 }}
                     exit={{ opacity: 0, translateY: 0, }}
