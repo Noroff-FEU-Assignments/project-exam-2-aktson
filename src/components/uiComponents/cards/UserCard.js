@@ -9,48 +9,12 @@ import FollowUnFollowBtns from '../followUnFollowBtns/FollowUnFollowBtns';
 
 function UserCard({ user }) {
 
-    const http = useAxios();
-
-    const [isfollowing, setIsFollowing] = React.useState(false)
-
-    const handleFollow = async () => {
-        const url = `/api/v1/social/profiles/${user.name}/follow`;
-
-        try {
-
-            const response = await http.put(url)
-            console.log(response)
-            if (response) {
-                setIsFollowing(true)
-            }
-
-        } catch (error) {
-            console.log(error)
-
-        }
-    }
-    const handleUnFollow = async () => {
-        const url = `/api/v1/social/profiles/${user.name}/follow`;
-
-        try {
-
-            const response = await http.put(url)
-            console.log(response)
-            if (response) {
-                setIsFollowing(true)
-            }
-
-        } catch (error) {
-            console.log(error)
-
-        }
-    }
 
 
 
     return (
 
-        <div className="text-grey  shadow-xl bg-lightGray flex flex-col w-80 h-auto gap-4 rounded-xl"  >
+        <div className="text-grey  shadow-xl bg-lightGray flex flex-col w-80 2xl:w-96 h-auto gap-4 rounded-xl"  >
             <Link to={`/user-specific/${user.name}`} className='flex  justify-center items-center mt-6 hover:scale-75 transition duration-300'>
                 <Avatar src={user.avatar ? user.avatar : userAvatar} alt="avatar" size="xxl" variant="circular" className='drop-shadow-2xl ' />
             </Link>
