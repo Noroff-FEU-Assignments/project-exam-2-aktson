@@ -36,7 +36,6 @@ export function UsersProvider({ children }) {
                 setIsLoading(false)
             }
         }
-
     }
 
     React.useEffect(() => {

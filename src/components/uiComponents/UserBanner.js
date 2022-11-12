@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import { Button } from '@material-tailwind/react';
 import AuthContext from '../context/AuthContext';
 import EditProfile from './modals/editProfile/EditProfile';
 import userAltAvatar from "../../assets/user.png"
+import FollowUnFollowBtns from './followUnFollowBtns/FollowUnFollowBtns';
 
 
 
@@ -15,10 +15,12 @@ function UserBanner({ user }) {
 
     React.useEffect(() => {
 
-        if (auth?.email === user?.email) {
-            setIsAdmin(true)
+        if (auth) {
+            if (auth?.email === user?.email) {
+                setIsAdmin(true)
+            }
         }
-    })
+    }, [auth])
 
     return (
         <>
@@ -51,7 +53,7 @@ function UserBanner({ user }) {
                                 </div>
                             </div>
                             <div className='flex w-full justify-center sm:justify-start'>
-                                {!isAdmin && <Button color='cyan' className="w-auto">Follow</Button>}
+                                {!isAdmin && <FollowUnFollowBtns user={user} />}
                                 {isAdmin && <EditProfile adminUser={user} />}
                             </div>
                         </div>
