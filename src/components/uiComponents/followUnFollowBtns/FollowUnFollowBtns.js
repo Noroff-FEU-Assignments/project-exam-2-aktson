@@ -36,31 +36,30 @@ function FollowUnFollowBtns({ user }) {
 
     const handleFollow = async () => {
         const url = `/api/v1/social/profiles/${user.name}/follow`;
-        const findUser = admin.following.find(adminFollowing => adminFollowing.name === user.name)
 
-        if (findUser) return;
 
-        else {
-            setIsSubmitting(true)
-            try {
-                const response = await http.put(url)
+        setIsSubmitting(true)
+        try {
+            const response = await http.put(url)
 
-                if (response) {
-                    setIsFollowing(true)
-                    setUpdateUsersUi(response.data)
-                }
-
-            } catch (error) {
-                console.log(error)
-                toast.error("Something went wrong")
-            } finally {
-                setIsSubmitting(false)
+            if (response) {
+                setIsFollowing(true)
+                setUpdateUsersUi(response.data.following)
             }
+
+        } catch (error) {
+            console.log(error)
+            toast.error("Something went wrong")
+        } finally {
+            setIsSubmitting(false)
         }
+
     }
 
     const handleUnFollow = async () => {
         const url = `/api/v1/social/profiles/${user.name}/unfollow`;
+
+
 
         setIsSubmitting(true);
         try {
@@ -68,7 +67,7 @@ function FollowUnFollowBtns({ user }) {
 
             if (response) {
                 setIsFollowing(false)
-                setUpdateUsersUi(response.data)
+                setUpdateUsersUi(response.data.following)
             }
 
         } catch (error) {
@@ -78,7 +77,6 @@ function FollowUnFollowBtns({ user }) {
         } finally {
             setIsSubmitting(false)
         }
-
 
     }
 
