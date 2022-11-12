@@ -54,7 +54,7 @@ export function AdminProvider({ children }) {
 
             if (auth) {
 
-                const userProfileUrl = `/api/v1/social/profiles/${auth?.name}`;
+                const userProfileUrl = `/api/v1/social/profiles/${auth?.name}?_following=true&_followers=true`;
 
                 setIsLoading(true)
 

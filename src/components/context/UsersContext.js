@@ -10,7 +10,7 @@ export function UsersProvider({ children }) {
     const { auth } = React.useContext(AuthContext)
 
     const [users, setUsers] = React.useState([]);
-    const [updateUi, setUpdateUi] = React.useState(GET_PROFILES_URL)
+    const [updateUsersUi, setUpdateUsersUi] = React.useState(GET_PROFILES_URL)
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = React.useState(null);
 
@@ -43,9 +43,9 @@ export function UsersProvider({ children }) {
 
         fetchUsers();
 
-    }, [updateUi, auth])
+    }, [updateUsersUi, auth])
     return (
-        <UsersContext.Provider value={{ users, setUsers, isLoading, error, setUpdateUi }}>{children}</UsersContext.Provider>
+        <UsersContext.Provider value={{ users, setUsers, isLoading, error, setUpdateUsersUi }}>{children}</UsersContext.Provider>
     )
 }
 
