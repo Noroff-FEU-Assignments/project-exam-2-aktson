@@ -12,8 +12,7 @@ import PostMenu from '../postAdminMenu/PostMenu';
 import AuthContext from '../../context/AuthContext';
 import Comments from "../inputs/comments/Comments"
 import Reactions from '../inputs/reactions/Reactions';
-import { POSTS_URL } from "../../constants/api";
-import useAxios from "../../hooks/useAxios";
+import ShowCommentBtn from "../inputs/comments/ShowCommentBtn"
 
 
 function PostCard({ post }) {
@@ -23,6 +22,8 @@ function PostCard({ post }) {
     const [adminMenu, setAdminMenu] = React.useState(false)
 
     const [showCommentInput, setShowCommentInput] = React.useState(false);
+    const [reactions, setReactions] = React.useState(post.reactions);
+    const [showComments, setShowComments] = React.useState(false);
 
     const handleClickOutside = () => {
         setShowCommentInput(false)
@@ -36,10 +37,6 @@ function PostCard({ post }) {
             }
         }
     }, [auth])
-    const http = useAxios();
-    const [reactions, setReactions] = React.useState(post.reactions);
-
-
 
 
 
@@ -85,7 +82,7 @@ function PostCard({ post }) {
             }
             <div className='flex py-2 items-center gap-2 '>
                 <Reactions reactions={reactions} />
-                <Comments post={post} />
+                <ShowCommentBtn post={post} comments={post.comments} setShowComments={setShowComments} />
             </div>
 
             <div className='flex justify-end gap-4 my-2 cursor-pointer mb-4 relative' ref={ref}>
@@ -99,6 +96,7 @@ function PostCard({ post }) {
                 </Button>
                 <CommentInput showCommentInput={showCommentInput} id={post.id} setShowCommentInput={setShowCommentInput} />
             </div>
+            <Comments post={post} showComments={showComments} />
 
         </div >
     )

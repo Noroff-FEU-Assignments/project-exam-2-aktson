@@ -30,10 +30,12 @@ function CommentInput({ showCommentInput, id, setShowCommentInput }) {
         setIsSubmitting(true)
 
         const formadata = { "body": data.comments }
+
         try {
             const response = await http.post(url, formadata);
             if (response) {
                 reset({ comments: "" })
+                console.log(response.data)
                 setUpdateUi(response.data.id)
                 setUpdateAdminPosts(response.data.id)
                 toast.success("Comment posted")
@@ -78,6 +80,6 @@ export default CommentInput
 
 CommentInput.propTypes = {
     id: PropTypes.number.isRequired,
-    showCommentInput: PropTypes.bool,
-    setShowCommentInput: PropTypes.func
+    showCommentInput: PropTypes.bool.isRequired,
+    setShowCommentInput: PropTypes.func.isRequired
 }

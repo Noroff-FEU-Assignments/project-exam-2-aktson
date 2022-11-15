@@ -23,7 +23,10 @@ function EmojiInput({ setReactions, reactions, post }) {
             if (findReaction.symbol === response.data.symbol) {
                 findReaction.count += 1
             }
-            setReactions([...reactions, response.data])
+            else {
+
+                setReactions([...reactions, response.data])
+            }
         }
         catch (error) {
             console.log(error)

@@ -90,6 +90,7 @@ function EditPost({ adminPost, setIsOpen }) {
                 setIsOpen(false)
                 toast.success("Post updated!");
                 closeEditPostModal()
+                console.log(response.data)
             }
 
         } catch (error) {
