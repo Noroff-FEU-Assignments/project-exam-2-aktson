@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Avatar, Button } from '@material-tailwind/react';
+import { Avatar } from '@material-tailwind/react';
 import { Link } from "react-router-dom";
 import userAvatar from "../../../assets/user.png"
-import useAxios from '../../hooks/useAxios';
 import FollowUnFollowBtns from '../followUnFollowBtns/FollowUnFollowBtns';
 
 

@@ -6,7 +6,7 @@ import { MdMoreVert } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
 
 
-function PostMenu({ adminPost, adminMenu }) {
+function PostMenu({ adminPost }) {
     const [isOpen, setIsOpen] = React.useState(false);
 
     const handleMenuClick = () => {
@@ -15,7 +15,6 @@ function PostMenu({ adminPost, adminMenu }) {
 
     return (
         <>
-
             <div className='relative'  >
                 <MdMoreVert size={22} className="cursor-pointer text-grey" onClick={handleMenuClick} />
                 {isOpen &&

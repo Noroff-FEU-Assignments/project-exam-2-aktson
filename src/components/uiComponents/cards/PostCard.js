@@ -5,14 +5,13 @@ import { useOutsideClick } from '../../hooks/useOutsideClick';
 import { Link } from 'react-router-dom';
 import { Avatar, Button } from "@material-tailwind/react";
 import { MdOutlineModeComment } from "react-icons/md";
-import CommentInput from '../inputs/CommentInput';
-import EmojiInput from '../inputs/EmojiInput';
+import CommentInput from '../inputs/comments/CommentInput';
+import EmojiInput from '../inputs/reactions/EmojiInput';
 import image from "../../../assets/user.png";
 import PostMenu from '../postAdminMenu/PostMenu';
 import AuthContext from '../../context/AuthContext';
-import Comments from '../comments/Comments';
-import AdminContext from '../../context/AdminContext';
-import { set } from 'react-hook-form';
+import Comments from "../inputs/comments/Comments"
+import Reactions from '../inputs/reactions/Reactions';
 
 
 function PostCard({ post }) {
@@ -29,11 +28,12 @@ function PostCard({ post }) {
     const ref = useOutsideClick(handleClickOutside);
 
     React.useEffect(() => {
-        if (auth.email === post.author.email) {
-            setAdminMenu(true)
+        if (auth) {
+            if (auth.email === post.author.email) {
+                setAdminMenu(true)
+            }
         }
-    }, [])
-
+    }, [auth])
 
 
     const { body, title, media, tags, updated, author } = post;
@@ -76,14 +76,11 @@ function PostCard({ post }) {
                     <span className="background-image" role="img" aria-label={`${title}`}></span>
                 </div>
             }
-            <div className='flex justify-between bg-blue-gray-50  p-2 rounded-xl items-center'>
-                <div className='flex '>
-                    <Button className='text-grey' size="sm" variant='text'>50 Reactions</Button>
-                    <Comments id={post?.id} commentsCount={post._count.comments} />
+            <div className='flex py-2 items-center gap-2 '>
+                <Reactions post={post} />
+                <Comments post={post} />
+            </div>
 
-                </div>
-
-            </div >
             <div className='flex justify-end gap-4 my-2 cursor-pointer mb-4 relative' ref={ref}>
                 <EmojiInput />
                 <Button className="bg-primary flex items-center gap-2 w-full justify-center"

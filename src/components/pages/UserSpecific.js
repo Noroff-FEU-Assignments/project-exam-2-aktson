@@ -17,6 +17,10 @@ function UserSpecific() {
 
     if (!params) navigate("/")
 
+    React.useEffect(() => {
+
+    })
+
     const userPostsUrl = `${PROFILES_URL}/${username}/posts?_author=true&_comments=true&_reactions=true`
     const userProfileUrl = `/api/v1/social/profiles/${username}`;
 
@@ -28,7 +32,6 @@ function UserSpecific() {
     if (isLoading) {
         return (
             <>
-                <LoaderCard />
                 <LoaderCard />
                 <LoaderCard />
             </>

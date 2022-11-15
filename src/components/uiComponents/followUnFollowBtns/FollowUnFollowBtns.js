@@ -31,7 +31,7 @@ function FollowUnFollowBtns({ user }) {
             }
         }
 
-    }, [])
+    }, [auth])
 
 
 
@@ -67,7 +67,7 @@ function FollowUnFollowBtns({ user }) {
 
             if (response) {
                 setIsFollowing(false)
-                setUpdateUsersUi(response.data.following)
+                setUpdateUsersUi(response.data)
             }
 
         } catch (error) {

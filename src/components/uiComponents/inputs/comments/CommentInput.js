@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
-import { commentsSchema } from '../../yupSchema/commentsSchema';
+import { commentsSchema } from '../../../yupSchema/commentsSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Input, Button } from "@material-tailwind/react";
 import { MdAddComment } from "react-icons/md"
-import Animate from '../Animate';
-import useAxios from '../../hooks/useAxios';
+import Animate from '../../Animate';
+import useAxios from '../../../hooks/useAxios';
 import { toast } from 'react-toastify';
-import PostsContext from '../../context/PostsContext';
-import AdminContext from "../../context/AdminContext"
-import ErrorSpan from '../ErrorSpan';
-import { POSTS_URL } from '../../constants/api';
-import Spinner from '../loader/Spinner';
+import PostsContext from '../../../context/PostsContext';
+import AdminContext from "../../../context/AdminContext"
+import ErrorSpan from '../../ErrorSpan';
+import { POSTS_URL } from '../../../constants/api';
+import Spinner from '../../loader/Spinner';
 
 function CommentInput({ showCommentInput, id, setShowCommentInput }) {
 

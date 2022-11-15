@@ -40,7 +40,6 @@ export function PostsProvider({ children }) {
         }
     }
 
-
     React.useEffect(() => {
 
         fetchPosts();
