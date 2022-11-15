@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import useAxios from '../hooks/useAxios';
 import { GET_POSTS_URL } from '../constants/api';
 import AuthContext from './AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const PostsContext = React.createContext();
@@ -16,6 +17,7 @@ export function PostsProvider({ children }) {
     const [error, setError] = React.useState(null);
 
     const http = useAxios();
+    const navigate = useNavigate();
 
     const fetchPosts = async () => {
         if (auth) {
@@ -43,7 +45,7 @@ export function PostsProvider({ children }) {
 
         fetchPosts();
 
-    }, [updateUi, auth])
+    }, [updateUi, navigate])
 
     return (
         <PostsContext.Provider value={{ posts, setPosts, isLoading, error, setUpdateUi }}>

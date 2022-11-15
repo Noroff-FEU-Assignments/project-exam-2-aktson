@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import { GET_PROFILES_URL } from '../constants/api';
 import useAxios from '../hooks/useAxios';
 import AuthContext from './AuthContext';
@@ -16,6 +17,7 @@ export function UsersProvider({ children }) {
 
 
     const http = useAxios();
+    const navigate = useNavigate()
 
     const fetchUsers = async () => {
         if (auth) {
@@ -42,7 +44,7 @@ export function UsersProvider({ children }) {
 
         fetchUsers();
 
-    }, [updateUsersUi, auth])
+    }, [updateUsersUi, navigate])
     return (
         <UsersContext.Provider value={{ users, setUsers, isLoading, error, setUpdateUsersUi }}>{children}</UsersContext.Provider>
     )

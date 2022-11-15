@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import useAxios from '../hooks/useAxios';
 import { GET_POSTS_URL, PROFILES_URL } from '../constants/api';
 import AuthContext from './AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const AdminContext = React.createContext();
@@ -18,7 +19,7 @@ export function AdminProvider({ children }) {
     const [error, setError] = React.useState(null);
 
     const http = useAxios();
-
+    const navigate = useNavigate();
 
     React.useEffect(() => {
 
@@ -46,7 +47,7 @@ export function AdminProvider({ children }) {
         }
 
         fetchPosts();
-    }, [updateAdminPosts, auth])
+    }, [updateAdminPosts, navigate])
 
     React.useEffect(() => {
 
@@ -77,7 +78,7 @@ export function AdminProvider({ children }) {
 
         fetchAdmin();
 
-    }, [updateAdminUi, auth])
+    }, [updateAdminUi, navigate])
 
     return (
         <AdminContext.Provider
