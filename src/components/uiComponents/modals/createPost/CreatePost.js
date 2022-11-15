@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createEditSchema } from '../../../yupSchema/createEditSchema';
 import { Input, Button, Textarea, IconButton } from "@material-tailwind/react";
-import { MdClear, MdBorderColor, MdCached } from "react-icons/md"
+import { MdClear, MdBorderColor } from "react-icons/md"
 import { toast } from 'react-toastify';
 import ErrorSpan from '../../ErrorSpan';
 import useAxios from '../../../hooks/useAxios';
@@ -14,6 +14,7 @@ import CreatePostModal from './CreatePostModal';
 import Form from '../Form';
 import TagsInput from '../../inputs/TagsInput';
 import AdminContext from '../../../context/AdminContext';
+import Spinner from '../../loader/Spinner';
 
 
 function CreatePost() {
@@ -81,8 +82,8 @@ function CreatePost() {
                     <TagsInput tags={tags} setTags={setTags} />
                     <div className='flex justify-end'>
                         <Button type='submit' color='cyan' onClick={handleSubmit(handlePostSubmit)} className="flex gap-2 items-center mt-4 ">
-                            {isSubmitting && <MdCached className="animate-spin" size={20} />}
-                            Share
+                            <Spinner isSubmitting={isSubmitting} />
+                            {isSubmitting ? "Sharing" : "Share"}
                         </Button>
                     </div>
                 </fieldset>

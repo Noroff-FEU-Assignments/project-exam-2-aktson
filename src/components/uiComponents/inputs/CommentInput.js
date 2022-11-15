@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { commentsSchema } from '../../yupSchema/commentsSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Input, Button } from "@material-tailwind/react";
-import { MdAddComment, MdCached } from "react-icons/md"
+import { MdAddComment } from "react-icons/md"
 import Animate from '../Animate';
 import useAxios from '../../hooks/useAxios';
 import { toast } from 'react-toastify';
@@ -12,6 +12,7 @@ import PostsContext from '../../context/PostsContext';
 import AdminContext from "../../context/AdminContext"
 import ErrorSpan from '../ErrorSpan';
 import { POSTS_URL } from '../../constants/api';
+import Spinner from '../loader/Spinner';
 
 function CommentInput({ showCommentInput, id, setShowCommentInput }) {
 
@@ -62,7 +63,7 @@ function CommentInput({ showCommentInput, id, setShowCommentInput }) {
                             size="sm"
                             variant='text'
                             className=" flex gap-1 items-center text-primary">
-                            {isSubmitting && <MdCached className="animate-spin" size={24} />}
+                            <Spinner isSubmitting={isSubmitting} />
                             <MdAddComment size={24} />
                         </Button>
                     </fieldset>

@@ -17,6 +17,7 @@ import EditPostModal from "./EditPostModal";
 import Form from "../Form";
 import Loader from "../../loader/Loader";
 import Alert from "../../Alert";
+import Spinner from "../../loader/Spinner";
 
 
 
@@ -132,9 +133,9 @@ function EditPost({ adminPost, setIsOpen }) {
                         </div>
                         <TagsInput tags={tags} setTags={setTags} />
                         <div className='flex justify-end'>
-                            <Button type='submit' color="cyan" onClick={handleSubmit(handlePostEdit)} className="flex gap-2 items-center mt-4 btn">
-                                {isSubmitting && <MdCached className="animate-spin" size={20} />}
-                                Share
+                            <Button type='submit' color="cyan" onClick={handleSubmit(handlePostEdit)} className="flex gap-2 items-center mt-4 ">
+                                <Spinner isSubmitting={isSubmitting} />
+                                {isSubmitting ? "Sharing" : "Share"}
                             </Button>
                         </div>
                     </fieldset>

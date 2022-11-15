@@ -20,7 +20,7 @@ function UserBanner({ user }) {
                 setIsAdmin(true)
             }
         }
-    }, [auth])
+    }, [user])
 
     return (
         <>
@@ -31,7 +31,7 @@ function UserBanner({ user }) {
                             backgroundImage: `url(${user?.banner})`,
                             backgroundRepeat: "no-repeat",
                             backgroundPosition: "center",
-                            height: "40vh",
+                            height: "30vh",
                             backgroundSize: "cover",
                         }}></div>
                     <div className='shadow-2xl'>

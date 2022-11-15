@@ -13,6 +13,7 @@ import AuthContext from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import { motion } from "framer-motion";
 import WrapperSignInUp from '../uiComponents/welcomeBanner/WrapperSignInUp';
+import Spinner from '../uiComponents/loader/Spinner';
 
 
 
@@ -57,7 +58,6 @@ function SignIn() {
     return (
         <WrapperSignInUp>
             <motion.form
-                className='my-20 '
                 initial={{ scale: 0.9, }}
                 animate={{ scale: 1, }}
                 exit={{ scale: 1, }}
@@ -98,10 +98,10 @@ function SignIn() {
                         </div>
                     </CardBody>
                     <CardFooter className="pt-0 mt-4">
-                        <Button fullWidth className='bg-primary' onClick={handleSubmit(handleFormSubmit)}>
-                            Sign In
+                        <Button fullWidth className='flex gap-2 items-center mt-4 justify-center ' color='cyan' onClick={handleSubmit(handleFormSubmit)}>
+                            <Spinner isSubmitting={isSubmitting} />
+                            {isSubmitting ? "Signing In" : "Sign In"}
                         </Button>
-                        {isSubmitting && <Loader />}
                         <Typography variant="small" as="div" className="mt-6 flex justify-center">
                             Don't have an account?
                             <Typography

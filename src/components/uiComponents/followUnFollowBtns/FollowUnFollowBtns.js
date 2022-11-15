@@ -1,10 +1,12 @@
 import React from 'react'
+import PropTypes from "prop-types";
 import useAxios from '../../hooks/useAxios';
-import { Button } from "@material-tailwind/react";
-import { toast } from 'react-toastify';
 import UsersContext from '../../context/UsersContext';
 import AdminContext from "../../context/AdminContext"
 import AuthContext from '../../context/AuthContext';
+import { Button } from "@material-tailwind/react";
+import { toast } from 'react-toastify';
+import Spinner from '../loader/Spinner';
 
 function FollowUnFollowBtns({ user }) {
 
@@ -15,7 +17,7 @@ function FollowUnFollowBtns({ user }) {
 
 
     const [isfollowing, setIsFollowing] = React.useState(false)
-    const [submitting, setIsSubmitting] = React.useState(false)
+    const [isSubmitting, setIsSubmitting] = React.useState(false)
 
     React.useEffect(() => {
 
@@ -29,14 +31,13 @@ function FollowUnFollowBtns({ user }) {
             }
         }
 
-    }, [auth])
+    }, [])
 
 
 
 
     const handleFollow = async () => {
         const url = `/api/v1/social/profiles/${user.name}/follow`;
-
 
         setIsSubmitting(true)
         try {
@@ -58,7 +59,6 @@ function FollowUnFollowBtns({ user }) {
 
     const handleUnFollow = async () => {
         const url = `/api/v1/social/profiles/${user.name}/unfollow`;
-
 
 
         setIsSubmitting(true);
@@ -83,10 +83,25 @@ function FollowUnFollowBtns({ user }) {
 
     return (
         <>
-            {!isfollowing && <Button color='cyan' className='w-auto' onClick={handleFollow} disabled={submitting}>Follow</Button>}
-            {isfollowing && <Button color='cyan' className='w-auto' onClick={handleUnFollow} disabled={submitting}>Unfollow</Button>}
+            {!isfollowing &&
+                <Button color='cyan' onClick={handleFollow} disabled={isSubmitting} className="flex gap-2 items-center  w-auto">
+                    <Spinner isSubmitting={isSubmitting} />
+                    Follow
+                </Button>
+            }
+            {isfollowing &&
+                <Button color='cyan' onClick={handleUnFollow} disabled={isSubmitting} className="flex gap-2 items-center w-auto">
+                    <Spinner isSubmitting={isSubmitting} />
+                    Unfollow
+                </Button>
+            }
         </>
     )
 }
 
 export default FollowUnFollowBtns
+
+
+FollowUnFollowBtns.propTypes = {
+    user: PropTypes.object.isRequired
+}

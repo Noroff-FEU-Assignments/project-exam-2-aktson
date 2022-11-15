@@ -35,9 +35,7 @@ export function PostsProvider({ children }) {
             } finally {
                 setIsLoading(false)
             }
-
         }
-
     }
 
 

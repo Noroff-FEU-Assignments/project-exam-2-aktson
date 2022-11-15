@@ -9,7 +9,7 @@ import { Card, CardHeader, CardBody, CardFooter, Typography, Input, Button } fro
 import { MdVisibility, MdVisibilityOff, MdMailOutline, MdPersonOutline, MdImage } from "react-icons/md";
 import ErrorSpan from '../uiComponents/ErrorSpan';
 import { toast } from 'react-toastify';
-import Loader from '../uiComponents/loader/Loader';
+import Spinner from '../uiComponents/loader/Spinner';
 import { motion } from "framer-motion";
 import SignUpBanner from '../uiComponents/welcomeBanner/SignUpBanner';
 import WrapperSignInUp from '../uiComponents/welcomeBanner/WrapperSignInUp';
@@ -120,10 +120,10 @@ function SignUp() {
                             </div>
                         </CardBody>
                         <CardFooter className="pt-0 mt-4">
-                            <Button fullWidth className='bg-primary' onClick={handleSubmit(handleFormSubmit)}>
-                                Sign Up
+                            <Button fullWidth className='flex gap-2 items-center mt-4 justify-center ' color='cyan' onClick={handleSubmit(handleFormSubmit)}>
+                                <Spinner isSubmitting={isSubmitting} />
+                                {isSubmitting ? "Signing Up" : "Sign Up"}
                             </Button>
-                            {isSubmitting && <Loader />}
                             <Typography variant="small" as="div" className="mt-6 flex justify-center">
                                 Already have an account?
                                 <Typography

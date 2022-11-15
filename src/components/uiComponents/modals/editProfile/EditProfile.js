@@ -14,6 +14,7 @@ import ErrorSpan from '../../ErrorSpan';
 import useAxios from '../../../hooks/useAxios';
 import { toast } from 'react-toastify';
 import AdminContext from '../../../context/AdminContext';
+import Spinner from '../../loader/Spinner';
 
 
 function EditProfile({ adminUser }) {
@@ -104,7 +105,8 @@ function EditProfile({ adminUser }) {
                         <div className='flex justify-end mt-4'>
                             <Button onClick={handleSubmit(handleEditProfileSubmit)} color="cyan" className="flex gap-2 items-center btn">
                                 {isSubmitting && <MdCached className="animate-spin" size={20} />}
-                                Update
+                                <Spinner isSubmitting={isSubmitting} />
+                                {isSubmitting ? "Updating" : "Update"}
                             </Button>
                         </div>
                     </fieldset>
