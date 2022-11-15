@@ -12,6 +12,8 @@ import PostMenu from '../postAdminMenu/PostMenu';
 import AuthContext from '../../context/AuthContext';
 import Comments from "../inputs/comments/Comments"
 import Reactions from '../inputs/reactions/Reactions';
+import { POSTS_URL } from "../../constants/api";
+import useAxios from "../../hooks/useAxios";
 
 
 function PostCard({ post }) {
@@ -34,6 +36,11 @@ function PostCard({ post }) {
             }
         }
     }, [auth])
+    const http = useAxios();
+    const [reactions, setReactions] = React.useState(post.reactions);
+
+
+
 
 
     const { body, title, media, tags, updated, author } = post;
@@ -77,12 +84,12 @@ function PostCard({ post }) {
                 </div>
             }
             <div className='flex py-2 items-center gap-2 '>
-                <Reactions post={post} />
+                <Reactions reactions={reactions} />
                 <Comments post={post} />
             </div>
 
             <div className='flex justify-end gap-4 my-2 cursor-pointer mb-4 relative' ref={ref}>
-                <EmojiInput />
+                <EmojiInput post={post} setReactions={setReactions} reactions={reactions} />
                 <Button className="bg-primary flex items-center gap-2 w-full justify-center"
                     size="sm"
                     onClick={() => setShowCommentInput((prevState) => !prevState)}

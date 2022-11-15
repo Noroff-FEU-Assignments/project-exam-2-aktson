@@ -1,20 +1,17 @@
-import { Button } from '@material-tailwind/react';
 import React from 'react';
 
-function Reactions({ post }) {
+
+function Reactions({ reactions }) {
 
 
-
-    const reactionsCount = post._count.reactions;
     return (
         <div className='flex gap-2'>
             {
-                post.reactions.map(reaction => {
-                    return <p className='flex  bg-gray-200 p-1 rounded-lg justify-center items-center'>
+                reactions.map((reaction, index) => {
+                    return <p className='flex  bg-gray-200 p-1 rounded-lg justify-center items-center' key={index}>
                         {reaction.symbol}
                         <span className='text-sm text-grey'>{reaction.count}</span>
                     </p>
-
                 })
             }
         </div>

@@ -1,14 +1,39 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Menu, MenuHandler, MenuList, MenuItem, Button } from "@material-tailwind/react";
 import { MdOutlineEmojiEmotions } from "react-icons/md"
+import { POSTS_URL } from "../../../constants/api";
+import useAxios from "../../../hooks/useAxios";
+import { toast } from "react-toastify";
 
-function EmojiInput() {
+function EmojiInput({ setReactions, reactions, post }) {
+    const http = useAxios();
 
 
-    const handleEmojiClick = (event) => {
+    const handleEmojiClick = async (event) => {
+        const symbol = event.target.dataset.symbol
+
+        const url = `${POSTS_URL}/${post.id}/react/${symbol}`
+        const findReaction = reactions.find(reaction => reaction.symbol === symbol)
+        console.log(findReaction)
+
+        try {
+            const response = await http.put(url)
+
+            if (findReaction.symbol === response.data.symbol) {
+                findReaction.count += 1
+            }
+            setReactions([...reactions, response.data])
+        }
+        catch (error) {
+            console.log(error)
+            toast.error("Something went wrong")
+        }
 
     }
+
     return (
+
         <Menu
             placement="bottom-start" animate={{
                 mount: { y: 0 },
@@ -20,14 +45,21 @@ function EmojiInput() {
                     react
                 </Button>
             </MenuHandler>
+
             <MenuList className="flex text-2xl p-0 border-none">
-                <MenuItem data-id={"&#128077;"} onClick={handleEmojiClick}>&#128077;</MenuItem>
-                <MenuItem data-id={"&#128151;"} onClick={handleEmojiClick}>&#128151;</MenuItem>
-                <MenuItem data-id={"&#128514;"} onClick={handleEmojiClick}>&#128514;</MenuItem>
-                <MenuItem data-id={"&#128545;"} onClick={handleEmojiClick}>&#128545;</MenuItem>
+                <MenuItem data-symbol="👍" onClick={handleEmojiClick}>👍</MenuItem>
+                <MenuItem data-symbol="❤️" onClick={handleEmojiClick}>❤️</MenuItem>
+                <MenuItem data-symbol="😀" onClick={handleEmojiClick}>😀</MenuItem>
+                <MenuItem data-symbol="😥" onClick={handleEmojiClick}>😥</MenuItem>
             </MenuList>
         </Menu>
+
     );
 }
 
 export default EmojiInput;
+
+
+EmojiInput.propTypes = {
+    post: PropTypes.object.isRequired
+}

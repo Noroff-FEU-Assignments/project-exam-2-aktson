@@ -105,3 +105,4 @@ export default FollowUnFollowBtns
 FollowUnFollowBtns.propTypes = {
     user: PropTypes.object.isRequired
 }
+
