@@ -23,6 +23,8 @@ function EmojiInput({ setReactions, reactions, post }) {
             if (findReaction) {
                 const filterReactions = reactions.filter(reaction => reaction.symbol !== findReaction.symbol)
                 setReactions([...filterReactions, response.data])
+            } else {
+                setReactions(prevState => [...prevState, response.data])
             }
         }
         catch (error) {
