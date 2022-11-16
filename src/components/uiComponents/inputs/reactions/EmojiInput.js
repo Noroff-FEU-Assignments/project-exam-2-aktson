@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 function EmojiInput({ setReactions, reactions, post }) {
     const http = useAxios();
 
-
     const handleEmojiClick = async (event) => {
         const symbol = event.target.dataset.symbol
 
