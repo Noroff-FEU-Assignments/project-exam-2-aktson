@@ -8,16 +8,11 @@ import { MdAddComment } from "react-icons/md"
 import Animate from '../../Animate';
 import useAxios from '../../../hooks/useAxios';
 import { toast } from 'react-toastify';
-import PostsContext from '../../../context/PostsContext';
-import AdminContext from "../../../context/AdminContext"
 import ErrorSpan from '../../ErrorSpan';
 import { POSTS_URL } from '../../../constants/api';
 import Spinner from '../../loader/Spinner';
 
 function CommentInput({ showCommentInput, id, setShowCommentInput, setComments }) {
-
-    const { setUpdateUi } = React.useContext(PostsContext)
-    const { setUpdateAdminPosts } = React.useContext(AdminContext)
 
     const [isSubmitting, setIsSubmitting] = React.useState(false);
 
@@ -35,8 +30,6 @@ function CommentInput({ showCommentInput, id, setShowCommentInput, setComments }
             const response = await http.post(url, formadata);
             if (response) {
                 reset({ comments: "" })
-                // setUpdateUi(response.data.id)
-                // setUpdateAdminPosts(response.data.id)
                 setComments(prevState => [...prevState, response.data])
                 toast.success("Comment posted")
                 setShowCommentInput(false)

@@ -5,16 +5,19 @@ import { MdOutlineEmojiEmotions } from "react-icons/md"
 import { POSTS_URL } from "../../../constants/api";
 import useAxios from "../../../hooks/useAxios";
 import { toast } from "react-toastify";
+import Spinner from "../../loader/Spinner";
 
 function EmojiInput({ setReactions, reactions, post }) {
     const http = useAxios();
+    const [isSubmitting, setIsSubmitting] = React.useState(false)
+
 
     const handleEmojiClick = async (event) => {
         const symbol = event.target.dataset.symbol
 
         const url = `${POSTS_URL}/${post.id}/react/${symbol}`
         const findReaction = reactions.find(reaction => reaction.symbol === symbol)
-
+        setIsSubmitting(true)
         try {
             const response = await http.put(url)
             if (findReaction) {
@@ -25,6 +28,9 @@ function EmojiInput({ setReactions, reactions, post }) {
         catch (error) {
             console.log(error)
             toast.error("Something went wrong")
+        }
+        finally {
+            setIsSubmitting(false)
         }
     }
 
@@ -39,6 +45,7 @@ function EmojiInput({ setReactions, reactions, post }) {
                 <Button className="bg-primary flex items-center gap-2 w-full justify-center" size="sm" >
                     <MdOutlineEmojiEmotions size={22} />
                     react
+                    <Spinner isSubmitting={isSubmitting} />
                 </Button>
             </MenuHandler>
 

@@ -95,6 +95,7 @@ function PostCard({ post }) {
                 </Button>
                 <CommentInput showCommentInput={showCommentInput} id={post.id} setShowCommentInput={setShowCommentInput} setComments={setComments} />
             </div>
+
             <Comments post={post} showComments={showComments} comments={comments} />
 
         </div >
