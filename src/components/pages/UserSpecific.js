@@ -6,6 +6,7 @@ import UserBanner from '../uiComponents/UserBanner'
 import PostCard from '../uiComponents/cards/PostCard'
 import LoaderCard from '../uiComponents/loader/LoaderCard'
 import Alert from '../uiComponents/Alert'
+import Loader from '../uiComponents/loader/Loader'
 
 
 function UserSpecific() {
@@ -44,14 +45,14 @@ function UserSpecific() {
     return (
 
         <>
-            {postsResponse.isLoading ? <LoaderCard />
+
+            {postsResponse.isLoading ? <Loader />
                 :
                 <UserBanner user={profileResponse.data} />
             }
             <section className="section">
                 {error && <Alert message={error} />}
                 {postsResponse.isLoading && <>
-                    <LoaderCard />
                     <LoaderCard />
                     <LoaderCard />
                 </>

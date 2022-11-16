@@ -2,7 +2,8 @@ import React from 'react'
 import PostCard from "../uiComponents/cards/PostCard";
 import UserBanner from '../uiComponents/UserBanner';
 import AdminContext from '../context/AdminContext';
-import LoaderCard from '../uiComponents/loader/LoaderCard';
+import Loader from '../uiComponents/loader/Loader';
+import LoaderCard from "../uiComponents/loader/LoaderCard"
 import Alert from '../uiComponents/Alert';
 
 function MyProfile() {
@@ -11,7 +12,7 @@ function MyProfile() {
 
     return (
         <>
-            {isLoading ? <LoaderCard /> : <UserBanner user={admin} />}
+            {isLoading ? <Loader /> : <UserBanner user={admin} />}
             <section className="section">
                 {error && <Alert message={error} />}
                 {isLoading && (
