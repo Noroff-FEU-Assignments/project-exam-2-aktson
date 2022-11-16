@@ -15,24 +15,18 @@ function EmojiInput({ setReactions, reactions, post }) {
 
         const url = `${POSTS_URL}/${post.id}/react/${symbol}`
         const findReaction = reactions.find(reaction => reaction.symbol === symbol)
-        console.log(findReaction)
 
         try {
             const response = await http.put(url)
-
-            if (findReaction.symbol === response.data.symbol) {
-                findReaction.count += 1
-            }
-            else {
-
-                setReactions([...reactions, response.data])
+            if (findReaction) {
+                const filterReactions = reactions.filter(reaction => reaction.symbol !== findReaction.symbol)
+                setReactions([...filterReactions, response.data])
             }
         }
         catch (error) {
             console.log(error)
             toast.error("Something went wrong")
         }
-
     }
 
     return (
