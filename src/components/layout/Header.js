@@ -17,7 +17,7 @@ function Header({ toggleDashboard }) {
             <header className='  drop-shadow-2xl z-50 bg-secondary fixed w-full  mx-auto rounded-b-xl'>
 
                 <div className='flex py-4  px-12 justify-between rounded-full  mx-auto items-center' >
-                    <Link to="/" className='text-lightGray text-4xl'>Logo</Link>
+                    <Link to="/" className='text-lightGray text-3xl'>Logo</Link>
                     <div className='flex items-center gap-4'>
                         <Link to="/my-profile" className='flex items-center gap-2'>
                             {auth && <Typography>{auth?.name}</Typography>}

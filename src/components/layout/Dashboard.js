@@ -26,11 +26,12 @@ function Dashboard({ isNavOpen }) {
     return (
         <AnimatePresence>
             {isNavOpen &&
-                <motion.nav className={` lg:col-span-2  z-60 relative  bg-lightGray  shadow-xl  h-full  lg:w-72 xl:w-full`}
+                <motion.nav className={` lg:col-span-2 relative  bg-lightGray  shadow-xl  h-full  lg:w-72 xl:w-full`}
                     initial={{ translateX: 0, opacity: 1 }}
                     animate={{ translateX: 0, opacity: 1 }}
                     exit={{ translateX: -100, opacity: 0 }}
                     transition={{ type: "tween", delay: 1 }}
+                    style={{ zIndex: "49" }}
                 >
                     <motion.ul className={`flex flex-col mt-12 gap-8  text-grey fixed p-16 bg-lightGray h-full `}
                         initial={{ translateX: 0, opacity: 1 }}

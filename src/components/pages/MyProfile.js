@@ -9,7 +9,7 @@ import Alert from '../uiComponents/Alert';
 function MyProfile() {
 
     const { adminPosts, isLoading, admin, error } = React.useContext(AdminContext)
-
+    console.log(admin.followers, admin.following)
     return (
         <>
             {isLoading ? <Loader /> : <UserBanner user={admin} />}

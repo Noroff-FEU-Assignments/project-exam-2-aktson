@@ -26,7 +26,7 @@ function UserBanner({ user }) {
         <>
             {user &&
                 <section>
-                    <div className='w-full bg-dark  relative  mt-18 sm:mt-16 '
+                    <div className='w-full bg-dark  relative  mt-18 sm:mt-16'
                         style={{
                             backgroundImage: `url(${user?.banner})`,
                             backgroundRepeat: "no-repeat",
@@ -34,13 +34,13 @@ function UserBanner({ user }) {
                             height: "30vh",
                             backgroundSize: "cover",
                         }}></div>
-                    <div className='shadow-2xl'>
-                        <div className='grid grid-cols-auto md:grid-cols-3 gap-3 max-w-screen-xl mx-auto items-center justify-items-center -translate-y-14 md:-translate-y-12 lg:-translate-y-16  rounded-b-xl'>
+                    <div className='shadow-2xl '>
+                        <div className='grid grid-cols-auto md:grid-cols-3 gap-3 max-w-screen-xl mx-auto items-center justify-items-center -translate-y-14 md:-translate-y-12 lg:-translate-y-12  rounded-b-xl '>
                             <div className='flex flex-col sm:flex-row gap-2 sm:gap-6 md:col-span-2 items-center p-2'>
-                                <figure className='drop-shadow-xl'>
+                                <figure className='rounded-full' >
                                     <img src={user?.avatar ? user.avatar : userAltAvatar}
                                         alt={user?.name}
-                                        className="w-40 h-40 lg:w-48 lg:h-48 object-cover rounded-full shadow-xl  justify-items-center  " />
+                                        className="w-40 h-40  object-cover rounded-full shadow-xl  justify-items-center  " />
                                 </figure>
                                 <div className='flex flex-col  items-center sm:items-start'>
                                     <p className='text-3xl p-1'>{user && user?.name}</p>
@@ -52,7 +52,7 @@ function UserBanner({ user }) {
                                     </div>
                                 </div>
                             </div>
-                            <div className='flex w-full justify-center sm:justify-start'>
+                            <div className='flex w-full justify-center md:justify-start'>
                                 {!isAdmin && <FollowUnFollowBtns user={user} />}
                                 {isAdmin && <EditProfile adminUser={user} />}
                             </div>
@@ -70,3 +70,4 @@ export default UserBanner
 UserBanner.propTypes = {
     user: PropTypes.object.isRequired
 }
+
