@@ -35,7 +35,6 @@ function EditPost({ adminPost, setIsOpen }) {
 
     const url = `api/v1/social/posts/${adminPost.id}`;
 
-
     // fetch post and populate form 
     const fetchPost = async () => {
         setIsLoading(true)
@@ -90,7 +89,6 @@ function EditPost({ adminPost, setIsOpen }) {
                 setIsOpen(false)
                 toast.success("Post updated!");
                 closeEditPostModal()
-                console.log(response.data)
             }
 
         } catch (error) {
