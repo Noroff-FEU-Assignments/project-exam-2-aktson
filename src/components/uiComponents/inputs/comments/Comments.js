@@ -7,7 +7,7 @@ import ReactTimeAgo from 'react-time-ago';
 
 
 
-function Comments({ post, showComments }) {
+function Comments({ post, showComments, comments }) {
 
 
     return (
@@ -15,11 +15,11 @@ function Comments({ post, showComments }) {
             {showComments &&
                 <Animate>
                     <div className='  flex flex-wrap gap-2 flex-col ' >
-                        {post.comments?.length === 0
+                        {comments.length === 0
                             ?
                             <p className="text-sm p-2 bg-gray-200 text-center rounded-xl">No comments, Post one?</p>
                             :
-                            post.comments?.map(comment => {
+                            comments.map(comment => {
 
                                 const date = new Date(comment.created)
 

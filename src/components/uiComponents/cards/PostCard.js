@@ -17,13 +17,13 @@ import ShowCommentBtn from "../inputs/comments/ShowCommentBtn"
 
 function PostCard({ post }) {
 
-
     const { auth } = React.useContext(AuthContext);
     const [adminMenu, setAdminMenu] = React.useState(false)
 
     const [showCommentInput, setShowCommentInput] = React.useState(false);
-    const [reactions, setReactions] = React.useState(post.reactions);
     const [showComments, setShowComments] = React.useState(false);
+    const [reactions, setReactions] = React.useState(post.reactions);
+    const [comments, setComments] = React.useState(post.comments)
 
     const handleClickOutside = () => {
         setShowCommentInput(false)
@@ -37,7 +37,6 @@ function PostCard({ post }) {
             }
         }
     }, [auth])
-
 
 
     const { body, title, media, tags, updated, author } = post;
@@ -82,7 +81,7 @@ function PostCard({ post }) {
             }
             <div className='flex py-2 items-center gap-2 '>
                 <Reactions reactions={reactions} />
-                <ShowCommentBtn post={post} comments={post.comments} setShowComments={setShowComments} />
+                <ShowCommentBtn comments={comments} setShowComments={setShowComments} />
             </div>
 
             <div className='flex justify-end gap-4 my-2 cursor-pointer mb-4 relative' ref={ref}>
@@ -94,9 +93,9 @@ function PostCard({ post }) {
                     <MdOutlineModeComment size={22} />
                     Comment
                 </Button>
-                <CommentInput showCommentInput={showCommentInput} id={post.id} setShowCommentInput={setShowCommentInput} />
+                <CommentInput showCommentInput={showCommentInput} id={post.id} setShowCommentInput={setShowCommentInput} setComments={setComments} />
             </div>
-            <Comments post={post} showComments={showComments} />
+            <Comments post={post} showComments={showComments} comments={comments} />
 
         </div >
     )

@@ -14,7 +14,7 @@ import ErrorSpan from '../../ErrorSpan';
 import { POSTS_URL } from '../../../constants/api';
 import Spinner from '../../loader/Spinner';
 
-function CommentInput({ showCommentInput, id, setShowCommentInput }) {
+function CommentInput({ showCommentInput, id, setShowCommentInput, setComments }) {
 
     const { setUpdateUi } = React.useContext(PostsContext)
     const { setUpdateAdminPosts } = React.useContext(AdminContext)
@@ -35,9 +35,9 @@ function CommentInput({ showCommentInput, id, setShowCommentInput }) {
             const response = await http.post(url, formadata);
             if (response) {
                 reset({ comments: "" })
-                console.log(response.data)
-                setUpdateUi(response.data.id)
-                setUpdateAdminPosts(response.data.id)
+                // setUpdateUi(response.data.id)
+                // setUpdateAdminPosts(response.data.id)
+                setComments(prevState => [...prevState, response.data])
                 toast.success("Comment posted")
                 setShowCommentInput(false)
             }
@@ -56,7 +56,7 @@ function CommentInput({ showCommentInput, id, setShowCommentInput }) {
         <div className="absolute left-0 w-full top-full " >
             {showCommentInput &&
                 <Animate >
-                    <fieldset className='flex w-full items-center bg-white p-4 rounded-xl' disabled={isSubmitting} >
+                    <fieldset className='flex w-full items-center bg-lightGray p-4 rounded-xl' disabled={isSubmitting} >
                         <div className='w-full' >
                             <Input variant="standard" label="enter you comment" color='cyan' {...register("comments")} />
                             {errors.comments && <ErrorSpan message={errors.comments.message} />}

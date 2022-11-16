@@ -3,10 +3,11 @@ import PropTypes from "prop-types"
 import { Button } from "@material-tailwind/react";
 import { useOutsideClick } from '../../../hooks/useOutsideClick';
 
-function ShowCommentBtn({ setShowComments, post }) {
+function ShowCommentBtn({ setShowComments, comments }) {
 
     const handleShowComments = () => {
         setShowComments((prevState) => !prevState)
+
     }
 
     const handleClickOutside = () => {
@@ -14,7 +15,7 @@ function ShowCommentBtn({ setShowComments, post }) {
     };
     const ref = useOutsideClick(handleClickOutside);
 
-    const commentsCount = post._count.comments;
+    const commentsCount = comments.length;
     return (
         <Button className="text-grey relative flex bg-gray-200"
             size="sm"
@@ -33,6 +34,6 @@ export default ShowCommentBtn
 
 
 ShowCommentBtn.propTypes = {
-    post: PropTypes.object.isRequired,
+    comments: PropTypes.object.isRequired,
     setShowComments: PropTypes.func.isRequired
 }
