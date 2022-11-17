@@ -5,8 +5,8 @@ import AdminContext from '../context/AdminContext';
 import Loader from '../uiComponents/loader/Loader';
 import LoaderCard from "../uiComponents/loader/LoaderCard"
 import Alert from '../uiComponents/Alert';
-import TabsInner from '../uiComponents/slider/TabsInner';
-import Animate from '../uiComponents/Animate';
+import TabsInner from '../uiComponents/tabs/TabsInner';
+
 
 
 function MyProfile() {
