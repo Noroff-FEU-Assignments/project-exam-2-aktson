@@ -18,11 +18,14 @@
 }
 
 @layer components {
+	.responsive-width {
+		@apply w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl;
+	}
 	.nav-link {
 		@apply flex items-center gap-6 transition ease-in-out duration-500 hover:text-primary;
 	}
 	.section {
-		@apply flex flex-col gap-4 my-24 items-center  2xl:mr-24;
+		@apply flex flex-col gap-4 my-24 items-center  2xl:mr-24 min-h-screen;
 	}
 	.icon {
 		@apply text-3xl cursor-pointer;
@@ -33,37 +36,36 @@
 	.btn {
 		@apply bg-primary;
 	}
-
 	.card {
-		@apply shadow-xl p-8 rounded-xl max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl w-full bg-lightGray;
+		@apply shadow-xl p-8 rounded-xl responsive-width bg-lightGray;
 	}
 	.form {
-		@apply w-full p-6 bg-lightGray max-w-xl rounded-xl grid auto-rows-auto  mx-auto relative;
+		@apply p-6 bg-lightGray responsive-width rounded-xl grid auto-rows-auto  mx-auto relative;
 	}
 	/* tabs  section */
-	.tabs-container {
-		@apply my-8 mx-auto text-center grid grid-cols-2 sm:flex justify-between w-full max-w-2xl bg-lightGray shadow-xl rounded-xl;
+	.tabs-header-container {
+		@apply mx-auto text-center flex-col  sm:flex sm:flex-row justify-center items-center responsive-width bg-lightGray shadow-xl rounded-xl;
 	}
 	.tab-header {
-		@apply text-lg p-3 cursor-pointer transition-all duration-500 w-full flex items-center justify-center hover:bg-primary hover:rounded-xl hover:text-white text-grey;
+		@apply p-3 transition-all duration-500 w-full flex items-center justify-center hover:bg-primary hover:rounded-xl hover:text-white text-grey;
 	}
 	.active-tab-header {
 		@apply bg-primary p-3 pointer-events-none text-lightGray rounded-xl;
 	}
 	.tabs-content {
-		@apply flex justify-center items-center  max-w-2xl w-full;
+		@apply flex justify-center items-center responsive-width w-full;
 	}
 	.tab-posts-content {
 		@apply hidden flex-wrap flex-col justify-center p-4 gap-8 transition-opacity duration-1000 w-full items-center;
 	}
 	.tab-users-content {
-		@apply hidden flex-wrap justify-center p-4 gap-8 transition-opacity duration-1000 bg-lightGray w-full max-w-2xl rounded-xl shadow-xl;
+		@apply hidden flex-wrap justify-items-center grid-cols-2  md:justify-center p-4 gap-8 transition-opacity duration-1000 bg-lightGray responsive-width rounded-xl shadow-xl;
 	}
 	.active-tab-content {
-		@apply flex;
+		@apply grid md:flex;
 	}
 	.tab-inner-users {
-		@apply flex flex-col justify-center items-center  shadow-xl w-40  bg-lightGray rounded-xl;
+		@apply flex flex-col justify-center items-center  shadow-xl sm:w-40  w-32 bg-lightGray rounded-xl;
 	}
 }
 #my-modal {

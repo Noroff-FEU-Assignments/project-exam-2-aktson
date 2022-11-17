@@ -33,7 +33,7 @@ function MyProfile() {
 
             {isLoading ? <Loader /> : <UserBanner user={admin} />}
             <section className="section">
-                <div className="tabs-container ">
+                <div className="tabs-header-container ">
                     <button className={toggleState === 1 ? " tab-header active-tab-header" : "tab-header"} onClick={() => handlePostsClick(1)}>
                         Posts
                     </button>
