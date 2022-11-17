@@ -65,7 +65,7 @@
 		@apply grid md:flex;
 	}
 	.tab-inner-users {
-		@apply flex flex-col justify-center items-center  shadow-xl sm:w-40  w-32 bg-lightGray rounded-xl;
+		@apply flex flex-col justify-center items-center  shadow-xl  bg-lightGray rounded-xl;
 	}
 }
 #my-modal {

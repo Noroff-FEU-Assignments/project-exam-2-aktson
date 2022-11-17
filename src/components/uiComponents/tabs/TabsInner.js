@@ -11,7 +11,7 @@ function TabsInner({ user, message }) {
                 user && user.map((result) => {
                     return <Animate key={result.name} >
                         <div className="tab-inner-users" data-tip={result.name} >
-                            <img src={result.avatar} alt={result.name} className="rounded-t-xl" />
+                            <img src={result.avatar} alt={result.name} className="rounded-t-xl sm:w-40 sm:h-40 w-32 h-32 object-cover" />
                             <p className='p-2 text-center bg-gray-200 w-full'>{result.name}</p>
                         </div>
                     </Animate>
