@@ -18,10 +18,21 @@ function UserSpecific() {
 
     if (!params) navigate("/")
 
-    React.useEffect(() => {
 
-    })
+    const [toggleState, setToggleState] = React.useState(1);
 
+    const handleFollowingClick = (index) => {
+        setToggleState(index);
+    }
+
+    const handleFollowersClick = (index) => {
+        setToggleState(index);
+
+    }
+
+    const handlePostsClick = (index) => {
+        setToggleState(index);
+    }
     const userPostsUrl = `${PROFILES_URL}/${username}/posts?_author=true&_comments=true&_reactions=true`
     const userProfileUrl = `/api/v1/social/profiles/${username}`;
 
@@ -45,7 +56,6 @@ function UserSpecific() {
     return (
 
         <>
-
             {postsResponse.isLoading ? <Loader />
                 :
                 <UserBanner user={profileResponse.data} />
