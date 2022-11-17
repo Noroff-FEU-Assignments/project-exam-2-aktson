@@ -23,14 +23,13 @@ import Spinner from "../../loader/Spinner";
 
 function EditPost({ adminPost, setIsOpen }) {
     const { openEditPostModal, closeEditPostModal } = React.useContext(ModalContext);
-    const { setUpdateUi } = React.useContext(PostsContext);
-    const { setUpdateAdminPosts } = React.useContext(AdminContext);
+    const { posts, setPosts, setUpdateUi } = React.useContext(PostsContext);
+    const { adminPosts, setAdminPosts, } = React.useContext(AdminContext);
 
     const [tags, setTags] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = React.useState(null)
     const [isSubmitting, setIsSubmitting] = React.useState(false);
-
     const http = useAxios();
 
     const url = `${POSTS_URL}/${adminPost.id}`;
@@ -45,6 +44,7 @@ function EditPost({ adminPost, setIsOpen }) {
                 setIsLoading(false)
                 openEditPostModal();
                 setTags(response.data.tags)
+
             }
 
         } catch (error) {
@@ -84,12 +84,12 @@ function EditPost({ adminPost, setIsOpen }) {
 
             const response = await http.put(url, formDataWithTags);
             if (response) {
+                const filteredPosts = adminPosts?.filter(post => post.id !== adminPost.id)
+                setAdminPosts([response.data, ...filteredPosts])
                 setUpdateUi(response.data)
-                setUpdateAdminPosts(response.data)
                 setIsOpen(false)
                 toast.success("Post updated!");
                 closeEditPostModal()
-                console.log(response.data)
             }
 
         } catch (error) {

@@ -19,8 +19,8 @@ import Spinner from '../../loader/Spinner';
 
 function CreatePost() {
     const { closeCreatePostModal } = React.useContext(ModalContext);
-    const { setUpdateAdminUi, setUpdateAdminPosts } = React.useContext(AdminContext)
-    const { setUpdateUi } = React.useContext(PostsContext)
+    const { adminPosts, setAdminPosts, setUpdateAdminUi } = React.useContext(AdminContext)
+    const { setUpdateUi, setPosts, posts } = React.useContext(PostsContext)
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(createEditSchema) });
 
@@ -40,11 +40,11 @@ function CreatePost() {
                 reset();
                 setTags([]);
                 closeCreatePostModal();
-                setUpdateUi(response.data.id)
                 setUpdateAdminUi(response.data.id)
-                setUpdateAdminPosts(response.data.id)
+                setAdminPosts([response.data, ...adminPosts])
+                setPosts([response.data, ...posts])
                 toast.success("Post added successfully!")
-                console.log(response.data)
+
             }
 
         } catch (error) {
