@@ -45,6 +45,7 @@ export function UsersProvider({ children }) {
         fetchUsers();
 
     }, [updateUsersUi, navigate])
+
     return (
         <UsersContext.Provider value={{ users, setUsers, isLoading, error, setUpdateUsersUi }}>{children}</UsersContext.Provider>
     )

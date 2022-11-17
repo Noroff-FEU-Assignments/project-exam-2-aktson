@@ -31,11 +31,12 @@ function PostCard({ post }) {
     const ref = useOutsideClick(handleClickOutside);
 
     React.useEffect(() => {
-        if (auth) {
-            if (auth.email === post.author.email) {
-                setAdminMenu(true)
-            }
+        if (!auth.email) return;
+        if (!post.author) return
+        else if (auth.email === post?.author.email) {
+            setAdminMenu(true)
         }
+
     }, [auth])
 
 
