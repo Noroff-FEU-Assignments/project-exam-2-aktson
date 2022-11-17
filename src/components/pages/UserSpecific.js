@@ -60,7 +60,7 @@ function UserSpecific() {
         <>
             {profileResponse.isLoading ? <Loader />
                 :
-                <UserBanner user={profileResponse.data} />
+                <UserBanner user={profileResponse.data} postsLength={postsResponse.data.length} />
             }
             <section className="section">
                 <TabsHeader>

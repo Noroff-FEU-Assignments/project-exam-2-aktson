@@ -7,7 +7,7 @@ import FollowUnFollowBtns from './followUnFollowBtns/FollowUnFollowBtns';
 
 
 
-function UserBanner({ user }) {
+function UserBanner({ user, postsLength }) {
 
     const [isAdmin, setIsAdmin] = React.useState(false)
 
@@ -21,6 +21,8 @@ function UserBanner({ user }) {
             }
         }
     }, [user])
+
+
 
     return (
         <>
@@ -46,7 +48,7 @@ function UserBanner({ user }) {
                                     <p className='text-3xl p-1'>{user && user?.name}</p>
 
                                     <div className='flex  gap-2 p-1 '>
-                                        {user._count && <p className=' text-grey '>Posts: {user?._count.posts}</p>}
+                                        {user._count && <p className=' text-grey '>Posts: {postsLength}</p>}
                                         {user._count && <p className=' text-grey'>Following: {user?._count.following}</p>}
                                         {user._count && <p className=' text-grey'>Followers: {user?._count.followers}</p>}
                                     </div>

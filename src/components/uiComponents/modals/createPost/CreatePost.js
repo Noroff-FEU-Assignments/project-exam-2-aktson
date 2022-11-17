@@ -40,7 +40,6 @@ function CreatePost() {
                 reset();
                 setTags([]);
                 closeCreatePostModal();
-                setUpdateAdminUi(response.data.id)
                 setAdminPosts([response.data, ...adminPosts])
                 setPosts([response.data, ...posts])
                 toast.success("Post added successfully!")
