@@ -7,6 +7,7 @@ import LoaderCard from "../uiComponents/loader/LoaderCard"
 import Alert from '../uiComponents/Alert';
 import TabsInner from '../uiComponents/tabs/TabsInner';
 import TabsHeader from '../uiComponents/tabs/TabsHeader';
+import Slider from '../uiComponents/tabs/Slider';
 
 
 function MyProfile() {
@@ -32,6 +33,7 @@ function MyProfile() {
         <>
 
             {isLoading ? <Loader /> : <UserBanner user={admin} postsLength={adminPosts.length} />}
+
             <section className="section">
                 <TabsHeader>
                     <button className={toggleState === 1 ? " tab-header active-tab-header" : "tab-header"} onClick={() => handlePostsClick(1)}>
@@ -54,7 +56,7 @@ function MyProfile() {
 
                 {/* Renders posts on posts button click */}
                 <div className={toggleState === 1 ? " active-tab-content tab-posts-content" : " tab-posts-content"}>
-                    {adminPosts.length === 0 && <p className='card text-center  bg-lightGray p-4  '>No user posts!</p>}
+                    {adminPosts.length === 0 && <p className='text-center bg-secondary text-lightGray p-8 rounded-xl shadow-xl '>No user posts!</p>}
                     {adminPosts && adminPosts.map(post => {
                         return <PostCard post={post} key={post.id} />
 
@@ -63,12 +65,12 @@ function MyProfile() {
 
                 {/* Renders followers on followers button click */}
                 <div className={toggleState === 2 ? " active-tab-content tab-users-content " : "tab-users-content"}>
-                    <TabsInner followersOrFollowing={admin.followers} message="Opps...No followers" />
+                    <Slider followersOrFollowing={admin.followers} message="Opps...No followers" />
                 </div>
 
                 {/* Renders following  on following button click */}
                 <div className={toggleState === 3 ? " active-tab-content tab-users-content " : "tab-users-content"}>
-                    <TabsInner followersOrFollowing={admin.following} message="Opps...Not following anyone" />
+                    <Slider followersOrFollowing={admin.following} message="Opps...No followers" />
                 </div>
 
             </section>

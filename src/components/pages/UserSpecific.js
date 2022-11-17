@@ -9,6 +9,7 @@ import Alert from '../uiComponents/Alert'
 import Loader from '../uiComponents/loader/Loader'
 import TabsHeader from '../uiComponents/tabs/TabsHeader'
 import TabsInner from '../uiComponents/tabs/TabsInner'
+import Slider from '../uiComponents/tabs/Slider'
 
 
 function UserSpecific() {
@@ -84,7 +85,7 @@ function UserSpecific() {
 
                 {/* Renders posts on posts button click */}
                 <div className={toggleState === 1 ? " active-tab-content tab-posts-content" : " tab-posts-content"}>
-                    {postsResponse.data.length === 0 && <p className='card text-center  bg-lightGray p-4  '>No user posts!</p>}
+                    {postsResponse.data.length === 0 && <p className='text-center bg-secondary text-lightGray p-8 rounded-xl shadow-xl  '>No user posts!</p>}
                     {postsResponse.data && postsResponse.data.map(post => {
                         return <PostCard post={post} key={post.id} />
 
@@ -93,12 +94,12 @@ function UserSpecific() {
 
                 {/* Renders followers on followers button click */}
                 <div className={toggleState === 2 ? " active-tab-content tab-users-content " : "tab-users-content"}>
-                    <TabsInner followersOrFollowing={profileResponse.data.followers} message="Opps...No followers" />
+                    <Slider followersOrFollowing={profileResponse.data.followers} message="Opps...No followers" />
                 </div>
 
                 {/* Renders following  on following button click */}
                 <div className={toggleState === 3 ? " active-tab-content tab-users-content " : "tab-users-content"}>
-                    <TabsInner followersOrFollowing={profileResponse.data.following} message="Opps...Not following anyone" />
+                    <Slider followersOrFollowing={profileResponse.data.following} message="Opps...Not following anyone" />
                 </div>
 
             </section>
