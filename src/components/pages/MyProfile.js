@@ -6,6 +6,7 @@ import Loader from '../uiComponents/loader/Loader';
 import LoaderCard from "../uiComponents/loader/LoaderCard"
 import Alert from '../uiComponents/Alert';
 import TabsInner from '../uiComponents/tabs/TabsInner';
+import TabsHeader from '../uiComponents/tabs/TabsHeader';
 
 
 function MyProfile() {
@@ -32,7 +33,7 @@ function MyProfile() {
 
             {isLoading ? <Loader /> : <UserBanner user={admin} />}
             <section className="section">
-                <div className="tabs-header-container ">
+                <TabsHeader>
                     <button className={toggleState === 1 ? " tab-header active-tab-header" : "tab-header"} onClick={() => handlePostsClick(1)}>
                         Posts
                     </button>
@@ -42,7 +43,7 @@ function MyProfile() {
                     <button className={toggleState === 3 ? " tab-header active-tab-header" : "tab-header"} onClick={() => handleFollowersClick(3)}>
                         Following
                     </button>
-                </div>
+                </TabsHeader>
                 {error && <Alert message={error} />}
                 {isLoading && (
                     <>
@@ -50,6 +51,8 @@ function MyProfile() {
                         <LoaderCard />
                     </>
                 )}
+
+                {/* Renders posts on posts button click */}
                 <div className={toggleState === 1 ? " active-tab-content tab-posts-content" : " tab-posts-content"}>
                     {adminPosts.length === 0 && <p className='card text-center  bg-lightGray p-4  '>No user posts!</p>}
                     {adminPosts && adminPosts.map(post => {
@@ -57,9 +60,13 @@ function MyProfile() {
 
                     })}
                 </div>
+
+                {/* Renders followers on followers button click */}
                 <div className={toggleState === 2 ? " active-tab-content tab-users-content " : "tab-users-content"}>
                     <TabsInner followersOrFollowing={admin.followers} message="Opps...No followers" />
                 </div>
+
+                {/* Renders following  on following button click */}
                 <div className={toggleState === 3 ? " active-tab-content tab-users-content " : "tab-users-content"}>
                     <TabsInner followersOrFollowing={admin.following} message="Opps...Not following anyone" />
                 </div>

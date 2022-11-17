@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { FLAGS_POSTS, POSTS_URL } from "../../../constants/api";
+import { POSTS_FLAGS, POSTS_URL } from "../../../constants/api";
 import useAxios from "../../../hooks/useAxios";
 import { useForm } from "react-hook-form";
 import { createEditSchema } from "../../../yupSchema/createEditSchema"
@@ -78,7 +78,7 @@ function EditPost({ adminPost, setIsOpen }) {
 
         const editedFormData = watch();
         const formDataWithTags = { ...editedFormData, tags: tags }
-        const url = `${POSTS_URL}/${adminPost.id}${FLAGS_POSTS}`
+        const url = `${POSTS_URL}/${adminPost.id}${POSTS_FLAGS}`
 
         try {
 

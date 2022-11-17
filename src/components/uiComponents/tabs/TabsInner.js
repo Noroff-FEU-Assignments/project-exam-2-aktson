@@ -7,7 +7,7 @@ function TabsInner({ followersOrFollowing, message }) {
 
     return (
         <>
-            {followersOrFollowing && followersOrFollowing?.length === 0 ? <p className='text-center'>{message}</p> :
+            {followersOrFollowing && followersOrFollowing?.length === 0 ? <p className='text-center w-full'>{message}</p> :
                 followersOrFollowing && followersOrFollowing.map((result) => {
                     return <Animate key={result.name} >
                         <div className="tab-inner-users" data-tip={result.name} >
