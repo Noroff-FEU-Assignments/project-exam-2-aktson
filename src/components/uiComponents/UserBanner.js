@@ -55,7 +55,7 @@ function UserBanner({ user, postsLength }) {
                                 </div>
                             </div>
                             <div className='flex w-full justify-center md:justify-start'>
-                                {!isAdmin && <FollowUnFollowBtns user={user} />}
+                                {!isAdmin && <FollowUnFollowBtns username={user.name} />}
                                 {isAdmin && <EditProfile adminUser={user} />}
                             </div>
                         </div>
@@ -70,7 +70,8 @@ export default UserBanner
 
 
 UserBanner.propTypes = {
-    user: PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
+    postsLength: PropTypes.number.isRequired
 }
 
 

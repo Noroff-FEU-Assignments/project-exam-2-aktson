@@ -19,7 +19,7 @@ function UserCard({ user }) {
                 <Link to={`/user-specific/${user.name}`} className="hover:scale-75 transition duration-300">
                     <h3 className='text-center '>{user.name}</h3>
                 </Link>
-                <FollowUnFollowBtns user={user} />
+                <FollowUnFollowBtns username={user.name} />
             </div>
             <div className='p-5 flex gap-4 mt-3 justify-center bg-gray-100'>
                 <p className='flex flex-col items-center w-full  border-r-4 '><span>{user?._count.posts}</span>Posts </p>

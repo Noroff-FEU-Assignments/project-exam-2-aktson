@@ -8,7 +8,7 @@ import { Button } from "@material-tailwind/react";
 import { toast } from 'react-toastify';
 import Spinner from '../loader/Spinner';
 
-function FollowUnFollowBtns({ user }) {
+function FollowUnFollowBtns({ username }) {
 
     const http = useAxios();
     const { auth } = React.useContext(AuthContext);
@@ -22,7 +22,7 @@ function FollowUnFollowBtns({ user }) {
     React.useEffect(() => {
 
         if (auth) {
-            const findUser = admin.following && admin?.following.find(adminFollowing => adminFollowing?.name === user?.name);
+            const findUser = admin.following && admin?.following.find(adminFollowing => adminFollowing?.name === username);
 
             if (!findUser) {
                 return;
@@ -37,7 +37,7 @@ function FollowUnFollowBtns({ user }) {
 
 
     const handleFollow = async () => {
-        const url = `/api/v1/social/profiles/${user.name}/follow`;
+        const url = `/api/v1/social/profiles/${username}/follow`;
 
         setIsSubmitting(true)
         try {
@@ -58,7 +58,7 @@ function FollowUnFollowBtns({ user }) {
     }
 
     const handleUnFollow = async () => {
-        const url = `/api/v1/social/profiles/${user.name}/unfollow`;
+        const url = `/api/v1/social/profiles/${username}/unfollow`;
 
 
         setIsSubmitting(true);
@@ -79,7 +79,6 @@ function FollowUnFollowBtns({ user }) {
         }
 
     }
-
 
     return (
         <>
@@ -103,6 +102,6 @@ export default FollowUnFollowBtns
 
 
 FollowUnFollowBtns.propTypes = {
-    user: PropTypes.object.isRequired
+    user: PropTypes.string.isRequired
 }
 
