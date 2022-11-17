@@ -8,7 +8,6 @@ import Alert from '../uiComponents/Alert';
 import TabsInner from '../uiComponents/tabs/TabsInner';
 
 
-
 function MyProfile() {
 
     const { adminPosts, isLoading, admin, error } = React.useContext(AdminContext)
@@ -59,10 +58,10 @@ function MyProfile() {
                     })}
                 </div>
                 <div className={toggleState === 2 ? " active-tab-content tab-users-content " : "tab-users-content"}>
-                    <TabsInner user={admin.followers} message="Opps...No followers" />
+                    <TabsInner followersOrFollowing={admin.followers} message="Opps...No followers" />
                 </div>
                 <div className={toggleState === 3 ? " active-tab-content tab-users-content " : "tab-users-content"}>
-                    <TabsInner user={admin.following} message="Opps...Not following anyone" />
+                    <TabsInner followersOrFollowing={admin.following} message="Opps...Not following anyone" />
                 </div>
 
             </section>

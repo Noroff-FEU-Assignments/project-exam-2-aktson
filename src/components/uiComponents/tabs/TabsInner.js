@@ -3,12 +3,12 @@ import PropTypes from "prop-types"
 import Animate from '../Animate';
 
 
-function TabsInner({ user, message }) {
+function TabsInner({ followersOrFollowing, message }) {
 
     return (
         <>
-            {user && user?.length === 0 ? <p className='text-center'>{message}</p> :
-                user && user.map((result) => {
+            {followersOrFollowing && followersOrFollowing?.length === 0 ? <p className='text-center'>{message}</p> :
+                followersOrFollowing && followersOrFollowing.map((result) => {
                     return <Animate key={result.name} >
                         <div className="tab-inner-users" data-tip={result.name} >
                             <img src={result.avatar} alt={result.name} className="rounded-t-xl sm:w-40 sm:h-40 w-32 h-32 object-cover" />
@@ -25,6 +25,6 @@ function TabsInner({ user, message }) {
 export default TabsInner
 
 TabsInner.propTypes = {
-    user: PropTypes.object.isRequired,
+    followersOrFollowing: PropTypes.array,
     message: PropTypes.string.isRequired
 }

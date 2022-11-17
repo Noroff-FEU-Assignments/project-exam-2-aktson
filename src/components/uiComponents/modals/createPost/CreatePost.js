@@ -1,5 +1,5 @@
 import React from 'react';
-import { POSTS_URL } from '../../../constants/api';
+import { FLAGS_POSTS, POSTS_URL } from '../../../constants/api';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createEditSchema } from '../../../yupSchema/createEditSchema';
@@ -32,9 +32,10 @@ function CreatePost() {
         setIsSubmitting(true)
 
         const dataCopy = { ...data, tags: tags }
+        const url = `${POSTS_URL}${FLAGS_POSTS}`
 
         try {
-            const response = await http.post(POSTS_URL, dataCopy);
+            const response = await http.post(url, dataCopy);
             if (response) {
                 reset();
                 setTags([]);
@@ -43,6 +44,7 @@ function CreatePost() {
                 setUpdateAdminUi(response.data.id)
                 setUpdateAdminPosts(response.data.id)
                 toast.success("Post added successfully!")
+                console.log(response.data)
             }
 
         } catch (error) {

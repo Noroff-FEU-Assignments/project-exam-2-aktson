@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { POSTS_URL } from "../../../constants/api";
+import { FLAGS_POSTS, POSTS_URL } from "../../../constants/api";
 import useAxios from "../../../hooks/useAxios";
 import { useForm } from "react-hook-form";
 import { createEditSchema } from "../../../yupSchema/createEditSchema"
@@ -33,7 +33,7 @@ function EditPost({ adminPost, setIsOpen }) {
 
     const http = useAxios();
 
-    const url = `api/v1/social/posts/${adminPost.id}`;
+    const url = `${POSTS_URL}/${adminPost.id}`;
 
     // fetch post and populate form 
     const fetchPost = async () => {
@@ -78,7 +78,7 @@ function EditPost({ adminPost, setIsOpen }) {
 
         const editedFormData = watch();
         const formDataWithTags = { ...editedFormData, tags: tags }
-        const url = `${POSTS_URL}/${adminPost.id}`
+        const url = `${POSTS_URL}/${adminPost.id}${FLAGS_POSTS}`
 
         try {
 
@@ -89,6 +89,7 @@ function EditPost({ adminPost, setIsOpen }) {
                 setIsOpen(false)
                 toast.success("Post updated!");
                 closeEditPostModal()
+                console.log(response.data)
             }
 
         } catch (error) {
