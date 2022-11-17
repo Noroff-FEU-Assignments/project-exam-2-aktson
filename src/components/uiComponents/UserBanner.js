@@ -45,8 +45,8 @@ function UserBanner({ user }) {
                                 <div className='flex flex-col  items-center sm:items-start'>
                                     <p className='text-3xl p-1'>{user && user?.name}</p>
 
-                                    <div className='flex gap-2 p-1'>
-                                        {user._count && <p className=' text-grey'>Posts: {user?._count.posts}</p>}
+                                    <div className='flex  gap-2 p-1 '>
+                                        {user._count && <p className=' text-grey '>Posts: {user?._count.posts}</p>}
                                         {user._count && <p className=' text-grey'>Following: {user?._count.following}</p>}
                                         {user._count && <p className=' text-grey'>Followers: {user?._count.followers}</p>}
                                     </div>
@@ -70,4 +70,6 @@ export default UserBanner
 UserBanner.propTypes = {
     user: PropTypes.object.isRequired
 }
+
+
 

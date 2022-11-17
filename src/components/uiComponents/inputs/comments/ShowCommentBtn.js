@@ -34,6 +34,6 @@ export default ShowCommentBtn
 
 
 ShowCommentBtn.propTypes = {
-    comments: PropTypes.object.isRequired,
+    comments: PropTypes.array.isRequired,
     setShowComments: PropTypes.func.isRequired
 }
