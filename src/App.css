@@ -59,7 +59,7 @@
 		@apply hidden flex-wrap flex-col justify-center p-4 gap-8 transition-opacity duration-1000 w-full items-center;
 	}
 	.tab-users-content {
-		@apply hidden flex-wrap justify-items-center grid-cols-2  md:justify-center p-4 gap-8 transition-opacity duration-1000 bg-lightGray responsive-width rounded-xl shadow-xl;
+		@apply hidden flex-wrap justify-items-center grid-cols-2  md:justify-center p-4 gap-8 transition-opacity duration-1000 bg-lightGray w-auto responsive-width rounded-xl shadow-xl;
 	}
 	.active-tab-content {
 		@apply grid md:flex;
