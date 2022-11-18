@@ -75,9 +75,7 @@ function UserSpecific() {
                 <div className={toggleState === 1 ? " active-tab-content tab-posts-content" : " tab-posts-content"}>
                     {postsResponse.data.length === 0 && <p className='text-center bg-secondary text-lightGray p-8 rounded-xl shadow-xl  '>No user posts!</p>}
                     {postsResponse.data && postsResponse.data.map(post => {
-                        console.log(post)
                         return <PostCard post={post} key={post.id} />
-
                     })}
                 </div>
 

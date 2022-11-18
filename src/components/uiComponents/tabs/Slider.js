@@ -7,12 +7,28 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import "swiper/css/free-mode";
 
 SwiperCore.use([Virtual, Navigation, Pagination]);
+
 function Slider({ followersOrFollowing, message }) {
     return (
 
         <Swiper
+            breakpoints={{
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                },
+            }}
             slidesPerView={3}
             centeredSlides={true}
             spaceBetween={10}
@@ -21,6 +37,7 @@ function Slider({ followersOrFollowing, message }) {
             }}
             navigation={true}
             virtual
+
         >
             {
                 followersOrFollowing && followersOrFollowing?.length === 0

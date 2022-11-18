@@ -49,17 +49,14 @@
 	.active-tab-header {
 		@apply bg-primary p-3 pointer-events-none text-lightGray rounded-xl;
 	}
-	/* .tabs-content {
-		@apply flex justify-center items-center responsive-width w-full;
-	} */
 	.tab-posts-content {
 		@apply hidden flex-wrap flex-col justify-center p-4 gap-8 transition-opacity duration-1000 w-full items-center;
 	}
 	.tab-users-content {
-		@apply hidden flex-wrap justify-items-center grid-cols-2  md:justify-center p-4 gap-8 transition-opacity duration-1000  responsive-width rounded-xl;
+		@apply hidden flex-wrap  justify-center  p-4  transition-opacity duration-1000  responsive-width rounded-xl;
 	}
 	.active-tab-content {
-		@apply grid md:flex;
+		@apply flex;
 	}
 	.tab-inner-users {
 		@apply flex flex-col justify-center items-center  shadow-xl  bg-lightGray rounded-xl;
