@@ -24,8 +24,8 @@ function Comments({ post, showComments, comments }) {
                                 const date = new Date(comment.created)
 
                                 return (
-                                    <div key={comment.id} className="flex gap-2 items-center bg-gray-200 rounded-xl p-2">
-                                        <Avatar src={post?.author.avatar ? post?.author.avatar : userAltAvatar} alt="avatar" size="sm" variant="circular" />
+                                    <div key={comment.id} className="flex  items-center bg-gray-200 rounded-xl p-2">
+                                        <Avatar src={userAltAvatar} alt="avatar" size="sm" variant="circular" />
                                         <div className='flex-col flex w-full rounded-xl  px-4 py-1'>
                                             <p className='text-md font-semibold flex justify-between items-center'>
                                                 {comment.owner}
