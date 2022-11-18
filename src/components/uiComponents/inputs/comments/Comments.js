@@ -7,7 +7,7 @@ import ReactTimeAgo from 'react-time-ago';
 
 
 
-function Comments({ post, showComments, comments }) {
+function Comments({ showComments, comments }) {
 
 
     return (
@@ -48,5 +48,6 @@ export default Comments
 
 
 Comments.propTypes = {
-    post: PropTypes.object.isRequired
+    showComments: PropTypes.bool,
+    comments: PropTypes.array
 }
