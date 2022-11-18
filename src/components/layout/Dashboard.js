@@ -20,7 +20,7 @@ function Dashboard({ isNavOpen }) {
     // function logsout user and navigates to sign in page
     const handleLogout = () => {
         setAuth(null);
-        navigate("/sign-in")
+        navigate("/")
     }
 
     return (

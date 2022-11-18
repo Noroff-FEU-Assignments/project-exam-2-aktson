@@ -28,8 +28,8 @@ function AnimatedRoute() {
                     <Route path='/my-profile' element={<Layout><MyProfile /></Layout>} />
                     <Route path='/user-specific/:username' element={<Layout><UserSpecific /></Layout>} />
                 </Route>
-                <Route path='/sign-in' element={<SignIn />} />
-                <Route path='/' element={<SignUp />} />
+                <Route path='/' element={<SignIn />} />
+                <Route path='/sign-up' element={<SignUp />} />
             </Routes>
         </AnimatePresence>
     </>

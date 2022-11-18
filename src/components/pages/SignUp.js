@@ -147,7 +147,7 @@ function SignUp() {
                                     variant="small"
                                     className="ml-1 font-bold text-primary"
                                 >
-                                    <Link to="/sign-in">  Sign In</Link>
+                                    <Link to="/"> Sign In</Link>
                                 </Typography>
                             </Typography>
                         </CardFooter>
