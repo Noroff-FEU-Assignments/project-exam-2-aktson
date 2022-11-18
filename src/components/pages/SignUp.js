@@ -19,7 +19,6 @@ function SignUp() {
 
     const navigate = useNavigate();
 
-    const [imageUrl, setImageUrl] = React.useState("")
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(signUpSchema) });
 
@@ -77,7 +76,7 @@ function SignUp() {
                         <CardBody className="flex flex-col gap-6">
                             <div className='flex justify-between gap-6 flex-col lg:flex-row'>
                                 <div className='w-full'>
-                                    <Input {...register("name")} label="name *" size="lg" variant="standard" color="cyan" icon={<MdPersonOutline size={20} />} />
+                                    <Input {...register("name")} label="Username *" size="lg" variant="standard" color="cyan" icon={<MdPersonOutline size={20} />} />
                                     {errors.name && <ErrorSpan message={errors.name.message} />}
                                 </div>
                                 <div className='w-full'>
@@ -102,6 +101,21 @@ function SignUp() {
                             </div>
                             <div>
                                 <Input
+                                    {...register("confirmPassword")}
+                                    label="Confirm Password *"
+                                    size="lg"
+                                    color="cyan"
+                                    variant="standard"
+                                    type={!isVisible ? "password" : "text"}
+                                    icon={!isVisible ?
+                                        <MdVisibilityOff
+                                            size={20} onClick={handlePasswordVisibility} className="cursor-pointer" /> :
+                                        <MdVisibility size={20} onClick={handlePasswordVisibility} className="cursor-pointer" />}
+                                />
+                                {errors.confirmPassword && <ErrorSpan message={errors.confirmPassword.message} />}
+                            </div>
+                            {/* <div>
+                                <Input
                                     {...register("avatar")}
                                     label="Avatar URL"
                                     size="lg"
@@ -119,7 +133,7 @@ function SignUp() {
                                     color="cyan"
                                     icon={<MdImage size={20} />} />
                                 {errors.banner && <ErrorSpan message={errors.banner.message} />}
-                            </div>
+                            </div> */}
                         </CardBody>
                         <CardFooter className="pt-0 mt-4">
                             <Button fullWidth className='flex gap-2 items-center mt-4 justify-center ' color='cyan' onClick={handleSubmit(handleFormSubmit)}>
