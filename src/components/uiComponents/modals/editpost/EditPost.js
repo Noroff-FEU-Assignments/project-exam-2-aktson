@@ -15,7 +15,6 @@ import ErrorSpan from "../../ErrorSpan";
 import TagsInput from "../../inputs/TagsInput";
 import EditPostModal from "./EditPostModal";
 import Form from "../Form";
-import Loader from "../../loader/Loader";
 import Alert from "../../Alert";
 import Spinner from "../../loader/Spinner";
 
