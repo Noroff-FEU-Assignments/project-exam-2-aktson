@@ -21,21 +21,6 @@ export function ModalProvider({ children }) {
     }
 
 
-    // edit profile modal
-    const [isEditProfileOpen, setIsEditProfileOpen] = React.useState(false);
-    const openEditProfileModal = () => {
-        setIsEditProfileOpen(true);
-        setOverFlow("hidden")
-    }
-
-
-    const closeEditProfileModal = () => {
-        setIsEditProfileOpen(false);
-        setOverFlow("auto")
-    }
-
-
-
     // create post modal
     const [isCreatePostOpen, setIsCreatePostOpen] = React.useState(false);
     const openCreatePostModal = () => {
@@ -48,14 +33,42 @@ export function ModalProvider({ children }) {
         setOverFlow("auto")
     }
 
+    // edit profile modal
+    const [isEditAvatarOpen, setIsEditAvatarOpen] = React.useState(false);
+    const openEditAvatarModal = () => {
+        setIsEditAvatarOpen(true);
+        setOverFlow("hidden")
+    }
+
+
+    const closeEditAvatarModal = () => {
+        setIsEditAvatarOpen(false);
+        setOverFlow("auto")
+    }
+
+    // edit banner modal
+    const [isEditBannerOpen, setIsEditBannerOpen] = React.useState(false);
+    const openEditBannerModal = () => {
+        setIsEditBannerOpen(true);
+        setOverFlow("hidden")
+    }
+
+
+    const closeEditBannerModal = () => {
+        setIsEditBannerOpen(false);
+        setOverFlow("auto")
+    }
+
 
 
     return (
         <ModalContext.Provider
             value={{
                 isEditPostModalOpen, openEditPostModal, closeEditPostModal,
-                isEditProfileOpen, openEditProfileModal, closeEditProfileModal,
                 isCreatePostOpen, openCreatePostModal, closeCreatePostModal,
+                isEditAvatarOpen, openEditAvatarModal, closeEditAvatarModal,
+                isEditBannerOpen, openEditBannerModal, closeEditBannerModal,
+
             }}>
             {children}
         </ModalContext.Provider>

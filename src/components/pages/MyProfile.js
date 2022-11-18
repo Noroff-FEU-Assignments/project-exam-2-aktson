@@ -5,7 +5,6 @@ import AdminContext from '../context/AdminContext';
 import Loader from '../uiComponents/loader/Loader';
 import LoaderCard from "../uiComponents/loader/LoaderCard"
 import Alert from '../uiComponents/Alert';
-import TabsInner from '../uiComponents/tabs/TabsInner';
 import TabsHeader from '../uiComponents/tabs/TabsHeader';
 import Slider from '../uiComponents/tabs/Slider';
 
@@ -53,7 +52,6 @@ function MyProfile() {
                         <LoaderCard />
                     </>
                 )}
-
                 {/* Renders posts on posts button click */}
                 <div className={toggleState === 1 ? " active-tab-content tab-posts-content" : " tab-posts-content"}>
                     {adminPosts.length === 0 && <p className='text-center bg-secondary text-lightGray p-8 rounded-xl shadow-xl '>No user posts!</p>}

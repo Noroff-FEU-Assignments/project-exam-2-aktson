@@ -15,3 +15,7 @@ export const PROFILES_URL = BASE_URL + "/api/v1/social/profiles"
 export const POSTS_FLAGS = "?_author=true&_comments=true&_reactions=true"
 
 export const PROFILES_FLAG = "?_following=true&_followers=true"
+
+export const CLOUD_KEY = process.env.REACT_APP_CLOUD_KEY
+
+export const CLOUD_NAME = process.env.REACT_APP_CLOUD_NAME

@@ -102,6 +102,6 @@ export default FollowUnFollowBtns
 
 
 FollowUnFollowBtns.propTypes = {
-    user: PropTypes.string.isRequired
+    user: PropTypes.string
 }
 

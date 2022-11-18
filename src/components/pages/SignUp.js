@@ -19,6 +19,8 @@ function SignUp() {
 
     const navigate = useNavigate();
 
+    const [imageUrl, setImageUrl] = React.useState("")
+
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(signUpSchema) });
 
     const [isVisible, setIsVisible] = React.useState(false);

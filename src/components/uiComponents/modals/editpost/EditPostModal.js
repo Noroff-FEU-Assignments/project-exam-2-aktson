@@ -11,12 +11,8 @@ function EditPostModal({ children }) {
     if (!isEditPostModalOpen) return null;
 
     return ReactDom.createPortal(
-        <div className="p-2 md:flex justify-center items-center relative backdrop-blur-sm" aria-hidden="true" id="my-modal">
-            <div className="w-full h-full hidden sm:block backdrop-opacity-40 bg-dark/70"
-                id="overlay"
-                style={{ zIndex: "50" }}
-                onClick={closeEditPostModal}>
-            </div>
+        <div className="modal" aria-hidden="true" id="my-modal">
+            <div className="modal-overlay" onClick={closeEditPostModal} />
             {children}
         </div>,
         document.getElementById("editPost-portal")

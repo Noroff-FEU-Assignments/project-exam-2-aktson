@@ -18,6 +18,12 @@
 }
 
 @layer components {
+	.modal {
+		@apply p-2 md:flex justify-center items-center relative backdrop-blur-sm  inset-0;
+	}
+	.modal-overlay {
+		@apply w-full h-full hidden sm:block backdrop-opacity-40 bg-dark/70 fixed inset-0 z-50;
+	}
 	.responsive-width {
 		@apply w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl;
 	}
@@ -39,9 +45,7 @@
 	.card {
 		@apply shadow-xl p-8 rounded-xl responsive-width bg-lightGray;
 	}
-	.form {
-		@apply p-6 bg-lightGray responsive-width rounded-xl grid auto-rows-auto  mx-auto relative;
-	}
+
 	/* tabs  section */
 	.tab-header {
 		@apply p-3 transition-all duration-500 w-full flex items-center justify-center hover:bg-primary hover:rounded-xl hover:text-white text-grey;
@@ -76,11 +80,4 @@
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	visibility: visible;
 	overflow-y: scroll;
-}
-#overlay {
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
 }
