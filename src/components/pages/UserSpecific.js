@@ -36,25 +36,13 @@ function UserSpecific() {
     const handlePostsClick = (index) => {
         setToggleState(index);
     }
-    const userPostsUrl = `${PROFILES_URL}/${username}/posts?${POSTS_FLAGS}`
+    const userPostsUrl = `${PROFILES_URL}/${username}/posts${POSTS_FLAGS}`
     const userProfileUrl = `/api/v1/social/profiles/${username}${PROFILES_FLAG}`;
 
     const postsResponse = useFetch(userPostsUrl)
     const profileResponse = useFetch(userProfileUrl)
 
-    const { isLoading, error } = postsResponse;
-
-    if (isLoading) {
-        return (
-            <>
-                <LoaderCard />
-                <LoaderCard />
-            </>
-        )
-    }
-    if (error) {
-        return error;
-    }
+    const { error } = postsResponse;
 
     return (
 
@@ -87,6 +75,7 @@ function UserSpecific() {
                 <div className={toggleState === 1 ? " active-tab-content tab-posts-content" : " tab-posts-content"}>
                     {postsResponse.data.length === 0 && <p className='text-center bg-secondary text-lightGray p-8 rounded-xl shadow-xl  '>No user posts!</p>}
                     {postsResponse.data && postsResponse.data.map(post => {
+                        console.log(post)
                         return <PostCard post={post} key={post.id} />
 
                     })}
