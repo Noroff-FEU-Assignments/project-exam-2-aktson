@@ -23,7 +23,7 @@ import Spinner from "../../loader/Spinner";
 
 function EditPost({ adminPost, setIsOpen }) {
     const { openEditPostModal, closeEditPostModal } = React.useContext(ModalContext);
-    const { posts, setPosts, setUpdateUi } = React.useContext(PostsContext);
+    const { setUpdateUi } = React.useContext(PostsContext);
     const { adminPosts, setAdminPosts, } = React.useContext(AdminContext);
 
     const [tags, setTags] = React.useState([]);
@@ -105,8 +105,8 @@ function EditPost({ adminPost, setIsOpen }) {
             <Button onClick={handleEditBtnClick} data-id={adminPost.id} variant="text" size="sm" className="flex gap-1 items-center text-primary">
                 <MdCreate size={20} className="cursor-pointer" />
                 Edit
+                <Spinner isSubmitting={isLoading} />
             </Button>
-            {isLoading && <Loader />}
             {error && <Alert message={error} />}
             <EditPostModal>
                 <Form>
