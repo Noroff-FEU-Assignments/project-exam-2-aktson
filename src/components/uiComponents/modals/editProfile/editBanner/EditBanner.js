@@ -3,7 +3,7 @@ import { PROFILES_URL, CLOUD_KEY, CLOUD_NAME } from '../../../../constants/api';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, IconButton, Input } from "@material-tailwind/react";
-import { MdBorderColor, MdClear, MdImage, MdCached } from "react-icons/md"
+import { MdClear, MdImage, MdCached } from "react-icons/md"
 import ModalContext from '../../../../context/ModalContext';
 import AuthContext from '../../../../context/AuthContext';
 import Form from '../../Form';
@@ -15,6 +15,7 @@ import Spinner from '../../../loader/Spinner';
 import axios from "axios"
 import { bannerValidation } from '../../../../yupSchema/imageValidation';
 import ModalEditBanner from './ModalEditBanner';
+
 
 
 
@@ -31,7 +32,6 @@ function EditBanner() {
 
     // react hook form and yup schema
     const { handleSubmit, register, formState: { errors } } = useForm({ resolver: yupResolver(bannerValidation) });
-
 
     // uploads image to cloudinary and passes url to put request for noroff url
     const uploadImage = async (data) => {
@@ -94,12 +94,14 @@ function EditBanner() {
         <>
             <Button
                 color="cyan"
+                variant='text'
+                size='sm'
                 className='flex gap-2 items-center'
                 onClick={openEditBannerModal}>
-                <MdBorderColor size={18} />
-                Edit Banner
+                <MdImage size={18} />
+                Banner
             </Button>
-            <ModalEditBanner>
+            <ModalEditBanner >
                 <Form >
                     <div className='flex justify-between items-center mb-8' >
                         <h2>Update Banner</h2>
@@ -107,7 +109,7 @@ function EditBanner() {
                             <MdClear size={24} />
                         </IconButton>
                     </div>
-                    <fieldset className='flex flex-col gap-6 p-2' disabled={isSubmitting}>
+                    <fieldset className='flex flex-col gap-6 p-2' disabled={isSubmitting} >
                         <div>
                             <Input
                                 {...register("banner")}

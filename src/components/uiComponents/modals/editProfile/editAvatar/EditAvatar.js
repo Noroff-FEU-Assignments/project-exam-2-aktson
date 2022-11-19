@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { avatarValidation } from '../../../../yupSchema/imageValidation';
 import { Button, IconButton, Input } from "@material-tailwind/react";
-import { MdBorderColor, MdClear, MdImage, MdCached } from "react-icons/md"
+import { MdBorderColor, MdClear, MdImage, MdCached, MdFace } from "react-icons/md"
 import useAxios from '../../../../hooks/useAxios';
 import ModalContext from '../../../../context/ModalContext';
 import AuthContext from '../../../../context/AuthContext';
@@ -93,11 +93,12 @@ function EditAvatar() {
     return (
         <>
             <Button
-                color="cyan"
-                className='flex gap-2 items-center'
+                variant='text'
+                size='sm'
+                className='flex gap-2 items-center text-primary'
                 onClick={openEditAvatarModal}>
-                <MdBorderColor size={18} />
-                Edit Avatar
+                <MdFace size={18} />
+                Avatar
             </Button>
             <ModalEditAvatar>
                 <Form >

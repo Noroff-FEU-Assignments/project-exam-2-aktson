@@ -140,7 +140,6 @@ function EditPost({ adminPost, setIsOpen }) {
                     </fieldset>
                 </Form>
             </EditPostModal>
-
         </>
     );
 }
