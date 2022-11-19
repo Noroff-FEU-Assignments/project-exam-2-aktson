@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { GET_PROFILES_URL } from '../constants/api';
+import { GET_PROFILES_URL, PROFILES_URL } from '../constants/api';
 import useAxios from '../hooks/useAxios';
 import AuthContext from './AuthContext';
 
@@ -24,7 +24,7 @@ export function UsersProvider({ children }) {
             setIsLoading(true)
 
             try {
-                const response = await http.get(GET_PROFILES_URL)
+                const response = await http.get(PROFILES_URL)
 
                 if (response) {
                     setUsers(response.data)

@@ -7,6 +7,7 @@ import EditAvatar from './editAvatar/EditAvatar';
 import EditBanner from './editBanner/EditBanner';
 
 
+
 function EditProfile() {
 
     const [isOpen, setIsOpen] = React.useState(false);
@@ -14,10 +15,6 @@ function EditProfile() {
     const handleMenuClick = () => {
         setIsOpen((prevState) => !prevState)
     }
-    // const handleClickOutside = () => {
-    //     setIsOpen(false)
-    // };
-    // const ref = useOutsideClick(handleClickOutside);
 
     return (
         <>
