@@ -8,6 +8,8 @@ export const GET_POSTS_URL = BASE_URL + "/api/v1/social/posts?_author=true&_comm
 
 export const POSTS_URL = BASE_URL + "/api/v1/social/posts"
 
+export const POSTS_PEOPLE_FOLLOWING = BASE_URL + "/api/v1/social/posts/following?_author=true&_comments=true&_reactions=true"
+
 export const GET_PROFILES_URL = BASE_URL + "/api/v1/social/profiles?_following=true&_followers=true"
 
 export const PROFILES_URL = BASE_URL + "/api/v1/social/profiles"

@@ -3,39 +3,84 @@ import PostsContext from "../context/PostsContext";
 import PostCard from "../uiComponents/cards/PostCard";
 import LoaderCard from "../uiComponents/loader/LoaderCard";
 import Alert from "../uiComponents/Alert";
+import TabsHeader from "../uiComponents/tabs/TabsHeader";
+import { POSTS_PEOPLE_FOLLOWING } from "../constants/api"
+import useAxios from "../hooks/useAxios";
+import useFetch from "../hooks/useFetch";
 
 
 function Home() {
 	document.title = "Home | ShareIt"
 
-
+	const postsFollowing = useFetch(POSTS_PEOPLE_FOLLOWING)
+	console.log(postsFollowing)
 	const { posts, isLoading, error } = React.useContext(PostsContext);
 
 
-	if (isLoading) {
-		return (
+	const [toggleState, setToggleState] = React.useState(1);
 
-			<div className="w-full my-24">
-				<LoaderCard />
-				<LoaderCard />
-				<LoaderCard />
-			</div>
+	const handleFollowingClick = (index) => {
+		setToggleState(index);
+	}
 
-		)
+	const handlePostsClick = (index) => {
+		setToggleState(index);
+
 	}
-	if (error) {
-		return error;
-	}
+
 
 	return (
 
 		<section className="section">
-			{error && <Alert message={error} />}
-			{posts && posts?.map(post => {
-				return <PostCard post={post} key={post.id} />
-			})}
 
+			<TabsHeader>
+				<button className={toggleState === 1 ? " tab-header active-tab-header" : "tab-header"} onClick={() => handlePostsClick(1)}>
+					All Posts
+				</button>
+				<button className={toggleState === 2 ? "tab-header active-tab-header" : "tab-header "} onClick={() => handleFollowingClick(2)}>
+					Following
+				</button>
+			</TabsHeader>
+
+
+			{/* Renders posts on allposts button click */}
+			{error && <Alert message={error} />}
+
+			{isLoading ?
+				<>
+					<LoaderCard />
+					<LoaderCard />
+				</>
+				:
+				<div className={toggleState === 1 ? " active-tab-content tab-posts-content" : " tab-posts-content"}>
+					{posts.length === 0 && <p className='text-center bg-secondary text-lightGray p-8 rounded-xl shadow-xl '>No posts!</p>}
+					{posts && posts.map(post => {
+						return <PostCard post={post} key={post.id} />
+
+					})}
+				</div>
+			}
+
+
+			{/* Renders posts from people follwoing on follwing button click */}
+			{postsFollowing.error && <Alert message={postsFollowing.error} />}
+
+			{postsFollowing.isLoading ?
+				<>
+					<LoaderCard />
+					<LoaderCard />
+				</>
+				:
+				<div className={toggleState === 2 ? " active-tab-content tab-posts-content" : " tab-posts-content"}>
+					{postsFollowing.data.length === 0 && <p className='text-center bg-secondary text-lightGray p-8 rounded-xl shadow-xl '>No user posts!</p>}
+					{postsFollowing.data && postsFollowing.data.map(post => {
+						return <PostCard post={post} key={post.id} />
+
+					})}
+				</div>
+			}
 		</section>
+
 
 	)
 }
