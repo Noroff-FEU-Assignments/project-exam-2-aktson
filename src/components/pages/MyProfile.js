@@ -7,6 +7,7 @@ import LoaderCard from "../uiComponents/loader/LoaderCard"
 import Alert from '../uiComponents/Alert';
 import TabsHeader from '../uiComponents/tabs/TabsHeader';
 import Slider from '../uiComponents/tabs/Slider';
+import Section from '../uiComponents/Section';
 
 
 function MyProfile() {
@@ -36,7 +37,7 @@ function MyProfile() {
 
             {isLoading ? <Loader /> : <UserBanner user={admin} postsLength={adminPosts.length} />}
 
-            <section className="section">
+            <Section>
                 <TabsHeader>
                     <button className={toggleState === 1 ? " tab-header active-tab-header" : "tab-header"} onClick={() => handlePostsClick(1)}>
                         Posts
@@ -74,7 +75,7 @@ function MyProfile() {
                     <Slider followersOrFollowing={admin.following} message="Opps...No followers" />
                 </div>
 
-            </section>
+            </Section>
 
         </>
     )

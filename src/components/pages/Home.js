@@ -7,6 +7,7 @@ import TabsHeader from "../uiComponents/tabs/TabsHeader";
 import { POSTS_PEOPLE_FOLLOWING } from "../constants/api"
 import useFetch from "../hooks/useFetch";
 import useAxios from "../hooks/useAxios";
+import Section from "../uiComponents/Section";
 
 
 function Home() {
@@ -56,8 +57,7 @@ function Home() {
 
 	return (
 
-		<section className="section">
-
+		<Section>
 			<TabsHeader>
 				<button className={toggleState === 1 ? " tab-header active-tab-header" : "tab-header"} onClick={() => handlePostsClick(1)}>
 					All Posts
@@ -66,7 +66,6 @@ function Home() {
 					Following
 				</button>
 			</TabsHeader>
-
 
 			{/* Renders posts on allposts button click */}
 			{error && <Alert message={error} />}
@@ -104,7 +103,7 @@ function Home() {
 					})}
 				</div>
 			}
-		</section>
+		</Section>
 
 
 	)

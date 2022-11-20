@@ -9,6 +9,7 @@ import Alert from '../uiComponents/Alert'
 import Loader from '../uiComponents/loader/Loader'
 import TabsHeader from '../uiComponents/tabs/TabsHeader'
 import Slider from '../uiComponents/tabs/Slider'
+import Section from '../uiComponents/Section'
 
 
 function UserSpecific() {
@@ -50,7 +51,7 @@ function UserSpecific() {
                 :
                 <UserBanner user={profileResponse.data} postsLength={postsResponse.data.length} />
             }
-            <section className="section">
+            <Section>
                 <TabsHeader>
                     <button className={toggleState === 1 ? " tab-header active-tab-header" : "tab-header"} onClick={() => handlePostsClick(1)}>
                         Posts
@@ -88,7 +89,7 @@ function UserSpecific() {
                     <Slider followersOrFollowing={profileResponse.data.following} message="Opps...Not following anyone" />
                 </div>
 
-            </section>
+            </Section>
         </>
     )
 }
