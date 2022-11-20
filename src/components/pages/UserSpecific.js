@@ -63,21 +63,21 @@ function UserSpecific() {
                         Following
                     </button>
                 </TabsHeader>
-                {error && <Alert message={error} />}
-
-                {postsResponse.isLoading && <>
-                    <LoaderCard />
-                    <LoaderCard />
-                </>
-                }
-
                 {/* Renders posts on posts button click */}
-                <div className={toggleState === 1 ? " active-tab-content tab-posts-content" : " tab-posts-content"}>
-                    {postsResponse.data.length === 0 && <p className='text-center bg-secondary text-lightGray p-8 rounded-xl shadow-xl  '>No user posts!</p>}
-                    {postsResponse.data && postsResponse.data.map(post => {
-                        return <PostCard post={post} key={post.id} />
-                    })}
-                </div>
+                {error && <Alert message={error} />}
+                {postsResponse.isLoading ?
+                    <>
+                        <LoaderCard />
+                        <LoaderCard />
+                    </>
+                    :
+                    < div className={toggleState === 1 ? " active-tab-content tab-posts-content" : " tab-posts-content"}>
+                        {postsResponse.data.length === 0 && <p className='text-center bg-secondary text-lightGray p-8 rounded-xl shadow-xl  '>No user posts!</p>}
+                        {postsResponse.data && postsResponse.data.map(post => {
+                            return <PostCard post={post} key={post.id} />
+                        })}
+                    </div>
+                }
 
                 {/* Renders followers on followers button click */}
                 <div className={toggleState === 2 ? " active-tab-content tab-users-content " : "tab-users-content"}>

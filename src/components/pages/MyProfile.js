@@ -49,21 +49,23 @@ function MyProfile() {
                         Following
                     </button>
                 </TabsHeader>
+
+                {/* Renders posts on posts button click */}
                 {error && <Alert message={error} />}
-                {isLoading && (
+                {isLoading ?
                     <>
                         <LoaderCard />
                         <LoaderCard />
                     </>
-                )}
-                {/* Renders posts on posts button click */}
-                <div className={toggleState === 1 ? " active-tab-content tab-posts-content" : " tab-posts-content"}>
-                    {adminPosts.length === 0 && <p className='text-center bg-secondary text-lightGray p-8 rounded-xl shadow-xl '>No user posts!</p>}
-                    {adminPosts && adminPosts.map(post => {
-                        return <PostCard post={post} key={post.id} />
+                    :
+                    <div className={toggleState === 1 ? " active-tab-content tab-posts-content" : " tab-posts-content"}>
+                        {adminPosts.length === 0 && <p className='text-center bg-secondary text-lightGray p-8 rounded-xl shadow-xl '>No user posts!</p>}
+                        {adminPosts && adminPosts.map(post => {
+                            return <PostCard post={post} key={post.id} />
 
-                    })}
-                </div>
+                        })}
+                    </div>
+                }
 
                 {/* Renders followers on followers button click */}
                 <div className={toggleState === 2 ? " active-tab-content tab-users-content " : "tab-users-content"}>
