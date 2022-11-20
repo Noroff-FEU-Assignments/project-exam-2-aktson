@@ -17,6 +17,8 @@ import WrapperSignInUp from '../uiComponents/welcomeBanner/WrapperSignInUp';
 
 function SignUp() {
 
+    document.title = "Sign Up | ShareIt"
+
     const navigate = useNavigate();
 
 

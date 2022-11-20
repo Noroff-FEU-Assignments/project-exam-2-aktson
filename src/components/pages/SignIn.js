@@ -17,9 +17,13 @@ import Spinner from '../uiComponents/loader/Spinner';
 
 
 function SignIn() {
+
+    document.title = "Sign in | ShareIt"
+
     const { setAuth } = React.useContext(AuthContext);
 
     const navigate = useNavigate();
+
 
     // react state
     const [isVisible, setIsVisible] = React.useState(false);

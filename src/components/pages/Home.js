@@ -6,6 +6,8 @@ import Alert from "../uiComponents/Alert";
 
 
 function Home() {
+	document.title = "Home | ShareIt"
+
 
 	const { posts, isLoading, error } = React.useContext(PostsContext);
 

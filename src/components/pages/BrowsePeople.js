@@ -4,6 +4,8 @@ import UserCard from '../uiComponents/cards/UserCard'
 
 
 function BrowsePeople() {
+    document.title = "Browse People | ShareIt"
+
     const { users } = React.useContext(UsersContext)
 
     return (

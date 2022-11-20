@@ -11,6 +11,9 @@ import Slider from '../uiComponents/tabs/Slider';
 
 function MyProfile() {
 
+    document.title = "My Profile | ShareIt"
+
+
     const { adminPosts, isLoading, admin, error } = React.useContext(AdminContext)
 
     const [toggleState, setToggleState] = React.useState(1);

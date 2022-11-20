@@ -8,7 +8,6 @@ import LoaderCard from '../uiComponents/loader/LoaderCard'
 import Alert from '../uiComponents/Alert'
 import Loader from '../uiComponents/loader/Loader'
 import TabsHeader from '../uiComponents/tabs/TabsHeader'
-import TabsInner from '../uiComponents/tabs/TabsInner'
 import Slider from '../uiComponents/tabs/Slider'
 
 
