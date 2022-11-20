@@ -5,7 +5,6 @@ import LoaderCard from "../uiComponents/loader/LoaderCard";
 import Alert from "../uiComponents/Alert";
 import TabsHeader from "../uiComponents/tabs/TabsHeader";
 import { POSTS_PEOPLE_FOLLOWING } from "../constants/api"
-import useAxios from "../hooks/useAxios";
 import useFetch from "../hooks/useFetch";
 
 
@@ -13,7 +12,7 @@ function Home() {
 	document.title = "Home | ShareIt"
 
 	const postsFollowing = useFetch(POSTS_PEOPLE_FOLLOWING)
-	console.log(postsFollowing)
+
 	const { posts, isLoading, error } = React.useContext(PostsContext);
 
 
@@ -25,7 +24,6 @@ function Home() {
 
 	const handlePostsClick = (index) => {
 		setToggleState(index);
-
 	}
 
 
