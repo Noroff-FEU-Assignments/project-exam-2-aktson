@@ -6,24 +6,51 @@ import Alert from "../uiComponents/Alert";
 import TabsHeader from "../uiComponents/tabs/TabsHeader";
 import { POSTS_PEOPLE_FOLLOWING } from "../constants/api"
 import useFetch from "../hooks/useFetch";
+import useAxios from "../hooks/useAxios";
 
 
 function Home() {
 	document.title = "Home | ShareIt"
+	const http = useAxios();
 
-	const postsFollowing = useFetch(POSTS_PEOPLE_FOLLOWING)
+	// const postsFollowing = useFetch(POSTS_PEOPLE_FOLLOWING)
 
 	const { posts, isLoading, error } = React.useContext(PostsContext);
 
 
 	const [toggleState, setToggleState] = React.useState(1);
 
-	const handleFollowingClick = (index) => {
-		setToggleState(index);
-	}
+	const [postsFollowing, setPostsFollowing] = React.useState([])
+	const [postsFollowingLoading, setPostsFollowingLoading] = React.useState(false)
+	const [errorpostsFollowing, setErrorPostsFollowing] = React.useState(null)
+
 
 	const handlePostsClick = (index) => {
 		setToggleState(index);
+	}
+	const handleFollowingClick = (index) => {
+		fetchPosts();
+		setToggleState(index);
+	}
+
+	const fetchPosts = async () => {
+
+		setPostsFollowingLoading(true)
+
+		try {
+			const response = await http.get(POSTS_PEOPLE_FOLLOWING)
+
+			if (response) {
+				setPostsFollowing(response.data)
+			}
+
+		} catch (error) {
+			console.log(error)
+			setErrorPostsFollowing("Failed to fetch")
+
+		} finally {
+			setPostsFollowingLoading(false)
+		}
 	}
 
 
@@ -61,17 +88,17 @@ function Home() {
 
 
 			{/* Renders posts from people follwoing on follwing button click */}
-			{postsFollowing.error && <Alert message={postsFollowing.error} />}
+			{errorpostsFollowing && <Alert message={errorpostsFollowing} />}
 
-			{postsFollowing.isLoading ?
+			{postsFollowingLoading ?
 				<>
 					<LoaderCard />
 					<LoaderCard />
 				</>
 				:
 				<div className={toggleState === 2 ? " active-tab-content tab-posts-content" : " tab-posts-content"}>
-					{postsFollowing.data.length === 0 && <p className='text-center bg-secondary text-lightGray p-8 rounded-xl shadow-xl '>No user posts!</p>}
-					{postsFollowing.data && postsFollowing.data.map(post => {
+					{postsFollowing.length === 0 && <p className='text-center bg-secondary text-lightGray p-8 rounded-xl shadow-xl '>No user posts!</p>}
+					{postsFollowing && postsFollowing.map(post => {
 						return <PostCard post={post} key={post.id} />
 
 					})}

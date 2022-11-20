@@ -72,7 +72,7 @@ function SignUp() {
                     <Card className="max-w-md lg:max-w-lg mx-auto  ">
                         <CardHeader className="mb-4 grid h-28 place-items-center bg-primary">
                             <Typography variant="h3" color="white">
-                                Sign Up
+                                Create Account
                             </Typography>
                         </CardHeader>
                         <CardBody className="flex flex-col gap-6">
@@ -116,31 +116,11 @@ function SignUp() {
                                 />
                                 {errors.confirmPassword && <ErrorSpan message={errors.confirmPassword.message} />}
                             </div>
-                            {/* <div>
-                                <Input
-                                    {...register("avatar")}
-                                    label="Avatar URL"
-                                    size="lg"
-                                    variant="standard"
-                                    color="cyan"
-                                    icon={<MdImage size={20} />} />
-                                {errors.avatar && <ErrorSpan message={errors.avatar.message} />}
-                            </div>
-                            <div>
-                                <Input
-                                    {...register("banner")}
-                                    label="Banner URL"
-                                    size="lg"
-                                    variant="standard"
-                                    color="cyan"
-                                    icon={<MdImage size={20} />} />
-                                {errors.banner && <ErrorSpan message={errors.banner.message} />}
-                            </div> */}
                         </CardBody>
                         <CardFooter className="pt-0 mt-4">
                             <Button fullWidth className='flex gap-2 items-center mt-4 justify-center ' color='cyan' onClick={handleSubmit(handleFormSubmit)}>
                                 <Spinner isSubmitting={isSubmitting} />
-                                {isSubmitting ? "Signing Up" : "Sign Up"}
+                                {isSubmitting ? "Creating Account" : "Create Account"}
                             </Button>
                             <Typography variant="small" as="div" className="mt-6 flex justify-center">
                                 Already have an account?
