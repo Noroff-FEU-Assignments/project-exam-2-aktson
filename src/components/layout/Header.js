@@ -14,7 +14,7 @@ function Header({ toggleDashboard }) {
 
     return (
         <>
-            <header className='  drop-shadow-2xl z-50 bg-secondary fixed w-full  mx-auto rounded-b-xl'>
+            <header className='  drop-shadow-2xl z-50 bg-secondary fixed w-full  mx-auto '>
 
                 <div className='flex py-4  px-12 justify-between rounded-full  mx-auto items-center' >
                     <Link to="/" className='text-lightGray text-3xl'>Logo</Link>

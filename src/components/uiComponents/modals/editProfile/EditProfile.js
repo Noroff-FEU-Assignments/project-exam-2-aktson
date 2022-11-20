@@ -18,12 +18,11 @@ function EditProfile() {
 
     return (
         <>
-
             <div className='relative'
             >
                 <Button
-                    color=""
-                    className='flex gap-2 items-center bg-accent'
+                    color="cyan"
+                    className='flex gap-2 items-center '
                     onClick={handleMenuClick}
 
                 >
