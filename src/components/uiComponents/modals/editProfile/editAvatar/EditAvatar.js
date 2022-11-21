@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { avatarValidation } from '../../../../yupSchema/imageValidation';
 import { Button, IconButton, Input } from "@material-tailwind/react";
-import { MdBorderColor, MdClear, MdImage, MdCached, MdFace } from "react-icons/md"
+import { MdBorderColor, MdClear, MdImage, MdCached, MdModeEdit } from "react-icons/md"
 import useAxios from '../../../../hooks/useAxios';
 import ModalContext from '../../../../context/ModalContext';
 import AuthContext from '../../../../context/AuthContext';
@@ -97,7 +97,7 @@ function EditAvatar() {
                 size='sm'
                 className='flex gap-2 items-center text-primary'
                 onClick={openEditAvatarModal}>
-                <MdFace size={18} />
+                <MdModeEdit size={18} />
                 Avatar
             </Button>
             <ModalEditAvatar>
@@ -123,7 +123,6 @@ function EditAvatar() {
                         </div>
                         <div className='flex justify-end mt-4'>
                             <Button onClick={handleSubmit(uploadImage)} color="cyan" className="flex gap-2 items-center btn">
-                                {isSubmitting && <MdCached className="animate-spin" size={20} />}
                                 <Spinner isSubmitting={isSubmitting} />
                                 {isSubmitting ? "Updating" : "Update"}
                             </Button>

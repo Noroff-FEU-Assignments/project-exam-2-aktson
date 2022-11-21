@@ -5,7 +5,8 @@ import { MdDashboard } from "react-icons/md"
 import { IconButton, Avatar, Typography } from "@material-tailwind/react";
 import AuthContext from '../context/AuthContext';
 import userAvatar from "../../assets/user.png";
-import SearchInput from '../uiComponents/inputs/SearchInput';
+import SearchInput from '../uiComponents/inputs/search/SearchInput';
+import MobileSearch from '../uiComponents/inputs/search/MobileSearch';
 
 
 function Header({ toggleDashboard }) {
@@ -16,9 +17,9 @@ function Header({ toggleDashboard }) {
     return (
         <>
             <header className=' shadow-xl gap-2 z-50 bg-secondary fixed w-full  mx-auto '>
-
                 <div className='flex py-4  px-12 justify-between rounded-full  mx-auto items-center' >
                     <Link to="/" className='text-lightGray text-3xl'>Logo</Link>
+                    <MobileSearch />
                     <SearchInput />
                     <div className='flex items-center gap-4'>
                         <Link to="/my-profile" className='flex items-center gap-2'>

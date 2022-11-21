@@ -3,7 +3,7 @@ import { PROFILES_URL, CLOUD_KEY, CLOUD_NAME } from '../../../../constants/api';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, IconButton, Input } from "@material-tailwind/react";
-import { MdClear, MdImage, MdCached } from "react-icons/md"
+import { MdClear, MdImage, MdCached, MdModeEdit } from "react-icons/md"
 import ModalContext from '../../../../context/ModalContext';
 import AuthContext from '../../../../context/AuthContext';
 import Form from '../../Form';
@@ -98,7 +98,7 @@ function EditBanner() {
                 size='sm'
                 className='flex gap-2 items-center'
                 onClick={openEditBannerModal}>
-                <MdImage size={18} />
+                <MdModeEdit size={18} />
                 Banner
             </Button>
             <ModalEditBanner >
@@ -124,7 +124,6 @@ function EditBanner() {
                         </div>
                         <div className='flex justify-end mt-4'>
                             <Button onClick={handleSubmit(uploadImage)} color="cyan" className="flex gap-2 items-center btn">
-                                {isSubmitting && <MdCached className="animate-spin" size={20} />}
                                 <Spinner isSubmitting={isSubmitting} />
                                 {isSubmitting ? "Updating" : "Update"}
                             </Button>
