@@ -61,7 +61,6 @@ function MobileSearch() {
 
     return (
         <div className='relative'>
-
             <div className='relative flex items-center flex-col justify-center' ref={ref}>
                 <Button className='p-0 w-full sm:hidden flex justify-center relative' >
                     <MdOutlineSearch size={32} onClick={handleSearchIconClick} />
@@ -98,7 +97,6 @@ function MobileSearch() {
                         </Animate>
                     </form>
                 }
-
             </div>
         </div >
     )
