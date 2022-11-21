@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { avatarValidation } from '../../../../yupSchema/imageValidation';
 import { Button, IconButton, Input } from "@material-tailwind/react";
-import { MdBorderColor, MdClear, MdImage, MdCached, MdModeEdit } from "react-icons/md"
+import { MdClear, MdImage, MdModeEdit } from "react-icons/md"
 import useAxios from '../../../../hooks/useAxios';
 import ModalContext from '../../../../context/ModalContext';
 import AuthContext from '../../../../context/AuthContext';

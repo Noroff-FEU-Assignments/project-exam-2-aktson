@@ -15,6 +15,8 @@ function MobileSearch() {
     const [show, setShow] = React.useState(false)
     const [showSearchBar, setShowSearchBar] = React.useState(false)
 
+
+    // closes container on outside click then parent container
     const handleClickOutside = () => {
         setShowSearchBar(false)
         setShow(false)
@@ -22,6 +24,8 @@ function MobileSearch() {
     };
     const ref = useOutsideClick(handleClickOutside);
 
+
+    // filters users array and matches with name 
     const handleSearch = (event) => {
 
         setValue(event.target.value)
@@ -40,19 +44,22 @@ function MobileSearch() {
 
         }
     }
+
+    // close button inside searchbar closes result container onclick
     const handleClose = () => {
         setShow(false)
         setValue("")
     }
 
 
-
+    // toggles search bar onclick, by default is hidden
     const handleSearchIconClick = () => {
         setShowSearchBar(prevState => !prevState)
 
     }
-    return (
 
+
+    return (
         <div className='relative'>
 
             <div className='relative flex items-center flex-col justify-center' ref={ref}>

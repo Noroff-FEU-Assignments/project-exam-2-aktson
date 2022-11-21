@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Input, Avatar, Button } from '@material-tailwind/react'
-import { MdPersonSearch, MdClear, MdOutlineSearch } from "react-icons/md"
+import { Input, Avatar } from '@material-tailwind/react'
+import { MdPersonSearch, MdClear } from "react-icons/md"
 import UsersContext from '../../../context/UsersContext'
 import defaultAvatar from "../../../../assets/user.png";
 import { useOutsideClick } from '../../../hooks/useOutsideClick'
@@ -13,15 +13,17 @@ function SearchInput() {
     const [filteredUsers, setFilteredUsers] = React.useState([])
     const [show, setShow] = React.useState(false)
 
-    const inputRef = React.useRef()
 
+
+    // closes container on outside click then parent container
     const handleClickOutside = () => {
         setShow(false)
         setValue("")
     };
-
     const ref = useOutsideClick(handleClickOutside);
 
+
+    // filters users array and matches with name 
     const handleSearch = (event) => {
 
         setValue(event.target.value)
@@ -41,6 +43,8 @@ function SearchInput() {
 
         }
     }
+
+    // close button inside searchbar closes result container onclick
     const handleClose = () => {
         setShow(false)
         setValue("")
@@ -51,7 +55,7 @@ function SearchInput() {
 
         <>
             <form className={`sm:w-48 md:max-w-sm md:w-full lg:max-w-xl sm:flex relative hidden`} ref={ref}>
-                <Input variant="standard" ref={inputRef}
+                <Input variant="standard"
                     placeholder="Search People"
                     className=" w-full max-w-md bg-lightGray rounded-xl text-md p-2 mb-4"
                     icon={!show ?
