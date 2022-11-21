@@ -50,20 +50,19 @@ function SearchInput() {
     return (
 
         <>
-            <form className={`sm:w-48 md:w-96 sm:block relative hidden `} ref={ref}>
+            <form className={`sm:w-48 md:max-w-sm md:w-full lg:max-w-xl sm:flex relative hidden`} ref={ref}>
                 <Input variant="standard" ref={inputRef}
                     placeholder="Search People"
-                    color='cyan'
                     className=" w-full max-w-md bg-lightGray rounded-xl text-md p-2 mb-4"
                     icon={!show ?
-                        <MdPersonSearch size={24} className=" -translate-y-1  -translate-x-3 " />
-                        : <MdClear size={24} className=" -translate-y-1  -translate-x-3 cursor-pointer" onClick={handleClose} />}
+                        <MdPersonSearch size={24} className=" -translate-y-1  -translate-x-3 lg:-translate-x-36 l" />
+                        : <MdClear size={24} className=" -translate-y-1  -translate-x-3 lg:-translate-x-36 cursor-pointer" onClick={handleClose} />}
                     value={value}
                     onChange={handleSearch}
                 />
                 {show
                     &&
-                    <div className='absolute grid grid-cols-2 bg-lightGray rounded-xl overflow-x-hidden  styledScrollbar max-h-72 mt-1 shadow-xl'>
+                    <div className='absolute grid grid-cols-2 bg-lightGray rounded-xl overflow-x-hidden  top-full  styledScrollbar max-h-72 mt-1 shadow-xl'>
                         {filteredUsers &&
                             filteredUsers.length === 0 ?
                             <p className='w-full p-2 py-3'>No users found</p>

@@ -75,7 +75,7 @@ function MobileSearch() {
                             />
                             {show
                                 &&
-                                <div className='absolute grid grid-cols-2 bg-lightGray rounded-xl overflow-x-hidden  styledScrollbar max-h-72 mt-1 shadow-xl'>
+                                <div className='absolute grid grid-cols-2 bg-lightGray rounded-xl overflow-x-hidden  top-full styledScrollbar max-h-72 mt-1 shadow-xl'>
                                     {filteredUsers &&
                                         filteredUsers.length === 0 ?
                                         <p className='w-full p-2 py-3'>No users found</p>
