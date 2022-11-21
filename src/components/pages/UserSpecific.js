@@ -63,6 +63,7 @@ function UserSpecific() {
                         Following
                     </button>
                 </TabsHeader>
+                
                 {/* Renders posts on posts button click */}
                 {error && <Alert message={error} />}
                 {postsResponse.isLoading ?

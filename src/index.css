@@ -63,3 +63,20 @@ main {
 	width: 100%;
 	height: 300px;
 }
+
+/* styled scrollbar */
+.styledScrollbar::-webkit-scrollbar {
+	width: 8px;
+}
+.styledScrollbar::-webkit-scrollbar-thumb {
+	/* Foreground */
+	background: var(--primary);
+	border-radius: 2em;
+}
+.styledScrollbar::-webkit-scrollbar-track {
+	/* Background */
+	background: var(--lightGray);
+}
+.styledScrollbar {
+	cursor: pointer;
+}
