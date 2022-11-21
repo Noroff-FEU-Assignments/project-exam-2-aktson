@@ -74,7 +74,7 @@ function MobileSearch() {
                                 color='cyan'
                                 className=" w-full max-w-md bg-lightGray rounded-xl text-md p-2 mb-4"
                                 icon={!show ?
-                                    <MdPersonSearch size={24} className=" -translate-y-1  -translate-x-3 " />
+                                    <MdPersonSearch size={24} className=" -translate-y-1  -translate-x-3 text-secondary" />
                                     : <MdClear size={24} className=" -translate-y-1  -translate-x-3 cursor-pointer" onClick={handleClose} />}
                                 value={value}
                                 onChange={handleSearch}

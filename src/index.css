@@ -7,8 +7,8 @@
 /* variables */
 :root {
 	--primary: #00bcd4;
-	--secondary: #d4bd15;
-	--accent: #0c96eb;
+	--secondary: #0c96eb;
+	--accent: #d4bd15;
 	--dark: #2c436e;
 	--light: #ececec;
 	--grey: #6b6b6b;
@@ -70,7 +70,7 @@ main {
 }
 .styledScrollbar::-webkit-scrollbar-thumb {
 	/* Foreground */
-	background: var(--primary);
+	background: var(--secondary);
 	border-radius: 2em;
 }
 .styledScrollbar::-webkit-scrollbar-track {

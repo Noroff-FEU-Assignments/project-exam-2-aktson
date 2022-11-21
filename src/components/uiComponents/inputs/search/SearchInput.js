@@ -59,7 +59,7 @@ function SearchInput() {
                     placeholder="Search People"
                     className=" w-full max-w-md bg-lightGray rounded-xl text-md p-2 mb-4"
                     icon={!show ?
-                        <MdPersonSearch size={24} className=" -translate-y-1  -translate-x-3 lg:-translate-x-36 l" />
+                        <MdPersonSearch size={24} className=" -translate-y-1  -translate-x-3 lg:-translate-x-36 l text-secondary" />
                         : <MdClear size={24} className=" -translate-y-1  -translate-x-3 lg:-translate-x-36 cursor-pointer" onClick={handleClose} />}
                     value={value}
                     onChange={handleSearch}
