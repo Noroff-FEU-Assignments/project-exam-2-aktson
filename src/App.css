@@ -48,10 +48,10 @@
 
 	/* tabs  section */
 	.tab-header {
-		@apply p-3 transition-all duration-500 w-full flex items-center justify-center hover:bg-secondary hover:rounded-xl hover:text-white text-grey;
+		@apply p-3 transition-all duration-500 w-full flex items-center justify-center hover:bg-cyan-200 hover:rounded-xl hover:text-white text-grey;
 	}
 	.active-tab-header {
-		@apply bg-secondary p-3 pointer-events-none text-lightGray rounded-xl;
+		@apply bg-primary p-3 pointer-events-none text-lightGray rounded-xl;
 	}
 	.tab-posts-content {
 		@apply hidden flex-wrap flex-col justify-center p-4 gap-8 transition-opacity duration-1000 w-full items-center;
