@@ -129,7 +129,6 @@ function CreatePost() {
                         {errors.image && <ErrorSpan message={errors.image.message} />}
                         {error && <ErrorSpan message={error} />}
                     </div>
-
                     <TagsInput tags={tags} setTags={setTags} />
                     <div className='flex justify-end'>
                         <Button type='submit' color='cyan' onClick={handleSubmit(handlePost)} className="flex gap-2 items-center mt-4 ">

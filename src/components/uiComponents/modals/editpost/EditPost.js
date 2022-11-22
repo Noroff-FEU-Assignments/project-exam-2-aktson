@@ -90,7 +90,7 @@ function EditPost({ adminPost, setIsOpen }) {
                 const response = await axios.post(url, formdata)
 
                 if (response.data.url) {
-                    submitPostEdit({ ...data, media: response.data.url })
+                    submitPostEdit(response.data.url)
                 }
 
             } catch (error) {
@@ -102,19 +102,18 @@ function EditPost({ adminPost, setIsOpen }) {
             }
         }
         else {
-            submitPostEdit(data)
+            submitPostEdit(adminPosts?.media)
         }
 
     }
 
 
-    const submitPostEdit = async (data) => {
+    const submitPostEdit = async (imageUrl) => {
 
         setIsSubmitting(true)
 
-        const editedFormData = data.watch();
-        console.log(editedFormData)
-        const formDataWithTags = { ...editedFormData, tags: tags }
+        const editedFormData = watch();
+        const formDataWithTags = { ...editedFormData, tags: tags, media: imageUrl }
         const url = `${POSTS_URL}/${adminPost.id}${POSTS_FLAGS}`
 
         try {
