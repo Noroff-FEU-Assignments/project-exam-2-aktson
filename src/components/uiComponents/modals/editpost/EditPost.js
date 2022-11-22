@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { POSTS_FLAGS, POSTS_URL } from "../../../constants/api";
+import { POSTS_FLAGS, POSTS_URL, CLOUD_KEY, CLOUD_NAME } from "../../../constants/api";
 import useAxios from "../../../hooks/useAxios";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { createEditSchema } from "../../../yupSchema/createEditSchema"
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Input, Textarea, IconButton } from "@material-tailwind/react";
-import { MdClear, MdModeEditOutline, MdCreate } from "react-icons/md"
+import { MdClear, MdModeEditOutline, MdCreate, MdImage } from "react-icons/md"
 import { toast } from "react-toastify";
 import ModalContext from "../../../context/ModalContext";
 import AdminContext from "../../../context/AdminContext";
@@ -17,6 +18,7 @@ import EditPostModal from "./EditPostModal";
 import Form from "../Form";
 import Alert from "../../Alert";
 import Spinner from "../../loader/Spinner";
+
 
 
 
@@ -70,12 +72,48 @@ function EditPost({ adminPost, setIsOpen }) {
             }
         });
 
+    // uploads image to cloudinary and passes url to put request for noroff url
+    const handlePostEdit = async (data) => {
+        const url = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
 
-    const handlePostEdit = async () => {
+        if (data.image[0]) {
+
+            setIsSubmitting(true)
+
+            try {
+                const formdata = new FormData();
+
+                formdata.append("file", data.image[0])
+                formdata.append("upload_preset", CLOUD_KEY)
+                formdata.append("folder", "social_app")
+
+                const response = await axios.post(url, formdata)
+
+                if (response.data.url) {
+                    submitPostEdit({ ...data, media: response.data.url })
+                }
+
+            } catch (error) {
+                console.log(error)
+                setError("Could not upload image")
+
+            } finally {
+                setIsSubmitting(false)
+            }
+        }
+        else {
+            submitPostEdit(data)
+        }
+
+    }
+
+
+    const submitPostEdit = async (data) => {
 
         setIsSubmitting(true)
 
-        const editedFormData = watch();
+        const editedFormData = data.watch();
+        console.log(editedFormData)
         const formDataWithTags = { ...editedFormData, tags: tags }
         const url = `${POSTS_URL}/${adminPost.id}${POSTS_FLAGS}`
 
@@ -126,9 +164,17 @@ function EditPost({ adminPost, setIsOpen }) {
                         <div>
                             <Textarea variant="standard" label="Description" color="cyan" {...register("body")} />
                         </div>
-                        <div className='w-full'>
-                            <Input variant="standard" label="Image URL" color="cyan" {...register("media")} />
-                            {errors.media && <ErrorSpan message={errors.media.message} />}
+                        <div>
+                            <Input
+                                {...register("image")}
+                                label="Image"
+                                size="lg"
+                                variant="standard"
+                                color="cyan"
+                                type="file"
+                                icon={<MdImage size={20} />} />
+                            {errors.image && <ErrorSpan message={errors.image.message} />}
+                            {error && <ErrorSpan message={error} />}
                         </div>
                         <TagsInput tags={tags} setTags={setTags} />
                         <div className='flex justify-end'>

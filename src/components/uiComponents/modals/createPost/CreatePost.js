@@ -32,9 +32,6 @@ function CreatePost() {
     const [error, setError] = React.useState(null)
 
 
-    // react hook form and yup schema
-    //   const { handleSubmit, register, formState: { errors } } = useForm({ resolver: yupResolver(avatarValidation) });
-
     // uploads image to cloudinary and passes url to put request for noroff url
     const handlePost = async (data) => {
         const url = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
@@ -53,7 +50,7 @@ function CreatePost() {
                 const response = await axios.post(url, formdata)
 
                 if (response.data.url) {
-                    handlePostSubmit({ ...data, media: response.data.url })
+                    submitPost({ ...data, media: response.data.url })
                 }
 
             } catch (error) {
@@ -65,13 +62,13 @@ function CreatePost() {
             }
         }
         else {
-            handlePostSubmit(data)
+            submitPost(data)
         }
 
     }
 
 
-    const handlePostSubmit = async (data) => {
+    const submitPost = async (data) => {
         setIsSubmitting(true)
 
         const dataCopy = { ...data, tags: tags }
@@ -132,10 +129,7 @@ function CreatePost() {
                         {errors.image && <ErrorSpan message={errors.image.message} />}
                         {error && <ErrorSpan message={error} />}
                     </div>
-                    {/* <div className='w-full'>
-                        <Input variant="standard" label="Image URL" color="cyan" {...register("media")} />
-                        {errors.media && <ErrorSpan message={errors.media.message} />}
-                    </div> */}
+
                     <TagsInput tags={tags} setTags={setTags} />
                     <div className='flex justify-end'>
                         <Button type='submit' color='cyan' onClick={handleSubmit(handlePost)} className="flex gap-2 items-center mt-4 ">
