@@ -1,5 +1,6 @@
 import * as yup from "yup";
-import { urlRegex } from "./regex";
+
+import { SUPPORTED_FORMATS } from "./imageValidation";
 
 export const createEditSchema = yup.object().shape({
 
@@ -11,11 +12,10 @@ export const createEditSchema = yup.object().shape({
             return yup.mixed().notRequired();
         }
     }),
-    media: yup.string().when((value) => {
-        if (value?.length > 0) {  //if value exist then apply min max else not
-            return yup.string().matches(urlRegex, 'Please enter valid image URL')
-        } else {
-            return yup.mixed().notRequired();
-        }
-    }),
+    image: yup.mixed()
+        .required("You need to provide a file")
+        .test("FILE_SIZE", "Uploaded file is too big.",
+            value => !value || (value[0].size && value[0].size <= 2000000))
+        .test("FILE_FORMAT", "Uploaded file has unsupported format.",
+            value => !value || (value && SUPPORTED_FORMATS.includes(value[0].type))),
 })

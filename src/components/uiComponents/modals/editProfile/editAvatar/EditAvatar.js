@@ -2,7 +2,7 @@ import React from 'react';
 import { PROFILES_URL, CLOUD_KEY, CLOUD_NAME } from '../../../../constants/api';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { avatarValidation } from '../../../../yupSchema/imageValidation';
+import { imageValidation } from '../../../../yupSchema/imageValidation';
 import { Button, IconButton, Input } from "@material-tailwind/react";
 import { MdClear, MdImage, MdModeEdit } from "react-icons/md"
 import useAxios from '../../../../hooks/useAxios';
@@ -30,7 +30,7 @@ function EditAvatar() {
     const [error, setError] = React.useState(null)
 
     // react hook form and yup schema
-    const { handleSubmit, register, formState: { errors } } = useForm({ resolver: yupResolver(avatarValidation) });
+    const { handleSubmit, register, formState: { errors } } = useForm({ resolver: yupResolver(imageValidation) });
 
     // uploads image to cloudinary and passes url to put request for noroff url
     const uploadImage = async (data) => {
@@ -42,7 +42,7 @@ function EditAvatar() {
         try {
             const formdata = new FormData();
 
-            formdata.append("file", data.avatar[0])
+            formdata.append("file", data.image[0])
             formdata.append("upload_preset", CLOUD_KEY)
             formdata.append("folder", "social_app")
 
@@ -63,16 +63,16 @@ function EditAvatar() {
 
 
     // gets image url from cloudinary and makes request to noroff api 
-    const handleAvatarSubmit = async (avatarUrl) => {
+    const handleAvatarSubmit = async (imageUrl) => {
 
         const url = `${PROFILES_URL}/${auth?.name}/media`;
 
-        const authCopy = { ...auth, avatar: avatarUrl }
+        const authCopy = { ...auth, avatar: imageUrl }
 
         setIsSubmitting(true)
 
         try {
-            const response = await http.put(url, { "avatar": avatarUrl });
+            const response = await http.put(url, { "avatar": imageUrl });
 
             if (response) {
                 closeEditAvatarModal();
@@ -111,14 +111,14 @@ function EditAvatar() {
                     <fieldset className='flex flex-col gap-6 p-2' disabled={isSubmitting}>
                         <div>
                             <Input
-                                {...register("avatar")}
+                                {...register("image")}
                                 label="Avatar"
                                 size="lg"
                                 variant="standard"
                                 color="cyan"
                                 type="file"
                                 icon={<MdImage size={20} />} />
-                            {errors.avatar && <ErrorSpan message={errors.avatar.message} />}
+                            {errors.image && <ErrorSpan message={errors.image.message} />}
                             {error && <ErrorSpan message={error} />}
                         </div>
                         <div className='flex justify-end mt-4'>

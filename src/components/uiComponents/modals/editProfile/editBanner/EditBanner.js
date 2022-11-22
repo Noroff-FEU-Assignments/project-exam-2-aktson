@@ -13,7 +13,7 @@ import { toast } from 'react-toastify';
 import AdminContext from '../../../../context/AdminContext';
 import Spinner from '../../../loader/Spinner';
 import axios from "axios"
-import { bannerValidation } from '../../../../yupSchema/imageValidation';
+import { imageValidation } from '../../../../yupSchema/imageValidation';
 import ModalEditBanner from './ModalEditBanner';
 
 
@@ -31,7 +31,7 @@ function EditBanner() {
     const [isSubmitting, setIsSubmitting] = React.useState(false);
 
     // react hook form and yup schema
-    const { handleSubmit, register, formState: { errors } } = useForm({ resolver: yupResolver(bannerValidation) });
+    const { handleSubmit, register, formState: { errors } } = useForm({ resolver: yupResolver(imageValidation) });
 
     // uploads image to cloudinary and passes url to put request for noroff url
     const uploadImage = async (data) => {
@@ -43,7 +43,7 @@ function EditBanner() {
         try {
             const formdata = new FormData();
 
-            formdata.append("file", data.banner[0])
+            formdata.append("file", data.image[0])
             formdata.append("upload_preset", CLOUD_KEY)
             formdata.append("folder", "social_app")
 
@@ -63,16 +63,16 @@ function EditBanner() {
     }
 
     // gets image url from cloudinary and makes request to noroff api 
-    const handleBannerSubmit = async (bannerUrl) => {
+    const handleBannerSubmit = async (imageUrl) => {
 
         const url = `${PROFILES_URL}/${auth?.name}/media`;
 
-        const authCopy = { ...auth, banner: bannerUrl }
+        const authCopy = { ...auth, banner: imageUrl }
 
         setIsSubmitting(true)
 
         try {
-            const response = await http.put(url, { "banner": bannerUrl });
+            const response = await http.put(url, { "banner": imageUrl });
 
             if (response) {
                 closeEditBannerModal();
@@ -112,14 +112,14 @@ function EditBanner() {
                     <fieldset className='flex flex-col gap-6 p-2' disabled={isSubmitting} >
                         <div>
                             <Input
-                                {...register("banner")}
+                                {...register("image")}
                                 label="Banner"
                                 size="lg"
                                 variant="standard"
                                 color="cyan"
                                 type="file"
                                 icon={<MdImage size={20} />} />
-                            {errors.banner && <ErrorSpan message={errors.banner.message} />}
+                            {errors.image && <ErrorSpan message={errors.image.message} />}
                             {error && <ErrorSpan message={error} />}
                         </div>
                         <div className='flex justify-end mt-4'>
