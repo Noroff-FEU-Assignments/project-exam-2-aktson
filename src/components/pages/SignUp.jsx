@@ -6,13 +6,15 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signUpSchema } from '../yupSchema/signupSchema';
 import { Card, CardHeader, CardBody, CardFooter, Typography, Input, Button } from "@material-tailwind/react";
-import { MdVisibility, MdVisibilityOff, MdMailOutline, MdPersonOutline, MdImage } from "react-icons/md";
+import { MdVisibility, MdVisibilityOff, MdMailOutline, MdPersonOutline } from "react-icons/md";
 import ErrorSpan from '../uiComponents/ErrorSpan';
 import { toast } from 'react-toastify';
 import Spinner from '../uiComponents/loader/Spinner';
 import { motion } from "framer-motion";
 import SignUpBanner from '../uiComponents/welcomeBanner/SignUpBanner';
 import WrapperSignInUp from '../uiComponents/welcomeBanner/WrapperSignInUp';
+import FormTooltip from '../uiComponents/formTooltip/FormTooltip';
+import PasswordTooltip from '../uiComponents/formTooltip/PasswordTooltip';
 
 
 function SignUp() {
@@ -22,7 +24,7 @@ function SignUp() {
     const navigate = useNavigate();
 
 
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(signUpSchema) });
+    const { register, handleSubmit, formState: { errors }, reset, watch } = useForm({ resolver: yupResolver(signUpSchema) });
 
     const [isVisible, setIsVisible] = React.useState(false);
     const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -57,6 +59,10 @@ function SignUp() {
         }
     }
 
+    const [emailTooltip, setEmailTootip] = React.useState(false)
+    const [nameTooltip, setNameTooltip] = React.useState(false)
+    const [passwordTooltip, setPasswordTooltip] = React.useState(false)
+
     return (
 
         <WrapperSignInUp>
@@ -77,16 +83,31 @@ function SignUp() {
                         </CardHeader>
                         <CardBody className="flex flex-col gap-6">
                             <div className='flex justify-between gap-6 flex-col lg:flex-row'>
-                                <div className='w-full'>
-                                    <Input {...register("name")} label="Username *" size="lg" variant="standard" color="cyan" icon={<MdPersonOutline size={20} />} />
+                                <div className='w-full relative'>
+                                    <Input {...register("name")}
+                                        label="Username *"
+                                        size="lg"
+                                        variant="standard"
+                                        color="cyan"
+                                        icon={<MdPersonOutline size={20} />}
+                                        onFocus={() => setNameTooltip(true)} onChange={() => setNameTooltip(false)} onBlur={() => setNameTooltip(false)}
+                                    />
                                     {errors.name && <ErrorSpan message={errors.name.message} />}
+                                    {nameTooltip && <FormTooltip message={"must be at least 4 characters"} />}
                                 </div>
-                                <div className='w-full'>
-                                    <Input {...register("email")} label="Email *" size="lg" variant="standard" color="cyan" icon={<MdMailOutline size={20} />} />
+                                <div className='w-full relative'>
+                                    <Input {...register("email")}
+                                        label="Create Email *"
+                                        size="lg"
+                                        variant="standard"
+                                        color="cyan"
+                                        icon={<MdMailOutline size={20} />}
+                                        onFocus={() => setEmailTootip(true)} onChange={() => setEmailTootip(false)} onBlur={() => setEmailTootip(false)} />
                                     {errors.email && <ErrorSpan message={errors.email.message} />}
+                                    {emailTooltip && <FormTooltip message={"must end with stud.noroff.no or noroff.no"} />}
                                 </div>
                             </div>
-                            <div>
+                            <div className='relative'>
                                 <Input
                                     {...register("password")}
                                     label="Password *"
@@ -98,8 +119,10 @@ function SignUp() {
                                         <MdVisibilityOff
                                             size={20} onClick={handlePasswordVisibility} className="cursor-pointer" /> :
                                         <MdVisibility size={20} onClick={handlePasswordVisibility} className="cursor-pointer" />}
+                                    onFocus={() => setPasswordTooltip(true)} onChange={() => setPasswordTooltip(false)} onBlur={() => setPasswordTooltip(false)}
                                 />
                                 {errors.password && <ErrorSpan message={errors.password.message} />}
+                                {passwordTooltip && <PasswordTooltip message={"must be 8 characters long"} />}
                             </div>
                             <div>
                                 <Input

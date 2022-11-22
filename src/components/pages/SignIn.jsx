@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signInSchema } from '../yupSchema/signinSchema';
-import { Card, CardHeader, CardBody, CardFooter, Typography, Input, Button } from "@material-tailwind/react";
+import { Card, CardHeader, CardBody, CardFooter, Typography, Input, Button, Tooltip } from "@material-tailwind/react";
 import { MdVisibility, MdVisibilityOff, MdMailOutline } from "react-icons/md";
 import ErrorSpan from '../uiComponents/ErrorSpan';
 import { LOGIN_URL } from '../constants/api';
@@ -36,7 +36,9 @@ function SignIn() {
     const handlePasswordVisibility = () => {
         setIsVisible((prevState) => !prevState)
     }
-
+    const handleMouseOver = () => {
+        console.log("ankit")
+    }
 
     // handles form submission, validates form and sends to api endpoint sign in request
     const handleFormSubmit = async (data) => {
@@ -80,6 +82,7 @@ function SignIn() {
                                 size="lg"
                                 variant="standard"
                                 color="cyan"
+                                onMouseOver={handleMouseOver}
                                 icon={<MdMailOutline size={20} />}
                             />
                             {errors.email && <ErrorSpan message={errors.email.message} />}
