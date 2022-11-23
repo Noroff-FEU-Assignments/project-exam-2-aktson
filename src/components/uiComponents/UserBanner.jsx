@@ -23,7 +23,7 @@ function UserBanner({ user, postsLength }) {
 			{user && (
 				<section>
 					<div
-						className="w-full bg-dark  relative  mt-18 sm:mt-16"
+						className="w-full bg-dark  relative  mt-18 sm:mt-16 "
 						style={{
 							backgroundImage: `url(${user?.banner})`,
 							backgroundRepeat: "no-repeat",

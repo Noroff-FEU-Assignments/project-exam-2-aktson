@@ -11,7 +11,7 @@ import { LOGIN_URL, BRAND } from "../constants/api";
 import AuthContext from "../context/AuthContext";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
-import WrapperSignInUp from "../uiComponents/welcomeBanner/WrapperSignInUp";
+import bgImage from "../../assets/bg-welcome.jpg";
 import Spinner from "../uiComponents/loader/Spinner";
 
 function SignIn() {
@@ -55,9 +55,16 @@ function SignIn() {
 		}
 	};
 	return (
-		<WrapperSignInUp>
+		<section
+			className="h-screen flex justify-center items-center p-4"
+			style={{
+				backgroundImage: `url(${bgImage})`,
+				backgroundRepeat: "no-repeat",
+				backgroundSize: "cover",
+				backgroundPosition: "center",
+			}}>
 			<motion.form initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 1 }} transition={{ duration: 0.2 }}>
-				<Card className="w-96 mx-auto">
+				<Card className=" mx-auto sm:w-96 ">
 					<CardHeader className="mb-4 grid h-28 place-items-center bg-primary">
 						<Typography variant="h3" color="white">
 							Sign In
@@ -112,7 +119,7 @@ function SignIn() {
 					</CardFooter>
 				</Card>
 			</motion.form>
-		</WrapperSignInUp>
+		</section>
 	);
 }
 

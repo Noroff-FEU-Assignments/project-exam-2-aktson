@@ -104,6 +104,7 @@ function EditBanner() {
 								{...register("image")}
 								label="Banner"
 								size="lg"
+								className="inputImage"
 								variant="standard"
 								color="cyan"
 								type="file"

@@ -11,8 +11,8 @@ import ErrorSpan from "../uiComponents/ErrorSpan";
 import { toast } from "react-toastify";
 import Spinner from "../uiComponents/loader/Spinner";
 import { motion } from "framer-motion";
-import SignUpBanner from "../uiComponents/welcomeBanner/SignUpBanner";
-import WrapperSignInUp from "../uiComponents/welcomeBanner/WrapperSignInUp";
+import SignUpBanner from "../uiComponents/SignUpBanner";
+import bgImage from "../../assets/bg-welcome.jpg";
 import FormTooltip from "../uiComponents/formTooltip/FormTooltip";
 import PasswordTooltip from "../uiComponents/formTooltip/PasswordTooltip";
 
@@ -21,13 +21,21 @@ function SignUp() {
 
 	const navigate = useNavigate();
 
+	// states to show tooltip on input focus about required fields
+	const [emailTooltip, setEmailTooltip] = React.useState(false);
+	const [nameTooltip, setNameTooltip] = React.useState(false);
+	const [passwordTooltip, setPasswordTooltip] = React.useState(false);
+
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 		reset,
-	} = useForm({ resolver: yupResolver(signUpSchema) });
+	} = useForm({
+		resolver: yupResolver(signUpSchema),
+	});
 
+	// form state on async request
 	const [isVisible, setIsVisible] = React.useState(false);
 	const [isSubmitting, setIsSubmitting] = React.useState(false);
 
@@ -48,7 +56,7 @@ function SignUp() {
 				toast.success("Successfully registered!");
 				reset();
 				setTimeout(() => {
-					navigate("/sign-in");
+					navigate("/");
 				}, 3500);
 			}
 		} catch (error) {
@@ -59,16 +67,19 @@ function SignUp() {
 		}
 	};
 
-	const [emailTooltip, setEmailTootip] = React.useState(false);
-	const [nameTooltip, setNameTooltip] = React.useState(false);
-	const [passwordTooltip, setPasswordTooltip] = React.useState(false);
-
 	return (
-		<WrapperSignInUp>
+		<section
+			className=" h-auto lg:h-screen flex justify-center items-center p-4"
+			style={{
+				backgroundImage: `url(${bgImage})`,
+				backgroundRepeat: "no-repeat",
+				backgroundSize: "cover",
+				backgroundPosition: "center",
+			}}>
 			<div className="grid grid-cols-auto lg:grid-cols-2  container shadow-xl bg-lightGray rounded-xl ">
 				<SignUpBanner />
 				<motion.form className="my-20" initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 1 }} transition={{ duration: 0.2 }}>
-					<Card className="max-w-md lg:max-w-lg mx-auto  ">
+					<Card className="max-w-md lg:max-w-lg mx-auto ">
 						<CardHeader className="mb-4 grid h-28 place-items-center bg-primary">
 							<Typography variant="h3" color="white">
 								Create Account
@@ -76,7 +87,7 @@ function SignUp() {
 						</CardHeader>
 						<CardBody className="flex flex-col gap-6">
 							<div className="flex justify-between gap-6 flex-col lg:flex-row">
-								<div className="w-full relative">
+								<div className="w-full relative" onFocus={() => setNameTooltip(true)} onBlur={() => setNameTooltip(false)}>
 									<Input
 										{...register("name")}
 										label="Username *"
@@ -84,14 +95,12 @@ function SignUp() {
 										variant="standard"
 										color="cyan"
 										icon={<MdPersonOutline size={20} />}
-										onFocus={() => setNameTooltip(true)}
-										onChange={() => setNameTooltip(false)}
-										onBlur={() => setNameTooltip(false)}
 									/>
 									{errors.name && <ErrorSpan message={errors.name.message} />}
 									{nameTooltip && <FormTooltip message={"must be at least 4 characters"} />}
 								</div>
-								<div className="w-full relative">
+
+								<div className="w-full relative" onFocus={() => setEmailTooltip(true)} onBlur={() => setEmailTooltip(false)}>
 									<Input
 										{...register("email")}
 										label="Create Email *"
@@ -99,15 +108,14 @@ function SignUp() {
 										variant="standard"
 										color="cyan"
 										icon={<MdMailOutline size={20} />}
-										onFocus={() => setEmailTootip(true)}
-										onChange={() => setEmailTootip(false)}
-										onBlur={() => setEmailTootip(false)}
 									/>
+
 									{errors.email && <ErrorSpan message={errors.email.message} />}
 									{emailTooltip && <FormTooltip message={"must end with stud.noroff.no or noroff.no"} />}
 								</div>
 							</div>
-							<div className="relative">
+
+							<div className="relative" onFocus={() => setPasswordTooltip(true)} onBlur={() => setPasswordTooltip(false)}>
 								<Input
 									{...register("password")}
 									label="Password *"
@@ -122,9 +130,6 @@ function SignUp() {
 											<MdVisibility size={20} onClick={handlePasswordVisibility} className="cursor-pointer" />
 										)
 									}
-									onFocus={() => setPasswordTooltip(true)}
-									onChange={() => setPasswordTooltip(false)}
-									onBlur={() => setPasswordTooltip(false)}
 								/>
 								{errors.password && <ErrorSpan message={errors.password.message} />}
 								{passwordTooltip && <PasswordTooltip message={"must be 8 characters long"} />}
@@ -167,7 +172,7 @@ function SignUp() {
 					</Card>
 				</motion.form>
 			</div>
-		</WrapperSignInUp>
+		</section>
 	);
 }
 

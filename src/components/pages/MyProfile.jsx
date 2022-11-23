@@ -35,13 +35,19 @@ function MyProfile() {
 
 			<Section>
 				<TabsHeader>
-					<button className={toggleState === 1 ? " tab-header active-tab-header" : "tab-header"} onClick={() => handlePostsClick(1)}>
+					<button
+						className={toggleState === 1 ? " tab-header-btn active-tab-header-btn" : "tab-header-btn"}
+						onClick={() => handlePostsClick(1)}>
 						Posts
 					</button>
-					<button className={toggleState === 2 ? "tab-header active-tab-header" : "tab-header "} onClick={() => handleFollowingClick(2)}>
+					<button
+						className={toggleState === 2 ? "tab-header-btn active-tab-header-btn" : "tab-header-btn "}
+						onClick={() => handleFollowingClick(2)}>
 						Followers
 					</button>
-					<button className={toggleState === 3 ? " tab-header active-tab-header" : "tab-header"} onClick={() => handleFollowersClick(3)}>
+					<button
+						className={toggleState === 3 ? "tab-header-btn active-tab-header-btn" : "tab-header-btn"}
+						onClick={() => handleFollowersClick(3)}>
 						Following
 					</button>
 				</TabsHeader>

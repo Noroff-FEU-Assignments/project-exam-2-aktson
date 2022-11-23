@@ -51,10 +51,10 @@
 	}
 
 	/* tabs  section */
-	.tab-header {
+	.tab-header-btn {
 		@apply p-3 transition-all duration-500 w-full flex items-center justify-center hover:bg-cyan-200 hover:rounded-xl hover:text-white text-grey;
 	}
-	.active-tab-header {
+	.active-tab-header-btn {
 		@apply bg-primary p-3 pointer-events-none text-lightGray rounded-xl;
 	}
 	.tab-posts-content {
@@ -68,6 +68,10 @@
 	}
 	.tab-inner-users {
 		@apply flex flex-col justify-center items-center  shadow-xl  bg-lightGray rounded-xl;
+	}
+
+	.inputImage {
+		@apply block w-full text-sm  file:mr-4 file:py-1  file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-grey file:text-white;
 	}
 }
 #my-modal {

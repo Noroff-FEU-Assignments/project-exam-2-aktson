@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { MdDashboard } from "react-icons/md";
 import { IconButton, Avatar, Typography } from "@material-tailwind/react";
@@ -9,7 +8,7 @@ import SearchInput from "../uiComponents/inputs/search/SearchInput";
 import MobileSearch from "../uiComponents/inputs/search/MobileSearch";
 import { useProSidebar } from "react-pro-sidebar";
 
-function Header({ toggleDashboard }) {
+function Header() {
 	const { auth } = React.useContext(AuthContext);
 	const { collapseSidebar, toggleSidebar } = useProSidebar();
 
@@ -49,7 +48,3 @@ function Header({ toggleDashboard }) {
 }
 
 export default Header;
-
-Header.propTypes = {
-	toggleDashboard: PropTypes.func.isRequired,
-};

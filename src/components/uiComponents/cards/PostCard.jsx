@@ -62,7 +62,7 @@ function PostCard({ post }) {
 				{tags &&
 					tags?.map((tag, index) => {
 						return (
-							<p className="text-accent font-semibold" key={index}>
+							<p className="text-secondary font-semibold" key={index}>
 								#{tag}
 							</p>
 						);
@@ -82,7 +82,7 @@ function PostCard({ post }) {
 					<span className="background-image" role="img" aria-label={`${title}`}></span>
 				</div>
 			)}
-			<div className="flex py-2 items-center gap-2  flex-wrap">
+			<div className="flex py-2 items-center gap-2 max flex-wrap">
 				<Reactions reactions={reactions} />
 				<ShowCommentBtn comments={comments} setShowComments={setShowComments} />
 			</div>
