@@ -27,8 +27,11 @@
 	.responsive-width {
 		@apply w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl;
 	}
+	.menu-item {
+		@apply p-2 hover:text-primary transition ease-in-out duration-500;
+	}
 	.nav-link {
-		@apply flex items-center gap-6 transition ease-in-out duration-500 hover:text-primary;
+		@apply ml-4;
 	}
 	.section {
 		@apply flex flex-col gap-4 my-24 items-center  2xl:mr-24 min-h-screen;
@@ -36,8 +39,9 @@
 	.icon {
 		@apply text-3xl cursor-pointer;
 	}
+
 	.active {
-		@apply text-primary;
+		@apply text-primary  p-2;
 	}
 	.btn {
 		@apply bg-primary;

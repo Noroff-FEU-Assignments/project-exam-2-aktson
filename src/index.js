@@ -12,6 +12,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { AdminProvider } from './components/context/AdminContext';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en.json'
+import { ProSidebarProvider } from 'react-pro-sidebar';
 
 TimeAgo.addDefaultLocale(en)
 
@@ -26,7 +27,9 @@ root.render(
             <UsersProvider>
               <AdminProvider>
                 <ModalProvider>
-                  <App />
+                  <ProSidebarProvider>
+                    <App />
+                  </ProSidebarProvider>
                 </ModalProvider>
               </AdminProvider>
             </UsersProvider>
