@@ -1,12 +1,18 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import { MdCopyright } from "react-icons/md";
 
-function Footer() {
+function Footer({ position }) {
 	return (
-		<footer className="bg-secondary flex text-white p-5 justify-center " style={{ zIndex: "100" }}>
-			<MdCopyright />
-			2022 Designed and Developed by
-			<a href="https://ankitsoni.netlify.app/" target="_blank" rel="noreferrer" className="ml-1 text-accent font-semibold">
+		<footer
+			className={`text-black w-full flex flex-col sm:flex-row items-center   p-3 sm:p-5 justify-center ${position} bg-lightGray shadow-xl  `}
+			style={{ zIndex: "100" }}>
+			<div className="flex">
+				<MdCopyright />
+				2022 Designed and Developed by
+			</div>
+			<a href="https://ankitsoni.netlify.app/" target="_blank" rel="noreferrer" className="ml-1 text-primary text-lg ">
 				AnkSon
 			</a>
 		</footer>
@@ -14,3 +20,7 @@ function Footer() {
 }
 
 export default Footer;
+
+Footer.propTypes = {
+	position: PropTypes.string.isRequired,
+};

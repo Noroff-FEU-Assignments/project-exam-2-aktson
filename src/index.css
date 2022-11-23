@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=PT+Sans&display=swap");
+
 /* css reset */
 * {
 	margin: 0;
@@ -27,6 +29,15 @@
 }
 body {
 	background-color: var(--light);
+	font-family: "Inter", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-family: "PT Sans", sans-serif;
 }
 
 main {

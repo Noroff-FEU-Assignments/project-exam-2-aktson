@@ -15,6 +15,7 @@ import SignUpBanner from "../uiComponents/SignUpBanner";
 import bgImage from "../../assets/bg-welcome.jpg";
 import FormTooltip from "../uiComponents/formTooltip/FormTooltip";
 import PasswordTooltip from "../uiComponents/formTooltip/PasswordTooltip";
+import Footer from "../layout/Footer";
 
 function SignUp() {
 	document.title = `Sign Up | ${BRAND}`;
@@ -69,16 +70,16 @@ function SignUp() {
 
 	return (
 		<section
-			className=" h-auto lg:h-screen flex justify-center items-center p-4"
+			className=" h-auto lg:h-screen flex justify-center items-center p-4 "
 			style={{
 				backgroundImage: `url(${bgImage})`,
 				backgroundRepeat: "no-repeat",
 				backgroundSize: "cover",
 				backgroundPosition: "center",
 			}}>
-			<div className="grid grid-cols-auto lg:grid-cols-2  container shadow-xl bg-lightGray rounded-xl ">
+			<div className="grid grid-cols-auto lg:grid-cols-2  container shadow-xl bg-lightGray rounded-xl mb-16">
 				<SignUpBanner />
-				<motion.form className="my-20" initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 1 }} transition={{ duration: 0.2 }}>
+				<motion.form className="my-20 " initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 1 }} transition={{ duration: 0.2 }}>
 					<Card className="max-w-md lg:max-w-lg mx-auto ">
 						<CardHeader className="mb-4 grid h-28 place-items-center bg-primary">
 							<Typography variant="h3" color="white">
@@ -172,6 +173,7 @@ function SignUp() {
 					</Card>
 				</motion.form>
 			</div>
+			<Footer position="absolute bottom-0" />
 		</section>
 	);
 }

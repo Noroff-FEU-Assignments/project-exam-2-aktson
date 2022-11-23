@@ -7,13 +7,13 @@
 		@apply text-3xl  mb-8 leading-loose  text-primary;
 	}
 	h2 {
-		@apply text-2xl relative text-primary font-light;
+		@apply text-3xl relative text-primary;
 	}
 	h3 {
-		@apply text-2xl mb-3;
+		@apply text-xl my-2 font-semibold;
 	}
 	h4 {
-		@apply text-xl font-bold mb-2;
+		@apply text-lg font-semibold text-gray-600;
 	}
 }
 

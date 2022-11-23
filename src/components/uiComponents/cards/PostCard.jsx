@@ -47,15 +47,15 @@ function PostCard({ post }) {
 					<Link to={`/user-specific/${author?.name}`} className="flex items-center gap-2">
 						<Avatar src={author?.avatar ? author.avatar : image} alt="" variant="circular" />
 						<div className="flex flex-col ">
-							<p className="text-start">{author?.name}</p>
+							<h4 className="text-start">{author?.name}</h4>
 							<ReactTimeAgo date={date} locale="en-US" className="text-xs" />
 						</div>
 					</Link>
 				</div>
 				{adminMenu && <PostMenu adminPost={post} />}
 			</div>
-			<div>
-				<h3 className="font-bold text-xl">{title}</h3>
+			<div className="flex flex-col flex-wrap">
+				<h3>{title}</h3>
 				{body && <p>{body}</p>}
 			</div>
 			<div className="flex flex-wrap gap-2 ">

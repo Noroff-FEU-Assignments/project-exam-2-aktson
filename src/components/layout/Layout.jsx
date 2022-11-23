@@ -20,7 +20,7 @@ function Layout({ children }) {
 					{children}
 				</motion.div>
 			</main>
-			<Footer />
+			<Footer position="relative" />
 		</>
 	);
 }

@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import bgImage from "../../assets/bg-welcome.jpg";
 import Spinner from "../uiComponents/loader/Spinner";
+import Footer from "../layout/Footer";
 
 function SignIn() {
 	document.title = `Sign in | ${BRAND}`;
@@ -56,7 +57,7 @@ function SignIn() {
 	};
 	return (
 		<section
-			className="h-screen flex justify-center items-center p-4"
+			className="h-screen flex justify-center items-center p-4 relative"
 			style={{
 				backgroundImage: `url(${bgImage})`,
 				backgroundRepeat: "no-repeat",
@@ -119,6 +120,7 @@ function SignIn() {
 					</CardFooter>
 				</Card>
 			</motion.form>
+			<Footer position="absolute bottom-0" />
 		</section>
 	);
 }

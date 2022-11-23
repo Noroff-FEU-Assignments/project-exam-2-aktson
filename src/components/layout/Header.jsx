@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { MdDashboard } from "react-icons/md";
 import { IconButton, Avatar, Typography } from "@material-tailwind/react";
 import AuthContext from "../context/AuthContext";
-import userAvatar from "../../assets/user.png";
+import defaultAvatar from "../../assets/user.png";
 import SearchInput from "../uiComponents/inputs/search/SearchInput";
 import MobileSearch from "../uiComponents/inputs/search/MobileSearch";
 import { useProSidebar } from "react-pro-sidebar";
@@ -23,10 +23,10 @@ function Header() {
 					<SearchInput />
 					<div className="flex items-center gap-4">
 						<Link to="/my-profile" className="flex items-center gap-2">
-							{auth && <Typography>{auth?.name}</Typography>}
+							{auth && <p className="text-white text-lg">{auth?.name}</p>}
 							{auth && (
 								<Avatar
-									src={auth?.avatar ? auth.avatar : userAvatar}
+									src={auth?.avatar ? auth.avatar : defaultAvatar}
 									alt={auth.name}
 									variant="circular"
 									size="sm"

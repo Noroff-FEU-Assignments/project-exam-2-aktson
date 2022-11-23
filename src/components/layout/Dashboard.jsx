@@ -22,7 +22,7 @@ function Dashboard() {
 	return (
 		<nav className=" h-full  lg:w-72 xl:w-full pl-0 lg:col-span-2 relative ">
 			<Sidebar
-				className=" pt-24  bg-lightGray h-full shadow-xl "
+				className=" pt-24  bg-lightGray h-full shadow-xl text-grey"
 				breakPoint="lg"
 				overlayColor="bg-lightGray"
 				style={{ zIndex: "40", position: "fixed" }}
