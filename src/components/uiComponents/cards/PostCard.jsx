@@ -71,7 +71,7 @@ function PostCard({ post }) {
 
 			{media && (
 				<div
-					className="drop-shadow-xl"
+					className="drop-shadow-xl w-full max-w-sm md:max-w-md  lg:max-w-lg xl:max-w-2xl"
 					style={{
 						backgroundImage: `url(${media}) `,
 						backgroundRepeat: "no-repeat",
@@ -82,7 +82,7 @@ function PostCard({ post }) {
 					<span className="background-image" role="img" aria-label={`${title}`}></span>
 				</div>
 			)}
-			<div className="flex py-2 items-center gap-2 ">
+			<div className="flex py-2 items-center gap-2  flex-wrap">
 				<Reactions reactions={reactions} />
 				<ShowCommentBtn comments={comments} setShowComments={setShowComments} />
 			</div>
