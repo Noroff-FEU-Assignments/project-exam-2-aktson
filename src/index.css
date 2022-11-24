@@ -14,7 +14,7 @@
 	--dark: #2c436e;
 	--light: #ececec;
 	--grey: #6b6b6b;
-	--lightGray: "#fafafa";
+	--lightGray: #fafafa;
 }
 
 #root {
@@ -32,7 +32,8 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+footer {
 	font-family: "PT Sans", sans-serif;
 }
 

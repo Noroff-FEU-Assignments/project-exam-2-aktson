@@ -51,9 +51,9 @@ function SearchInput() {
 					className=" w-full max-w-md bg-lightGray rounded-xl text-md px-4 mb-4"
 					icon={
 						!show ? (
-							<MdPersonSearch size={24} className=" -translate-y-1  -translate-x-3 lg:-translate-x-20 l text-secondary" />
+							<MdPersonSearch size={24} className=" -translate-y-1  -translate-x-3 lg:-translate-x-20  text-secondary" />
 						) : (
-							<MdClear size={24} className=" -translate-y-1  -translate-x-3 lg:-translate-x-36 cursor-pointer" onClick={handleClose} />
+							<MdClear size={24} className=" -translate-y-1  -translate-x-3 lg:-translate-x-20 cursor-pointer" onClick={handleClose} />
 						)
 					}
 					value={value}

@@ -79,7 +79,12 @@ function SignUp() {
 			}}>
 			<div className="grid grid-cols-auto lg:grid-cols-2  container shadow-xl bg-lightGray rounded-xl mb-16">
 				<SignUpBanner />
-				<motion.form className="my-20 " initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 1 }} transition={{ duration: 0.2 }}>
+				<motion.form
+					className="mt-10 sm:my-20 "
+					initial={{ scale: 0.9 }}
+					animate={{ scale: 1 }}
+					exit={{ scale: 1 }}
+					transition={{ duration: 0.4 }}>
 					<Card className="max-w-md lg:max-w-lg mx-auto ">
 						<CardHeader className="mb-4 grid h-28 place-items-center bg-primary">
 							<Typography variant="h3" color="white">

@@ -64,7 +64,7 @@ function SignIn() {
 				backgroundSize: "cover",
 				backgroundPosition: "center",
 			}}>
-			<motion.form initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 1 }} transition={{ duration: 0.2 }}>
+			<motion.form initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 1 }} transition={{ duration: 0.4 }}>
 				<Card className=" mx-auto sm:w-96 ">
 					<CardHeader className="mb-4 grid h-28 place-items-center bg-primary">
 						<Typography variant="h3" color="white">

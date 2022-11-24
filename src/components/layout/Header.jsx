@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MdDashboard } from "react-icons/md";
-import { IconButton, Avatar, Typography } from "@material-tailwind/react";
+import { IconButton, Avatar } from "@material-tailwind/react";
 import AuthContext from "../context/AuthContext";
 import defaultAvatar from "../../assets/user.png";
 import SearchInput from "../uiComponents/inputs/search/SearchInput";
@@ -16,7 +16,7 @@ function Header() {
 		<>
 			<header className=" shadow-xl gap-2 z-50 bg-secondary fixed w-full  mx-auto ">
 				<div className="flex py-4  px-12 justify-between rounded-full  mx-auto items-center">
-					<Link to="/" className="text-lightGray text-3xl">
+					<Link to="/home" className="text-lightGray text-3xl">
 						Logo
 					</Link>
 					<MobileSearch />
