@@ -98,7 +98,7 @@ function SignUp() {
 										icon={<MdPersonOutline size={20} />}
 									/>
 									{errors.name && <ErrorSpan message={errors.name.message} />}
-									{nameTooltip && <FormTooltip message={"must be at least 4 characters"} />}
+									{nameTooltip && <FormTooltip message={"must not be any capital letter"} />}
 								</div>
 
 								<div className="w-full relative" onFocus={() => setEmailTooltip(true)} onBlur={() => setEmailTooltip(false)}>
