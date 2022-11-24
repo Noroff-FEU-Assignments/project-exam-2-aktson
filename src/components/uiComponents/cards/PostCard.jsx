@@ -41,7 +41,7 @@ function PostCard({ post }) {
 	const date = new Date(updated);
 
 	return (
-		<div className="card grid  grid-rows-auto gap-3 text-grey mb-4">
+		<div className="card grid  grid-rows-auto gap-3 text-grey mb-4 ">
 			<div className="flex items-center justify-between gap-2 ">
 				<div>
 					<Link to={`/user-specific/${author?.name}`} className="flex items-center gap-2">
@@ -54,9 +54,9 @@ function PostCard({ post }) {
 				</div>
 				{adminMenu && <PostMenu adminPost={post} />}
 			</div>
-			<div className="flex flex-col flex-wrap">
+			<div className="flex flex-col flex-wrap overflow-x-hidden">
 				<h3>{title}</h3>
-				{body && <p>{body}</p>}
+				{body && <p className="">{body}</p>}
 			</div>
 			<div className="flex flex-wrap gap-2 ">
 				{tags &&

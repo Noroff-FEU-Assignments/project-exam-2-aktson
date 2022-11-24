@@ -44,14 +44,14 @@ function SearchInput() {
 
 	return (
 		<>
-			<form className={`sm:w-48 md:max-w-sm md:w-full lg:max-w-xl sm:flex relative hidden`} ref={ref}>
+			<form className={`sm:w-48 md:max-w-sm md:w-full lg:max-w-lg sm:flex relative hidden`} ref={ref}>
 				<Input
 					variant="standard"
 					placeholder="Search People"
 					className=" w-full max-w-md bg-lightGray rounded-xl text-md px-4 mb-4"
 					icon={
 						!show ? (
-							<MdPersonSearch size={24} className=" -translate-y-1  -translate-x-3 lg:-translate-x-36 l text-secondary" />
+							<MdPersonSearch size={24} className=" -translate-y-1  -translate-x-3 lg:-translate-x-20 l text-secondary" />
 						) : (
 							<MdClear size={24} className=" -translate-y-1  -translate-x-3 lg:-translate-x-36 cursor-pointer" onClick={handleClose} />
 						)

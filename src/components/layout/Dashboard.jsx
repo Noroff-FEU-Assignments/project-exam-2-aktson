@@ -28,22 +28,26 @@ function Dashboard() {
 				style={{ zIndex: "40", position: "fixed" }}
 				width="320px">
 				<Menu>
-					<Link to="/home">
-						<MenuItem className={pathname === "/home" ? " active" : "menu-item"} icon={<MdHome className="icon " />}>
-							<span className="ml-4">Home</span>
-						</MenuItem>
-					</Link>
+					<MenuItem
+						className={pathname === "/home" ? " active" : "menu-item"}
+						icon={<MdHome className="icon " />}
+						onClick={() => navigate("/home")}>
+						<span className="ml-4">Home</span>
+					</MenuItem>
 
-					<Link to="/browse-people">
-						<MenuItem className={pathname === "/browse-people" ? " active" : "menu-item"} icon={<MdGroups className="icon" />}>
-							<span className="ml-4"> Browse People</span>
-						</MenuItem>
-					</Link>
-					<Link to="/my-profile">
-						<MenuItem className={pathname === "/my-profile" ? " active" : "menu-item"} icon={<MdAccountCircle className="icon" />}>
-							<span className="ml-4"> My Profile</span>
-						</MenuItem>
-					</Link>
+					<MenuItem
+						className={pathname === "/browse-people" ? " active" : "menu-item"}
+						icon={<MdGroups className="icon" />}
+						onClick={() => navigate("/browse-people")}>
+						<span className="ml-4"> Browse People</span>
+					</MenuItem>
+
+					<MenuItem
+						className={pathname === "/my-profile" ? " active" : "menu-item"}
+						icon={<MdAccountCircle className="icon" />}
+						onClick={() => navigate("/my-profile")}>
+						<span className="ml-4"> My Profile</span>
+					</MenuItem>
 
 					<MenuItem onClick={openCreatePostModal} className="p-2 menu-item" icon={<MdCreate className="icon" />}>
 						<p className="nav-link cursor-pointer" variant="text">
