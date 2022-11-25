@@ -4,8 +4,8 @@ import { MdDashboard } from "react-icons/md";
 import { IconButton, Avatar } from "@material-tailwind/react";
 import AuthContext from "../context/AuthContext";
 import defaultAvatar from "../../assets/user.png";
-import SearchInput from "../uiComponents/inputs/search/SearchInput";
-import MobileSearch from "../uiComponents/inputs/search/MobileSearch";
+import SearchPeopleInput from "../uiComponents/inputs/search/searchPeople/SearchPeopleInput";
+import MobileSearchPeople from "../uiComponents/inputs/search/searchPeople/MobileSearchPeople";
 import { useProSidebar } from "react-pro-sidebar";
 
 function Header() {
@@ -15,12 +15,12 @@ function Header() {
 	return (
 		<>
 			<header className=" shadow-xl gap-2 z-50 bg-secondary fixed w-full  mx-auto ">
-				<div className="flex py-4  px-12 justify-between rounded-full  mx-auto items-center">
+				<div className="flex py-3  px-2 lg:px-12 justify-between rounded-full  mx-auto items-center">
 					<Link to="/home" className="text-lightGray text-3xl">
 						Logo
 					</Link>
-					<MobileSearch />
-					<SearchInput />
+					<MobileSearchPeople />
+					<SearchPeopleInput />
 					<div className="flex items-center gap-4">
 						<Link to="/my-profile" className="flex items-center gap-2">
 							{auth && <p className="text-white text-lg">{auth?.name}</p>}

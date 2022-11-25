@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Input, Avatar } from "@material-tailwind/react";
 import { MdPersonSearch, MdClear } from "react-icons/md";
-import UsersContext from "../../../context/UsersContext";
-import defaultAvatar from "../../../../assets/user.png";
-import { useOutsideClick } from "../../../hooks/useOutsideClick";
+import UsersContext from "../../../../context/UsersContext";
+import defaultAvatar from "../../../../../assets/user.png";
+import { useOutsideClick } from "../../../../hooks/useOutsideClick";
 
-function SearchInput() {
+function SearchPeopleInput() {
 	const [value, setValue] = React.useState("");
 	const { users } = React.useContext(UsersContext);
 	const [filteredUsers, setFilteredUsers] = React.useState([]);
@@ -51,7 +51,7 @@ function SearchInput() {
 					className=" w-full max-w-md bg-lightGray rounded-xl text-md px-4 mb-4"
 					icon={
 						!show ? (
-							<MdPersonSearch size={24} className=" -translate-y-1  -translate-x-3 lg:-translate-x-20  text-secondary" />
+							<MdPersonSearch size={24} className=" -translate-y-1  -translate-x-3 lg:-translate-x-20  text-primary" />
 						) : (
 							<MdClear size={24} className=" -translate-y-1  -translate-x-3 lg:-translate-x-20 cursor-pointer" onClick={handleClose} />
 						)
@@ -89,4 +89,4 @@ function SearchInput() {
 	);
 }
 
-export default SearchInput;
+export default SearchPeopleInput;

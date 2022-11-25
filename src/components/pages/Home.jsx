@@ -7,12 +7,13 @@ import TabsHeader from "../uiComponents/tabs/TabsHeader";
 import { POSTS_PEOPLE_FOLLOWING, BRAND } from "../constants/api";
 import useAxios from "../hooks/useAxios";
 import Section from "../uiComponents/Section";
+import SearchPosts from "../uiComponents/inputs/search/searchPosts/SearchPosts";
 
 function Home() {
 	document.title = `Home | ${BRAND}`;
 	const http = useAxios();
 
-	// const postsFollowing = useFetch(POSTS_PEOPLE_FOLLOWING)
+	const [filterPosts, setFilterPosts] = React.useState([]);
 
 	const { posts, isLoading, error } = React.useContext(PostsContext);
 
@@ -47,6 +48,22 @@ function Home() {
 		}
 	};
 
+	const searchFilteredData = filterPosts.map((post) => {
+		return <PostCard key={post.id} post={post} />;
+	});
+
+	const renderPosts =
+		posts &&
+		posts.map((post) => {
+			return <PostCard post={post} key={post.id} />;
+		});
+
+	const renderPostsFollowing =
+		postsFollowing &&
+		postsFollowing.map((post) => {
+			return <PostCard post={post} key={post.id} />;
+		});
+
 	return (
 		<Section>
 			<TabsHeader>
@@ -61,6 +78,7 @@ function Home() {
 					Following
 				</button>
 			</TabsHeader>
+			<SearchPosts setFilterPosts={setFilterPosts} posts={toggleState === 1 ? posts : postsFollowing} />
 
 			{/* Renders posts on allposts button click */}
 			{error && <Alert message={error} />}
@@ -73,10 +91,7 @@ function Home() {
 			) : (
 				<div className={toggleState === 1 ? " active-tab-content tab-posts-content" : " tab-posts-content"}>
 					{posts.length === 0 && <p className="text-center bg-secondary text-lightGray p-8 rounded-xl shadow-xl ">No posts!</p>}
-					{posts &&
-						posts.map((post) => {
-							return <PostCard post={post} key={post.id} />;
-						})}
+					{searchFilteredData.length !== 0 ? searchFilteredData : renderPosts}
 				</div>
 			)}
 
@@ -93,10 +108,7 @@ function Home() {
 					{postsFollowing.length === 0 && (
 						<p className="text-center bg-secondary text-lightGray p-8 rounded-xl shadow-xl ">No user posts!</p>
 					)}
-					{postsFollowing &&
-						postsFollowing.map((post) => {
-							return <PostCard post={post} key={post.id} />;
-						})}
+					{searchFilteredData.length !== 0 ? searchFilteredData : renderPostsFollowing}
 				</div>
 			)}
 		</Section>
