@@ -35,7 +35,7 @@ function useFetch(url) {
             fetchData()
         }
 
-    }, [navigate])
+    }, [])
 
     return { data, isLoading, error }
 

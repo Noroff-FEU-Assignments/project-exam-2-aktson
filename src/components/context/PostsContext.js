@@ -42,7 +42,9 @@ export function PostsProvider({ children }) {
 
     React.useEffect(() => {
 
+
         fetchPosts();
+
 
     }, [updateUi, navigate])
 
