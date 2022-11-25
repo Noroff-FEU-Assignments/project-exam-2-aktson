@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { REGISTER_URL, BRAND } from "../constants/api";
+import { REGISTER_URL, BRAND, LOGIN_URL } from "../constants/api";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -16,9 +16,11 @@ import bgImage from "../../assets/bg-welcome.jpg";
 import FormTooltip from "../uiComponents/formTooltip/FormTooltip";
 import PasswordTooltip from "../uiComponents/formTooltip/PasswordTooltip";
 import Footer from "../layout/Footer";
+import AuthContext from "../context/AuthContext";
 
 function SignUp() {
 	document.title = `Sign Up | ${BRAND}`;
+	const { setAuth } = React.useContext(AuthContext);
 
 	const navigate = useNavigate();
 
@@ -31,7 +33,6 @@ function SignUp() {
 		register,
 		handleSubmit,
 		formState: { errors },
-		reset,
 	} = useForm({
 		resolver: yupResolver(signUpSchema),
 	});
@@ -55,14 +56,30 @@ function SignUp() {
 
 			if (response) {
 				toast.success("Successfully registered!");
-				reset();
 				setTimeout(() => {
-					navigate("/");
-				}, 3500);
+					doAutoLogin({ email: response.data.email, password: data.password });
+				}, 1000);
 			}
 		} catch (error) {
 			console.log(error);
 			toast.error(error ? error.response.data.errors[0].message : "Could not register");
+		} finally {
+			setIsSubmitting(false);
+		}
+	};
+
+	const doAutoLogin = async (data) => {
+		setIsSubmitting(true);
+		try {
+			const response = await axios.post(LOGIN_URL, data);
+
+			if (response) {
+				setAuth(response.data);
+				navigate("/home");
+			}
+		} catch (error) {
+			console.log(error);
+			toast.error(error ? error?.response.data.errors[0].message : "Error: Could not log in");
 		} finally {
 			setIsSubmitting(false);
 		}
