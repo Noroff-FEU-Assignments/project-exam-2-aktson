@@ -12,6 +12,7 @@ module.exports = withMT({
         primary: "#00bcd4",
         secondary: "#0C96EB",
         // secondary: "#008394",
+
         accent: "#D4BD15",
         dark: "#2C436E",
         light: "#ececec",
