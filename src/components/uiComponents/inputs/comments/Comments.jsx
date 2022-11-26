@@ -19,7 +19,12 @@ function Comments({ showComments, comments }) {
 
 								return (
 									<div key={comment.id} className="flex  items-center bg-gray-200 rounded-xl p-2 ">
-										<Avatar src={userAltAvatar} alt="avatar" size="sm" variant="circular" />
+										<Avatar
+											src={comment?.author.avatar ? comment?.author.avatar : userAltAvatar}
+											alt="avatar"
+											size="sm"
+											variant="circular"
+										/>
 										<div className="flex-col flex w-full rounded-xl  px-4 py-1">
 											<p className="text-md font-semibold flex sm:justify-between sm:items-center flex-col sm:flex-row">
 												{comment.owner}
