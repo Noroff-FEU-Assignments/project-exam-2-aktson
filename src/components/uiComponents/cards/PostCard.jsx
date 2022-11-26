@@ -43,10 +43,6 @@ function PostCard({ post }) {
 
 	const handleImageModal = (value) => setSize(value);
 
-	// const [open, setOpen] = React.useState(false);
-
-	// const handleImageModal = () => setOpen(!open);
-
 	const date = new Date(updated);
 
 	return (
