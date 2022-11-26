@@ -36,7 +36,7 @@ function SearchPosts({ setFilterPosts, posts }) {
 	};
 
 	return (
-		<div className="responsive-width bg-lightGray p-2 rounded-xl relative ">
+		<div className="responsive-width bg-lightGray p-2 rounded-xl relative hidden lg:block">
 			<Input
 				variant="standard"
 				placeholder="Search Posts"
