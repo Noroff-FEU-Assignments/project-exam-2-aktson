@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function Sort({ posts, setPosts }) {
-	// const { setPosts } = React.useContext(PostsContext);
-
 	const handleSorting = (event) => {
 		const selectedValue = event.target.value;
 		if (selectedValue === "latest") {
@@ -24,7 +22,7 @@ function Sort({ posts, setPosts }) {
 			setPosts(sortedByOldest);
 		}
 	};
-	// parseInt(a.dob.age) - parseInt(b.dob.age)
+
 	return (
 		<>
 			<label className="inline" htmlFor="users"></label>
