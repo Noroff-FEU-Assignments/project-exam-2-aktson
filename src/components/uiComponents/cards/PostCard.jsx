@@ -13,6 +13,7 @@ import AuthContext from "../../context/AuthContext";
 import Comments from "../inputs/comments/Comments";
 import Reactions from "../inputs/reactions/Reactions";
 import ShowCommentBtn from "../inputs/comments/ShowCommentBtn";
+import ImageModal from "../modals/ImageModal";
 
 function PostCard({ post }) {
 	const { auth } = React.useContext(AuthContext);
@@ -37,6 +38,14 @@ function PostCard({ post }) {
 	}, [auth]);
 
 	const { body, title, media, tags, updated, author } = post;
+
+	const [size, setSize] = React.useState(null);
+
+	const handleImageModal = (value) => setSize(value);
+
+	// const [open, setOpen] = React.useState(false);
+
+	// const handleImageModal = () => setOpen(!open);
 
 	const date = new Date(updated);
 
@@ -69,9 +78,11 @@ function PostCard({ post }) {
 					})}
 			</div>
 
+			{media && <ImageModal media={media} size={size} handleImageModal={handleImageModal} />}
 			{media && (
 				<div
-					className="drop-shadow-xl w-full max-w-sm md:max-w-md  lg:max-w-lg xl:max-w-2xl"
+					onClick={() => handleImageModal("lg")}
+					className="drop-shadow-xl w-full max-w-sm md:max-w-md  lg:max-w-lg xl:max-w-2xl cursor-pointer"
 					style={{
 						backgroundImage: `url(${media}) `,
 						backgroundRepeat: "no-repeat",
