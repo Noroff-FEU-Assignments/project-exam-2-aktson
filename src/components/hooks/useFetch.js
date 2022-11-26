@@ -1,11 +1,9 @@
 import React from 'react'
 import AuthContext from '../context/AuthContext';
 import useAxios from './useAxios';
-import { useNavigate } from "react-router-dom";
 
 function useFetch(url) {
 
-    const navigate = useNavigate();
 
     const { auth } = React.useContext(AuthContext)
 
@@ -35,7 +33,7 @@ function useFetch(url) {
             fetchData()
         }
 
-    }, [])
+    }, [url])
 
     return { data, isLoading, error }
 

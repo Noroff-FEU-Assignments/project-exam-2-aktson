@@ -36,12 +36,12 @@ function SearchPosts({ setFilterPosts, posts }) {
 	};
 
 	return (
-		<div className="responsive-width bg-lightGray p-2 rounded-xl relative hidden lg:block">
+		<div className="responsive-width bg-lightGray p-2 rounded-xl relative hidden lg:block shadow-xl">
 			<Input
 				variant="standard"
 				placeholder="Search Posts"
 				color="cyan"
-				className=" w-full  text-md p-2 mb-4"
+				className=" w-full text-md p-2 mb-4 placeholder:text-grey"
 				icon={
 					!show ? (
 						<MdSearch size={24} className=" -translate-y-1  -translate-x-3 text-primary" />

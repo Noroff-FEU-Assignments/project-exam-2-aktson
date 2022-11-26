@@ -8,6 +8,7 @@ import { POSTS_PEOPLE_FOLLOWING, BRAND } from "../constants/api";
 import useAxios from "../hooks/useAxios";
 import Section from "../uiComponents/Section";
 import SearchPosts from "../uiComponents/inputs/search/searchPosts/SearchPosts";
+import Sort from "../uiComponents/inputs/Sort";
 
 function Home() {
 	document.title = `Home | ${BRAND}`;
@@ -15,7 +16,7 @@ function Home() {
 
 	const [filterPosts, setFilterPosts] = React.useState([]);
 
-	const { posts, isLoading, error } = React.useContext(PostsContext);
+	const { posts, isLoading, error, setPosts } = React.useContext(PostsContext);
 
 	const [toggleState, setToggleState] = React.useState(1);
 
@@ -78,7 +79,10 @@ function Home() {
 					Following
 				</button>
 			</TabsHeader>
-			<SearchPosts setFilterPosts={setFilterPosts} posts={toggleState === 1 ? posts : postsFollowing} />
+			<div className="flex responsive-width gap-2">
+				<SearchPosts setFilterPosts={setFilterPosts} posts={toggleState === 1 ? posts : postsFollowing} />
+				<Sort posts={toggleState === 1 ? posts : postsFollowing} setPosts={toggleState === 1 ? setPosts : setPostsFollowing} />
+			</div>
 
 			{/* Renders posts on allposts button click */}
 			{error && <Alert message={error} />}

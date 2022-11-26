@@ -13,7 +13,7 @@
 	--accent: #d4bd15;
 	--dark: #2c436e;
 	--light: #ececec;
-	--grey: #6b6b6b;
+	--grey: #4d4d4d;
 	--lightGray: #fafafa;
 }
 
@@ -33,7 +33,8 @@ h2,
 h3,
 h4,
 h5,
-footer {
+footer,
+nav {
 	font-family: "PT Sans", sans-serif;
 }
 
