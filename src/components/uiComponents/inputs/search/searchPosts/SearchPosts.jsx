@@ -40,7 +40,7 @@ function SearchPosts({ setFilterPosts, posts }) {
 			<Input
 				variant="standard"
 				placeholder="Search Posts"
-				color="cyan"
+				color="light-blue"
 				className=" w-full text-md p-2 mb-4 placeholder:text-grey"
 				icon={
 					!show ? (

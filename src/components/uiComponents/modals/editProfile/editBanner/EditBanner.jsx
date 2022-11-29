@@ -86,7 +86,7 @@ function EditBanner() {
 
 	return (
 		<>
-			<Button color="cyan" variant="text" size="sm" className="flex gap-2 items-center" onClick={openEditBannerModal}>
+			<Button color="light-blue" variant="text" size="sm" className="flex gap-2 items-center" onClick={openEditBannerModal}>
 				<MdModeEdit size={18} />
 				Banner
 			</Button>
@@ -106,7 +106,7 @@ function EditBanner() {
 								size="lg"
 								className="inputImage"
 								variant="standard"
-								color="cyan"
+								color="light-blue"
 								type="file"
 								icon={<MdImage size={20} />}
 							/>
@@ -114,7 +114,7 @@ function EditBanner() {
 							{error && <ErrorSpan message={error} />}
 						</div>
 						<div className="flex justify-end mt-4">
-							<Button onClick={handleSubmit(uploadImage)} color="cyan" className="flex gap-2 items-center btn">
+							<Button onClick={handleSubmit(uploadImage)} color="light-blue" className="flex gap-2 items-center btn">
 								<Spinner isSubmitting={isSubmitting} />
 								{isSubmitting ? "Updating" : "Update"}
 							</Button>

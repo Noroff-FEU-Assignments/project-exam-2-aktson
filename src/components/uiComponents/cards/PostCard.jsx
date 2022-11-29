@@ -41,12 +41,18 @@ function PostCard({ post }) {
 
 	const [size, setSize] = React.useState(null);
 
-	const handleImageModal = (value) => setSize(value);
+	const handleImageModal = (value) => {
+		window.innerWidth >= 400 && setSize(value);
+	};
+
+	React.useEffect(() => {
+		window.addEventListener("resize", handleImageModal);
+	}, []);
 
 	const date = new Date(updated);
 
 	return (
-		<div className="card grid  grid-rows-auto gap-3 text-grey mb-4 ">
+		<div className="card grid  grid-rows-auto gap-3 text-grey mb-4 overflow-x-auto ">
 			<div className="flex items-center justify-between gap-2 ">
 				<div>
 					<Link to={`/user-specific/${author?.name}`} className="flex items-center gap-2">
@@ -59,9 +65,9 @@ function PostCard({ post }) {
 				</div>
 				{adminMenu && <PostMenu adminPost={post} />}
 			</div>
-			<div className="flex flex-col flex-wrap overflow-x-hidden">
+			<div className="flex flex-col flex-wrap ">
 				<h3>{title}</h3>
-				{body && <p className="">{body}</p>}
+				{body && <p>{body}</p>}
 			</div>
 			<div className="flex flex-wrap gap-2 ">
 				{tags &&
@@ -83,7 +89,8 @@ function PostCard({ post }) {
 						backgroundImage: `url(${media}) `,
 						backgroundRepeat: "no-repeat",
 						backgroundPosition: "center",
-						height: "300px",
+						minHeight: "250px",
+						maxHeight: "350px",
 						backgroundSize: "cover",
 					}}>
 					<span className="background-image" role="img" aria-label={`${title}`}></span>

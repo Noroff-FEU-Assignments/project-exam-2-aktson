@@ -116,7 +116,7 @@ function SignUp() {
 										label="Username *"
 										size="lg"
 										variant="standard"
-										color="cyan"
+										color="light-blue"
 										icon={<MdPersonOutline size={20} />}
 									/>
 									{errors.name && <ErrorSpan message={errors.name.message} />}
@@ -129,7 +129,7 @@ function SignUp() {
 										label="Create Email *"
 										size="lg"
 										variant="standard"
-										color="cyan"
+										color="light-blue"
 										icon={<MdMailOutline size={20} />}
 									/>
 
@@ -143,7 +143,7 @@ function SignUp() {
 									{...register("password")}
 									label="Password *"
 									size="lg"
-									color="cyan"
+									color="light-blue"
 									variant="standard"
 									type={!isVisible ? "password" : "text"}
 									icon={
@@ -162,7 +162,7 @@ function SignUp() {
 									{...register("confirmPassword")}
 									label="Confirm Password *"
 									size="lg"
-									color="cyan"
+									color="light-blue"
 									variant="standard"
 									type={!isVisible ? "password" : "text"}
 									icon={
@@ -180,7 +180,7 @@ function SignUp() {
 							<Button
 								fullWidth
 								className="flex gap-2 items-center mt-4 justify-center "
-								color="cyan"
+								color="light-blue"
 								onClick={handleSubmit(handleFormSubmit)}>
 								<Spinner isSubmitting={isSubmitting} />
 								{isSubmitting ? "Creating Account" : "Create Account"}

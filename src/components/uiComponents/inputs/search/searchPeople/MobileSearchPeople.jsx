@@ -63,7 +63,7 @@ function MobileSearchPeople() {
 							<Input
 								variant="standard"
 								placeholder="Search People"
-								color="cyan"
+								color="light-blue"
 								className=" w-full max-w-md bg-lightGray rounded-xl text-md p-2 mb-4"
 								icon={
 									!show ? (

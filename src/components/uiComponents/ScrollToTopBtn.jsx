@@ -35,7 +35,6 @@ function ScrollToTopBtn() {
 					exit={{ opacity: 0, translateY: -20 }}
 					transition={{ type: "tween", duration: 0.1, delay: 0.1 }}
 					className="fixed right-2 z-40 bg-primary text-white p-2 rounded-lg shadow-xl hover:scale-90 transition-scale duration-200"
-					color="cyan"
 					onClick={handleScrollClick}
 					style={{ top: "92vh" }}>
 					<MdNorth size={24} />

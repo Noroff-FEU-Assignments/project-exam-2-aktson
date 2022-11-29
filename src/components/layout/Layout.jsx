@@ -13,7 +13,7 @@ function Layout({ children }) {
 			<main className="lg:grid grid-cols-12 relative ">
 				<Dashboard />
 				<motion.div
-					className=" col-span-10 grid auto-rows-auto "
+					className="lg:col-span-10 grid auto-rows-auto "
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					exit={{ opacity: 0 }}

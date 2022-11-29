@@ -56,7 +56,7 @@ function Dashboard() {
 					</MenuItem>
 					<MenuItem className="p-2" icon={auth && <MdLogout onClick={handleLogout} className="icon" />}>
 						{auth && (
-							<Button size="md" className="ml-4" color="cyan" onClick={handleLogout}>
+							<Button size="md" className="ml-4" color="light-blue" onClick={handleLogout}>
 								Log Out
 							</Button>
 						)}

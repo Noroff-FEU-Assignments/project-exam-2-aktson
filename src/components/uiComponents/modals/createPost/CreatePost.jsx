@@ -98,17 +98,17 @@ function CreatePost() {
 						<h2>Create</h2>
 						<MdBorderColor size={18} className="text-primary" />
 					</div>
-					<IconButton variant="text" color="cyan" onClick={closeCreatePostModal} className="text-grey">
+					<IconButton variant="text" color="light-blue" onClick={closeCreatePostModal} className="text-grey">
 						<MdClear size={24} />
 					</IconButton>
 				</div>
 				<fieldset className="flex flex-col gap-6" disabled={isSubmitting}>
 					<div>
-						<Input variant="standard" label="Title*" color="cyan" {...register("title")} />
+						<Input variant="standard" label="Title*" color="light-blue" {...register("title")} />
 						{errors.title && <ErrorSpan message={errors.title.message} />}
 					</div>
 					<div>
-						<Textarea variant="standard" label="Description" color="cyan" {...register("body")} />
+						<Textarea variant="standard" label="Description" color="light-blue" {...register("body")} />
 					</div>
 					<div>
 						<Input
@@ -117,7 +117,7 @@ function CreatePost() {
 							className="inputImage"
 							size="lg"
 							variant="standard"
-							color="cyan"
+							color="light-blue"
 							type="file"
 							icon={<MdImage size={20} />}
 						/>
@@ -126,7 +126,7 @@ function CreatePost() {
 					</div>
 					<TagsInput tags={tags} setTags={setTags} />
 					<div className="flex justify-end">
-						<Button type="submit" color="cyan" onClick={handleSubmit(handlePost)} className="flex gap-2 items-center mt-4 ">
+						<Button type="submit" color="light-blue" onClick={handleSubmit(handlePost)} className="flex gap-2 items-center mt-4 ">
 							<Spinner isSubmitting={isSubmitting} />
 							{isSubmitting ? "Sharing" : "Share"}
 						</Button>

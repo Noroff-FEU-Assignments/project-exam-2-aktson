@@ -106,7 +106,7 @@ function EditAvatar() {
 								size="lg"
 								className="inputImage"
 								variant="standard"
-								color="cyan"
+								color="light-blue"
 								type="file"
 								icon={<MdImage size={20} />}
 							/>
@@ -114,7 +114,7 @@ function EditAvatar() {
 							{error && <ErrorSpan message={error} />}
 						</div>
 						<div className="flex justify-end mt-4">
-							<Button onClick={handleSubmit(uploadImage)} color="cyan" className="flex gap-2 items-center btn">
+							<Button onClick={handleSubmit(uploadImage)} color="light-blue" className="flex gap-2 items-center btn">
 								<Spinner isSubmitting={isSubmitting} />
 								{isSubmitting ? "Updating" : "Update"}
 							</Button>

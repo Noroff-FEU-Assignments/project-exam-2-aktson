@@ -146,11 +146,11 @@ function EditPost({ adminPost, setIsOpen }) {
 					</div>
 					<fieldset className="flex flex-col gap-6" disabled={isSubmitting}>
 						<div>
-							<Input variant="standard" label="Title" color="cyan" {...register("title")} />
+							<Input variant="standard" label="Title" color="light-blue" {...register("title")} />
 							{errors.title && <ErrorSpan message={errors.title.message} />}
 						</div>
 						<div>
-							<Textarea variant="standard" label="Description" color="cyan" {...register("body")} />
+							<Textarea variant="standard" label="Description" color="light-blue" {...register("body")} />
 						</div>
 						<div>
 							<Input
@@ -159,7 +159,7 @@ function EditPost({ adminPost, setIsOpen }) {
 								size="lg"
 								className="inputImage"
 								variant="standard"
-								color="cyan"
+								color="light-blue"
 								type="file"
 								icon={<MdImage size={20} />}
 							/>
@@ -168,7 +168,7 @@ function EditPost({ adminPost, setIsOpen }) {
 						</div>
 						<TagsInput tags={tags} setTags={setTags} />
 						<div className="flex justify-end">
-							<Button type="submit" color="cyan" onClick={handleSubmit(handlePostEdit)} className="flex gap-2 items-center mt-4 ">
+							<Button type="submit" color="light-blue" onClick={handleSubmit(handlePostEdit)} className="flex gap-2 items-center mt-4 ">
 								<Spinner isSubmitting={isSubmitting} />
 								{isSubmitting ? "Sharing" : "Share"}
 							</Button>

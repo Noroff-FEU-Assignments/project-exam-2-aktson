@@ -78,7 +78,7 @@ function SignIn() {
 								label="email"
 								size="lg"
 								variant="standard"
-								color="cyan"
+								color="light-blue"
 								icon={<MdMailOutline size={20} />}
 							/>
 							{errors.email && <ErrorSpan message={errors.email.message} />}
@@ -88,7 +88,7 @@ function SignIn() {
 								{...register("password")}
 								label="Password"
 								size="lg"
-								color="cyan"
+								color="light-blue"
 								variant="standard"
 								type={!isVisible ? "password" : "text"}
 								icon={
@@ -106,7 +106,7 @@ function SignIn() {
 						<Button
 							fullWidth
 							className="flex gap-2 items-center mt-4 justify-center "
-							color="cyan"
+							color="light-blue"
 							onClick={handleSubmit(handleFormSubmit)}>
 							<Spinner isSubmitting={isSubmitting} />
 							{isSubmitting ? "Signing In" : "Sign In"}

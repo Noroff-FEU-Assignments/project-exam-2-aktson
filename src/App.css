@@ -15,9 +15,6 @@
 	h4 {
 		@apply text-lg font-semibold text-gray-600;
 	}
-	nav {
-		@apply text-lg;
-	}
 }
 
 @layer components {
@@ -55,7 +52,7 @@
 
 	/* tabs  section */
 	.tab-header-btn {
-		@apply p-3 transition-all duration-500 w-full flex items-center justify-center hover:bg-cyan-200 hover:rounded-xl hover:text-white text-grey;
+		@apply p-3 transition-all duration-500 w-full flex items-center justify-center hover:bg-primary hover:animate-pulse hover:rounded-xl hover:text-white text-grey;
 	}
 	.active-tab-header-btn {
 		@apply bg-primary p-3 pointer-events-none text-lightGray rounded-xl;

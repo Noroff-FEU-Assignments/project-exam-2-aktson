@@ -1,63 +1,64 @@
-import React from 'react';
+import React from "react";
 import PropTypes from "prop-types";
 import { Input } from "@material-tailwind/react";
-import { MdAddBox, MdCancel } from "react-icons/md"
+import { MdAddBox, MdCancel } from "react-icons/md";
 import { useForm } from "react-hook-form";
 import { AnimatePresence, motion } from "framer-motion";
 
 function TagsInput({ tags, setTags }) {
+	const { register, handleSubmit, reset } = useForm();
 
-    const { register, handleSubmit, reset } = useForm();
+	const handleTagInput = (data) => {
+		const { tag } = data;
+		if (!tag) return;
+		setTags([...tags, tag]);
+		reset({ tag: "" });
+	};
 
+	const deleteTag = (index) => {
+		const deletedTag = tags.filter((tag, i) => i !== index);
+		setTags(deletedTag);
+	};
 
-    const handleTagInput = (data) => {
-        const { tag } = data
-        if (!tag) return;
-        setTags([...tags, tag])
-        reset({ tag: "" })
-    }
-
-    const deleteTag = (index) => {
-        const deletedTag = tags.filter((tag, i) => i !== index)
-        setTags(deletedTag)
-    }
-
-    return (
-        <div className='w-full'>
-            <Input
-                variant="standard"
-                label="Enter tags"
-                color="cyan" {...register("tag")}
-                icon={<MdAddBox size={22}
-                    onClick={handleSubmit(handleTagInput)}
-                    className="cursor-pointer text-primary hover:scale-110 transition duration-100" />
-                }
-            />
-            <div className='flex gap-2 mt-2 flex-wrap'>
-                <AnimatePresence>
-                    {tags.map((tag, index) => {
-                        return (
-                            <motion.p className='bg-secondary p-1 rounded-lg flex gap-2 items-center cursor-pointer text-light'
-                                key={index + 1}
-                                initial={{ opacity: 0, translateY: -20 }}
-                                animate={{ opacity: 1, translateY: 0 }}
-                                exit={{ opacity: 0, translateY: -20 }}
-                                transition={{ duration: 0.2 }} >
-                                {tag} <MdCancel size={18} onClick={() => deleteTag(index)} />
-                            </motion.p>
-                        )
-                    })}
-                </AnimatePresence>
-            </div>
-
-        </div>
-    )
+	return (
+		<div className="w-full">
+			<Input
+				variant="standard"
+				label="Enter tags"
+				color="light-blue"
+				{...register("tag")}
+				icon={
+					<MdAddBox
+						size={22}
+						onClick={handleSubmit(handleTagInput)}
+						className="cursor-pointer text-primary hover:scale-110 transition duration-100"
+					/>
+				}
+			/>
+			<div className="flex gap-2 mt-2 flex-wrap">
+				<AnimatePresence>
+					{tags.map((tag, index) => {
+						return (
+							<motion.p
+								className="bg-secondary p-1 rounded-lg flex gap-2 items-center cursor-pointer text-light"
+								key={index + 1}
+								initial={{ opacity: 0, translateY: -20 }}
+								animate={{ opacity: 1, translateY: 0 }}
+								exit={{ opacity: 0, translateY: -20 }}
+								transition={{ duration: 0.2 }}>
+								{tag} <MdCancel size={18} onClick={() => deleteTag(index)} />
+							</motion.p>
+						);
+					})}
+				</AnimatePresence>
+			</div>
+		</div>
+	);
 }
 
-export default TagsInput
-
+export default TagsInput;
 
 TagsInput.propTypes = {
-    tags: PropTypes.array,
-    setTags: PropTypes.func
-}
+	tags: PropTypes.array,
+	setTags: PropTypes.func,
+};
