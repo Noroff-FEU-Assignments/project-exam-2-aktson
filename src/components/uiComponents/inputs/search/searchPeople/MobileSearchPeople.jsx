@@ -53,12 +53,12 @@ function MobileSearchPeople() {
 	return (
 		<div className="relative">
 			<div className="relative flex items-center flex-col justify-center" ref={ref}>
-				<Button className="p-0 w-full sm:hidden flex justify-center relative">
-					<MdOutlineSearch size={32} onClick={handleSearchIconClick} />
+				<Button className="p-0 w-full sm:hidden flex justify-center relative text-white" variant="text">
+					<MdOutlineSearch size={24} onClick={handleSearchIconClick} />
 				</Button>
 
 				{showSearchBar && (
-					<form className={`w-72 absolute -bottom-16  -left-20 sm:hidden`}>
+					<form className={`w-72 absolute -bottom-16  -left-24 sm:hidden`}>
 						<Animate>
 							<Input
 								variant="standard"

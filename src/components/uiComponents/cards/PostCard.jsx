@@ -84,7 +84,7 @@ function PostCard({ post }) {
 			{media && (
 				<div
 					onClick={() => handleImageModal("lg")}
-					className="drop-shadow-xl w-full max-w-sm md:max-w-md  lg:max-w-lg xl:max-w-2xl cursor-pointer"
+					className="drop-shadow-xl w-full max-w-sm md:max-w-md  lg:max-w-lg xl:max-w-2xl sm:cursor-pointer"
 					style={{
 						backgroundImage: `url(${media}) `,
 						backgroundRepeat: "no-repeat",
