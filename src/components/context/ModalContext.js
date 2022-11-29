@@ -68,7 +68,6 @@ export function ModalProvider({ children }) {
                 isCreatePostOpen, openCreatePostModal, closeCreatePostModal,
                 isEditAvatarOpen, openEditAvatarModal, closeEditAvatarModal,
                 isEditBannerOpen, openEditBannerModal, closeEditBannerModal,
-
             }}>
             {children}
         </ModalContext.Provider>

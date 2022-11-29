@@ -13,7 +13,7 @@ import AuthContext from "../../context/AuthContext";
 import Comments from "../inputs/comments/Comments";
 import Reactions from "../inputs/reactions/Reactions";
 import ShowCommentBtn from "../inputs/comments/ShowCommentBtn";
-import ImageModal from "../modals/ImageModal";
+import ImageModal from "../modals/imageModal/ImageModal";
 
 function PostCard({ post }) {
 	const { auth } = React.useContext(AuthContext);
@@ -89,8 +89,7 @@ function PostCard({ post }) {
 						backgroundImage: `url(${media}) `,
 						backgroundRepeat: "no-repeat",
 						backgroundPosition: "center",
-						minHeight: "250px",
-						maxHeight: "350px",
+						height: "350px",
 						backgroundSize: "cover",
 					}}>
 					<span className="background-image" role="img" aria-label={`${title}`}></span>

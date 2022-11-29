@@ -17,7 +17,7 @@ function Header() {
 		<header className=" shadow-xl gap-2 z-50 bg-secondary fixed w-full  mx-auto ">
 			<div className="flex py-3  px-2 lg:px-12 justify-between rounded-full  mx-auto items-center">
 				<Link to="/home" className="p-1">
-					<img src={logo} alt="socialMe logo" className="w-32" />
+					<img src={logo} alt="socialMe logo" className="w-24 sm:w-32" />
 				</Link>
 				<MobileSearchPeople />
 				<SearchPeopleInput />
