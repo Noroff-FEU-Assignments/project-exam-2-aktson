@@ -49,7 +49,7 @@ function CommentInput({ showCommentInput, id, setShowCommentInput, setComments }
 		<div className="absolute left-0 w-full top-full ">
 			{showCommentInput && (
 				<Animate>
-					<fieldset className="flex w-full items-center bg-lightGray p-4 rounded-xl" disabled={isSubmitting}>
+					<fieldset className="flex w-full items-center bg-lightGray mt-1 shadow-2xl  p-4 rounded-xl" disabled={isSubmitting}>
 						<div className="w-full">
 							<Input variant="standard" label="enter you comment" color="light-blue" {...register("comments")} />
 							{errors.comments && <ErrorSpan message={errors.comments.message} />}

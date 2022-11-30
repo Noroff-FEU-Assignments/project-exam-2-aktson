@@ -6,7 +6,7 @@ import AuthContext from '../context/AuthContext';
 function AuthenticatedRoute() {
     const { auth } = React.useContext(AuthContext);
 
-    return auth ? <Outlet /> : <Navigate to="/sign-in" />
+    return auth ? <Outlet /> : <Navigate to="/" />
 }
 
 export default AuthenticatedRoute

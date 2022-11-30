@@ -16,7 +16,7 @@ function UserBanner({ user, postsLength }) {
 				setIsAdmin(true);
 			}
 		}
-	}, [user]);
+	}, [user, auth]);
 
 	return (
 		<>

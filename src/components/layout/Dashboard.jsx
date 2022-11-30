@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { MdHome, MdGroups, MdAccountCircle, MdLogout, MdCreate } from "react-icons/md";
 import { Button } from "@material-tailwind/react";
 import AuthContext from "../context/AuthContext";
@@ -56,7 +56,7 @@ function Dashboard() {
 					</MenuItem>
 					<MenuItem className="p-2" icon={auth && <MdLogout onClick={handleLogout} className="icon" />}>
 						{auth && (
-							<Button size="md" className="ml-4" color="light-blue" onClick={handleLogout}>
+							<Button size="md" className="ml-4" color="light-blue" variant="gradient" onClick={handleLogout}>
 								Log Out
 							</Button>
 						)}

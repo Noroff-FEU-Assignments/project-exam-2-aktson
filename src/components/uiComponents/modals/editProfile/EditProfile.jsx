@@ -16,7 +16,7 @@ function EditProfile() {
 	return (
 		<>
 			<div className="relative">
-				<Button color="light-blue" className="flex gap-2 items-center " onClick={handleMenuClick}>
+				<Button color="light-blue" variant="gradient" className="flex gap-2 items-center " onClick={handleMenuClick}>
 					<MdBorderColor size={18} />
 					Edit profile
 				</Button>

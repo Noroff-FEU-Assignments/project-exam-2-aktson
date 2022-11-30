@@ -11,7 +11,7 @@ import { LOGIN_URL, BRAND } from "../constants/api";
 import AuthContext from "../context/AuthContext";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
-import bgImage from "../../assets/bg-welcome.jpg";
+import bgImage from "../../assets/bg.jpg";
 import Spinner from "../uiComponents/loader/Spinner";
 import Footer from "../layout/Footer";
 
@@ -19,7 +19,6 @@ function SignIn() {
 	document.title = `Sign in | ${BRAND}`;
 
 	const { setAuth } = React.useContext(AuthContext);
-
 	const navigate = useNavigate();
 
 	// react state
@@ -107,6 +106,7 @@ function SignIn() {
 							fullWidth
 							className="flex gap-2 items-center mt-4 justify-center "
 							color="light-blue"
+							variant="gradient"
 							onClick={handleSubmit(handleFormSubmit)}>
 							<Spinner isSubmitting={isSubmitting} />
 							{isSubmitting ? "Signing In" : "Sign In"}

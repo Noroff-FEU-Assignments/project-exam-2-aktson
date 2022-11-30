@@ -27,7 +27,7 @@ function FollowUnFollowBtns({ username }) {
 				setIsFollowing(true);
 			}
 		}
-	}, [auth]);
+	}, [auth, admin.following, username]);
 
 	const handleFollow = async () => {
 		const url = `/api/v1/social/profiles/${username}/follow`;
@@ -70,13 +70,23 @@ function FollowUnFollowBtns({ username }) {
 	return (
 		<>
 			{!isfollowing && (
-				<Button color="light-blue" onClick={handleFollow} disabled={isSubmitting} className="flex gap-2 items-center  w-auto">
+				<Button
+					color="light-blue"
+					variant="gradient"
+					onClick={handleFollow}
+					disabled={isSubmitting}
+					className="flex gap-2 items-center  w-auto">
 					<Spinner isSubmitting={isSubmitting} />
 					Follow
 				</Button>
 			)}
 			{isfollowing && (
-				<Button color="light-blue" onClick={handleUnFollow} disabled={isSubmitting} className="flex gap-2 items-center w-auto">
+				<Button
+					color="light-blue"
+					variant="gradient"
+					onClick={handleUnFollow}
+					disabled={isSubmitting}
+					className="flex gap-2 items-center w-auto">
 					<Spinner isSubmitting={isSubmitting} />
 					Unfollow
 				</Button>

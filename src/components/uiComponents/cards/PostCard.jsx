@@ -35,7 +35,7 @@ function PostCard({ post }) {
 		else if (auth.email === post?.author.email) {
 			setAdminMenu(true);
 		}
-	}, [auth]);
+	}, [auth, post.author]);
 
 	const { body, title, media, tags, updated, author } = post;
 
@@ -52,8 +52,8 @@ function PostCard({ post }) {
 	const date = new Date(updated);
 
 	return (
-		<div className="card grid  grid-rows-auto gap-3 text-grey mb-4 overflow-x-auto ">
-			<div className="flex items-center justify-between gap-2 ">
+		<div className="card grid  grid-rows-auto gap-3 text-grey mb-4 ">
+			<div className="flex items-center justify-between gap-2 w-max">
 				<div>
 					<Link to={`/user-specific/${author?.name}`} className="flex items-center gap-2">
 						<Avatar src={author?.avatar ? author.avatar : image} alt="" variant="circular" />
@@ -65,11 +65,11 @@ function PostCard({ post }) {
 				</div>
 				{adminMenu && <PostMenu adminPost={post} />}
 			</div>
-			<div className="flex flex-col flex-wrap ">
+			<div className="flex flex-col flex-wrap overflow-x-hidden">
 				<h3>{title}</h3>
 				{body && <p>{body}</p>}
 			</div>
-			<div className="flex flex-wrap gap-2 ">
+			<div className="flex flex-wrap gap-2 overflow-x-hidden ">
 				{tags &&
 					tags?.map((tag, index) => {
 						return (
@@ -103,8 +103,10 @@ function PostCard({ post }) {
 			<div className="flex justify-end gap-4 my-2 cursor-pointer mb-4 relative" ref={ref}>
 				<EmojiInput post={post} setReactions={setReactions} reactions={reactions} />
 				<Button
-					className="bg-primary flex items-center gap-2 w-full justify-center"
+					className="flex items-center gap-2 w-full justify-center"
 					size="sm"
+					variant="gradient"
+					color="light-blue"
 					onClick={() => setShowCommentInput((prevState) => !prevState)}>
 					<MdOutlineModeComment size={22} />
 					Comment

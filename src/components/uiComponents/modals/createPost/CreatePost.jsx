@@ -126,7 +126,12 @@ function CreatePost() {
 					</div>
 					<TagsInput tags={tags} setTags={setTags} />
 					<div className="flex justify-end">
-						<Button type="submit" color="light-blue" onClick={handleSubmit(handlePost)} className="flex gap-2 items-center mt-4 ">
+						<Button
+							type="submit"
+							color="light-blue"
+							variant="gradient"
+							onClick={handleSubmit(handlePost)}
+							className="flex gap-2 items-center mt-4 ">
 							<Spinner isSubmitting={isSubmitting} />
 							{isSubmitting ? "Sharing" : "Share"}
 						</Button>

@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 import Spinner from "../uiComponents/loader/Spinner";
 import { motion } from "framer-motion";
 import SignUpBanner from "../uiComponents/SignUpBanner";
-import bgImage from "../../assets/bg-welcome.jpg";
+import bgImage from "../../assets/bg.jpg";
 import FormTooltip from "../uiComponents/formTooltip/FormTooltip";
 import PasswordTooltip from "../uiComponents/formTooltip/PasswordTooltip";
 import Footer from "../layout/Footer";
@@ -181,6 +181,7 @@ function SignUp() {
 								fullWidth
 								className="flex gap-2 items-center mt-4 justify-center "
 								color="light-blue"
+								variant="gradient"
 								onClick={handleSubmit(handleFormSubmit)}>
 								<Spinner isSubmitting={isSubmitting} />
 								{isSubmitting ? "Creating Account" : "Create Account"}

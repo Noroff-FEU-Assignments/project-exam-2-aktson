@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Animate from "../../Animate";
 
 function Reactions({ reactions }) {
@@ -19,3 +20,7 @@ function Reactions({ reactions }) {
 }
 
 export default Reactions;
+
+Reactions.propTypes = {
+	reactions: PropTypes.array,
+};

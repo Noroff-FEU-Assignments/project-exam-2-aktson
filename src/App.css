@@ -4,10 +4,10 @@
 
 @layer base {
 	h1 {
-		@apply text-3xl  mb-8 leading-loose  text-primary;
+		@apply text-3xl  mb-8 leading-loose  text-secondary;
 	}
 	h2 {
-		@apply text-3xl relative text-primary;
+		@apply text-3xl relative text-secondary;
 	}
 	h3 {
 		@apply text-xl my-2 font-semibold;
