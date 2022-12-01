@@ -53,7 +53,7 @@ function PostCard({ post }) {
 
 	return (
 		<div className="card grid  grid-rows-auto gap-3 text-grey mb-4 ">
-			<div className="flex items-center justify-between gap-2 w-max">
+			<div className="flex items-center justify-between gap-2 w-full">
 				<div>
 					<Link to={`/user-specific/${author?.name}`} className="flex items-center gap-2">
 						<Avatar src={author?.avatar ? author.avatar : image} alt="" variant="circular" />
@@ -84,7 +84,7 @@ function PostCard({ post }) {
 			{media && (
 				<div
 					onClick={() => handleImageModal("lg")}
-					className="drop-shadow-xl w-full max-w-sm md:max-w-md  lg:max-w-lg xl:max-w-2xl sm:cursor-pointer"
+					className=" w-full max-w-sm md:max-w-md  lg:max-w-lg xl:max-w-2xl sm:cursor-pointer"
 					style={{
 						backgroundImage: `url(${media}) `,
 						backgroundRepeat: "no-repeat",

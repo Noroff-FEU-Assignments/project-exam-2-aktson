@@ -11,11 +11,10 @@ module.exports = withMT({
       colors: {
         primary: "#03a9f4",
         secondary: "#0288d1",
-        accent: "#0097a7",
+        accent: "#D4BD15",
         dark: "#104673",
         light: "#ececec",
         lightGray: "#fafafa",
-        yellow: "#E0D572",
         grey: "#4D4D4D",
       },
     },

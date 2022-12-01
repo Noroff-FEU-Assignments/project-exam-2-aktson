@@ -10,7 +10,7 @@ function NotFound() {
 	const { auth } = React.useContext(AuthContext);
 	return (
 		<section
-			className="h-auto sm:h-screen flex justify-center items-center p-4 relative"
+			className="h-screen flex justify-center items-center p-4 relative"
 			style={{
 				backgroundImage: `url(${bgImage})`,
 				backgroundRepeat: "no-repeat",
