@@ -120,7 +120,7 @@ function SignUp() {
 										icon={<MdPersonOutline size={20} />}
 									/>
 									{errors.name && <ErrorSpan message={errors.name.message} />}
-									{nameTooltip && <FormTooltip message={"must not be any capital letter"} />}
+									{nameTooltip && <FormTooltip message={"no capital letters"} />}
 								</div>
 
 								<div className="w-full relative" onFocus={() => setEmailTooltip(true)} onBlur={() => setEmailTooltip(false)}>
@@ -134,7 +134,7 @@ function SignUp() {
 									/>
 
 									{errors.email && <ErrorSpan message={errors.email.message} />}
-									{emailTooltip && <FormTooltip message={"must end with stud.noroff.no or noroff.no"} />}
+									{emailTooltip && <FormTooltip message={"must end with @stud.noroff.no"} />}
 								</div>
 							</div>
 
