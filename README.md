@@ -26,12 +26,12 @@ You may also see any lint errors in the console.
 
 ## To create account you will need following
 
-<li> username: all small caps and no special charaters allowed</li>
-<li>email: an email ending in @stud.noroff.no eg:(example@stud.noroff.no)</li>
-<li>password: must be atleast 8 character</li>
-<li>confirm-password: retype password</li>
+<li>username: "all small caps and no special charaters allowed"</li>
+<li>email: "an email ending in @stud.noroff.no eg:(example@stud.noroff.no)"</li>
+<li>password: "must be atleast 8 character"</li>
+<li>confirm-password: "retype password"</li>
 
-You wiil then be redirected to authenticated Home page where you can update your profile picture and do post activity mentioned above.
+### You wiil then be redirected to authenticated Home page where you can update your profile picture and do post activity mentioned above.
 
 # Login
 
