@@ -4,20 +4,22 @@ This is my submission for Project Exam 2. SocialMe is a social media app where p
 
 ## user stories
 
-<ol>A user with a stud.noroff.no email may register</ol>
-<ol>A registered user may login</ol>
-<ol>A registered user may update their avatar and banner</ol>
-<ol>A registered user may logout</ol>
-<ol>A registered user may view a list of Posts</ol>
-<ol>A registered user may view a list of Profiles</ol>
-<ol>A registered user may view a single Post by id</ol>
-<ol>A registered user may view a single Profile by name</ol>
-<ol>A registered user may create a Post</ol>
-<ol>A registered user may update a Post they own</ol>
-<ol>A registered user may delete a Post they own</ol>
-<ol>A registered user may create a Comment on any Post</ol>
-<ol>A registered user may react to any Post with an emoji</ol>
-<ol>A registered user may follow and unfollow another Profile</ol>
+<ol>
+    <li>A user with a stud.noroff.no email may register</li>
+    <li>A registered user may login</li>
+    <li>A registered user may update their avatar and banner</li>
+    <li>A registered user may logout</li>
+    <li>A registered user may view a list of Posts</li>
+    <li>A registered user may view a list of Profiles</li>
+    <li>A registered user may view a single Post by id</li>
+    <li>A registered user may view a single Profile by name</li>
+    <li>A registered user may create a Post</li>
+    <li>A registered user may update a Post they own</li>
+    <li>A registered user may delete a Post they own</li>
+    <li>A registered user may create a Comment on any Post</li>
+    <li>A registered user may react to any Post with an emoji</li>
+    <li>A registered user may follow and unfoilow another Profile</li>
+</ol>
 
 The project was built using the https://noroff-api-docs.netlify.app/
 
