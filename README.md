@@ -48,7 +48,7 @@ You may also see any lint errors in the console.
 ## To create account you will need following
 
 <li>username: "all small caps and no special charaters allowed"</li>
-<li>email: "an email ending in @stud.noroff.no eg:(example@stud.noroff.no)"</li>
+<li>email: "email ending with @stud.noroff.no (eg.:'example@stud.noroff.no')"</li>
 <li>password: "must be atleast 8 character"</li>
 <li>confirm-password: "retype password"</li>
 
