@@ -9,18 +9,24 @@ import trelloReport from "../../assets/agile_board_project-exam-2_ankit-soni.png
 function Delivery() {
 	document.title = `Delivery Resaurces | ${BRAND}`;
 
+	const github = "https://github.com/Noroff-FEU-Assignments/project-exam-2-aktson";
+	const prototype = "https://xd.adobe.com/view/966e91c4-dd85-4413-9da9-30f0a5ab23cc-c33d/";
+	const hostedDemo = "https://socialme.vercel.app/";
+	const trelloBoard = "https://trello.com/b/OAI4sz0g/project-exam-2ankit-soni";
+	const styleGuide = "https://xd.adobe.com/view/fe9970b9-8d94-4d16-9f3a-acce8907131f-abca/";
+
 	return (
 		<section
-			className="h-screen flex justify-center items-center p-4 relative"
+			className="h-auto sm:h-screen flex justify-center items-center p-4 relative"
 			style={{
 				backgroundImage: `url(${bgImage})`,
 				backgroundRepeat: "no-repeat",
 				backgroundSize: "cover",
 				backgroundPosition: "center",
 			}}>
-			<div className=" ">
-				<h1 className=" mb-0 flex gap-2 items-center">Delivery - Links to Resources</h1>
-				<table class="border-separate border-spacing-2 shadow-xl  ">
+			<div className="container ">
+				<h1 className=" mb-0 flex justify-center ">Delivery - Links to Resources</h1>
+				<table class="border-separate border-spacing-2 shadow-xl mx-auto  ">
 					<thead className="bg-secondary text-white">
 						<tr>
 							<th class=" p-2">Resource</th>
@@ -39,40 +45,40 @@ function Delivery() {
 						<tr>
 							<td class=" p-2 ">Design Prototype</td>
 							<td class=" p-2 text-secondary hover:scale-90 transition-all duration-300">
-								<a href="https://xd.adobe.com/view/966e91c4-dd85-4413-9da9-30f0a5ab23cc-c33d/" target="_blank" rel="noreferrer">
-									https://xd.adobe.com/view/966e91c4-dd85-4413-9da9-30f0a5ab23cc-c33d/
+								<a href={prototype} target="_blank" rel="noreferrer">
+									{prototype}
 								</a>
 							</td>
 						</tr>
 						<tr>
 							<td class=" p-2 ">Style Guide</td>
 							<td class=" p-2 text-secondary hover:scale-90 transition-all duration-300">
-								<a href="https://xd.adobe.com/view/fe9970b9-8d94-4d16-9f3a-acce8907131f-abca/" target="_blank" rel="noreferrer">
-									https://xd.adobe.com/view/fe9970b9-8d94-4d16-9f3a-acce8907131f-abca/
+								<a href={styleGuide} target="_blank" rel="noreferrer">
+									{styleGuide}
 								</a>
 							</td>
 						</tr>
 						<tr>
 							<td class=" p-2 ">Kanban Board</td>
 							<td class=" p-2 text-secondary hover:scale-90 transition-all duration-300">
-								<a href="https://trello.com/b/OAI4sz0g/project-exam-2ankit-soni" target="_blank" rel="noreferrer">
-									https://trello.com/b/OAI4sz0g/project-exam-2ankit-soni
+								<a href={trelloBoard} target="_blank" rel="noreferrer">
+									{trelloBoard}
 								</a>
 							</td>
 						</tr>
 						<tr>
 							<td class=" p-2 ">Repository</td>
 							<td class=" p-2 text-secondary hover:scale-90 transition-all duration-300">
-								<a href="https://github.com/Noroff-FEU-Assignments/project-exam-2-aktson" target="_blank" rel="noreferrer">
-									https://github.com/Noroff-FEU-Assignments/project-exam-2-aktson
+								<a href={github} target="_blank" rel="noreferrer">
+									{github}
 								</a>
 							</td>
 						</tr>
 						<tr>
 							<td class=" p-2 ">Hosted Demo</td>
 							<td class=" p-2 text-secondary hover:scale-90 transition-all duration-300">
-								<a href="https://socialme.vercel.app/" target="_blank" rel="noreferrer">
-									https://socialme.vercel.app/
+								<a href={hostedDemo} target="_blank" rel="noreferrer">
+									{hostedDemo}
 								</a>
 							</td>
 						</tr>

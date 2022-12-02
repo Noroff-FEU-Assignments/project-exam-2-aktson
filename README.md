@@ -1,10 +1,18 @@
-# Getting Started with Create React App
+# SocialMe
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is my submission for Project Exam 2. SocialMe is a social media app where people can create free account and can create/edit/delete post, can comment and react on any post. A user may also follow and un-follow any other profile on the app.
 
-## Available Scripts
+The project was built using the https://noroff-api-docs.netlify.app/
 
-In the project directory, you can run:
+## Getting Started with socialMe App
+
+Clone the repo. Make sure you have node and npm installed on you machine.
+
+Install dependency:
+
+### `npm install`
+
+In the project directory, you can run following command to start project:
 
 ### `npm start`
 
@@ -14,57 +22,52 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+## Register a profile:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### To create account you will need following
 
-### `npm run build`
+username: all small caps and no special charaters allowed
+email: an email ending in @stud.noroff.no eg:(example@stud.noroff.no)
+password: must be atleast 8 character
+confirm-password : retype password
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+You wiil then be redirected to authenticated Home page where you can update your profile picture and do post activity mentioned above.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Login
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Use the email and password you have registered. Else if you wish to login you can use following:
 
-### `npm run eject`
+Email: testankson@stud.noroff.no
+Password: projectexam
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### !import: if you cannot login with above login credentials, then please make new use. It happens incase social media endpoint gets purged.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   <h2>Technologies used</h2>
+   <li> React (18.2.0)<li>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    Bootstrap (5.2.2)
 
-## Learn More
+    Yup (0.32.11)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    Sass (1.55.0)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    Axios (1.1.3)
 
-### Code Splitting
+    date-fns (2.29.3)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    Google fonts
 
-### Analyzing the Bundle Size
+    React-router-dom (6.4.3)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    React-helmet-async (1.3.0)
 
-### Making a Progressive Web App
+Prototype design
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Figma
 
-### Advanced Configuration
+Planning and hosting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Trello
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Netlify
