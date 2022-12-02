@@ -1,6 +1,23 @@
 # SocialMe
 
-This is my submission for Project Exam 2. SocialMe is a social media app where people can create free account and can create/edit/delete post, can comment and react on any post. A user may also follow and un-follow any other profile on the app.
+This is my submission for Project Exam 2. SocialMe is a social media app where people can create free account and can create/edit/delete post, can comment and react on any post. A user may also follow and un-follow any other profile on the app. See below user stories in detail to get overview about socialMe app.
+
+## user stories
+
+<ol>A user with a stud.noroff.no email may register</ol>
+<ol>A registered user may login</ol>
+<ol>A registered user may update their avatar and banner</ol>
+<ol>A registered user may logout</ol>
+<ol>A registered user may view a list of Posts</ol>
+<ol>A registered user may view a list of Profiles</ol>
+<ol>A registered user may view a single Post by id</ol>
+<ol>A registered user may view a single Profile by name</ol>
+<ol>A registered user may create a Post</ol>
+<ol>A registered user may update a Post they own</ol>
+<ol>A registered user may delete a Post they own</ol>
+<ol>A registered user may create a Comment on any Post</ol>
+<ol>A registered user may react to any Post with an emoji</ol>
+<ol>A registered user may follow and unfollow another Profile</ol>
 
 The project was built using the https://noroff-api-docs.netlify.app/
 
