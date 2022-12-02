@@ -22,27 +22,32 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-## Register a profile:
+# Register a profile:
 
-### To create account you will need following
+## To create account you will need following
 
-<h4>username:   all small caps and no special charaters allowed<h4> 
-<h4>email:  an email ending in @stud.noroff.no eg:(example@stud.noroff.no)<h4> 
-<h4>password:   must be atleast 8 character<h4> 
-<h4>confirm-password:   retype password<h4>
+### <h4>username: all small caps and no special charaters allowed<h4>
+
+### <h4>email: an email ending in @stud.noroff.no eg:(example@stud.noroff.no)<h4>
+
+### <h4>password: must be atleast 8 character<h4>
+
+### <h4>confirm-password: retype password<h4>
 
 You wiil then be redirected to authenticated Home page where you can update your profile picture and do post activity mentioned above.
 
-### Login
+# Login
 
-Use the email and password you have registered. Else if you wish to login you can use following:
+## Use the email and password you have registered. Else if you wish to login you can use following:
 
-<p><strong>Email:<strong> testankson@stud.noroff.no<p>
-<p><strong>Password:<strong> projectexam<p>
+### <p><strong>Email:<strong> testankson@stud.noroff.no<p>
+
+### <p><strong>Password:<strong> projectexam<p>
 
 ### !import: if you cannot login with above login credentials, then please make new use. It happens incase social media endpoint gets purged.
 
-   <h2>Technologies used</h2>
+# <h2>Technologies used</h2>
+
    <li> React (18.2.0)<li>
 
 <li> React (18.2.0)<li>
