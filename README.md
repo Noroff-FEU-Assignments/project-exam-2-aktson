@@ -38,6 +38,7 @@ You wiil then be redirected to authenticated Home page where you can update your
 Use the email and password you have registered. Else if you wish to login you can use following:
 
 Email: testankson@stud.noroff.no
+
 Password: projectexam
 
 ### !import: if you cannot login with above login credentials, then please make new use. It happens incase social media endpoint gets purged.
@@ -45,12 +46,15 @@ Password: projectexam
    <h2>Technologies used</h2>
    <li> React (18.2.0)<li>
 
+<li> React (18.2.0)<li>
+<li> React (18.2.0)<li>
+<li> React (18.2.0)<li>
+<li> React (18.2.0)<li>
+<li> React (18.2.0)<li>
 
     Bootstrap (5.2.2)
 
     Yup (0.32.11)
-
-    Sass (1.55.0)
 
     Axios (1.1.3)
 
