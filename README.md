@@ -4,7 +4,7 @@ This is my submission for Project Exam 2. SocialMe is a social media app where p
 
 The project was built using the https://noroff-api-docs.netlify.app/
 
-## Getting Started with socialMe App
+# Getting Started with socialMe App
 
 Clone the repo. Make sure you have node and npm installed on you machine.
 
@@ -26,13 +26,13 @@ You may also see any lint errors in the console.
 
 ## To create account you will need following
 
-### <h4>username: all small caps and no special charaters allowed<h4>
+### username: all small caps and no special charaters allowed
 
-### <h4>email: an email ending in @stud.noroff.no eg:(example@stud.noroff.no)<h4>
+### email: an email ending in @stud.noroff.no eg:(example@stud.noroff.no)
 
-### <h4>password: must be atleast 8 character<h4>
+### password: must be atleast 8 character
 
-### <h4>confirm-password: retype password<h4>
+### confirm-password: retype password
 
 You wiil then be redirected to authenticated Home page where you can update your profile picture and do post activity mentioned above.
 
@@ -40,42 +40,36 @@ You wiil then be redirected to authenticated Home page where you can update your
 
 ## Use the email and password you have registered. Else if you wish to login you can use following:
 
-### <p><strong>Email:<strong> testankson@stud.noroff.no<p>
+### Email: testankson@stud.noroff.no
 
-### <p><strong>Password:<strong> projectexam<p>
+### Password: projectexam
 
 ### !import: if you cannot login with above login credentials, then please make new use. It happens incase social media endpoint gets purged.
 
 # <h2>Technologies used</h2>
 
-   <li> React (18.2.0)<li>
+### <li> React: 18.2.0<li>
 
-<li> React (18.2.0)<li>
-<li> React (18.2.0)<li>
-<li> React (18.2.0)<li>
-<li> React (18.2.0)<li>
-<li> React (18.2.0)<li>
+### <li> tailwindcss: 3.2.1<li>
 
-    Bootstrap (5.2.2)
+### <li> @material-tailwind/react: 1.2.4<li>
 
-    Yup (0.32.11)
+### <li> react-icons: 4.6.0<li>
 
-    Axios (1.1.3)
+### <li> framer-motion: 7.6.1<li>
 
-    date-fns (2.29.3)
+### <li> react-pro-sidebar: 1.0.0-alpha.7<li>
 
-    Google fonts
+### <li> swiper: 8.4.4<li>
 
-    React-router-dom (6.4.3)
+### <li> react-toastify: 9.0.8<li>
 
-    React-helmet-async (1.3.0)
+### <li> react-time-ago: 7.2.1<li>
 
-Prototype design
+### <li> react-router-dom: 6.4.2<li>
 
-Figma
+### <li> yup: 0.32.11<li>
 
-Planning and hosting
+### <li> react-hook-form: 7.38.0<li>
 
-Trello
-
-Netlify
+### <li> axios: 1.1.3<li>
