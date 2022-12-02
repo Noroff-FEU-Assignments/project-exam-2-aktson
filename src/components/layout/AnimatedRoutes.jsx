@@ -12,6 +12,7 @@ import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import UserSpecific from "../pages/UserSpecific";
 import NotFound from "../pages/NotFound";
+import Delivery from "../pages/Delivery";
 
 function AnimatedRoute() {
 	const location = useLocation();
@@ -58,6 +59,7 @@ function AnimatedRoute() {
 					<Route path="/" element={<SignIn />} />
 					<Route path="/sign-up" element={<SignUp />} />
 					<Route path="/*" element={<NotFound />} />
+					<Route path="/delivery" element={<Delivery />} />
 				</Routes>
 			</AnimatePresence>
 		</>

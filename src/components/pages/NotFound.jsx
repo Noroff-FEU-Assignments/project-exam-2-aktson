@@ -5,8 +5,10 @@ import bgImage from "../../assets/bg.jpg";
 import { Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import { BRAND } from "../constants/api";
 
 function NotFound() {
+	document.title = `404 | ${BRAND}`;
 	const { auth } = React.useContext(AuthContext);
 	return (
 		<section
