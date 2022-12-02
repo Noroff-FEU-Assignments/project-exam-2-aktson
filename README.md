@@ -48,16 +48,16 @@ You wiil then be redirected to authenticated Home page where you can update your
 
 # <h2>Technologies used</h2>
 
- <li> React: 18.2.0<li>
- <li> tailwindcss: 3.2.1<li>
- <li> @material-tailwind/react: 1.2.4<li>
- <li> react-icons: 4.6.0<li>
- <li> framer-motion: 7.6.1<li>
- <li> react-pro-sidebar: 1.0.0-alpha.7<li>
- <li> swiper: 8.4.4<li>
- <li> react-toastify: 9.0.8<li>
- <li> react-time-ago: 7.2.1<li>
- <li> react-router-dom: 6.4.2<li>
- <li> yup: 0.32.11<li>
- <li> react-hook-form: 7.38.0<li>
- <li> axios: 1.1.3<li>
+ <li> React: 18.2.0</li>
+ <li> tailwindcss: 3.2.1</li>
+ <li> @material-tailwind/react: 1.2.4</li>
+ <li> react-icons: 4.6.0</li>
+ <li> framer-motion: 7.6.1</li>
+ <li> react-pro-sidebar: 1.0.0-alpha.7</li>
+ <li> swiper: 8.4.4</li>
+ <li> react-toastify: 9.0.8</li>
+ <li> react-time-ago: 7.2.1</li>
+ <li> react-router-dom: 6.4.2</li>
+ <li> yup: 0.32.11</li>
+ <li> react-hook-form: 7.38.0</li>
+ <li> axios: 1.1.3</li>
