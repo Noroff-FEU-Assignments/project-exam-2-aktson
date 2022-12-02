@@ -26,10 +26,10 @@ You may also see any lint errors in the console.
 
 ### To create account you will need following
 
-username: all small caps and no special charaters allowed
-email: an email ending in @stud.noroff.no eg:(example@stud.noroff.no)
-password: must be atleast 8 character
-confirm-password : retype password
+<p>username: all small caps and no special charaters allowed<p>
+<p>email: an email ending in @stud.noroff.no eg:(example@stud.noroff.no)<p>
+<p>password: must be atleast 8 character<p>
+<p>confirm-password : retype password<p>
 
 You wiil then be redirected to authenticated Home page where you can update your profile picture and do post activity mentioned above.
 
@@ -37,9 +37,8 @@ You wiil then be redirected to authenticated Home page where you can update your
 
 Use the email and password you have registered. Else if you wish to login you can use following:
 
-Email: testankson@stud.noroff.no
-
-Password: projectexam
+<p>Email: testankson@stud.noroff.no<p>
+<p>Password: projectexam<p>
 
 ### !import: if you cannot login with above login credentials, then please make new use. It happens incase social media endpoint gets purged.
 
