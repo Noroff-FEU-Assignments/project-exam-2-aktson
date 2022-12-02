@@ -1,5 +1,7 @@
 # SocialMe
 
+## Designed & Developed by <a href="https://ankitsoni.netlify.app/" target="_blank">Ankit Soni</a>
+
 This is my submission for Project Exam 2. SocialMe is a social media app where people can create free account and can create/edit/delete post, can comment and react on any post. A user may also follow and un-follow any other profile on the app. See below user stories in detail to get overview about socialMe app.
 
 ## user stories
@@ -21,7 +23,7 @@ This is my submission for Project Exam 2. SocialMe is a social media app where p
     <li>A registered user may follow and unfoilow another Profile</li>
 </ol>
 
-The project was built using the https://noroff-api-docs.netlify.app/
+The project was built using the <a href="https://noroff-api-docs.netlify.app/" target="_blank"> Noroff API</a>
 
 # Getting Started with socialMe App
 
