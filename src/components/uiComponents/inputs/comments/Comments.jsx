@@ -20,7 +20,7 @@ function Comments({ showComments, comments }) {
 								return (
 									<div key={comment.id} className="flex  items-center bg-gray-200 rounded-xl p-2 ">
 										<Avatar
-											src={comment?.author.avatar ? comment?.author.avatar : userAltAvatar}
+											src={comment.author?.avatar ? comment.author?.avatar : userAltAvatar}
 											alt="avatar"
 											size="sm"
 											variant="circular"
