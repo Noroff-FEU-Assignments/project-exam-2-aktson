@@ -1,5 +1,7 @@
 # SocialMe
 
+![image](https://user-images.githubusercontent.com/52622303/164316813-4b12d99f-aeb7-4069-85cf-e72b3a50ac99.png)
+
 ## Designed & Developed by <a href="https://ankitsoni.netlify.app/" target="_blank">Ankit Soni</a>
 
 This is my submission for Project Exam 2. SocialMe is a social media app where people can create free account and can create/edit/delete post, can comment and react on any post. A user may also follow and un-follow any other profile on the app. See below user stories in detail to get overview about socialMe app.
