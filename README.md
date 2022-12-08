@@ -27,18 +27,27 @@ This is my submission for Project Exam 2. SocialMe is a social media app where p
 
 The project was built using the <a href="https://noroff-api-docs.netlify.app/" target="_blank"> Noroff API</a>
 
-# Getting Started with socialMe App
+# Getting Started 
 
-Clone the repo. Make sure you have node and npm installed on you machine.
+1. Clone the repo:
 
-Install dependency:
+```bash
+git clone Noroff-FEU-Assignments/project-exam-2-aktson
+```
 
-### `npm install`
+2. Install the dependencies:
+
+```
+npm install
+```
+
+### Running
 
 In the project directory, you can run following command to start project:
 
-### `npm start`
-
+```bash
+npm run start
+```
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
@@ -65,7 +74,14 @@ You may also see any lint errors in the console.
 
 ### !import: if you cannot login with above login credentials, then please make new use. It happens incase social media endpoint gets purged.
 
-# <h2>Technologies used</h2>
+
+## Contact
+
+[My Site](https://ankitsoni.netlify.app/)
+
+[My LinkedIn page](https://www.linkedin.com/in/ankit-soni-78177b1a/)
+
+## Built With
 
  <li> React: 18.2.0</li>
  <li> tailwindcss: 3.2.1</li>
