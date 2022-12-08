@@ -2,13 +2,10 @@
 
 ![image](https://github.com/Noroff-FEU-Assignments/project-exam-2-aktson/blob/main/src/assets/github-front.jpg)
 
-## Designed & Developed by <a href="https://ankitsoni.netlify.app/" target="_blank">Ankit Soni</a>
-
+## Description
 This is my submission for Project Exam 2. SocialMe is a social media app where people can create free account and can create/edit/delete post, can comment and react on any post. A user may also follow and un-follow any other profile on the app. See below user stories in detail to get overview about socialMe app.
 
-## user stories
-
-<ol>
+### user stories
     <li>A user with a stud.noroff.no email may register</li>
     <li>A registered user may login</li>
     <li>A registered user may update their avatar and banner</li>
@@ -23,7 +20,25 @@ This is my submission for Project Exam 2. SocialMe is a social media app where p
     <li>A registered user may create a Comment on any Post</li>
     <li>A registered user may react to any Post with an emoji</li>
     <li>A registered user may follow and unfoilow another Profile</li>
-</ol>
+
+
+## Built With
+
+ <li> React: 18.2.0</li>
+ <li> tailwindcss: 3.2.1</li>
+ <li> @material-tailwind/react: 1.2.4</li>
+ <li> react-icons: 4.6.0</li>
+ <li> framer-motion: 7.6.1</li>
+ <li> react-pro-sidebar: 1.0.0-alpha.7</li>
+ <li> swiper: 8.4.4</li>
+ <li> react-toastify: 9.0.8</li>
+ <li> react-time-ago: 7.2.1</li>
+ <li> react-router-dom: 6.4.2</li>
+ <li> yup: 0.32.11</li>
+ <li> react-hook-form: 7.38.0</li>
+ <li> axios: 1.1.3</li>
+
+
 
 The project was built using the <a href="https://noroff-api-docs.netlify.app/" target="_blank"> Noroff API</a>
 
@@ -81,18 +96,4 @@ You may also see any lint errors in the console.
 
 [My LinkedIn page](https://www.linkedin.com/in/ankit-soni-78177b1a/)
 
-## Built With
 
- <li> React: 18.2.0</li>
- <li> tailwindcss: 3.2.1</li>
- <li> @material-tailwind/react: 1.2.4</li>
- <li> react-icons: 4.6.0</li>
- <li> framer-motion: 7.6.1</li>
- <li> react-pro-sidebar: 1.0.0-alpha.7</li>
- <li> swiper: 8.4.4</li>
- <li> react-toastify: 9.0.8</li>
- <li> react-time-ago: 7.2.1</li>
- <li> react-router-dom: 6.4.2</li>
- <li> yup: 0.32.11</li>
- <li> react-hook-form: 7.38.0</li>
- <li> axios: 1.1.3</li>
