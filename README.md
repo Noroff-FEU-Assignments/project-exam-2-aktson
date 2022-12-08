@@ -1,6 +1,6 @@
 # SocialMe
 
-![image](https://user-images.githubusercontent.com/52622303/164316813-4b12d99f-aeb7-4069-85cf-e72b3a50ac99.png)
+![image](https://github.com/Noroff-FEU-Assignments/project-exam-2-aktson/blob/main/src/assets/github-front.jpg)
 
 ## Designed & Developed by <a href="https://ankitsoni.netlify.app/" target="_blank">Ankit Soni</a>
 
