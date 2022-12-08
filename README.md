@@ -42,7 +42,7 @@ This is my submission for Project Exam 2. SocialMe is a social media app where p
 
 The project was built using the <a href="https://noroff-api-docs.netlify.app/" target="_blank"> Noroff API</a>
 
-# Getting Started 
+## Getting Started 
 
 1. Clone the repo:
 
@@ -56,7 +56,7 @@ git clone Noroff-FEU-Assignments/project-exam-2-aktson
 npm install
 ```
 
-### Running
+## Running
 
 In the project directory, you can run following command to start project:
 
@@ -69,7 +69,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-# Register a profile:
+## Register a profile:
 
 ### To create account you will need following
 
@@ -80,7 +80,7 @@ You may also see any lint errors in the console.
 
 ### You wiil then be redirected to authenticated Home page where you can update your profile picture and do post activity mentioned above.
 
-# Login
+## Login
 
 ### Use the email and password you have registered. Else if you wish to login you can use following:
 
