@@ -22,7 +22,7 @@ This is my submission for Project Exam 2. SocialMe is a social media app where p
     <li>A registered user may follow and unfoilow another Profile</li>
 
 
-## Built With
+### Built With
 
  <li> React: 18.2.0</li>
  <li> tailwindcss: 3.2.1</li>
@@ -71,7 +71,7 @@ You may also see any lint errors in the console.
 
 # Register a profile:
 
-## To create account you will need following
+### To create account you will need following
 
 <li>username: "all small caps and no special charaters allowed"</li>
 <li>email: "email ending with @stud.noroff.no (eg.:'example@stud.noroff.no')"</li>
@@ -82,7 +82,7 @@ You may also see any lint errors in the console.
 
 # Login
 
-## Use the email and password you have registered. Else if you wish to login you can use following:
+### Use the email and password you have registered. Else if you wish to login you can use following:
 
 <li> Email: testankson@stud.noroff.no</li>
 <li> Password: projectexam</li>
@@ -90,7 +90,7 @@ You may also see any lint errors in the console.
 ### !import: if you cannot login with above login credentials, then please make new use. It happens incase social media endpoint gets purged.
 
 
-## Contact
+### Contact
 
 [My Site](https://ankitsoni.netlify.app/)
 
